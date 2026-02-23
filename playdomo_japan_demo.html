@@ -12,7 +12,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', sans-serif;
-  background: #0a0a0a;
+  background: #080808;
   color: #f0f0f0;
   line-height: 1.7;
   overflow-x: hidden;
@@ -21,19 +21,23 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 /* ===== UTILITIES ===== */
-.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-.section { padding: 80px 0; }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; position: relative; }
 .section-title {
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
   font-weight: 900;
   text-align: center;
   margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 .section-subtitle {
   text-align: center;
-  color: #aaa;
-  font-size: 1rem;
-  margin-bottom: 48px;
+  color: #888;
+  font-size: 1.05rem;
+  margin-bottom: 56px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .gradient-text {
   background: linear-gradient(135deg, #A8D00E, #00E647);
@@ -45,70 +49,95 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 16px 36px;
+  padding: 18px 40px;
   background: linear-gradient(135deg, #A8D00E, #00E647);
-  color: #0a0a0a;
+  color: #080808;
   font-weight: 700;
   font-size: 1.1rem;
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s, box-shadow 0.25s;
   text-decoration: none;
+  letter-spacing: 0.02em;
 }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 230, 71, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 230, 71, 0.35);
 }
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 14px 32px;
-  background: transparent;
+  padding: 16px 36px;
+  background: rgba(255,255,255,0.04);
   color: #f0f0f0;
   font-weight: 700;
   font-size: 1rem;
-  border: 2px solid rgba(168, 208, 14, 0.5);
+  border: 2px solid rgba(168, 208, 14, 0.4);
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s;
+  backdrop-filter: blur(4px);
 }
 .btn-outline:hover {
   border-color: #A8D00E;
   background: rgba(168, 208, 14, 0.1);
+  box-shadow: 0 0 20px rgba(168, 208, 14, 0.15);
+}
+
+/* ===== GLOW DIVIDERS ===== */
+.glow-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(168,208,14,0.3), transparent);
+  border: none;
+  margin: 0;
 }
 
 /* ===== AGE MODAL ===== */
 .age-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.92);
-  z-index: 9999;
+  background: rgba(0,0,0,0.95);
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(16px);
 }
 .age-modal-overlay.hidden { display: none; }
 .age-modal {
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 20px;
-  padding: 48px 40px;
+  background: linear-gradient(180deg, #1a1a1a, #111);
+  border: 1px solid #2a2a2a;
+  border-radius: 24px;
+  padding: 56px 48px;
   text-align: center;
-  max-width: 440px;
+  max-width: 460px;
   width: 90%;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 0 60px rgba(168,208,14,0.08);
 }
 .age-modal .logo-text {
-  font-size: 2.4rem;
+  font-size: 3rem;
   font-weight: 900;
+  letter-spacing: 6px;
+  margin-bottom: 8px;
+}
+.age-modal .logo-sub {
+  font-size: 0.75rem;
+  color: #666;
   letter-spacing: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  text-transform: uppercase;
+}
+.age-modal .divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #A8D00E, #00E647);
+  margin: 0 auto 32px;
 }
 .age-modal p {
-  color: #aaa;
-  margin-bottom: 32px;
+  color: #999;
+  margin-bottom: 36px;
   font-size: 0.95rem;
   line-height: 1.8;
 }
@@ -118,24 +147,36 @@ img { max-width: 100%; display: block; }
   justify-content: center;
 }
 .age-modal .btn-yes {
-  padding: 14px 40px;
+  padding: 16px 44px;
   background: linear-gradient(135deg, #A8D00E, #00E647);
-  color: #0a0a0a;
+  color: #080808;
   font-weight: 700;
   font-size: 1rem;
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.age-modal .btn-yes:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,230,71,0.3);
 }
 .age-modal .btn-no {
-  padding: 14px 40px;
-  background: #333;
-  color: #888;
+  padding: 16px 44px;
+  background: rgba(255,255,255,0.06);
+  color: #666;
   font-weight: 700;
   font-size: 1rem;
-  border: none;
+  border: 1px solid #333;
   border-radius: 50px;
   cursor: pointer;
+  transition: background 0.2s;
+}
+.age-modal .btn-no:hover { background: rgba(255,255,255,0.1); }
+.age-modal .disclaimer {
+  margin-top: 24px;
+  font-size: 0.7rem;
+  color: #555;
 }
 
 /* ===== HEADER ===== */
@@ -145,53 +186,57 @@ img { max-width: 100%; display: block; }
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 16px 0;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 0;
+  background: rgba(8, 8, 8, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: padding 0.3s;
 }
+.header.scrolled { padding: 10px 0; }
 .header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .header .logo {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 900;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .header .logo .jp-badge {
-  display: inline-block;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
   background: linear-gradient(135deg, #A8D00E, #00E647);
-  color: #0a0a0a;
-  padding: 2px 8px;
+  color: #080808;
+  padding: 3px 10px;
   border-radius: 4px;
-  margin-left: 8px;
-  vertical-align: middle;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 .header-right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
-.store-badges {
-  display: flex;
-  gap: 8px;
-}
+.store-badges { display: flex; gap: 8px; }
 .store-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
-  background: #222;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.06);
   border-radius: 8px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #ccc;
-  border: 1px solid #333;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s;
+}
+.store-badge:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(168,208,14,0.3);
 }
 .store-badge svg { width: 16px; height: 16px; }
 
@@ -204,145 +249,285 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   padding-top: 80px;
 }
-.hero::before {
-  content: '';
+.hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(168, 208, 14, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 80%, rgba(0, 230, 71, 0.1) 0%, transparent 60%);
+  overflow: hidden;
+}
+.hero-bg .orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: orbFloat 8s ease-in-out infinite;
+}
+.hero-bg .orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(168,208,14,0.25), transparent 70%);
+  top: -10%; left: -5%;
+  animation-delay: 0s;
+}
+.hero-bg .orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,230,71,0.2), transparent 70%);
+  bottom: -10%; right: -5%;
+  animation-delay: -3s;
+}
+.hero-bg .orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(102,126,234,0.15), transparent 70%);
+  top: 40%; left: 50%;
+  animation-delay: -5s;
+}
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(168,208,14,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,208,14,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
 }
 .hero .container { position: relative; z-index: 1; text-align: center; }
+.hero-eyebrow {
+  display: inline-block;
+  padding: 6px 20px;
+  background: rgba(168,208,14,0.1);
+  border: 1px solid rgba(168,208,14,0.2);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #A8D00E;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
 .hero-catch {
-  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
   font-weight: 900;
-  line-height: 1.3;
-  margin-bottom: 16px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
 }
 .hero-sub {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: #bbb;
-  margin-bottom: 40px;
+  font-size: clamp(1.05rem, 2.5vw, 1.4rem);
+  color: #999;
+  margin-bottom: 48px;
+  letter-spacing: 0.05em;
 }
 .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .hero-visual {
-  margin-top: 56px;
+  margin-top: 72px;
   display: flex;
   justify-content: center;
-  gap: 16px;
-  perspective: 800px;
+  gap: 20px;
+  perspective: 1000px;
 }
 .hero-card {
-  width: 120px;
-  height: 170px;
-  border-radius: 12px;
+  width: 140px;
+  height: 200px;
+  border-radius: 16px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   font-weight: 700;
   font-size: 0.8rem;
   color: #fff;
   text-align: center;
-  padding: 12px;
+  padding: 16px;
   transform: rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg));
-  transition: transform 0.4s;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
 }
-.hero-card:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.05); }
-.hero-card:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); --ry: -8deg; --rx: 4deg; }
-.hero-card:nth-child(2) { background: linear-gradient(135deg, #A8D00E, #00E647); color: #0a0a0a; --ry: 0deg; --rx: 0deg; }
-.hero-card:nth-child(3) { background: linear-gradient(135deg, #f093fb, #f5576c); --ry: 8deg; --rx: -4deg; }
-.hero-card:nth-child(4) { background: linear-gradient(135deg, #ffd700, #ff8c00); color: #0a0a0a; --ry: 12deg; --rx: 4deg; }
+.hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent 50%);
+  pointer-events: none;
+}
+.hero-card::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  top: -50%;
+  left: -100px;
+  transform: rotate(25deg);
+  animation: cardShine 4s ease-in-out infinite;
+  animation-delay: var(--shine-delay, 0s);
+}
+@keyframes cardShine {
+  0%, 100% { left: -100px; }
+  50% { left: calc(100% + 100px); }
+}
+.hero-card:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.08) translateY(-8px); }
+.hero-card .card-symbol { font-size: 2.4rem; margin-bottom: 4px; }
+.hero-card .card-label { font-size: 0.7rem; opacity: 0.8; letter-spacing: 2px; text-transform: uppercase; }
+.hero-card .card-jp { font-size: 0.85rem; }
+.hero-card:nth-child(1) { background: linear-gradient(160deg, #667eea 0%, #764ba2 100%); --ry: -10deg; --rx: 5deg; --shine-delay: 0s; }
+.hero-card:nth-child(2) { background: linear-gradient(160deg, #A8D00E 0%, #00B33C 100%); color: #080808; --ry: -3deg; --rx: 2deg; --shine-delay: 1s; }
+.hero-card:nth-child(3) { background: linear-gradient(160deg, #f093fb 0%, #f5576c 100%); --ry: 3deg; --rx: -2deg; --shine-delay: 2s; }
+.hero-card:nth-child(4) { background: linear-gradient(160deg, #ffd700 0%, #ff6b00 100%); color: #080808; --ry: 10deg; --rx: 5deg; --shine-delay: 3s; }
+.hero-card:nth-child(5) { background: linear-gradient(160deg, #00d2ff 0%, #3a7bd5 100%); --ry: 14deg; --rx: -3deg; --shine-delay: 0.5s; }
 
 /* ===== CONCEPT ===== */
-.concept { background: #111; }
+.concept {
+  background: linear-gradient(180deg, #0d0d0d, #080808);
+  overflow: hidden;
+}
 .concept-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 24px;
 }
 .concept-card {
   text-align: center;
-  padding: 40px 24px;
-  background: #1a1a1a;
-  border-radius: 16px;
-  border: 1px solid #252525;
-  transition: border-color 0.3s;
+  padding: 48px 28px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
+  overflow: hidden;
 }
-.concept-card:hover { border-color: #A8D00E; }
+.concept-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.concept-card:hover {
+  border-color: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.04);
+  transform: translateY(-4px);
+}
+.concept-card:hover::before { opacity: 1; }
+.concept-card:nth-child(1) { --accent: #A8D00E; }
+.concept-card:nth-child(2) { --accent: #00E647; }
+.concept-card:nth-child(3) { --accent: #ffd700; }
 .concept-icon {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 20px;
-  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  position: relative;
 }
-.concept-card:nth-child(1) .concept-icon { background: rgba(168,208,14,0.15); }
-.concept-card:nth-child(2) .concept-icon { background: rgba(0,230,71,0.15); }
-.concept-card:nth-child(3) .concept-icon { background: rgba(255,215,0,0.15); }
-.concept-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
-.concept-card p { color: #999; font-size: 0.9rem; }
-.concept-arrows {
+.concept-card:nth-child(1) .concept-icon { background: rgba(168,208,14,0.1); box-shadow: 0 0 40px rgba(168,208,14,0.1); }
+.concept-card:nth-child(2) .concept-icon { background: rgba(0,230,71,0.1); box-shadow: 0 0 40px rgba(0,230,71,0.1); }
+.concept-card:nth-child(3) .concept-icon { background: rgba(255,215,0,0.1); box-shadow: 0 0 40px rgba(255,215,0,0.1); }
+.concept-card h3 { font-size: 1.2rem; margin-bottom: 10px; font-weight: 700; }
+.concept-card p { color: #888; font-size: 0.9rem; line-height: 1.8; }
+.concept-flow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  margin-top: 32px;
-  font-size: 0.9rem;
-  color: #666;
+  gap: 16px;
+  margin-top: 48px;
+  flex-wrap: wrap;
 }
-.concept-arrows .arrow { color: #A8D00E; font-size: 1.2rem; }
+.concept-flow .flow-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.concept-flow .flow-arrow {
+  color: #A8D00E;
+  font-size: 1.2rem;
+}
 
 /* ===== EXPERIENCES ===== */
+.experiences { overflow: hidden; }
 .experiences-tabs {
   display: flex;
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
 }
 .tab-btn {
-  padding: 10px 20px;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  padding: 10px 22px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 50px;
-  color: #999;
+  color: #777;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.25s;
 }
 .tab-btn.active, .tab-btn:hover {
   background: linear-gradient(135deg, #A8D00E, #00E647);
-  color: #0a0a0a;
+  color: #080808;
   border-color: transparent;
   font-weight: 700;
+  box-shadow: 0 4px 16px rgba(168,208,14,0.2);
 }
 .experiences-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
 }
 .exp-card {
-  background: #1a1a1a;
-  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid #252525;
-  transition: transform 0.3s, border-color 0.3s;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
 }
-.exp-card:hover { transform: translateY(-4px); border-color: #A8D00E; }
+.exp-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168,208,14,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 30px rgba(168,208,14,0.05);
+}
 .exp-card[data-category] { display: none; }
 .exp-card.visible { display: block; }
 .exp-card-img {
-  height: 160px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
   position: relative;
+  overflow: hidden;
+}
+.exp-card-img .exp-emoji {
+  font-size: 4rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+.exp-card-img .exp-bg-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.2) 1px, transparent 1px),
+    radial-gradient(circle at 60% 80%, rgba(255,255,255,0.25) 1px, transparent 1px);
+  background-size: 40px 40px, 60px 60px, 50px 50px;
 }
 .exp-card-img::after {
   content: '';
@@ -350,185 +535,308 @@ img { max-width: 100%; display: block; }
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40px;
-  background: linear-gradient(transparent, #1a1a1a);
+  height: 60px;
+  background: linear-gradient(transparent, rgba(8,8,8,0.9));
+  z-index: 2;
 }
-.exp-card-body { padding: 20px; }
-.exp-card-body h3 { font-size: 1rem; margin-bottom: 6px; }
-.exp-card-body p { color: #888; font-size: 0.85rem; line-height: 1.6; }
+.exp-card-body { padding: 24px; }
+.exp-card-body h3 { font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; }
+.exp-card-body p { color: #777; font-size: 0.85rem; line-height: 1.7; }
 .exp-card-tag {
   display: inline-block;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 50px;
   font-size: 0.7rem;
   font-weight: 700;
-  margin-top: 10px;
+  margin-top: 12px;
+  letter-spacing: 0.5px;
 }
-.tag-celebrity { background: rgba(102,126,234,0.2); color: #667eea; }
-.tag-beauty { background: rgba(240,147,251,0.2); color: #f093fb; }
-.tag-gourmet { background: rgba(255,165,0,0.2); color: #ffa500; }
-.tag-entertainment { background: rgba(0,230,71,0.2); color: #00E647; }
-.tag-luxury { background: rgba(255,215,0,0.2); color: #ffd700; }
+.tag-celebrity { background: rgba(102,126,234,0.15); color: #818cf8; }
+.tag-beauty { background: rgba(240,147,251,0.15); color: #e879f9; }
+.tag-gourmet { background: rgba(255,165,0,0.15); color: #fbbf24; }
+.tag-entertainment { background: rgba(0,230,71,0.15); color: #4ade80; }
+.tag-luxury { background: rgba(255,215,0,0.15); color: #fcd34d; }
 
 /* ===== BOOSTER ===== */
-.booster { background: #111; }
+.booster {
+  background: linear-gradient(180deg, #0d0d0d, #080808);
+  overflow: hidden;
+}
 .booster-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  gap: 64px;
   align-items: center;
 }
-.booster-left h3 {
+.booster-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.booster-pack {
+  width: 200px;
+  height: 280px;
+  background: linear-gradient(160deg, #A8D00E, #00B33C);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(168,208,14,0.2), 0 0 0 1px rgba(255,255,255,0.1);
+  animation: packPulse 3s ease-in-out infinite;
+}
+@keyframes packPulse {
+  0%, 100% { box-shadow: 0 30px 80px rgba(168,208,14,0.2), 0 0 0 1px rgba(255,255,255,0.1); }
+  50% { box-shadow: 0 30px 100px rgba(168,208,14,0.35), 0 0 0 1px rgba(255,255,255,0.15); }
+}
+.booster-pack::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent 50%);
+}
+.booster-pack .pack-logo {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #080808;
+  letter-spacing: 4px;
+}
+.booster-pack .pack-sub {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.booster-pack .pack-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #ffd700;
+  color: #080808;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(255,215,0,0.3);
+}
+.booster-info h3 {
   font-size: 1.8rem;
   font-weight: 900;
   margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
-.booster-left p { color: #999; margin-bottom: 24px; }
+.booster-info > p { color: #888; margin-bottom: 32px; line-height: 1.8; }
 .countdown {
   display: flex;
   gap: 12px;
+  margin-bottom: 40px;
 }
 .countdown-unit {
   text-align: center;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 12px;
-  padding: 16px 20px;
-  min-width: 72px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  padding: 18px 22px;
+  min-width: 78px;
 }
 .countdown-unit .num {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 900;
   display: block;
   line-height: 1;
 }
-.countdown-unit .num.gradient-text {
-  background: linear-gradient(135deg, #A8D00E, #00E647);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 .countdown-unit .label {
   font-size: 0.7rem;
-  color: #666;
+  color: #555;
   margin-top: 6px;
   display: block;
+  letter-spacing: 1px;
 }
-.rarity-bars { display: flex; flex-direction: column; gap: 14px; }
+.rarity-bars { display: flex; flex-direction: column; gap: 12px; }
 .rarity-bar { display: flex; align-items: center; gap: 12px; }
 .rarity-bar .rarity-name {
-  width: 80px;
-  font-size: 0.8rem;
+  width: 90px;
+  font-size: 0.78rem;
   font-weight: 700;
   text-align: right;
+  letter-spacing: 0.5px;
 }
 .rarity-bar .bar-wrap {
   flex: 1;
-  height: 28px;
-  background: #1a1a1a;
-  border-radius: 8px;
+  height: 32px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
   overflow: hidden;
   position: relative;
+  border: 1px solid rgba(255,255,255,0.04);
 }
 .rarity-bar .bar-fill {
   height: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  padding-left: 10px;
+  padding-left: 12px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #0a0a0a;
-  transition: width 1s ease;
+  color: #080808;
+  transition: width 1.2s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
+  overflow: hidden;
 }
-.rarity-commune .bar-fill { background: #8a8a8a; width: 78%; }
-.rarity-rare .bar-fill { background: #667eea; width: 22%; }
-.rarity-epique .bar-fill { background: #f093fb; width: 10%; color: #333; }
-.rarity-legendaire .bar-fill { background: linear-gradient(90deg, #ffd700, #ff8c00); width: 3%; }
+.rarity-bar .bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+  border-radius: 10px 10px 0 0;
+}
+.rarity-commune .bar-fill { background: linear-gradient(90deg, #6b7280, #9ca3af); width: 78%; }
+.rarity-rare .bar-fill { background: linear-gradient(90deg, #667eea, #818cf8); width: 22%; }
+.rarity-epique .bar-fill { background: linear-gradient(90deg, #c084fc, #e879f9); width: 10%; }
+.rarity-legendaire .bar-fill { background: linear-gradient(90deg, #fbbf24, #f59e0b); width: 3%; }
 
 /* ===== PACKS ===== */
+.packs { overflow: hidden; }
 .packs-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
 }
 .pack-card {
-  background: #1a1a1a;
-  border-radius: 16px;
-  padding: 32px 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 20px;
+  padding: 36px 16px 28px;
   text-align: center;
-  border: 1px solid #252525;
-  transition: transform 0.3s, border-color 0.3s;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
   position: relative;
 }
-.pack-card:hover { transform: translateY(-4px); border-color: #A8D00E; }
+.pack-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(168,208,14,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
 .pack-card.featured {
-  border-color: #A8D00E;
-  background: linear-gradient(180deg, rgba(168,208,14,0.08), #1a1a1a);
+  border-color: rgba(168,208,14,0.4);
+  background: linear-gradient(180deg, rgba(168,208,14,0.06), rgba(255,255,255,0.02));
+  box-shadow: 0 0 40px rgba(168,208,14,0.06);
 }
 .pack-card.featured::before {
-  content: '人気';
+  content: 'POPULAR';
   position: absolute;
-  top: -10px;
+  top: -11px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #A8D00E, #00E647);
-  color: #0a0a0a;
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 2px 12px;
+  color: #080808;
+  font-size: 0.6rem;
+  font-weight: 900;
+  padding: 4px 14px;
   border-radius: 50px;
+  letter-spacing: 2px;
 }
 .pack-icon {
-  width: 64px;
-  height: 80px;
-  margin: 0 auto 16px;
-  border-radius: 10px;
+  width: 72px;
+  height: 96px;
+  margin: 0 auto 20px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  position: relative;
+  overflow: hidden;
 }
-.pack-card:nth-child(1) .pack-icon { background: linear-gradient(135deg, #555, #888); }
-.pack-card:nth-child(2) .pack-icon { background: linear-gradient(135deg, #a8a8a8, #ccc); }
-.pack-card:nth-child(3) .pack-icon { background: linear-gradient(135deg, #ffd700, #ffaa00); }
-.pack-card:nth-child(4) .pack-icon { background: linear-gradient(135deg, #667eea, #a78bfa); }
-.pack-card:nth-child(5) .pack-icon { background: linear-gradient(135deg, #f093fb, #ff6b6b); }
-.pack-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+.pack-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent 50%);
+  border-radius: 14px;
+}
+.pack-card:nth-child(1) .pack-icon { background: linear-gradient(160deg, #4b5563, #6b7280); box-shadow: 0 8px 24px rgba(75,85,99,0.3); }
+.pack-card:nth-child(2) .pack-icon { background: linear-gradient(160deg, #9ca3af, #d1d5db); box-shadow: 0 8px 24px rgba(156,163,175,0.3); }
+.pack-card:nth-child(3) .pack-icon { background: linear-gradient(160deg, #fbbf24, #f59e0b); box-shadow: 0 8px 24px rgba(251,191,36,0.3); }
+.pack-card:nth-child(4) .pack-icon { background: linear-gradient(160deg, #818cf8, #6366f1); box-shadow: 0 8px 24px rgba(129,140,248,0.3); }
+.pack-card:nth-child(5) .pack-icon { background: linear-gradient(160deg, #f472b6, #ec4899); box-shadow: 0 8px 24px rgba(244,114,182,0.3); }
+.pack-card h3 { font-size: 0.9rem; margin-bottom: 4px; font-weight: 700; }
 .pack-price {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 900;
-  margin: 8px 0;
+  margin: 10px 0 16px;
+  letter-spacing: -0.02em;
 }
-.pack-price .yen { font-size: 0.9rem; }
-.pack-details { list-style: none; font-size: 0.78rem; color: #888; }
-.pack-details li { padding: 4px 0; border-bottom: 1px solid #222; }
+.pack-price .yen { font-size: 0.9rem; font-weight: 700; }
+.pack-details { list-style: none; font-size: 0.78rem; color: #777; }
+.pack-details li { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 .pack-details li:last-child { border: none; }
+.pack-details .highlight { color: #A8D00E; font-weight: 600; }
 
 /* ===== COLLECTIONS ===== */
-.collections { background: #111; }
+.collections {
+  background: linear-gradient(180deg, #0d0d0d, #080808);
+  overflow: hidden;
+}
 .collections-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
 .coll-card {
-  padding: 24px;
-  border-radius: 16px;
+  padding: 32px 20px;
+  border-radius: 20px;
   text-align: center;
-  border: 1px solid #252525;
-  background: #1a1a1a;
-  transition: transform 0.3s, border-color 0.3s;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+  position: relative;
+  overflow: hidden;
 }
-.coll-card:hover { transform: translateY(-2px); border-color: #A8D00E; }
+.coll-card::before {
+  content: '';
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 160px; height: 160px;
+  background: var(--coll-color, rgba(168,208,14,0.1));
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.coll-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.12);
+}
+.coll-card:hover::before { opacity: 1; }
+.coll-card:nth-child(1) { --coll-color: rgba(168,208,14,0.12); }
+.coll-card:nth-child(2) { --coll-color: rgba(251,191,36,0.12); }
+.coll-card:nth-child(3) { --coll-color: rgba(251,191,36,0.15); }
+.coll-card:nth-child(4) { --coll-color: rgba(239,68,68,0.12); }
+.coll-card:nth-child(5) { --coll-color: rgba(129,140,248,0.12); }
+.coll-card:nth-child(6) { --coll-color: rgba(0,230,71,0.12); }
+.coll-card:nth-child(7) { --coll-color: rgba(148,163,184,0.12); }
+.coll-card:nth-child(8) { --coll-color: rgba(255,215,0,0.15); }
 .coll-card .coll-icon {
-  font-size: 2.4rem;
-  margin-bottom: 12px;
+  font-size: 2.8rem;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
 }
-.coll-card h3 { font-size: 0.95rem; margin-bottom: 2px; }
-.coll-card .coll-jp { font-size: 0.75rem; color: #888; margin-bottom: 8px; }
-.coll-card p { font-size: 0.78rem; color: #666; }
+.coll-card h3 { font-size: 0.9rem; margin-bottom: 2px; letter-spacing: 1px; position: relative; z-index: 1; }
+.coll-card .coll-jp { font-size: 0.75rem; color: #666; margin-bottom: 10px; position: relative; z-index: 1; }
+.coll-card p { font-size: 0.75rem; color: #555; position: relative; z-index: 1; }
 
 /* ===== TUTORIAL ===== */
+.tutorial { overflow: hidden; }
 .tutorial-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -538,12 +846,13 @@ img { max-width: 100%; display: block; }
 .tutorial-grid::before {
   content: '';
   position: absolute;
-  top: 72px;
-  left: 15%;
-  right: 15%;
+  top: 88px;
+  left: 16%;
+  right: 16%;
   height: 2px;
-  background: linear-gradient(90deg, #A8D00E, #00E647);
+  background: linear-gradient(90deg, rgba(168,208,14,0.6), rgba(0,230,71,0.6));
   z-index: 0;
+  box-shadow: 0 0 12px rgba(168,208,14,0.3);
 }
 .step-card {
   text-align: center;
@@ -551,47 +860,150 @@ img { max-width: 100%; display: block; }
   z-index: 1;
 }
 .step-num {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: linear-gradient(135deg, #A8D00E, #00E647);
-  color: #0a0a0a;
-  font-size: 1.4rem;
+  color: #080808;
+  font-size: 1.5rem;
   font-weight: 900;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 32px rgba(168,208,14,0.25);
+  position: relative;
+}
+.step-num::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(168,208,14,0.2);
 }
 .step-visual {
   width: 100%;
-  height: 160px;
-  background: #1a1a1a;
-  border-radius: 12px;
+  height: 180px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  margin-bottom: 16px;
-  border: 1px solid #252525;
+  font-size: 4rem;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
 }
-.step-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
-.step-card p { font-size: 0.85rem; color: #888; }
+.step-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--step-glow, rgba(168,208,14,0.06)), transparent 70%);
+}
+.step-card:nth-child(1) .step-visual { --step-glow: rgba(168,208,14,0.08); }
+.step-card:nth-child(2) .step-visual { --step-glow: rgba(0,230,71,0.08); }
+.step-card:nth-child(3) .step-visual { --step-glow: rgba(255,215,0,0.08); }
+.step-card h3 { font-size: 1.1rem; margin-bottom: 8px; font-weight: 700; }
+.step-card p { font-size: 0.88rem; color: #777; line-height: 1.7; }
+
+/* ===== NEWSLETTER ===== */
+.newsletter {
+  background: linear-gradient(180deg, #0d0d0d, #080808);
+  overflow: hidden;
+}
+.newsletter-box {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 56px 48px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  position: relative;
+}
+.newsletter-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(168,208,14,0.08), transparent 70%);
+  pointer-events: none;
+}
+.newsletter-box h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+  position: relative;
+}
+.newsletter-box > p {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+  position: relative;
+}
+.newsletter-form {
+  display: flex;
+  gap: 10px;
+  position: relative;
+}
+.newsletter-form input {
+  flex: 1;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  color: #f0f0f0;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.newsletter-form input::placeholder { color: #555; }
+.newsletter-form input:focus { border-color: rgba(168,208,14,0.4); }
+.newsletter-form button {
+  padding: 16px 28px;
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #080808;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.newsletter-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,230,71,0.25);
+}
 
 /* ===== DOWNLOAD CTA ===== */
 .cta-section {
-  background: linear-gradient(135deg, rgba(168,208,14,0.12), rgba(0,230,71,0.08));
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(168,208,14,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(0,230,71,0.06) 0%, transparent 60%);
+}
+.cta-section .container { position: relative; z-index: 1; }
 .cta-section h2 {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 900;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
 }
 .cta-section p {
-  color: #aaa;
-  margin-bottom: 32px;
-  font-size: 1rem;
+  color: #888;
+  margin-bottom: 40px;
+  font-size: 1.05rem;
 }
 .cta-badges {
   display: flex;
@@ -602,46 +1014,70 @@ img { max-width: 100%; display: block; }
 .cta-badge {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 28px;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 12px;
+  gap: 12px;
+  padding: 16px 32px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: all 0.25s;
 }
-.cta-badge:hover { border-color: #A8D00E; }
-.cta-badge svg { width: 24px; height: 24px; fill: #f0f0f0; }
+.cta-badge:hover {
+  border-color: rgba(168,208,14,0.4);
+  background: rgba(168,208,14,0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.cta-badge svg { width: 28px; height: 28px; fill: #f0f0f0; }
 .cta-badge-text { text-align: left; }
 .cta-badge-text .small { font-size: 0.65rem; color: #888; display: block; }
-.cta-badge-text .big { font-size: 1rem; font-weight: 700; display: block; }
+.cta-badge-text .big { font-size: 1.1rem; font-weight: 700; display: block; }
 
 /* ===== FOOTER ===== */
 .footer {
-  padding: 40px 0;
-  border-top: 1px solid #1a1a1a;
+  padding: 48px 0;
+  border-top: 1px solid rgba(255,255,255,0.04);
   text-align: center;
-  font-size: 0.8rem;
-  color: #555;
+}
+.footer .logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
 }
 .footer-links {
   display: flex;
   gap: 24px;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
-.footer-links a { color: #777; transition: color 0.2s; }
+.footer-links a {
+  color: #555;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
 .footer-links a:hover { color: #A8D00E; }
+.footer-copy { font-size: 0.78rem; color: #444; }
+.footer-demo {
+  margin-top: 8px;
+  font-size: 0.68rem;
+  color: #333;
+}
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .packs-grid { grid-template-columns: repeat(3, 1fr); }
+}
 @media (max-width: 900px) {
-  .concept-grid { grid-template-columns: 1fr; }
-  .booster-content { grid-template-columns: 1fr; }
+  .section { padding: 72px 0; }
+  .concept-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  .booster-content { grid-template-columns: 1fr; gap: 48px; }
+  .booster-visual { order: -1; }
   .packs-grid { grid-template-columns: repeat(3, 1fr); }
   .collections-grid { grid-template-columns: repeat(2, 1fr); }
   .tutorial-grid::before { display: none; }
-  .hero-card { width: 90px; height: 130px; font-size: 0.7rem; }
+  .hero-card { width: 110px; height: 155px; }
 }
 @media (max-width: 600px) {
   .section { padding: 56px 0; }
@@ -649,33 +1085,37 @@ img { max-width: 100%; display: block; }
   .packs-grid .pack-card:nth-child(5) { grid-column: span 2; }
   .collections-grid { grid-template-columns: 1fr 1fr; }
   .tutorial-grid { grid-template-columns: 1fr; gap: 24px; }
-  .hero-visual { flex-wrap: wrap; }
-  .hero-card { width: 80px; height: 115px; font-size: 0.65rem; }
+  .hero-visual { flex-wrap: wrap; gap: 12px; }
+  .hero-card { width: 90px; height: 128px; font-size: 0.7rem; }
+  .hero-card .card-symbol { font-size: 1.6rem; }
   .store-badges { display: none; }
-  .countdown-unit { min-width: 56px; padding: 12px 14px; }
-  .countdown-unit .num { font-size: 1.5rem; }
+  .countdown { justify-content: center; }
+  .countdown-unit { min-width: 60px; padding: 14px 16px; }
+  .countdown-unit .num { font-size: 1.6rem; }
   .experiences-grid { grid-template-columns: 1fr; }
+  .newsletter-form { flex-direction: column; }
+  .booster-pack { width: 160px; height: 230px; }
 }
 
-/* ===== ANIMATIONS ===== */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-on-scroll {
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.23,1,0.32,1), transform 0.8s cubic-bezier(0.23,1,0.32,1);
 }
-.animate-on-scroll.visible {
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-10px); }
 }
-.float-anim { animation: float 3s ease-in-out infinite; }
+.float-anim { animation: float 4s ease-in-out infinite; }
 </style>
 </head>
 <body>
@@ -684,16 +1124,19 @@ img { max-width: 100%; display: block; }
 <div class="age-modal-overlay" id="ageModal">
   <div class="age-modal">
     <div class="logo-text"><span class="gradient-text">DOMO</span></div>
+    <div class="logo-sub">JAPAN</div>
+    <div class="divider"></div>
     <p>このサービスは18歳以上の方を対象としています。<br>あなたは18歳以上ですか？</p>
     <div class="btn-row">
-      <button class="btn-yes" onclick="document.getElementById('ageModal').classList.add('hidden')">はい（18歳以上）</button>
-      <button class="btn-no" onclick="alert('18歳未満の方はご利用いただけません。')">いいえ</button>
+      <button class="btn-yes" id="ageYes">はい（18歳以上）</button>
+      <button class="btn-no" id="ageNo">いいえ</button>
     </div>
+    <p class="disclaimer">18歳未満の方のご利用はお断りしております。</p>
   </div>
 </div>
 
 <!-- ===== HEADER ===== -->
-<header class="header">
+<header class="header" id="header">
   <div class="container">
     <div class="logo">
       <span class="gradient-text">DOMO</span>
@@ -716,7 +1159,14 @@ img { max-width: 100%; display: block; }
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+  <div class="hero-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="hero-grid-bg"></div>
+  </div>
   <div class="container">
+    <div class="hero-eyebrow">DOMO JAPAN 2025</div>
     <h1 class="hero-catch">引くのは、<span class="gradient-text">体験</span>だ。</h1>
     <p class="hero-sub">カードの先に、冒険がある。</p>
     <div class="hero-cta">
@@ -724,45 +1174,79 @@ img { max-width: 100%; display: block; }
       <a href="#concept" class="btn-outline">詳しく見る</a>
     </div>
     <div class="hero-visual">
-      <div class="hero-card float-anim" style="animation-delay:0s">MATIÈRE<br>物質</div>
-      <div class="hero-card float-anim" style="animation-delay:0.3s">LUMIÈRE<br>光</div>
-      <div class="hero-card float-anim" style="animation-delay:0.6s">FORCE<br>力</div>
-      <div class="hero-card float-anim" style="animation-delay:0.9s">ESPACE<br>宇宙</div>
+      <div class="hero-card float-anim" style="animation-delay:0s">
+        <span class="card-symbol">⚛️</span>
+        <span class="card-label">MATIERE</span>
+        <span class="card-jp">物質</span>
+      </div>
+      <div class="hero-card float-anim" style="animation-delay:0.4s">
+        <span class="card-symbol">💡</span>
+        <span class="card-label">LUMIERE</span>
+        <span class="card-jp">光</span>
+      </div>
+      <div class="hero-card float-anim" style="animation-delay:0.8s">
+        <span class="card-symbol">⚡</span>
+        <span class="card-label">FORCE</span>
+        <span class="card-jp">力</span>
+      </div>
+      <div class="hero-card float-anim" style="animation-delay:1.2s">
+        <span class="card-symbol">🌌</span>
+        <span class="card-label">ESPACE</span>
+        <span class="card-jp">宇宙</span>
+      </div>
+      <div class="hero-card float-anim" style="animation-delay:1.6s">
+        <span class="card-symbol">👑</span>
+        <span class="card-label">ORIGINELLES</span>
+        <span class="card-jp">伝説</span>
+      </div>
     </div>
   </div>
 </section>
+
+<hr class="glow-divider">
 
 <!-- ===== CONCEPT ===== -->
 <section class="concept section" id="concept">
   <div class="container">
-    <h2 class="section-title">お金では<span class="gradient-text">買えない体験</span>を、引く。</h2>
-    <p class="section-subtitle">DOMOは「モノ」ではなく「体験」をコレクションする、まったく新しいカードゲーム。</p>
-    <div class="concept-grid animate-on-scroll">
-      <div class="concept-card">
+    <h2 class="section-title reveal">お金では<span class="gradient-text">買えない体験</span>を、引く。</h2>
+    <p class="section-subtitle reveal">DOMOは「モノ」ではなく「体験」をコレクションする、まったく新しいカードゲーム。</p>
+    <div class="concept-grid">
+      <div class="concept-card reveal reveal-delay-1">
         <div class="concept-icon">🃏</div>
         <h3>カードを集める</h3>
-        <p>8つのテーマ × 78種のカードをコレクション。レアリティは4段階。毎日の無料ブースターでもカードが手に入る。</p>
+        <p>8つのテーマ・78種のカードをコレクション。レアリティは4段階。毎日の無料ブースターでもカードが手に入る。</p>
       </div>
-      <div class="concept-card">
+      <div class="concept-card reveal reveal-delay-2">
         <div class="concept-icon">✨</div>
         <h3>Cosmosを貯める</h3>
         <p>カード獲得やコレクション達成でCosmos（ポイント）を獲得。貯めるほど大きなチャンスが近づく。</p>
       </div>
-      <div class="concept-card">
+      <div class="concept-card reveal reveal-delay-3">
         <div class="concept-icon">🎯</div>
         <h3>唯一無二の体験を引く</h3>
-        <p>Cosmosを使って体験抽選に挑戦。人気YouTuberとのコラボ、ミシュラン三ツ星ディナー、スカイダイビング…想像を超える体験が待っている。</p>
+        <p>Cosmosを使って体験抽選に挑戦。人気YouTuberとのコラボ、ミシュラン三ツ星ディナー…想像を超える体験が待っている。</p>
       </div>
+    </div>
+    <div class="concept-flow reveal">
+      <span class="flow-step">🃏 パック開封</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">✨ Cosmos獲得</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">🎯 体験抽選</span>
+      <span class="flow-arrow">→</span>
+      <span class="flow-step">🏆 体験GET!</span>
     </div>
   </div>
 </section>
 
+<hr class="glow-divider">
+
 <!-- ===== EXPERIENCES ===== -->
-<section class="section" id="experiences">
+<section class="experiences section" id="experiences">
   <div class="container">
-    <h2 class="section-title">当たるのは、<span class="gradient-text">一生モノの体験</span></h2>
-    <p class="section-subtitle">お金では手に入らない、あなただけの特別な瞬間</p>
-    <div class="experiences-tabs">
+    <h2 class="section-title reveal">当たるのは、<span class="gradient-text">一生モノの体験</span></h2>
+    <p class="section-subtitle reveal">お金では手に入らない、あなただけの特別な瞬間</p>
+    <div class="experiences-tabs reveal">
       <button class="tab-btn active" data-tab="all">すべて</button>
       <button class="tab-btn" data-tab="celebrity">セレブリティ</button>
       <button class="tab-btn" data-tab="beauty">美容</button>
@@ -770,26 +1254,35 @@ img { max-width: 100%; display: block; }
       <button class="tab-btn" data-tab="entertainment">エンタメ</button>
       <button class="tab-btn" data-tab="luxury">ラグジュアリー</button>
     </div>
-    <div class="experiences-grid animate-on-scroll">
+    <div class="experiences-grid">
       <!-- Celebrity -->
-      <div class="exp-card visible" data-category="celebrity">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#667eea,#764ba2)">🎬</div>
+      <div class="exp-card visible reveal" data-category="celebrity">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#667eea,#764ba2)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🎬</span>
+        </div>
         <div class="exp-card-body">
           <h3>人気YouTuberとコラボ動画出演</h3>
           <p>登録者100万人超のYouTuberの動画にゲスト出演。撮影・編集のプロセスも体験できる。</p>
           <span class="exp-card-tag tag-celebrity">セレブリティ</span>
         </div>
       </div>
-      <div class="exp-card visible" data-category="celebrity">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#a78bfa,#667eea)">🎙️</div>
+      <div class="exp-card visible reveal" data-category="celebrity">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#a78bfa,#6366f1)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🎙️</span>
+        </div>
         <div class="exp-card-body">
           <h3>有名声優と1対1アフレコ体験</h3>
           <p>人気アニメ声優からマンツーマン演技指導＋共演収録。声優ファン垂涎の夢の体験。</p>
           <span class="exp-card-tag tag-celebrity">セレブリティ</span>
         </div>
       </div>
-      <div class="exp-card visible" data-category="celebrity">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#818cf8,#6366f1)">🎮</div>
+      <div class="exp-card visible reveal" data-category="celebrity">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#818cf8,#4f46e5)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🎮</span>
+        </div>
         <div class="exp-card-body">
           <h3>VTuberとプライベートコラボ配信</h3>
           <p>人気VTuberとの限定コラボ配信に出演。ファンコミュニティで語り継がれる思い出に。</p>
@@ -797,16 +1290,22 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <!-- Beauty -->
-      <div class="exp-card visible" data-category="beauty">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#f093fb,#f5576c)">💆</div>
+      <div class="exp-card visible reveal" data-category="beauty">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#f093fb,#f5576c)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">✈️💆</span>
+        </div>
         <div class="exp-card-body">
           <h3>韓国ソウル美容ツアー 3泊4日</h3>
           <p>渡航費込み。韓国美容クリニック施術＋エステ＋専属ガイド付きの贅沢ビューティ旅。</p>
           <span class="exp-card-tag tag-beauty">美容</span>
         </div>
       </div>
-      <div class="exp-card visible" data-category="beauty">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">💎</div>
+      <div class="exp-card visible reveal" data-category="beauty">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#ec4899,#be185d)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">💎</span>
+        </div>
         <div class="exp-card-body">
           <h3>フルフェイス美容医療プログラム</h3>
           <p>医師カウンセリング＋完全オーダーメイド施術プラン。理想の自分に近づく特別プログラム。</p>
@@ -814,16 +1313,22 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <!-- Gourmet -->
-      <div class="exp-card visible" data-category="gourmet">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#ffa500,#ff6b00)">🍣</div>
+      <div class="exp-card visible reveal" data-category="gourmet">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#f59e0b,#d97706)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🍣</span>
+        </div>
         <div class="exp-card-body">
           <h3>ミシュラン三ツ星シェフのプライベートディナー</h3>
           <p>予約不可能な名店でシェフが目の前で調理。二名様分の特別コース。</p>
           <span class="exp-card-tag tag-gourmet">グルメ</span>
         </div>
       </div>
-      <div class="exp-card visible" data-category="gourmet">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#f59e0b,#d97706)">🏯</div>
+      <div class="exp-card visible reveal" data-category="gourmet">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#fbbf24,#b45309)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🏯</span>
+        </div>
         <div class="exp-card-body">
           <h3>京都料亭の舞妓さんお座敷遊び付きディナー</h3>
           <p>一見さんお断りの老舗料亭で舞妓さんの踊り＋懐石料理を堪能。</p>
@@ -831,16 +1336,22 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <!-- Entertainment -->
-      <div class="exp-card visible" data-category="entertainment">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#00E647,#059669)">🎨</div>
+      <div class="exp-card visible reveal" data-category="entertainment">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#10b981,#047857)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🎨</span>
+        </div>
         <div class="exp-card-body">
           <h3>アニメスタジオ見学＋制作現場体験</h3>
           <p>ufotable/MAPPA等のスタジオで制作現場見学＋彩色体験。アニメファンの聖地巡礼。</p>
           <span class="exp-card-tag tag-entertainment">エンタメ</span>
         </div>
       </div>
-      <div class="exp-card visible" data-category="entertainment">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#10b981,#14b8a6)">🎆</div>
+      <div class="exp-card visible reveal" data-category="entertainment">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#34d399,#065f46)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🎆</span>
+        </div>
         <div class="exp-card-body">
           <h3>花火師と一緒に花火を打ち上げる体験</h3>
           <p>花火大会の裏側で点火作業に参加＋特等席で鑑賞。夏の忘れられない一夜。</p>
@@ -848,19 +1359,36 @@ img { max-width: 100%; display: block; }
         </div>
       </div>
       <!-- Luxury -->
-      <div class="exp-card visible" data-category="luxury">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#ffd700,#ff8c00)">✈️</div>
+      <div class="exp-card visible reveal" data-category="luxury">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#fbbf24,#d97706)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">✈️</span>
+        </div>
         <div class="exp-card-body">
           <h3>プライベートジェット遊覧飛行（富士山）</h3>
           <p>小型ジェットで90分の遊覧飛行。シャンパン片手に富士山を空から独占。</p>
           <span class="exp-card-tag tag-luxury">ラグジュアリー</span>
         </div>
       </div>
-      <div class="exp-card visible" data-category="luxury">
-        <div class="exp-card-img" style="background:linear-gradient(135deg,#eab308,#ca8a04)">🏎️</div>
+      <div class="exp-card visible reveal" data-category="luxury">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#fcd34d,#92400e)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🏎️</span>
+        </div>
         <div class="exp-card-body">
           <h3>F1日本GP パドッククラブ体験</h3>
           <p>鈴鹿パドック入場＋ピットウォーク＋VIPラウンジ。モータースポーツの最高峰を間近で。</p>
+          <span class="exp-card-tag tag-luxury">ラグジュアリー</span>
+        </div>
+      </div>
+      <div class="exp-card visible reveal" data-category="luxury">
+        <div class="exp-card-img" style="background:linear-gradient(160deg,#eab308,#78350f)">
+          <div class="exp-bg-pattern"></div>
+          <span class="exp-emoji">🏨</span>
+        </div>
+        <div class="exp-card-body">
+          <h3>星野リゾート最上級スイート 2泊3日</h3>
+          <p>通常予約困難な最上位グレード＋専属コンシェルジュ。至高のリトリート体験。</p>
           <span class="exp-card-tag tag-luxury">ラグジュアリー</span>
         </div>
       </div>
@@ -868,62 +1396,71 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
+<hr class="glow-divider">
+
 <!-- ===== DAILY FREE BOOSTER ===== -->
 <section class="booster section" id="booster">
   <div class="container">
-    <h2 class="section-title">毎日もらえる<span class="gradient-text">無料ブースター</span></h2>
-    <p class="section-subtitle">毎日ログインするだけで、1枚カードが手に入る。</p>
-    <div class="booster-content animate-on-scroll">
-      <div class="booster-left">
+    <h2 class="section-title reveal">毎日もらえる<span class="gradient-text">無料ブースター</span></h2>
+    <p class="section-subtitle reveal">毎日ログインするだけで、1枚カードが手に入る。</p>
+    <div class="booster-content">
+      <div class="booster-visual reveal">
+        <div class="booster-pack float-anim">
+          <span class="pack-logo">DOMO</span>
+          <span class="pack-sub">FREE BOOSTER</span>
+          <span class="pack-badge">DAILY</span>
+        </div>
+      </div>
+      <div class="booster-info reveal">
         <h3>次のブースターまで</h3>
         <p>毎日0:00にリセット。無料でもレアカードが出現する可能性あり。</p>
         <div class="countdown" id="countdown">
           <div class="countdown-unit">
             <span class="num gradient-text" id="cd-hours">00</span>
-            <span class="label">時間</span>
+            <span class="label">HOURS</span>
           </div>
           <div class="countdown-unit">
             <span class="num gradient-text" id="cd-mins">00</span>
-            <span class="label">分</span>
+            <span class="label">MIN</span>
           </div>
           <div class="countdown-unit">
             <span class="num gradient-text" id="cd-secs">00</span>
-            <span class="label">秒</span>
+            <span class="label">SEC</span>
           </div>
         </div>
-      </div>
-      <div class="booster-right">
-        <h3 style="font-size:1.1rem;margin-bottom:16px;">レアリティ分布（無料ブースター）</h3>
         <div class="rarity-bars">
           <div class="rarity-bar rarity-commune">
-            <span class="rarity-name" style="color:#8a8a8a">Commune</span>
+            <span class="rarity-name" style="color:#9ca3af">Commune</span>
             <div class="bar-wrap"><div class="bar-fill">78%</div></div>
           </div>
           <div class="rarity-bar rarity-rare">
-            <span class="rarity-name" style="color:#667eea">Rare</span>
+            <span class="rarity-name" style="color:#818cf8">Rare</span>
             <div class="bar-wrap"><div class="bar-fill">22%</div></div>
           </div>
           <div class="rarity-bar rarity-epique">
-            <span class="rarity-name" style="color:#f093fb">Épique</span>
-            <div class="bar-wrap"><div class="bar-fill" style="width:10%;padding-left:4px;font-size:0.65rem;">有料のみ</div></div>
+            <span class="rarity-name" style="color:#e879f9">Epique</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:0%;font-size:0;"></div></div>
           </div>
           <div class="rarity-bar rarity-legendaire">
-            <span class="rarity-name" style="color:#ffd700">Légendaire</span>
-            <div class="bar-wrap"><div class="bar-fill" style="width:10%;padding-left:4px;font-size:0.65rem;">有料のみ</div></div>
+            <span class="rarity-name" style="color:#fbbf24">Legendaire</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:0%;font-size:0;"></div></div>
           </div>
         </div>
+        <p style="font-size:0.75rem;color:#555;margin-top:12px;">Epique・Legendaire はプレミアムパック限定</p>
       </div>
     </div>
   </div>
 </section>
 
+<hr class="glow-divider">
+
 <!-- ===== PACKS ===== -->
-<section class="section" id="packs">
+<section class="packs section" id="packs">
   <div class="container">
-    <h2 class="section-title"><span class="gradient-text">パック</span>一覧</h2>
-    <p class="section-subtitle">5つのグレードから選べるプレミアムブースター</p>
-    <div class="packs-grid animate-on-scroll">
-      <div class="pack-card">
+    <h2 class="section-title reveal"><span class="gradient-text">パック</span>一覧</h2>
+    <p class="section-subtitle reveal">5つのグレードから選べるプレミアムブースター</p>
+    <div class="packs-grid">
+      <div class="pack-card reveal reveal-delay-1">
         <div class="pack-icon">🃏</div>
         <h3>スタンダード</h3>
         <div class="pack-price"><span class="yen">¥</span>300</div>
@@ -933,7 +1470,7 @@ img { max-width: 100%; display: block; }
           <li>全レアリティ対象</li>
         </ul>
       </div>
-      <div class="pack-card">
+      <div class="pack-card reveal reveal-delay-1">
         <div class="pack-icon">🂡</div>
         <h3>シルバー</h3>
         <div class="pack-price"><span class="yen">¥</span>500</div>
@@ -943,117 +1480,121 @@ img { max-width: 100%; display: block; }
           <li>全レアリティ対象</li>
         </ul>
       </div>
-      <div class="pack-card featured">
+      <div class="pack-card featured reveal reveal-delay-2">
         <div class="pack-icon">🏆</div>
         <h3>ゴールド</h3>
-        <div class="pack-price"><span class="yen">¥</span>1,000</div>
+        <div class="pack-price"><span class="gradient-text"><span class="yen">¥</span>1,000</span></div>
         <ul class="pack-details">
           <li>カード 5枚</li>
           <li>Cosmos 多量</li>
-          <li>レア以上確定 ×1</li>
+          <li class="highlight">Rare以上確定 ×1</li>
         </ul>
       </div>
-      <div class="pack-card">
+      <div class="pack-card reveal reveal-delay-2">
         <div class="pack-icon">💠</div>
         <h3>プラチナ</h3>
         <div class="pack-price"><span class="yen">¥</span>3,000</div>
         <ul class="pack-details">
           <li>カード 8枚</li>
           <li>Cosmos 大量</li>
-          <li>SR以上確定 ×1</li>
+          <li class="highlight">SR以上確定 ×1</li>
         </ul>
       </div>
-      <div class="pack-card">
+      <div class="pack-card reveal reveal-delay-3">
         <div class="pack-icon">👑</div>
         <h3>レジェンド</h3>
         <div class="pack-price"><span class="yen">¥</span>5,000</div>
         <ul class="pack-details">
           <li>カード 10枚</li>
           <li>Cosmos 最大量</li>
-          <li>SSR確定 ×1</li>
+          <li class="highlight">SSR確定 ×1</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
+<hr class="glow-divider">
+
 <!-- ===== COLLECTIONS ===== -->
 <section class="collections section" id="collections">
   <div class="container">
-    <h2 class="section-title"><span class="gradient-text">8つ</span>のコレクション</h2>
-    <p class="section-subtitle">78種のカード × 4段階レアリティ。すべて集めてCosmosを最大化しよう。</p>
-    <div class="collections-grid animate-on-scroll">
-      <div class="coll-card">
+    <h2 class="section-title reveal"><span class="gradient-text">8つ</span>のコレクション</h2>
+    <p class="section-subtitle reveal">78種のカード × 4段階レアリティ。すべて集めてCosmosを最大化しよう。</p>
+    <div class="collections-grid">
+      <div class="coll-card reveal">
         <div class="coll-icon">⚛️</div>
-        <h3>MATIÈRE</h3>
+        <h3>MATIERE</h3>
         <p class="coll-jp">物質</p>
-        <p>炭素原子、ダイヤモンド結晶、DNA分子…</p>
+        <p>炭素原子、ダイヤモンド結晶、DNA分子</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">⏳</div>
         <h3>TEMPS</h3>
         <p class="coll-jp">時間</p>
-        <p>アンティーク時計、無限砂時計、時間ポータル…</p>
+        <p>アンティーク時計、無限砂時計、時間ポータル</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">💡</div>
-        <h3>LUMIÈRE</h3>
+        <h3>LUMIERE</h3>
         <p class="coll-jp">光</p>
-        <p>太陽光線、虹プリズム、北極光…</p>
+        <p>太陽光線、虹プリズム、北極光</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">⚡</div>
         <h3>FORCE</h3>
         <p class="coll-jp">力</p>
-        <p>純粋エネルギー、磁場、重力…</p>
+        <p>純粋エネルギー、磁場、重力</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">🌌</div>
         <h3>ESPACE</h3>
         <p class="coll-jp">宇宙</p>
-        <p>渦巻銀河、星雲、ブラックホール…</p>
+        <p>渦巻銀河、星雲、ブラックホール</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">🧠</div>
         <h3>SAVOIR</h3>
         <p class="coll-jp">知識</p>
-        <p>バイナリコード、AI、量子アルゴリズム…</p>
+        <p>バイナリコード、AI、量子アルゴリズム</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">🌑</div>
         <h3>OMBRE</h3>
         <p class="coll-jp">影</p>
-        <p>シルエット、皆既日食、暗いスペクトル…</p>
+        <p>シルエット、皆既日食、暗いスペクトル</p>
       </div>
-      <div class="coll-card">
+      <div class="coll-card reveal">
         <div class="coll-icon">👑</div>
         <h3>LES ORIGINELLES</h3>
         <p class="coll-jp">オリジナルズ</p>
-        <p>金の延べ棒、金の粉、金の王冠…</p>
+        <p>金の延べ棒、金の粉、金の王冠</p>
       </div>
     </div>
   </div>
 </section>
 
+<hr class="glow-divider">
+
 <!-- ===== TUTORIAL ===== -->
-<section class="section" id="howto">
+<section class="tutorial section" id="howto">
   <div class="container">
-    <h2 class="section-title">はじめ方は<span class="gradient-text">3ステップ</span></h2>
-    <p class="section-subtitle">シンプルだから、すぐに始められる。</p>
-    <div class="tutorial-grid animate-on-scroll">
-      <div class="step-card">
+    <h2 class="section-title reveal">はじめ方は<span class="gradient-text">3ステップ</span></h2>
+    <p class="section-subtitle reveal">シンプルだから、すぐに始められる。</p>
+    <div class="tutorial-grid">
+      <div class="step-card reveal reveal-delay-1">
         <div class="step-num">1</div>
         <div class="step-visual">🎁</div>
         <h3>パックを開封する</h3>
         <p>毎日の無料ブースターか、プレミアムパックを購入してカードをゲット。</p>
       </div>
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-2">
         <div class="step-num">2</div>
         <div class="step-visual">📚</div>
         <h3>コレクション＆Cosmos獲得</h3>
         <p>カードを集めてコレクションを完成させ、Cosmosポイントを貯めよう。</p>
       </div>
-      <div class="step-card">
+      <div class="step-card reveal reveal-delay-3">
         <div class="step-num">3</div>
         <div class="step-visual">🎯</div>
         <h3>体験に挑戦する</h3>
@@ -1063,12 +1604,28 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
+<hr class="glow-divider">
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter section" id="newsletter">
+  <div class="container">
+    <div class="newsletter-box reveal">
+      <h3>最新情報をいち早くチェック</h3>
+      <p>日本版リリース情報や限定体験の最新ニュースをお届けします。</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="メールアドレスを入力">
+        <button type="button" onclick="alert('デモページのため、実際の登録はできません。')">登録する</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== DOWNLOAD CTA ===== -->
 <section class="cta-section section" id="download">
   <div class="container">
-    <h2>さあ、<span class="gradient-text">体験を引こう。</span></h2>
-    <p>PlayDomo Japan — カードの先に、冒険がある。</p>
-    <div class="cta-badges">
+    <h2 class="reveal">さあ、<span class="gradient-text">体験を引こう。</span></h2>
+    <p class="reveal">PlayDomo Japan — カードの先に、冒険がある。</p>
+    <div class="cta-badges reveal">
       <a href="#" class="cta-badge">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         <div class="cta-badge-text">
@@ -1090,18 +1647,41 @@ img { max-width: 100%; display: block; }
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
+    <div class="logo"><span class="gradient-text">DOMO</span></div>
     <div class="footer-links">
       <a href="#">利用規約</a>
       <a href="#">参加規約</a>
       <a href="#">プライバシーポリシー</a>
       <a href="#">特定商取引法に基づく表記</a>
+      <a href="#">データ削除リクエスト</a>
+      <a href="#">ヘルプ</a>
     </div>
-    <p>&copy; 2025 Domo Japan. All rights reserved.</p>
-    <p style="margin-top:4px;font-size:0.7rem;color:#444;">※ これはデモページです。実際のサービスではありません。</p>
+    <p class="footer-copy">&copy; 2025 Domo Japan. All rights reserved.</p>
+    <p class="footer-demo">※ これはデモページです。実際のサービスではありません。</p>
   </div>
 </footer>
 
 <script>
+// ===== Age Verification with localStorage =====
+(function() {
+  const modal = document.getElementById('ageModal');
+  if (localStorage.getItem('domo-age-verified') === 'true') {
+    modal.classList.add('hidden');
+  }
+  document.getElementById('ageYes').addEventListener('click', function() {
+    localStorage.setItem('domo-age-verified', 'true');
+    modal.classList.add('hidden');
+  });
+  document.getElementById('ageNo').addEventListener('click', function() {
+    window.location.href = 'https://www.google.com';
+  });
+})();
+
+// ===== Header Scroll Effect =====
+window.addEventListener('scroll', function() {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
 // ===== Countdown Timer =====
 function updateCountdown() {
   const now = new Date();
@@ -1120,12 +1700,12 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ===== Tab Filtering =====
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
-    const tab = btn.dataset.tab;
-    document.querySelectorAll('.exp-card').forEach(card => {
+    var tab = btn.dataset.tab;
+    document.querySelectorAll('.exp-card').forEach(function(card) {
       if (tab === 'all' || card.dataset.category === tab) {
         card.classList.add('visible');
       } else {
@@ -1135,16 +1715,18 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// ===== Scroll Animations =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+// ===== Scroll Reveal Animations =====
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
     }
   });
-}, { threshold: 0.1 });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(function(el) {
+  revealObserver.observe(el);
+});
 </script>
 </body>
 </html>
