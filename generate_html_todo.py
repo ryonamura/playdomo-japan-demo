@@ -160,6 +160,7 @@ full_html = f"""<!DOCTYPE html>
 <style>{CSS}</style>
 </head>
 <body>
+<script src="auth.js"></script>
 <button class="print-btn no-print" onclick="window.print()">PDF保存 (Cmd+P)</button>
 {html_body}
 </body>
