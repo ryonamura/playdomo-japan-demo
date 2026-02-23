@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — Résultats des investigations Phase 0 — Actions suivantes</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.toc {
+    background: #f7fafc;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin: 20px 0 30px 0;
+}
+.toc h2 {
+    margin-top: 0;
+    font-size: 12pt;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.toc ol {
+    margin: 8px 0 0 0;
+}
+.toc a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+.risk-high {
+    color: #c53030;
+    font-weight: bold;
+}
+.risk-medium {
+    color: #c05621;
+    font-weight: bold;
+}
+footer {
+    margin-top: 50px;
+    padding-top: 15px;
+    border-top: 2px solid #e2e8f0;
+    text-align: center;
+    color: #718096;
+    font-size: 9pt;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">Enregistrer en PDF (Cmd+P)</button>
+
+<h1>DOMO Japan — Résultats des investigations Phase 0 — Actions suivantes</h1>
+<p><strong>Sous-titre</strong> : Résultats des investigations complémentaires nécessaires à la décision Go/No-Go<br>
+<strong>Date</strong> : 24 février 2026</p>
+
+<div class="toc no-print">
+<h2>Table des matières</h2>
+<ol>
+    <li><a href="#section1">Nature juridique des cartes DOMO (point critique)</a>
+        <ol>
+            <li><a href="#section1-1">Fonctionnement fondamental de PlayDOMO</a></li>
+            <li><a href="#section1-2">Applicabilité de la réglementation JONUM</a></li>
+            <li><a href="#section1-3">Nature juridique du token Cosmos</a></li>
+            <li><a href="#section1-4">Analyse des risques au regard du droit japonais</a></li>
+        </ol>
+    </li>
+    <li><a href="#section2">Examen du rapport annuel (有価証券報告書) d'Akatsuki</a></li>
+    <li><a href="#section3">Candidats partenaires pour les récompenses expérientielles</a>
+        <ol>
+            <li><a href="#section3-1">Partenaires recommandés (par ordre de priorité)</a></li>
+            <li><a href="#section3-2">Détail de chaque partenaire</a></li>
+            <li><a href="#section3-3">Autres candidats</a></li>
+            <li><a href="#section3-4">Structure des coûts</a></li>
+        </ol>
+    </li>
+</ol>
+</div>
+
+<hr>
+
+<h2 id="section1">Section 1 : Nature juridique des cartes DOMO (point critique)</h2>
+
+<h3 id="section1-1">Conclusion : PlayDOMO est un « jeu de collection numérique de type tirage au sort avec récompenses »</h3>
+
+<blockquote>
+<p>PlayDOMO n'est pas basé sur des NFT ou la blockchain. Il n'existe pas de marché secondaire pour les cartes.</p>
+</blockquote>
+
+<h4>Fonctionnement fondamental</h4>
+<ol>
+    <li>Achat de packs de cartes (sacrifice financier)</li>
+    <li>Détermination de la rareté par le hasard (élément gacha)</li>
+    <li>Accumulation de tokens Cosmos (1 carte = 1 Cosmos)</li>
+    <li>Obtention d'un droit de participation au tirage au sort pour des récompenses de grande valeur (Lamborghini, etc.)</li>
+</ol>
+
+<h4>Spécifications techniques des cartes</h4>
+<ul>
+    <li>Pas de NFT ni de blockchain</li>
+    <li>Token Cosmos : lié au compte personnel, non transférable, sans limite de durée</li>
+    <li>Aucun échange sur des places de marché externes</li>
+    <li>Participation gratuite : 1 carte gratuite par jour + possibilité d'obtenir jusqu'à 10 tokens par courrier postal</li>
+</ul>
+
+<h4>Composition des packs</h4>
+<table>
+<thead>
+<tr>
+<th>Pack</th>
+<th>Nombre de cartes</th>
+<th>Caractéristiques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Découverte</td>
+<td>1 carte</td>
+<td>Pack d'initiation</td>
+</tr>
+<tr>
+<td>Essentiel</td>
+<td>5 cartes</td>
+<td>Pack standard</td>
+</tr>
+<tr>
+<td>Collection</td>
+<td>10 cartes</td>
+<td>Pour les collectionneurs</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Probabilités de rareté</h4>
+<table>
+<thead>
+<tr>
+<th>Rareté</th>
+<th>Probabilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commune</td>
+<td>65 %</td>
+</tr>
+<tr>
+<td>Rare</td>
+<td>22 %</td>
+</tr>
+<tr>
+<td>Épique</td>
+<td>10 %</td>
+</tr>
+<tr>
+<td>Légendaire</td>
+<td>3 %</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Récompenses (vérifiées en février 2026)</h4>
+<ul>
+    <li>Lamborghini Veneno (valeur estimée : 3 à 4 millions EUR)</li>
+    <li>Rolex Batman (valeur estimée : 200 000 à 400 000 JPY / ~1 200–2 400 EUR)</li>
+    <li>Tissot PRX Auto (valeur estimée : 80 000 à 150 000 JPY / ~480–900 EUR)</li>
+</ul>
+
+<h4>Auto-qualification au regard du droit français</h4>
+<p>« Jeux promotionnels par tirage au sort »</p>
+<ul>
+    <li>Le site officiel mentionne explicitement « Place your bet » (en français : « misez »)</li>
+    <li>Zone géographique : France métropolitaine uniquement</li>
+    <li>Limite d'âge : 18 ans et plus</li>
+</ul>
+
+<hr>
+
+<h3 id="section1-2">Applicabilité de la réglementation JONUM</h3>
+
+<blockquote>
+<p><strong>Conclusion : Non soumis à la réglementation JONUM</strong></p>
+</blockquote>
+
+<p>Le 4e critère (ONUM = objet numérique monétisable) n'est pas rempli parmi les 4 critères cumulatifs du régime JONUM.</p>
+<ul>
+    <li>Cosmos est lié au compte personnel et non transférable → ne remplit pas la définition d'ONUM</li>
+    <li>PlayDOMO lui-même évite toute référence à la réglementation JONUM</li>
+</ul>
+
+<hr>
+
+<h3 id="section1-3">Nature juridique du token Cosmos</h3>
+
+<h4>Applicabilité en tant que moyen de paiement prépayé (前払式支払手段 / Maebara-shiki shiharai-shudan) : <span class="risk-high">Probabilité élevée</span></h4>
+
+<table>
+<thead>
+<tr>
+<th>Critère</th>
+<th>Appréciation</th>
+<th>Fondement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Émission en contrepartie d'une valeur</td>
+<td>Rempli</td>
+<td>Émis en échange du prix d'achat des cartes</td>
+</tr>
+<tr>
+<td>Conservation de valeur</td>
+<td>Rempli</td>
+<td>Enregistré comme valeur équivalant à 1 Cosmos = 1 carte</td>
+</tr>
+<tr>
+<td>Exercice d'un droit</td>
+<td>Rempli</td>
+<td>Utilisable pour déverrouiller des packs boosters</td>
+</tr>
+</tbody>
+</table>
+
+<p>Sans limite de durée → ne relève pas de l'exception applicable aux titres valables moins de 6 mois → <strong>Si le solde non utilisé dépasse 10 millions JPY (~60 000 EUR), une obligation de déclaration est déclenchée</strong></p>
+
+<h4>Applicabilité en tant que cryptoactif : Non applicable</h4>
+<ul>
+    <li>Transfert ou cession à des tiers impossible</li>
+    <li>Aucune fonctionnalité d'échange contre monnaie légale</li>
+    <li>Pas d'infrastructure blockchain</li>
+</ul>
+
+<hr>
+
+<h3 id="section1-4">Analyse des risques au regard du droit japonais (point critique)</h3>
+
+<h4>Infraction de loterie — Code pénal, article 187 (富くじ罪・刑法187条) : <span class="risk-high">Risque extrêmement élevé</span></h4>
+<p>Les 4 critères sont tous remplis :</p>
+<ul>
+    <li>Acquisition ou perte d'un bien (Lamborghini, etc.)</li>
+    <li>Aléa (rareté de la carte, tirage au sort)</li>
+    <li>Sacrifice financier (prix d'achat des packs)</li>
+    <li>Compétition de gains entre plusieurs participants</li>
+</ul>
+
+<h4>Délit de jeu de hasard — Code pénal, article 185 (賭博罪・刑法185条) : <span class="risk-high">Risque élevé</span></h4>
+<p>Forte probabilité d'être interprété comme un acte de pari portant sur un Lamborghini (valeur estimée 3 à 4 millions EUR). L'expression officielle « Place your bet » pourrait constituer une preuve directe.</p>
+
+<h4>Loi sur l'affichage des primes et des représentations (景品表示法 / Keihinhyoji-ho) : <span class="risk-high">Violation certaine</span></h4>
+<p>Le plafond légal des primes (20 fois la valeur de la transaction ou 100 000 JPY / ~600 EUR, selon le montant le plus faible) est largement dépassé.</p>
+
+<h4>Loi sur les règlements des fonds (資金決済法 / Shikin-kessai-ho) : <span class="risk-medium">Obligation de déclaration possible</span></h4>
+<p>Si Cosmos est qualifié de moyen de paiement prépayé, une obligation de consignation de garantie d'émission et de déclaration sera déclenchée.</p>
+
+<blockquote>
+<p><strong>Note importante :</strong> Selon l'opinion dominante, la « solution alternative gratuite » (participation par courrier postal) adoptée en France n'a pas pour effet de supprimer l'illégalité au regard du droit japonais.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="section2">Section 2 : Examen du rapport annuel (有価証券報告書) d'Akatsuki</h2>
+
+<blockquote>
+<p><strong>Limite de l'investigation :</strong> L'accès direct au PDF complet du rapport annuel étant restreint, une vérification exhaustive n'a pas été possible.</p>
+</blockquote>
+
+<h3>Faits établis</h3>
+<ul>
+    <li>Exercice clos mars 2024 (14e exercice) : 23 filiales non consolidées et sociétés associées</li>
+    <li>Exercice clos mars 2025 (15e exercice) : le rapport annuel devrait être déposé sur EDINET vers le 25 juin 2025 (code EDINET : E32200)</li>
+    <li>URL candidate du PDF EDINET : <code>https://disclosure2dl.edinet-fsa.go.jp/searchdocument/pdf/S100W56G.pdf</code></li>
+    <li>L'entité maltaise n'est pas mentionnée dans la liste officielle des sociétés du groupe Akatsuki</li>
+    <li>L'investissement de PlayDOMO via Emoote (fonds Web3) n'est pas confirmé dans les informations publiques</li>
+</ul>
+
+<h3>Points à vérifier manuellement</h3>
+<ol>
+    <li>Ouvrir le PDF EDINET et effectuer une recherche plein texte sur « AKATSUKI LIMITED », « マルタ », « Malta », « PlayDOMO »</li>
+    <li>Vérifier les actionnaires et dirigeants de C 109512 sur le registre des entreprises maltais (<code>https://register.mbr.mt</code>)</li>
+    <li>Consulter OpenCorporates (<code>https://opencorporates.com/companies/mt/C109512</code>)</li>
+</ol>
+
+<h3>Liens de référence</h3>
+<ul>
+    <li>IR Bank : <code>https://irbank.net/E32200/edinet</code></li>
+    <li>Donburi Accountant : <code>https://donburi.accountant/</code></li>
+    <li>Sociétés du groupe Akatsuki : <code>https://aktsk.jp/en/company/group/</code></li>
+</ul>
+
+<hr>
+
+<h2 id="section3">Section 3 : Candidats partenaires pour les récompenses expérientielles</h2>
+
+<h3 id="section3-1">Partenaires recommandés (par ordre de priorité)</h3>
+
+<h4>1re priorité : giftee for Business + SOW EXPERIENCE / asoview!</h4>
+<ul>
+    <li>API bien documentée, intégration aux systèmes externes la plus aisée</li>
+    <li>Émission en temps réel d'URL de e-gift, gestion des stocks inutile</li>
+</ul>
+
+<h4>2e priorité : Activity Japan (filiale HIS)</h4>
+<ul>
+    <li>API d'informations et API de réservation publiquement accessibles. Plus de 17 000 offres</li>
+</ul>
+
+<h4>3e priorité : Hoshino Resorts / Relux Gift (récompenses premium)</h4>
+<ul>
+    <li>Forte notoriété de marque, efficace pour créer un sentiment d'exclusivité. Prix élevés (à partir de 30 000 JPY / ~180 EUR)</li>
+</ul>
+
+<hr>
+
+<h3 id="section3-2">Détail de chaque partenaire</h3>
+
+<h4>SOW EXPERIENCE</h4>
+<ul>
+    <li>Fondé en 2005. Premier service de cadeaux expérientiels au Japon</li>
+    <li>Plus de 1 000 types d'expériences, 800 000 utilisateurs cumulés</li>
+    <li>Gamme de prix : de 3 000 JPY (~18 EUR) à plus de 100 000 JPY (~600 EUR)</li>
+    <li>B2B : intégration via l'API giftee for Business</li>
+    <li>URL : <code>https://www.sowxp.co.jp/</code> / Entreprises : <code>https://business.sowxp.co.jp/</code></li>
+</ul>
+
+<h4>asoview! (アソビュー)</h4>
+<ul>
+    <li>Fondé en 2011. 12 millions de membres. Levées de fonds cumulées de 5,5 milliards JPY (~33 M EUR)</li>
+    <li>Environ 10 000 établissements, 620 genres, 22 000 à 26 000 offres</li>
+    <li>Gamme de prix : de 100 JPY (~0,6 EUR) à 54 540 JPY (~327 EUR) (petits montants possibles via giftee)</li>
+    <li>B2B : intégration via l'API giftee for Business</li>
+    <li>URL : <code>https://www.asoview.co.jp/</code> / Gift entreprises : <code>https://store.asoview.com/pages/campaign</code></li>
+</ul>
+
+<h4>Activity Japan</h4>
+<ul>
+    <li>Filiale de HIS. Plus de 17 000 offres</li>
+    <li>API : API d'informations et API de réservation publiquement accessibles</li>
+    <li>URL : <code>https://activityjapan.com/</code> / API : <code>https://pr.activityjapan.co.jp/api</code></li>
+</ul>
+
+<hr>
+
+<h3 id="section3-3">Autres candidats</h3>
+
+<table>
+<thead>
+<tr>
+<th>Société</th>
+<th>Caractéristiques</th>
+<th>Adéquation pour PlayDOMO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hoshino Resorts</td>
+<td>Bons séjour à partir de 50 000 JPY/unité (~300 EUR). Contrats entreprises possibles</td>
+<td>Adapté aux récompenses premium</td>
+</tr>
+<tr>
+<td>Relux</td>
+<td>Bons hébergement de luxe de 30 000 à 100 000 JPY (~180–600 EUR)</td>
+<td>Adapté aux récompenses premium</td>
+</tr>
+<tr>
+<td>Ikyu.com (一休.com)</td>
+<td>Hébergement haut de gamme et restaurants. Négociation individuelle requise</td>
+<td>À évaluer</td>
+</tr>
+<tr>
+<td>Viator</td>
+<td>500 000 offres mondiales. Commission de 8 %</td>
+<td>Orienté tourisme entrant</td>
+</tr>
+<tr>
+<td>Klook</td>
+<td>Plus de 500 000 offres. Programme entreprises disponible</td>
+<td>Orienté tourisme entrant</td>
+</tr>
+<tr>
+<td>aini (ex-TABICA)</td>
+<td>Expériences CtoC. Intégration entreprises limitée</td>
+<td>Priorité faible</td>
+</tr>
+</tbody>
+</table>
+
+<hr>
+
+<h3 id="section3-4">Structure des coûts</h3>
+
+<table>
+<thead>
+<tr>
+<th>Mode d'approvisionnement</th>
+<th>Taux de coût estimé (par rapport au prix public)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achat B2B auprès de SOW / asoview!</td>
+<td>60–70 %</td>
+</tr>
+<tr>
+<td>Via API giftee for Business</td>
+<td>70–80 %</td>
+</tr>
+<tr>
+<td>Affiliation (Viator, etc.)</td>
+<td>Commission de 8–15 %</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Simulation du coût des récompenses (hypothèse : taux d'approvisionnement de 65 %)</h4>
+
+<table>
+<thead>
+<tr>
+<th>Prix public de la récompense</th>
+<th>Coût d'approvisionnement estimé</th>
+<th>Remarques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 000 JPY (~6 EUR)</td>
+<td>Environ 650 JPY (~4 EUR)</td>
+<td>Le minimum pour les cadeaux expérientiels est 3 000 JPY (~18 EUR). Les petits montants sont traités sous forme de e-gift cards</td>
+</tr>
+<tr>
+<td>3 000 JPY (~18 EUR)</td>
+<td>Environ 1 950 JPY (~12 EUR)</td>
+<td>Gamme de prix minimale de SOW</td>
+</tr>
+<tr>
+<td>5 000 JPY (~30 EUR)</td>
+<td>Environ 3 250 JPY (~20 EUR)</td>
+<td>Offre standard d'asoview!</td>
+</tr>
+<tr>
+<td>10 000 JPY (~60 EUR)</td>
+<td>Environ 6 500 JPY (~39 EUR)</td>
+<td>Offre standard SOW / asoview!</td>
+</tr>
+<tr>
+<td>30 000 JPY (~180 EUR)</td>
+<td>Environ 19 500 JPY (~117 EUR)</td>
+<td>Relux Gift (récompense premium)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>Liens de référence</h3>
+<ul>
+    <li>giftee for Business : <code>https://giftee.biz/</code></li>
+    <li>SOW Entreprises : <code>https://business.sowxp.co.jp/</code></li>
+    <li>asoview! Gift Entreprises : <code>https://store.asoview.com/pages/campaign</code></li>
+    <li>Activity Japan API : <code>https://pr.activityjapan.co.jp/api</code></li>
+    <li>Hoshino Resorts Gift : <code>https://hoshinoresorts.com/jp/gift/</code></li>
+    <li>Relux Gift : <code>https://rlx.jp/gift/use/</code></li>
+</ul>
+
+<hr>
+
+<footer>
+DOMO Japan Localization Project — Confidentiel
+</footer>
+
+</body>
+</html>

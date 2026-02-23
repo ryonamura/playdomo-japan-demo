@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — Rapport d'étude parallèle Phase 0</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+    .toc { page-break-after: always; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.toc {
+    background: #f0f7ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 30px 0 40px;
+}
+.toc h3 {
+    margin-top: 0;
+    color: #2b6cb0;
+    font-size: 13pt;
+    margin-bottom: 12px;
+}
+.toc ol {
+    margin: 0;
+    padding-left: 20px;
+}
+.toc li {
+    margin: 6px 0;
+    font-size: 10.5pt;
+}
+.toc a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+.sources {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+}
+.sources h4 {
+    margin-top: 0;
+    color: #2d3748;
+    font-size: 10pt;
+    margin-bottom: 8px;
+}
+.sources ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.sources li {
+    margin: 3px 0;
+}
+.sources a {
+    color: #2b6cb0;
+    word-break: break-all;
+}
+.badge-gray {
+    background: #e2e8f0;
+    color: #2d3748;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-blue {
+    background: #bee3f8;
+    color: #1a365d;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-orange {
+    background: #feebc8;
+    color: #7b341e;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-red {
+    background: #fed7d7;
+    color: #742a2a;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-green {
+    background: #c6f6d5;
+    color: #1a4731;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid #2b6cb0;
+    text-align: center;
+    font-size: 9pt;
+    color: #718096;
+    letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">Enregistrer en PDF (Cmd+P)</button>
+
+<h1 id="top">DOMO Japan — Rapport d'étude parallèle Phase 0</h1>
+<p>
+    <strong>Sous-titre</strong> : Résultats de l'étude des éléments à faible risque, pouvant être lancés sans attendre la décision Go/No-Go<br>
+    <strong>Date de création</strong> : 23 février 2026<br>
+    <strong>Statut</strong> : Phase 0 — Étude parallèle terminée
+</p>
+
+<div class="toc">
+    <h3>Table des matières</h3>
+    <ol>
+        <li><a href="#sec1">Analyse de la structure juridique du marché japonais des « Oripa »</a></li>
+        <li><a href="#sec2">Recensement des exemples japonais de Mystery Box</a></li>
+        <li><a href="#sec3">Détail de la réglementation JONUM française</a></li>
+        <li><a href="#sec4">Vérification des informations de relations investisseurs d'Akatsuki</a></li>
+        <li><a href="#sec5">Exemples internationaux de gacha/tirages au sort expérientiels</a></li>
+        <li><a href="#sec6">Couverture du marché japonais par Nuvei</a></li>
+    </ol>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 1 ============================= -->
+<h2 id="sec1">1. Analyse de la structure juridique du marché japonais des « Oripa »</h2>
+
+<h3>Aperçu du marché</h3>
+<ul>
+    <li>Le marché global des TCG (jeux de cartes à collectionner) représente environ <strong>250 milliards JPY (~1,5 milliard EUR)</strong> (2025). Le marché des Oripa est estimé à plusieurs dizaines de milliards voire 100 milliards JPY (~0,6 milliard EUR)</li>
+    <li>DOPA! (leader du secteur, société sinsa), Iris (société crafty, filiale acquise par Accelmark) et clove (société TrustHub) sont les principaux acteurs</li>
+    <li>En février 2026, « D Oripa » lié au groupe DMM a également fait son entrée sur le marché</li>
+</ul>
+
+<h3>Détail des principaux services</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Société opératrice</th>
+            <th>Lancement</th>
+            <th>Caractéristiques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>DOPA!</strong></td>
+            <td>sinsa Co., Ltd. (Fujisawa)</td>
+            <td>Janvier 2023</td>
+            <td>Leader du marché. 8 titres, plus de 150 variétés. Plus de 400 000 abonnés YouTube</td>
+        </tr>
+        <tr>
+            <td><strong>Iris</strong></td>
+            <td>crafty Co., Ltd. (Chiyoda-ku)</td>
+            <td>—</td>
+            <td>CA de 470 millions JPY (~2,8 M EUR). Filiale acquise par Accelmark en déc. 2024 (100 millions JPY / ~0,6 M EUR)</td>
+        </tr>
+        <tr>
+            <td><strong>clove</strong></td>
+            <td>TrustHub Co., Ltd.</td>
+            <td>—</td>
+            <td>Boutiques physiques à Akihabara et Namba. Exploite également un bar de poker</td>
+        </tr>
+        <tr>
+            <td><strong>Nihon Toreca Center</strong></td>
+            <td>Nihon Toreca Center Co., Ltd.</td>
+            <td>Mai 2023</td>
+            <td>N°1 des ventes de Oripa en ligne. Réalisation de 50 millions JPY (~300 000 EUR) en 8 heures</td>
+        </tr>
+        <tr>
+            <td><strong>D Oripa</strong></td>
+            <td>D Oripa Co., Ltd. (groupe DMM)</td>
+            <td>2 février 2026</td>
+            <td>Base de 51,46 millions de membres DMM. Taux de remboursement maximal de 204 %</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Fondements juridiques essentiels</h3>
+
+<h4>Motifs pour lesquels le service n'est pas qualifié de jeu de hasard</h4>
+<ul>
+    <li>Il s'agit d'un <strong>contrat de vente dans lequel l'acheteur reçoit toujours un article (carte)</strong>, sans relation de gain ou de perte de biens</li>
+    <li>L'opérateur ne subit aucun « résultat aléatoire » (revenu constant lorsque tous les packs sont vendus)</li>
+    <li>La « valeur officielle » des cartes à collectionner n'existe pas (la valeur de marché n'est pas une valeur officielle)</li>
+</ul>
+
+<h4>Qualification de zone grise selon les avis d'avocats</h4>
+<blockquote>
+    Toutefois, selon les avis d'avocats, le statut demeure <strong>une zone grise</strong>. Les risques suivants existent.
+</blockquote>
+<ul>
+    <li>Risque que la boucle conversion en points → nouveau gacha soit qualifiée de « gain ou perte d'argent » de facto</li>
+    <li>Possibilité que les cartes de grande valeur ne tombent pas sous l'exception des « biens de divertissement occasionnel »</li>
+    <li>Introduction de <strong>sanctions pénales</strong> pour la falsification des probabilités lors de l'amendement de la loi sur l'affichage des primes et des représentations (景品表示法 / Keihinhyoji-ho) en octobre 2024</li>
+    <li>Absence de directives sectorielles unifiées (<strong>non établies</strong>) — les directives gacha de la JOGA servent de précédent de référence</li>
+</ul>
+
+<h3>Législation applicable</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Loi</th>
+            <th>Champ d'application</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Loi sur le commerce des antiquités (古物営業法 / Kobutsu-eigyo-ho)</td>
+            <td>Autorisation obligatoire pour l'achat de cartes d'occasion</td>
+        </tr>
+        <tr>
+            <td>Loi sur les transactions commerciales spécifiées (特定商取引法 / Tokutei-shohitorihiki-ho)</td>
+            <td>Réglementation de la vente à distance</td>
+        </tr>
+        <tr>
+            <td>Loi sur l'affichage des primes et des représentations (景品表示法 / Keihinhyoji-ho)</td>
+            <td>Fausse déclaration des probabilités et taux de remboursement interdite. Sanctions pénales ajoutées par l'amendement d'oct. 2024</td>
+        </tr>
+        <tr>
+            <td>Délit de jeu de hasard — Code pénal, article 185 (賭博罪・刑法185条)</td>
+            <td>Contourné formellement par la structure du contrat de vente</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Implications pour DOMO</h3>
+<ul>
+    <li>La structure de <strong>contrat de vente garantissant la livraison d'un produit</strong> est primordiale</li>
+    <li>Il convient d'examiner plus avant si les articles numériques peuvent être qualifiés d'« objets »</li>
+    <li>La conception doit éviter toute infraction à la réglementation sur le « comp gacha » (interdiction des combinaisons de cartes)</li>
+    <li>Nécessité de vérifier l'applicabilité de la loi sur les règlements des fonds (前払式支払手段 / moyen de paiement prépayé)</li>
+    <li>La divulgation complète des probabilités est de facto obligatoire</li>
+    <li>Ne pas rendre la « facilité de conversion en espèces » trop élevée dans la conception du système de remboursement de points</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://legal-leon.jp/column/1102/">Cabinet juridique LEON — Analyse juridique des Oripa</a></li>
+        <li><a href="https://www.ikedasomeya.com/insight/23250">IKEDA &amp; SOMEYA — Analyse juridique des Oripa</a></li>
+        <li><a href="https://torecamap.co.jp/column/dopa/">Présentation de DOPA (torecamap)</a></li>
+        <li><a href="https://www.nihon-ma.co.jp/news/20241223_3624-7/">Acquisition de crafty — Japan M&amp;A Center</a></li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000001.000175928.html">Entrée de D Oripa (PR TIMES)</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 2 ============================= -->
+<h2 id="sec2">2. Recensement des exemples japonais de Mystery Box</h2>
+
+<h3>Synthèse des résultats</h3>
+<p><strong>HAKOBUNE</strong> : Aucun service de mystery box correspondant n'a été identifié (nom différent ou service arrêté)</p>
+
+<h3>Le marché japonais des Mystery Box se structure en 3 niveaux</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Niveau</th>
+            <th>Catégorie</th>
+            <th>Caractéristiques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><strong>Culture des fukubukuro</strong> (tradition)</td>
+            <td>« Contenu inconnu mais toujours avantageux ». Attention à la représentation trompeuse au regard de la loi sur l'affichage des primes</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Oripa en ligne</strong> (croissance rapide)</td>
+            <td>Spécialisé TCG. Segment d'un marché TCG de 250 milliards JPY (~1,5 milliard EUR)</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Gacha des jeux mobiles sociaux</strong> (marché immense)</td>
+            <td>Le Japon a développé ce marché avant le reste du monde. Seul le « comp gacha » est illégal</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Services connexes</h3>
+<ul>
+    <li><strong>JemLit</strong> : Origine étrangère, interface japonaise disponible. 1,4 million d'utilisateurs, de 320 JPY à 10 000 JPY (~2 à 60 EUR)</li>
+    <li><strong>Random Box</strong> : Application destinée au marché japonais. À partir de 500 JPY (~3 EUR)</li>
+    <li><strong>Pokémon Card Mystery Box</strong> : Produit officiel (emballage d'origine)</li>
+</ul>
+
+<h3>Chronologie de la réglementation du gacha</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Période</th>
+            <th>Événement</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Mai 2012</td>
+            <td>Choc du « comp gacha » → L'Agence des consommateurs déclare illégale la combinaison de cartes</td>
+        </tr>
+        <tr>
+            <td>2016</td>
+            <td>Affaire « Andira » (Granblue Fantasy) → Introduction volontaire d'un système de plafond (pity system)</td>
+        </tr>
+        <tr>
+            <td>Décembre 2017</td>
+            <td>Apple App Store rend obligatoire l'affichage des probabilités</td>
+        </tr>
+        <tr>
+            <td>Octobre 2022</td>
+            <td>Directives sur la vente aléatoire de NFT (établies par 5 associations)</td>
+        </tr>
+        <tr>
+            <td>Octobre 2024</td>
+            <td>Entrée en vigueur de la loi révisée sur l'affichage des primes (renforcement des sanctions)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Enseignements tirés des directives sur la vente aléatoire de NFT (2022)</h3>
+<ul>
+    <li><strong>Fournir systématiquement</strong> un NFT d'une valeur correspondant au prix de vente</li>
+    <li>Le vendeur ne doit <strong>pas s'engager</strong> à racheter les NFT</li>
+    <li>Le vendeur lui-même ne doit <strong>pas vendre et acheter individuellement à des prix différents</strong> sur le marché secondaire</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%82%AC%E3%83%81%E3%83%A3">Complete Gacha (Wikipedia)</a></li>
+        <li><a href="https://corporate.vbest.jp/columns/9165/">Very Best Law Office — Analyse de la réglementation gacha</a></li>
+        <li><a href="https://bccc.global/pressrelease/20221018/">BCCC — Directives sur la vente aléatoire de NFT</a></li>
+        <li><a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/faq/card">Agence des consommateurs — FAQ sur la combinaison de cartes</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 3 ============================= -->
+<h2 id="sec3">3. Détail de la réglementation JONUM française</h2>
+
+<h3>Cadre juridique</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Élément</th>
+            <th>Contenu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Texte de référence</td>
+            <td>Loi SREN (n° 2024-449 du 21 mai 2024), articles 40 et 41</td>
+        </tr>
+        <tr>
+            <td>Décret d'application</td>
+            <td>Décret n° 2026-60 (publié le 4 février 2026, en vigueur le 7 février 2026)</td>
+        </tr>
+        <tr>
+            <td>Nature</td>
+            <td>Cadre expérimental de 3 ans (mai 2024 – mai 2027). Mise en œuvre effective d'environ 15 mois</td>
+        </tr>
+        <tr>
+            <td>Appellation commune</td>
+            <td>« Loi Sorare » (Sorare étant le principal opérateur visé)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Les 4 critères cumulatifs (tous requis pour être qualifié de JONUM)</h3>
+<ol>
+    <li>Un sacrifice financier (engagement monétaire du joueur)</li>
+    <li>Un mécanisme faisant appel au hasard</li>
+    <li>Un service de communication au public en ligne</li>
+    <li>L'obtention d'objets numériques monétisables (ONUM)</li>
+</ol>
+
+<h3>Principales obligations réglementaires</h3>
+<ul>
+    <li>Obligation de déclaration préalable auprès de l'ANJ (réservée aux sociétés dont le siège est dans l'UE/EEE)</li>
+    <li>Participation des mineurs <strong>totalement interdite</strong> (obligation de vérification d'âge et d'identité)</li>
+    <li>Obligation pour le joueur de définir lui-même des plafonds de dépenses et de temps de jeu sur 7 jours</li>
+    <li>Obligation de mettre en place des dispositifs d'auto-exclusion (de 24 heures à 12 mois)</li>
+    <li>Plafond de récompenses : biens physiques <strong>1 000 EUR/personne/jeu/an</strong>, cryptoactifs <strong>25 000 EUR/personne/an</strong> (stablecoins exclus)</li>
+    <li>Le montant total distribué doit être inférieur ou égal à <strong>20 %</strong> du chiffre d'affaires annuel du jeu</li>
+    <li>Obligations LCB-FT (KYC, déclaration TRACFIN, traçabilité blockchain)</li>
+    <li>Conservation des données : données de compte 5 ans, certains actifs 8 ans</li>
+    <li>En cas d'infraction : jusqu'à 3 ans d'emprisonnement et 90 000 EUR d'amende ; sanction administrative pouvant atteindre <strong>5 %</strong> du chiffre d'affaires</li>
+</ul>
+
+<h3>Types de jeux autorisés / mécaniques interdites</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Statut</th>
+            <th>Contenu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="badge-green">Autorisé</span></td>
+            <td>Jeux d'action et de combat, jeux d'élevage (breeding games), fantasy sports et jeux de courses hippiques</td>
+        </tr>
+        <tr>
+            <td><span class="badge-red">Interdit</span></td>
+            <td>Jeux de casino (roulette, machines à sous, etc.), paris hippiques traditionnels</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Comparaison entre les États membres de l'UE</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Pays</th>
+            <th>Approche</th>
+            <th>Caractéristiques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>France</strong></td>
+            <td>Autorisation encadrée</td>
+            <td>Création d'une nouvelle catégorie (JONUM). Promotion de l'innovation + gestion des risques</td>
+        </tr>
+        <tr>
+            <td><strong>Belgique</strong></td>
+            <td>Interdiction totale</td>
+            <td>Les loot boxes payantes qualifiées de jeux de hasard. Amende maximale de 800 000 EUR</td>
+        </tr>
+        <tr>
+            <td><strong>Pays-Bas</strong></td>
+            <td>Régulation par le droit existant</td>
+            <td>Tentative d'application de la loi sur les jeux de hasard, rencontrant des difficultés devant les tribunaux</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Analyse de l'applicabilité à PlayDOMO</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Scénario</th>
+            <th>Qualification JONUM</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Cartes basées sur des NFT/blockchain, échangeables sur un marché secondaire</td>
+            <td><span class="badge-orange">Probablement soumis</span></td>
+        </tr>
+        <tr>
+            <td>Cartes existant uniquement comme objets in-game, sans échange externe possible</td>
+            <td><span class="badge-green">Non soumis</span></td>
+        </tr>
+        <tr>
+            <td>Possibilité de monétisation indirecte via une monnaie in-game</td>
+            <td><span class="badge-gray">Zone grise (selon interprétation de l'ANJ)</span></td>
+        </tr>
+        <tr>
+            <td>Société française satisfaisant à l'exigence de siège social</td>
+            <td><span class="badge-green">Critère satisfait</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://www.twobirds.com/en/insights/2025/france/loi-sren-nouvelle-definition-et-nouveau-regime-pour-les-jeux-a-objets-numeriques-monetisables-jonum">Bird &amp; Bird — Loi SREN / JONUM</a></li>
+        <li><a href="https://anj.fr/jeux-objets-numeriques-monetisables-jonum">ANJ (officiel) — JONUM</a></li>
+        <li><a href="https://connectontech.bakermckenzie.com/a-legal-framework-for-nfts-and-other-tradeable-assets-in-video-games-the-great-french-experiment/">Baker McKenzie — The Great French Experiment</a></li>
+        <li><a href="https://gammalaw.com/frances-jonum-regime-friend-or-faux-pas/">Gamma Law — JONUM Friend or Faux Pas</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 4 ============================= -->
+<h2 id="sec4">4. Vérification des informations de relations investisseurs d'Akatsuki</h2>
+
+<h3>Présentation de la société</h3>
+<ul>
+    <li>Cotée sur le Prime Market de la Bourse de Tokyo (<strong>3932</strong>), capitalisation boursière d'environ <strong>37,8 milliards JPY (~226 M EUR)</strong></li>
+    <li>Actionnaires : Sony (9,87 %) et Koei Tecmo (7,97 %)</li>
+    <li>30 sociétés dans le groupe (dont 21 filiales non consolidées et sociétés associées)</li>
+</ul>
+
+<h3>Points financiers clés</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Période</th>
+            <th>Chiffre d'affaires</th>
+            <th>Résultat opérationnel</th>
+            <th>Variation annuelle (résultat op.)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Exercice clos mars 2025</td>
+            <td>23,6 milliards JPY (~141 M EUR)</td>
+            <td>3,9 milliards JPY (~23 M EUR)</td>
+            <td>+46,3 %</td>
+        </tr>
+        <tr>
+            <td>Cumul Q3 ex. mars 2026</td>
+            <td>16,5 milliards JPY (~99 M EUR)</td>
+            <td>3,1 milliards JPY (~19 M EUR)</td>
+            <td>+115,7 %</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Activités principales</h3>
+<ol>
+    <li><strong>Jeux vidéo</strong> (activité principale) — Dragon Ball Z: Dokkan Battle (CA cumulé dépassant 500 milliards JPY / ~3 milliards EUR), Kaiju No. 8 THE GAME</li>
+    <li><strong>Comics numériques</strong> — HykeComic (retour à la rentabilité)</li>
+    <li><strong>Autres</strong> — Slash Gift, Natee (marketing sur les réseaux sociaux), IA</li>
+</ol>
+
+<h3>Relation avec PlayDOMO / entité maltaise</h3>
+<blockquote>
+    « AKATSUKI LIMITED (C 109512) » enregistrée à Malte est le développeur de PlayDOMO. Toutefois, l'entité maltaise n'est <strong>pas mentionnée</strong> dans la liste officielle des sociétés du groupe Akatsuki. Aucune référence à DOMO dans les rapports de résultats ou communiqués de presse.
+</blockquote>
+<ul>
+    <li>21 filiales non consolidées et sociétés associées existent ; leurs noms individuels ne sont vérifiables que dans le corps du rapport annuel (有価証券報告書 / Yukashoken hokokusho)</li>
+</ul>
+
+<h3>Investigations supplémentaires nécessaires pour confirmation</h3>
+<ol>
+    <li>Examiner attentivement la section « Situation des sociétés liées » du rapport annuel (exercice mars 2025)</li>
+    <li>Vérifier les actionnaires et dirigeants de C 109512 sur le registre des entreprises maltais (mbr.mt)</li>
+    <li>Vérifier si le fonds Web3 Emoote a des investissements liés à DOMO</li>
+</ol>
+
+<h3>Activités liées au Web3</h3>
+<ul>
+    <li><strong>Emoote</strong> (Singapour) : Fonds Web3 d'environ 2,5 milliards JPY (~15 M EUR). Investissements dans STEPN, BreederDAO, etc.</li>
+    <li>Aucun lien direct avec PlayDOMO <strong>non confirmé</strong> dans les informations de relations investisseurs</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://aktsk.jp/ir/">Relations investisseurs Akatsuki (officiel)</a></li>
+        <li><a href="https://aktsk.jp/en/company/group/">Liste des sociétés du groupe Akatsuki</a></li>
+        <li><a href="https://gamebiz.jp/news/421079">gamebiz — Article sur Akatsuki</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 5 ============================= -->
+<h2 id="sec5">5. Exemples internationaux de gacha/tirages au sort expérientiels</h2>
+
+<h3>Principaux exemples</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Pays</th>
+            <th>Modèle</th>
+            <th>Structure juridique</th>
+            <th>Résultat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Omaze</strong></td>
+            <td>USA → Royaume-Uni</td>
+            <td>Sweepstakes caritatif avec expériences avec célébrités</td>
+            <td>USA : loi sur les sweepstakes</td>
+            <td>Enquête de l'État de CA pour « loterie illégale » → retrait du marché américain</td>
+        </tr>
+        <tr>
+            <td><strong>Prizeo / Charitybuzz</strong></td>
+            <td>USA</td>
+            <td>Sweepstakes/enchères d'expériences avec célébrités</td>
+            <td>Loi sur les sweepstakes</td>
+            <td>Plus de 50 millions USD cumulés</td>
+        </tr>
+        <tr>
+            <td><strong>DAYMADE</strong></td>
+            <td>Royaume-Uni</td>
+            <td>Tirage au sort par abonnement (1,50 £/semaine, 1 chance sur 3 de gagner)</td>
+            <td>Gambling Act 2005 — free draw</td>
+            <td>Succès. Combinaison expériences + objets physiques</td>
+        </tr>
+        <tr>
+            <td><strong>Wowcher Mystery Holiday</strong></td>
+            <td>Royaume-Uni</td>
+            <td>Voyage mystère (aucun perdant)</td>
+            <td>Vente de produit</td>
+            <td>Succès. Tous les participants reçoivent une expérience</td>
+        </tr>
+        <tr>
+            <td><strong>Pack Up + Go / Jubel</strong></td>
+            <td>USA</td>
+            <td>Voyage surprise personnalisé</td>
+            <td>Vente de produit</td>
+            <td>Succès. Sans élément de tirage au sort</td>
+        </tr>
+        <tr>
+            <td><strong>Tinggly</strong></td>
+            <td>Mondial</td>
+            <td>Coffret cadeau d'expériences (au choix)</td>
+            <td>Vente de produit</td>
+            <td>Disponible dans 100+ pays</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Services japonais connexes</h3>
+<ul>
+    <li><strong>Ichiban Kuji</strong> (Bandai Spirits) : Objets physiques uniquement. Pas d'expérientiels</li>
+    <li><strong>SOW EXPERIENCE</strong> : Plus de 180 types de cadeaux d'expériences. Au choix (sans tirage au sort)</li>
+    <li><strong>asoview! Gift</strong> : Plus de 1 000 partenaires expérientiels. Au choix</li>
+</ul>
+
+<h3>Découverte clé</h3>
+<blockquote>
+    La triple structure « TCG + gacha + tirage au sort expérientiel » est <strong>sans précédent au niveau mondial</strong>.
+</blockquote>
+<ul>
+    <li>Enseignement d'Omaze : les expériences avec célébrités seules ne permettent pas de passer à l'échelle → pivot vers les objets physiques → puis retrait du marché américain</li>
+    <li>Modèle de succès de DAYMADE : faible montant + taux de gain élevé + expériences au cœur du concept</li>
+    <li>La conception « aucun perdant » est la plus efficace tant sur le plan du risque juridique que de la satisfaction utilisateur</li>
+</ul>
+
+<h3>Comparaison des structures juridiques (par pays)</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Pays</th>
+            <th>Cadre</th>
+            <th>Stratégie d'évitement</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>États-Unis</strong></td>
+            <td>Loi sur les sweepstakes (Prize + Chance + Consideration = illégal)</td>
+            <td>No Purchase Necessary (participation gratuite obligatoire)</td>
+        </tr>
+        <tr>
+            <td><strong>Royaume-Uni</strong></td>
+            <td>Gambling Act 2005</td>
+            <td>Free draw (possibilité de participation gratuite)</td>
+        </tr>
+        <tr>
+            <td><strong>Japon</strong></td>
+            <td>Délit de jeu de hasard — Code pénal, article 185 (賭博罪・刑法185条) (événement aléatoire + gain/perte de biens)</td>
+            <td>Structure en tant que « contrat de vente de biens »</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>5 points clés à retenir pour DOMO</h3>
+<ol>
+    <li><strong>Enseignement d'Omaze</strong> : Les expériences avec célébrités seules ne permettent pas de passer à l'échelle</li>
+    <li><strong>Succès de DAYMADE</strong> : Abonnement à faible coût + taux de gain élevé + expériences au cœur du concept</li>
+    <li><strong>Enseignement de Wowcher</strong> : « Aucun perdant » est la formule gagnante</li>
+    <li><strong>Enseignement du retrait d'Omaze des États-Unis</strong> : La conformité juridique est la priorité absolue</li>
+    <li><strong>Absence de précédent mondial</strong> : Un « service de gacha/tirage au sort avec des expériences comme récompenses » est pratiquement sans précédent dans le monde</li>
+</ol>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Omaze">Omaze (Wikipedia)</a></li>
+        <li><a href="https://www.daymade.co.uk/">DAYMADE — Site officiel</a></li>
+        <li><a href="https://www.wowcher.co.uk/guides/mystery-holidays">Wowcher Mystery Holiday</a></li>
+        <li><a href="https://www.gamblingcommission.gov.uk/public-and-players/guide/page/free-draws-and-prize-competitions">UK Gambling Commission — Free Draws and Prize Competitions</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 6 ============================= -->
+<h2 id="sec6">6. Couverture du marché japonais par Nuvei</h2>
+
+<h3>Présentation de la société</h3>
+<ul>
+    <li>Siège à Montréal, Canada. Fondée en 2003 (fondateur : Philip Fayer)</li>
+    <li>Environ 2 700 employés. Volume traité annuellement : <strong>plus de 240 milliards USD</strong></li>
+    <li>Privatisation complétée en novembre 2024 par Advent International pour <strong>6,3 milliards USD</strong></li>
+    <li>Actionnaires : Advent 46 %, Fayer 24 %, Novacap 18 %, CDPQ 12 %</li>
+</ul>
+
+<h3>Entrée sur le marché japonais</h3>
+<ul>
+    <li>Janvier 2025 : <strong>Acquisition de Paywiser Japan Limited complétée</strong></li>
+    <li>Obtention d'une licence d'acquiring auprès du METI (Ministère de l'Économie, du Commerce et de l'Industrie)</li>
+    <li>Ouverture d'un bureau à Tokyo</li>
+</ul>
+
+<h3>Couverture des moyens de paiement japonais</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Moyen de paiement</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Cartes bancaires (Visa, MC, JCB, AMEX, etc.)</td>
+            <td><span class="badge-green">Pris en charge</span> (acquiring direct de toutes les principales enseignes)</td>
+        </tr>
+        <tr>
+            <td>Paiement en convenience store</td>
+            <td><span class="badge-green">Pris en charge</span></td>
+        </tr>
+        <tr>
+            <td>Virement bancaire</td>
+            <td><span class="badge-green">Pris en charge</span></td>
+        </tr>
+        <tr>
+            <td>PayPay</td>
+            <td><span class="badge-green">Pris en charge</span></td>
+        </tr>
+        <tr>
+            <td>LINE Pay</td>
+            <td><span class="badge-green">Pris en charge</span></td>
+        </tr>
+        <tr>
+            <td>Rakuten Pay</td>
+            <td><span class="badge-green">Pris en charge</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Forces et faiblesses</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Contenu</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="badge-green">Force</span></td>
+            <td>Leader du secteur des paiements pour l'iGaming et les jeux de hasard en ligne (BetMGM, DraftKings, etc.)</td>
+        </tr>
+        <tr>
+            <td><span class="badge-green">Force</span></td>
+            <td>Crypto et actifs numériques : plus de 450 partenaires, licence MiCA UE obtenue</td>
+        </tr>
+        <tr>
+            <td><span class="badge-green">Force</span></td>
+            <td>Plus de 700 APM, 200 marchés, 150 devises. Paiements fractionnés (split payments) pour places de marché</td>
+        </tr>
+        <tr>
+            <td><span class="badge-orange">Faiblesse</span></td>
+            <td>Présence sur le marché japonais encore récente (depuis janvier 2025)</td>
+        </tr>
+        <tr>
+            <td><span class="badge-orange">Faiblesse</span></td>
+            <td>Écosystème développeur et support japonais inférieurs à Stripe/GMO-PG</td>
+        </tr>
+        <tr>
+            <td><span class="badge-orange">Faiblesse</span></td>
+            <td>Transparence financière réduite depuis la privatisation</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Comparaison avec la concurrence</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Critère</th>
+            <th>Nuvei</th>
+            <th>Stripe</th>
+            <th>Adyen</th>
+            <th>GMO-PG</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Nombre d'APM</td>
+            <td>700+</td>
+            <td>100+</td>
+            <td>250+</td>
+            <td>32+</td>
+        </tr>
+        <tr>
+            <td>Ancienneté au Japon</td>
+            <td>Depuis 2025</td>
+            <td>Depuis 2016</td>
+            <td>Présent</td>
+            <td>N°1 japonais</td>
+        </tr>
+        <tr>
+            <td>iGaming</td>
+            <td><span class="badge-green">Leader du secteur</span></td>
+            <td><span class="badge-red">Non pris en charge</span></td>
+            <td><span class="badge-blue">Pris en charge</span></td>
+            <td><span class="badge-red">Non pris en charge</span></td>
+        </tr>
+        <tr>
+            <td>Crypto</td>
+            <td><span class="badge-green">Leader du secteur</span></td>
+            <td><span class="badge-gray">Limité</span></td>
+            <td><span class="badge-gray">Limité</span></td>
+            <td><span class="badge-red">Non pris en charge</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Recommandations pour PlayDOMO</h3>
+<ul>
+    <li><strong>Court terme (lancement au Japon)</strong> : GMO-PG ou Stripe, solution plus sûre</li>
+    <li><strong>Moyen à long terme (déploiement mondial + éléments NFT/crypto)</strong> : Les atouts de Nuvei deviennent pertinents</li>
+    <li>Une stratégie hybride est également envisageable</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://www.nuvei.com/posts/nuvei-launches-in-japan">Lancement de Nuvei au Japon (officiel)</a></li>
+        <li><a href="https://www.pymnts.com/acquisitions/2025/nuvei-completes-acquisition-of-paywiser-japan-limited/">PYMNTS — Acquisition de Paywiser Japan complétée</a></li>
+        <li><a href="https://www.nuvei.com/use-cases/video-gaming">Nuvei — Jeux vidéo</a></li>
+        <li><a href="https://www.nuvei.com/use-cases/crypto-platforms-exchanges">Nuvei — Crypto</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<footer>
+    DOMO Japan Localization Project &mdash; Confidentiel
+</footer>
+
+</body>
+</html>

@@ -79,11 +79,20 @@ h1 {
   font-size: 0.7rem;
   font-weight: 700;
   margin-top: 10px;
+  margin-right: 4px;
 }
 .badge-ja { background: rgba(168,208,14,0.2); color: #A8D00E; }
 .badge-en { background: rgba(102,126,234,0.2); color: #667eea; }
+.badge-fr { background: rgba(59,130,246,0.2); color: #3b82f6; }
 .badge-todo { background: rgba(255,165,0,0.2); color: #ffa500; }
 .badge-demo { background: rgba(240,147,251,0.2); color: #f093fb; }
+.badge-budget { background: rgba(34,197,94,0.2); color: #22c55e; }
+.lang-links {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
 .footer {
   margin-top: 48px;
   padding-top: 24px;
@@ -119,15 +128,32 @@ h1 {
 
   <div class="section-label">Research</div>
   <div class="card-grid">
-    <a href="phase0_research.html" class="card">
+    <div class="card" style="cursor:default;">
       <h3>Phase 0 並行調査レポート</h3>
       <p>オリパ市場法的分析、Mystery Box事例、JONUM規制、Akatsuki IR、体験型ガチャ海外事例、Nuvei決済調査。</p>
-      <span class="badge badge-ja">日本語</span>
-    </a>
-    <a href="phase0_next_actions.html" class="card">
+      <div class="lang-links">
+        <a href="phase0_research.html" class="badge badge-ja" style="text-decoration:none;">日本語</a>
+        <a href="phase0_research_en.html" class="badge badge-en" style="text-decoration:none;">English</a>
+        <a href="phase0_research_fr.html" class="badge badge-fr" style="text-decoration:none;">Français</a>
+      </div>
+    </div>
+    <div class="card" style="cursor:default;">
       <h3>Phase 0 次のアクション調査結果</h3>
       <p>DOMOカードの法的性質分析（最重要）、アカツキ有報精査、体験型賞品パートナー候補。</p>
-      <span class="badge badge-todo">重要</span>
+      <div class="lang-links">
+        <a href="phase0_next_actions.html" class="badge badge-todo" style="text-decoration:none;">日本語</a>
+        <a href="phase0_next_actions_en.html" class="badge badge-en" style="text-decoration:none;">English</a>
+        <a href="phase0_next_actions_fr.html" class="badge badge-fr" style="text-decoration:none;">Français</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Budget</div>
+  <div class="card-grid">
+    <a href="budget_breakdown.html" class="card">
+      <h3>予算詳細内訳</h3>
+      <p>Phase 0〜3の費用明細、月次キャッシュフロー予測、損益分岐点分析。初年度合計8,200万〜1.34億円。</p>
+      <span class="badge badge-budget">予算</span>
     </a>
   </div>
 

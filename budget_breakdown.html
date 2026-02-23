@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — 予算詳細内訳</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+tr.total-row td {
+    background-color: #ebf4ff !important;
+    font-weight: bold;
+    border-top: 2px solid #2b6cb0;
+    color: #1a365d;
+}
+tr.grand-total-row td {
+    background-color: #1a365d !important;
+    color: white !important;
+    font-weight: bold;
+    font-size: 11pt;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+blockquote.info {
+    border-left-color: #2b6cb0;
+    background-color: #ebf8ff;
+}
+blockquote.warning {
+    border-left-color: #e53e3e;
+    background-color: #fff5f5;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.phase-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 9pt;
+    font-weight: bold;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.amount-low { color: #276749; }
+.amount-high { color: #c53030; }
+.footnote {
+    font-size: 9pt;
+    color: #718096;
+    margin-top: 5px;
+    padding-left: 10px;
+    border-left: 2px solid #e2e8f0;
+}
+footer {
+    text-align: center;
+    color: #718096;
+    font-size: 9pt;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">PDF保存 (Cmd+P)</button>
+
+<h1>DOMO Japan — 予算詳細内訳</h1>
+<p>
+    <strong>サブタイトル</strong>: Phase 0〜3 各フェーズの費用明細（12ヶ月計画）<br>
+    <strong>作成日</strong>: 2026年2月24日<br>
+    <strong>ステータス</strong>: 試算ベース（実際の費用はパートナー交渉・開発規模により変動）
+</p>
+
+<blockquote class="info">
+    <strong>前提モデル</strong>: 現行の物品抽選モデル（ランボルギーニ・ロレックス等）は刑事罰リスクにより日本展開不可。本資料は<strong>体験型モデルへの転換</strong>を前提として試算。
+</blockquote>
+
+<h2>既存予算サマリー</h2>
+<table>
+    <thead>
+        <tr>
+            <th>フェーズ</th>
+            <th>期間</th>
+            <th>予算</th>
+            <th>主な支出</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Phase 0</td>
+            <td>0〜1ヶ月</td>
+            <td>200〜400万円</td>
+            <td>弁護士費用、調査費</td>
+        </tr>
+        <tr>
+            <td>Phase 1</td>
+            <td>1〜3ヶ月</td>
+            <td>3,000〜5,000万円</td>
+            <td>法人設立、開発、採用、パートナー契約</td>
+        </tr>
+        <tr>
+            <td>Phase 2</td>
+            <td>4〜6ヶ月</td>
+            <td>2,000〜3,000万円</td>
+            <td>ベータ運用、マーケ、体験実施</td>
+        </tr>
+        <tr>
+            <td>Phase 3</td>
+            <td>7〜12ヶ月</td>
+            <td>3,000〜5,000万円</td>
+            <td>グロース施策、IP契約、体験拡充</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td>合計</td>
+            <td>12ヶ月</td>
+            <td>8,200万〜1.34億円</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 0 -->
+<h2><span class="phase-badge">Phase 0</span>Go/No-Go判断（0〜30日）— 200〜400万円</h2>
+<blockquote>
+    <strong>目的</strong>: 体験型モデルの法的実現可能性を確認し、Go/No-Go判断の材料を揃える。この段階の支出は全体の3%以下に抑える。
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>カテゴリ</th>
+            <th>項目</th>
+            <th>Low</th>
+            <th>High</th>
+            <th>備考</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>リーガル</td>
+            <td>IT/ゲーム専門弁護士リテイナー</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>初回相談+リーガルオピニオン作成。TMI総合法律事務所、森・濱田松本、西村あさひ等のIT/エンタメ分野が候補。初回相談5-10万円、オピニオン書面50-100万円</td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>フランス法弁護士（JONUM規制確認）</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">50万</td>
+            <td>Bird &amp; Bird Paris等。リモート相談+書面。EUR換算で2,000-3,000EUR</td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>資金決済法の専門家意見</td>
+            <td class="amount-low">20万</td>
+            <td class="amount-high">50万</td>
+            <td>Cosmosトークンの前払式支払手段該当性判断</td>
+        </tr>
+        <tr>
+            <td>調査</td>
+            <td>PlayDOMOフランス版の実体験・分析</td>
+            <td class="amount-low">5万</td>
+            <td class="amount-high">10万</td>
+            <td>VPN+フランスApple ID取得、課金テスト</td>
+        </tr>
+        <tr>
+            <td>調査</td>
+            <td>アカツキ有報精査・マルタ法人調査</td>
+            <td class="amount-low">5万</td>
+            <td class="amount-high">10万</td>
+            <td>EDINET PDF精査、マルタMBR登記確認</td>
+        </tr>
+        <tr>
+            <td>調査</td>
+            <td>体験パートナー事前ヒアリング</td>
+            <td class="amount-low">10万</td>
+            <td class="amount-high">20万</td>
+            <td>SOW/アソビュー等への打診、NDA締結</td>
+        </tr>
+        <tr>
+            <td>旅費・雑費</td>
+            <td>弁護士面談・パートナー訪問</td>
+            <td class="amount-low">10万</td>
+            <td class="amount-high">20万</td>
+            <td>東京都内移動、会議費等</td>
+        </tr>
+        <tr>
+            <td>コンティンジェンシー</td>
+            <td>予備費（10%）</td>
+            <td class="amount-low">20万</td>
+            <td class="amount-high">40万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>合計</strong></td>
+            <td><strong>200万</strong></td>
+            <td><strong>400万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 1 -->
+<h2><span class="phase-badge">Phase 1</span>準備期（Go判断後 1〜3ヶ月）— 3,000〜5,000万円</h2>
+<blockquote>
+    <strong>目的</strong>: 日本法人設立、アプリローカライズ、体験パートナー開拓、ソフトローンチに向けた全インフラ整備。最も投資集中度が高い期間。
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>カテゴリ</th>
+            <th>項目</th>
+            <th>Low</th>
+            <th>High</th>
+            <th>備考</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>法人設立</td>
+            <td>合同会社設立（登録免許税+定款等）</td>
+            <td class="amount-low">15万</td>
+            <td class="amount-high">30万</td>
+            <td>合同会社推奨（株式会社なら+10万）</td>
+        </tr>
+        <tr>
+            <td>法人設立</td>
+            <td>会計士・税理士顧問契約</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">60万</td>
+            <td>月額10-20万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>法人設立</td>
+            <td>オフィス（バーチャル or コワーキング）</td>
+            <td class="amount-low">15万</td>
+            <td class="amount-high">45万</td>
+            <td>月額5-15万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>人件費</td>
+            <td>プロジェクトマネージャー（1名）</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">450万</td>
+            <td>月額100-150万×3ヶ月（業務委託）</td>
+        </tr>
+        <tr>
+            <td>人件費</td>
+            <td>ローカライズディレクター（1名）</td>
+            <td class="amount-low">180万</td>
+            <td class="amount-high">270万</td>
+            <td>月額60-90万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>人件費</td>
+            <td>UIデザイナー（1名、パートタイム）</td>
+            <td class="amount-low">90万</td>
+            <td class="amount-high">150万</td>
+            <td>月額30-50万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>アプリローカライズ（翻訳+UI調整）</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">500万</td>
+            <td>日本語フォント対応、レイアウト調整、テスト</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>体験型賞品システム開発（バックエンド）</td>
+            <td class="amount-low">500万</td>
+            <td class="amount-high">800万</td>
+            <td>賞品管理、抽選ロジック、パートナーAPI連携</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>決済システム統合（Stripe or GMO-PG）</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">300万</td>
+            <td>日本決済手段対応、テスト</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>資金決済法対応（前払式支払手段届出関連）</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>Cosmos対応、供託金関連</td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>利用規約・プライバシーポリシー日本語版</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>弁護士レビュー含む</td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>景品表示法対応（確率表示、天井設計）</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">50万</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>パートナー</td>
+            <td>SOW EXPERIENCE/アソビュー法人契約</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>初期契約金、NDA、API連携セットアップ</td>
+        </tr>
+        <tr>
+            <td>パートナー</td>
+            <td>体験コンテンツ初期仕入れ（テスト用）</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>10-20体験×5-10万円/体験</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>ブランディング・LP制作</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>日本版ランディングページ、クリエイティブ制作</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>SNSアカウント開設・初期コンテンツ</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>X/Instagram/TikTok</td>
+        </tr>
+        <tr>
+            <td>インフラ</td>
+            <td>サーバー・クラウド費用</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">60万</td>
+            <td>AWS/GCP、3ヶ月分</td>
+        </tr>
+        <tr>
+            <td>保険・保証</td>
+            <td>前払式支払手段発行保証金</td>
+            <td class="amount-low">500万</td>
+            <td class="amount-high">1,000万</td>
+            <td>未使用残高の50%相当（規模に依存）</td>
+        </tr>
+        <tr>
+            <td>コンティンジェンシー</td>
+            <td>予備費（10%）</td>
+            <td class="amount-low">260万</td>
+            <td class="amount-high">435万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>合計</strong></td>
+            <td><strong>2,900万</strong></td>
+            <td><strong>5,050万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 2 -->
+<h2><span class="phase-badge">Phase 2</span>ソフトローンチ（4〜6ヶ月目）— 2,000〜3,000万円</h2>
+<blockquote>
+    <strong>目的</strong>: 招待制ベータでの実証、インフルエンサーによる初期認知獲得、フィードバックに基づく改善。初収入の発生期。
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>カテゴリ</th>
+            <th>項目</th>
+            <th>Low</th>
+            <th>High</th>
+            <th>備考</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>人件費</td>
+            <td>チーム維持（PM+ローカライズ+デザイナー）</td>
+            <td class="amount-low">570万</td>
+            <td class="amount-high">870万</td>
+            <td>3名×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>人件費</td>
+            <td>CS担当（1名追加）</td>
+            <td class="amount-low">90万</td>
+            <td class="amount-high">135万</td>
+            <td>月額30-45万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>運営</td>
+            <td>体験賞品仕入れ（ベータ運用分）</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>月間100-200体験配布×3ヶ月。仕入れ原価65%で計算</td>
+        </tr>
+        <tr>
+            <td>運営</td>
+            <td>決済手数料（売上の3.5%想定）</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">150万</td>
+            <td>月間売上450万想定×3ヶ月×3.5%</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>インフルエンサーマーケティング</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>YouTuber/TikToker 5-10名。1名あたり20-50万</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>SNS広告（X, Instagram, TikTok）</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>月額70-130万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>PR・メディア掲載</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>プレスリリース配信、メディアリレーション</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>ベータテスターキャンペーン</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>招待制ベータの特典コスト</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>バグ修正・改善・A/Bテスト</td>
+            <td class="amount-low">150万</td>
+            <td class="amount-high">300万</td>
+            <td>継続開発</td>
+        </tr>
+        <tr>
+            <td>インフラ</td>
+            <td>サーバー・クラウド（スケールアップ）</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>弁護士顧問（継続）</td>
+            <td class="amount-low">60万</td>
+            <td class="amount-high">90万</td>
+            <td>月額20-30万×3ヶ月</td>
+        </tr>
+        <tr>
+            <td>コンティンジェンシー</td>
+            <td>予備費（10%）</td>
+            <td class="amount-low">167万</td>
+            <td class="amount-high">305万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>合計</strong></td>
+            <td><strong>1,837万</strong></td>
+            <td><strong>3,350万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 3 -->
+<h2><span class="phase-badge">Phase 3</span>グロース（7〜12ヶ月目）— 3,000〜5,000万円</h2>
+<blockquote>
+    <strong>目的</strong>: ユーザー規模拡大、IPコラボ実施、体験パートナー拡充、月次黒字化の達成。
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>カテゴリ</th>
+            <th>項目</th>
+            <th>Low</th>
+            <th>High</th>
+            <th>備考</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>人件費</td>
+            <td>チーム拡大（PM+ローカライズ+デザイナー+CS+マーケ）</td>
+            <td class="amount-low">1,200万</td>
+            <td class="amount-high">1,800万</td>
+            <td>5名×6ヶ月</td>
+        </tr>
+        <tr>
+            <td>運営</td>
+            <td>体験賞品仕入れ（本格運用）</td>
+            <td class="amount-low">600万</td>
+            <td class="amount-high">1,200万</td>
+            <td>月間500-1,000体験配布×6ヶ月</td>
+        </tr>
+        <tr>
+            <td>運営</td>
+            <td>決済手数料</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>月間売上1億想定×6ヶ月×3.5% → 実際はユーザー数に応じて変動</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>SNS広告（スケールアップ）</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">600万</td>
+            <td>月額50-100万×6ヶ月</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>IPコラボ施策</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>アニメ/マンガIPライセンス交渉・初期費用</td>
+        </tr>
+        <tr>
+            <td>マーケ</td>
+            <td>イベント・体験会</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>ポップアップイベント2-3回</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>新機能開発（天井システム、コレクション機能等）</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">500万</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>パートナー</td>
+            <td>体験パートナー拡充</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>新規パートナー開拓コスト</td>
+        </tr>
+        <tr>
+            <td>インフラ</td>
+            <td>サーバー・クラウド</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>6ヶ月分</td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>弁護士顧問+コンプライアンス監視</td>
+            <td class="amount-low">120万</td>
+            <td class="amount-high">180万</td>
+            <td>月額20-30万×6ヶ月</td>
+        </tr>
+        <tr>
+            <td>コンティンジェンシー</td>
+            <td>予備費（10%）</td>
+            <td class="amount-low">322万</td>
+            <td class="amount-high">568万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>合計</strong></td>
+            <td><strong>3,542万</strong></td>
+            <td><strong>6,248万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- 総合サマリー -->
+<h2>総合サマリー</h2>
+
+<h3>フェーズ別合計</h3>
+<table>
+    <thead>
+        <tr>
+            <th>フェーズ</th>
+            <th>期間</th>
+            <th>Low（万円）</th>
+            <th>High（万円）</th>
+            <th>中央値（万円）</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Phase 0</td>
+            <td>1ヶ月</td>
+            <td>200</td>
+            <td>400</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td>Phase 1</td>
+            <td>3ヶ月</td>
+            <td>2,900</td>
+            <td>5,050</td>
+            <td>3,975</td>
+        </tr>
+        <tr>
+            <td>Phase 2</td>
+            <td>3ヶ月</td>
+            <td>1,837</td>
+            <td>3,350</td>
+            <td>2,594</td>
+        </tr>
+        <tr>
+            <td>Phase 3</td>
+            <td>6ヶ月</td>
+            <td>3,542</td>
+            <td>6,248</td>
+            <td>4,895</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td><strong>合計</strong></td>
+            <td><strong>13ヶ月</strong></td>
+            <td><strong>8,479</strong></td>
+            <td><strong>15,048</strong></td>
+            <td><strong>11,764</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>カテゴリ別合計（全フェーズ）</h3>
+<table>
+    <thead>
+        <tr>
+            <th>カテゴリ</th>
+            <th>Low（万円）</th>
+            <th>High（万円）</th>
+            <th>全体比率（中央値ベース）</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>人件費</td>
+            <td>2,430</td>
+            <td>3,675</td>
+            <td>約26%</td>
+        </tr>
+        <tr>
+            <td>開発</td>
+            <td>1,450</td>
+            <td>2,600</td>
+            <td>約20%</td>
+        </tr>
+        <tr>
+            <td>運営（体験仕入れ+決済）</td>
+            <td>1,050</td>
+            <td>2,150</td>
+            <td>約16%</td>
+        </tr>
+        <tr>
+            <td>マーケティング</td>
+            <td>1,150</td>
+            <td>2,500</td>
+            <td>約19%</td>
+        </tr>
+        <tr>
+            <td>リーガル</td>
+            <td>360</td>
+            <td>670</td>
+            <td>約5%</td>
+        </tr>
+        <tr>
+            <td>保険・保証金</td>
+            <td>500</td>
+            <td>1,000</td>
+            <td>約8%</td>
+        </tr>
+        <tr>
+            <td>インフラ</td>
+            <td>180</td>
+            <td>360</td>
+            <td>約3%</td>
+        </tr>
+        <tr>
+            <td>法人設立・その他</td>
+            <td>60</td>
+            <td>135</td>
+            <td>約1%</td>
+        </tr>
+        <tr>
+            <td>コンティンジェンシー</td>
+            <td>769</td>
+            <td>1,348</td>
+            <td>約11%</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td><strong>合計</strong></td>
+            <td><strong>7,949</strong></td>
+            <td><strong>14,438</strong></td>
+            <td><strong>100%</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- 月次キャッシュフロー -->
+<h2>月次キャッシュフロー予測</h2>
+<blockquote>
+    収入はPhase 2（4ヶ月目）から発生。支出は各フェーズ予算を均等分割して月次化。数値は中央値ベースの概算。
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>月</th>
+            <th>フェーズ</th>
+            <th>月間収入（万円）</th>
+            <th>月間支出（万円）</th>
+            <th>月間収支（万円）</th>
+            <th>累積収支（万円）</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1ヶ月目</td>
+            <td>Phase 0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>▲300</td>
+            <td>▲300</td>
+        </tr>
+        <tr>
+            <td>2ヶ月目</td>
+            <td>Phase 1</td>
+            <td>0</td>
+            <td>1,325</td>
+            <td>▲1,325</td>
+            <td>▲1,625</td>
+        </tr>
+        <tr>
+            <td>3ヶ月目</td>
+            <td>Phase 1</td>
+            <td>0</td>
+            <td>1,325</td>
+            <td>▲1,325</td>
+            <td>▲2,950</td>
+        </tr>
+        <tr>
+            <td>4ヶ月目</td>
+            <td>Phase 1→2</td>
+            <td>0</td>
+            <td>1,325</td>
+            <td>▲1,325</td>
+            <td>▲4,275</td>
+        </tr>
+        <tr>
+            <td>5ヶ月目</td>
+            <td>Phase 2</td>
+            <td>450</td>
+            <td>865</td>
+            <td>▲415</td>
+            <td>▲4,690</td>
+        </tr>
+        <tr>
+            <td>6ヶ月目</td>
+            <td>Phase 2</td>
+            <td>1,200</td>
+            <td>865</td>
+            <td>+335</td>
+            <td>▲4,355</td>
+        </tr>
+        <tr>
+            <td>7ヶ月目</td>
+            <td>Phase 2→3</td>
+            <td>2,000</td>
+            <td>865</td>
+            <td>+1,135</td>
+            <td>▲3,220</td>
+        </tr>
+        <tr>
+            <td>8ヶ月目</td>
+            <td>Phase 3</td>
+            <td>3,200</td>
+            <td>816</td>
+            <td>+2,384</td>
+            <td>▲836</td>
+        </tr>
+        <tr>
+            <td>9ヶ月目</td>
+            <td>Phase 3</td>
+            <td>5,000</td>
+            <td>816</td>
+            <td>+4,184</td>
+            <td>+3,348</td>
+        </tr>
+        <tr>
+            <td>10ヶ月目</td>
+            <td>Phase 3</td>
+            <td>7,000</td>
+            <td>816</td>
+            <td>+6,184</td>
+            <td>+9,532</td>
+        </tr>
+        <tr>
+            <td>11ヶ月目</td>
+            <td>Phase 3</td>
+            <td>8,000</td>
+            <td>816</td>
+            <td>+7,184</td>
+            <td>+16,716</td>
+        </tr>
+        <tr>
+            <td>12ヶ月目</td>
+            <td>Phase 3</td>
+            <td>10,000</td>
+            <td>816</td>
+            <td>+9,184</td>
+            <td>+25,900</td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>12ヶ月累計</strong></td>
+            <td><strong>36,850</strong></td>
+            <td><strong>10,934</strong></td>
+            <td><strong>+25,916</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<p class="footnote">累積赤字のピーク: 5ヶ月目の約▲4,700万円。黒字転換: 6ヶ月目（月次）。累積黒字転換: 8〜9ヶ月目の見込み。収入はパック販売収入（原価控除前）。</p>
+
+<hr>
+
+<!-- 損益分岐点分析 -->
+<h2>損益分岐点（BEP）分析</h2>
+
+<h3>月間固定費の推定</h3>
+<table>
+    <thead>
+        <tr>
+            <th>項目</th>
+            <th>Phase 2期（万円/月）</th>
+            <th>Phase 3期（万円/月）</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>人件費（業務委託）</td>
+            <td>220</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td>弁護士顧問料</td>
+            <td>25</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>インフラ（サーバー等）</td>
+            <td>25</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>オフィス・雑費</td>
+            <td>15</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>SNS広告（最低水準）</td>
+            <td>100</td>
+            <td>75</td>
+        </tr>
+        <tr class="total-row">
+            <td><strong>固定費合計</strong></td>
+            <td><strong>385</strong></td>
+            <td><strong>448</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>パック単価別 必要販売数（Phase 2 BEP）</h3>
+<blockquote class="info">
+    固定費385万円/月。体験賞品仕入れ原価65%を変動費として計算。粗利率35%。
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>パック単価</th>
+            <th>粗利/パック</th>
+            <th>BEP販売数（月間）</th>
+            <th>BEP月間売上</th>
+            <th>達成難易度</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>300円</td>
+            <td>105円</td>
+            <td>36,667枚</td>
+            <td>1,100万円</td>
+            <td>高い</td>
+        </tr>
+        <tr>
+            <td>500円</td>
+            <td>175円</td>
+            <td>22,000枚</td>
+            <td>1,100万円</td>
+            <td>高い</td>
+        </tr>
+        <tr>
+            <td>1,000円</td>
+            <td>350円</td>
+            <td>11,000枚</td>
+            <td>1,100万円</td>
+            <td>中程度</td>
+        </tr>
+        <tr>
+            <td>3,000円</td>
+            <td>1,050円</td>
+            <td>3,667枚</td>
+            <td>1,100万円</td>
+            <td>低い</td>
+        </tr>
+        <tr>
+            <td>5,000円</td>
+            <td>1,750円</td>
+            <td>2,200枚</td>
+            <td>1,100万円</td>
+            <td>低い</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>BEP到達の想定シナリオ</h3>
+<table>
+    <thead>
+        <tr>
+            <th>シナリオ</th>
+            <th>主力パック単価</th>
+            <th>月間アクティブユーザー</th>
+            <th>課金率</th>
+            <th>ARPU（月額）</th>
+            <th>月次BEP到達</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>楽観</td>
+            <td>3,000〜5,000円</td>
+            <td>10,000人</td>
+            <td>15%</td>
+            <td>7,000円</td>
+            <td>5〜6ヶ月目</td>
+        </tr>
+        <tr>
+            <td>中央値</td>
+            <td>1,000〜3,000円</td>
+            <td>20,000人</td>
+            <td>10%</td>
+            <td>5,000円</td>
+            <td>6〜7ヶ月目</td>
+        </tr>
+        <tr>
+            <td>保守的</td>
+            <td>500〜1,000円</td>
+            <td>50,000人</td>
+            <td>5%</td>
+            <td>2,000円</td>
+            <td>8〜9ヶ月目</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- 前提条件・注意事項 -->
+<h2>前提条件・注意事項</h2>
+<blockquote class="warning">
+    <strong>重要</strong>: 本試算は2026年2月時点の情報に基づく概算であり、実際の費用は交渉・規制環境・市場反応により大幅に変動する可能性があります。
+</blockquote>
+<ul>
+    <li><strong>為替レート前提</strong>: EUR/JPY = 160円（フランス法弁護士費用の計算に使用）</li>
+    <li><strong>人件費</strong>: 全て業務委託ベース。社員雇用の場合は社会保険料等で+15〜20%の上乗せが必要</li>
+    <li><strong>体験賞品の仕入れ原価率</strong>: 65%を前提。実際はパートナー交渉次第で50〜75%の幅がある</li>
+    <li><strong>前払式支払手段の発行保証金</strong>: 未使用残高の50%相当が法定供託額。ユーザー規模・Cosmos残高に大きく依存するため、試算は最小規模を前提としている</li>
+    <li><strong>IPライセンス費用</strong>: Phase 3のIPコラボ費用は交渉次第で大幅に変動（数百万〜数億円の幅）。本試算は初期の小規模コラボを想定</li>
+    <li><strong>保証金の流動性</strong>: 前払式支払手段発行保証金は事業撤退時に返還されるが、運営中は拘束資金。資金計画に注意</li>
+    <li><strong>消費税</strong>: 開発費・弁護士費用等は税抜き表示。実際は10%の消費税が加算</li>
+    <li><strong>Go/No-Go時の撤退コスト</strong>: Phase 0でNo-Go判断となった場合、追加の撤退費用は不要。Phase 1以降でのNo-Go判断は追加コストが発生する可能性あり</li>
+</ul>
+
+<hr>
+
+<footer>
+    DOMO Japan Localization Project — Confidential<br>
+    本資料の無断転載・共有を禁じます。
+</footer>
+
+</body>
+</html>
