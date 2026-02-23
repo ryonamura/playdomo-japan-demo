@@ -612,6 +612,19 @@ img { max-width: 100%; display: block; }
   letter-spacing: 3px;
   text-transform: uppercase;
 }
+.booster-pack img {
+  max-height: 220px;
+  width: auto;
+  filter: drop-shadow(0 8px 24px rgba(168,208,14,0.3));
+  position: relative;
+  z-index: 1;
+}
+.booster-pack.has-img {
+  background: transparent;
+  box-shadow: none;
+  animation: none;
+}
+.booster-pack.has-img::before { display: none; }
 .booster-pack .pack-badge {
   position: absolute;
   top: -12px;
@@ -1117,6 +1130,38 @@ img { max-width: 100%; display: block; }
 }
 .float-anim { animation: float 4s ease-in-out infinite; }
 
+/* ===== HERO CHARACTER IMAGE ===== */
+.hero-character {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.hero-character img {
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
+}
+.hero-character::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(129,140,248,0.15), rgba(168,208,14,0.08), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  animation: heroGlow 4s ease-in-out infinite;
+}
+@keyframes heroGlow {
+  0%, 100% { opacity: 0.6; transform: translate(-50%,-50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%,-50%) scale(1.1); }
+}
 /* ===== HERO CARDS WITH SVG ===== */
 .hero-card svg.card-art {
   width: 80px;
@@ -1126,6 +1171,8 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 600px) {
   .hero-card svg.card-art { width: 48px; height: 48px; }
+  .hero-character img { max-width: 100%; }
+  .hero-character::before { width: 300px; height: 300px; }
 }
 
 /* ===== CARD SHOWCASE ===== */
@@ -1144,14 +1191,17 @@ img { max-width: 100%; display: block; }
 }
 .showcase-scroll::-webkit-scrollbar { display: none; }
 .showcase-card {
-  flex: 0 0 220px;
+  flex: 0 0 200px;
   scroll-snap-align: center;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   border: 1px solid rgba(255,255,255,0.08);
   transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
   cursor: pointer;
+  background: rgba(255,255,255,0.02);
+  text-align: center;
+  padding-bottom: 12px;
 }
 .showcase-card:hover {
   transform: translateY(-8px) scale(1.02);
@@ -1187,11 +1237,13 @@ img { max-width: 100%; display: block; }
   animation: cardShine 5s ease-in-out infinite;
   animation-delay: var(--sc-shine, 0s);
 }
-.showcase-card svg.sc-art {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+.showcase-card svg.sc-art,
+.showcase-card img.sc-art {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0;
+  margin-bottom: 8px;
   position: relative;
   z-index: 1;
 }
@@ -1276,7 +1328,7 @@ img { max-width: 100%; display: block; }
 <header class="header" id="header">
   <div class="container">
     <div class="logo">
-      <span class="gradient-text">DOMO</span>
+      <img src="https://www.playdomo.com/assets/logo.svg" alt="DOMO" style="height:28px;filter:brightness(0) invert(1);">
       <span class="jp-badge">JP</span>
     </div>
     <div class="header-right">
@@ -1309,6 +1361,9 @@ img { max-width: 100%; display: block; }
     <div class="hero-cta">
       <a href="#download" class="btn-primary">アプリをダウンロード</a>
       <a href="#concept" class="btn-outline">詳しく見る</a>
+    </div>
+    <div class="hero-character">
+      <img src="https://www.playdomo.com/assets/DOMO-SANS-LOGO-3.png" alt="DOMO Characters" loading="eager">
     </div>
     <div class="hero-visual">
       <!-- MATIERE: Carbon Atom -->
@@ -1390,87 +1445,34 @@ img { max-width: 100%; display: block; }
     <p class="section-subtitle reveal">8テーマ・78種のカード。レアリティが上がるほど、デザインも輝く。</p>
   </div>
   <div class="showcase-scroll" id="showcaseScroll">
-    <!-- Atome de Carbone - MATIERE -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(129,140,248,0.15);--sc-shine:0s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#4c1d95,#6d28d9)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><radialGradient id="sc1g" cx="50%" cy="50%"><stop offset="0%" stop-color="#c4b5fd"/><stop offset="100%" stop-color="#7c3aed"/></radialGradient></defs><circle cx="50" cy="50" r="14" fill="url(#sc1g)"/><ellipse cx="50" cy="50" rx="40" ry="14" fill="none" stroke="#a78bfa" stroke-width="1.5" opacity="0.6"><animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="6s" repeatCount="indefinite"/></ellipse><ellipse cx="50" cy="50" rx="40" ry="14" fill="none" stroke="#c4b5fd" stroke-width="1" opacity="0.4"><animateTransform attributeName="transform" type="rotate" values="60 50 50;420 50 50" dur="8s" repeatCount="indefinite"/></ellipse><ellipse cx="50" cy="50" rx="40" ry="14" fill="none" stroke="#818cf8" stroke-width="1" opacity="0.3"><animateTransform attributeName="transform" type="rotate" values="120 50 50;480 50 50" dur="10s" repeatCount="indefinite"/></ellipse><circle cx="50" cy="50" r="6" fill="#e9d5ff"><animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/></circle></svg>
-        <span class="sc-name">Atome de Carbone</span>
-        <span class="sc-theme">MATIERE</span>
-        <span class="sc-rarity sc-rarity-commune">COMMUNE</span>
-      </div>
-    </div>
-    <!-- Cristal de Diamant - MATIERE -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(232,121,249,0.15);--sc-shine:0.6s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#701a75,#a21caf)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><linearGradient id="sc2g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f0abfc"/><stop offset="50%" stop-color="#e879f9"/><stop offset="100%" stop-color="#c026d3"/></linearGradient></defs><polygon points="50,10 75,40 65,80 35,80 25,40" fill="none" stroke="url(#sc2g)" stroke-width="2"/><polygon points="50,10 75,40 50,50 25,40" fill="rgba(240,171,252,0.15)" stroke="url(#sc2g)" stroke-width="0.5"/><line x1="50" y1="10" x2="50" y2="50" stroke="#f0abfc" stroke-width="0.5" opacity="0.5"/><line x1="25" y1="40" x2="65" y2="80" stroke="#f0abfc" stroke-width="0.5" opacity="0.3"/><line x1="75" y1="40" x2="35" y2="80" stroke="#f0abfc" stroke-width="0.5" opacity="0.3"/><circle cx="50" cy="40" r="12" fill="rgba(240,171,252,0.06)"><animate attributeName="r" values="10;14;10" dur="3s" repeatCount="indefinite"/></circle></svg>
-        <span class="sc-name">Cristal de Diamant</span>
-        <span class="sc-theme">MATIERE</span>
-        <span class="sc-rarity sc-rarity-epique">EPIQUE</span>
-      </div>
-    </div>
-    <!-- Horloge Antique - TEMPS -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(251,191,36,0.15);--sc-shine:1.2s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#78350f,#a16207)">
-        <svg class="sc-art" viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="none" stroke="#fbbf24" stroke-width="2"/><circle cx="50" cy="50" r="32" fill="none" stroke="#d97706" stroke-width="0.5"/><circle cx="50" cy="50" r="3" fill="#fef3c7"/><line x1="50" y1="50" x2="50" y2="26" stroke="#fef3c7" stroke-width="2" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="12s" repeatCount="indefinite"/></line><line x1="50" y1="50" x2="68" y2="50" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="60s" repeatCount="indefinite"/></line><g fill="#fbbf24" font-size="5" text-anchor="middle" opacity="0.6"><text x="50" y="22">XII</text><text x="78" y="53">III</text><text x="50" y="84">VI</text><text x="22" y="53">IX</text></g><circle cx="50" cy="50" r="1.5" fill="#fef3c7"/></svg>
-        <span class="sc-name">Horloge Antique</span>
-        <span class="sc-theme">TEMPS</span>
-        <span class="sc-rarity sc-rarity-rare">RARE</span>
-      </div>
-    </div>
-    <!-- Rayon Solaire - LUMIERE -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(168,208,14,0.15);--sc-shine:1.8s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#365314,#4d7c0f)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><radialGradient id="sc4g" cx="50%" cy="50%"><stop offset="0%" stop-color="#fef9c3"/><stop offset="40%" stop-color="#fde047"/><stop offset="100%" stop-color="#A8D00E" stop-opacity="0"/></radialGradient></defs><circle cx="50" cy="50" r="16" fill="url(#sc4g)"><animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="8" fill="#fef9c3"/><g stroke="#fde047" stroke-width="1.5" opacity="0.6"><line x1="50" y1="18" x2="50" y2="8"/><line x1="50" y1="82" x2="50" y2="92"/><line x1="18" y1="50" x2="8" y2="50"/><line x1="82" y1="50" x2="92" y2="50"/><line x1="27" y1="27" x2="20" y2="20"/><line x1="73" y1="27" x2="80" y2="20"/><line x1="27" y1="73" x2="20" y2="80"/><line x1="73" y1="73" x2="80" y2="80"/></g><circle cx="50" cy="50" r="28" fill="none" stroke="#fde047" stroke-width="0.5" opacity="0.2"><animate attributeName="r" values="26;30;26" dur="4s" repeatCount="indefinite"/></circle></svg>
-        <span class="sc-name">Rayon Solaire</span>
-        <span class="sc-theme">LUMIERE</span>
-        <span class="sc-rarity sc-rarity-commune">COMMUNE</span>
-      </div>
-    </div>
-    <!-- Aurore Boreale - LUMIERE -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(52,211,153,0.15);--sc-shine:2.4s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#064e3b,#047857)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><linearGradient id="sc5g" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#6ee7b7"/><stop offset="50%" stop-color="#34d399"/><stop offset="100%" stop-color="#2dd4bf"/></linearGradient></defs><path d="M15,85 Q25,40 35,60 Q45,30 50,50 Q55,20 65,45 Q75,25 85,85" fill="none" stroke="url(#sc5g)" stroke-width="2" opacity="0.8"><animate attributeName="d" values="M15,85 Q25,40 35,60 Q45,30 50,50 Q55,20 65,45 Q75,25 85,85;M15,85 Q25,45 35,55 Q45,35 50,45 Q55,25 65,50 Q75,30 85,85;M15,85 Q25,40 35,60 Q45,30 50,50 Q55,20 65,45 Q75,25 85,85" dur="4s" repeatCount="indefinite"/></path><path d="M20,85 Q30,50 40,65 Q50,40 55,55 Q60,30 70,50 Q80,35 80,85" fill="none" stroke="#a7f3d0" stroke-width="1" opacity="0.4"><animate attributeName="d" values="M20,85 Q30,50 40,65 Q50,40 55,55 Q60,30 70,50 Q80,35 80,85;M20,85 Q30,55 40,60 Q50,45 55,50 Q60,35 70,55 Q80,40 80,85;M20,85 Q30,50 40,65 Q50,40 55,55 Q60,30 70,50 Q80,35 80,85" dur="5s" repeatCount="indefinite"/></path><circle cx="30" cy="25" r="1" fill="#fef3c7" opacity="0.4"/><circle cx="65" cy="18" r="0.8" fill="#fff" opacity="0.3"/><circle cx="50" cy="15" r="1.2" fill="#fef3c7" opacity="0.5"/></svg>
-        <span class="sc-name">Aurore Boreale</span>
-        <span class="sc-theme">LUMIERE</span>
-        <span class="sc-rarity sc-rarity-legendaire">LEGENDAIRE</span>
-      </div>
-    </div>
-    <!-- Energie Pure - FORCE -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(244,63,94,0.15);--sc-shine:3s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#881337,#be123c)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><radialGradient id="sc6g" cx="50%" cy="50%"><stop offset="0%" stop-color="#fda4af"/><stop offset="100%" stop-color="#e11d48"/></radialGradient></defs><circle cx="50" cy="50" r="24" fill="url(#sc6g)" opacity="0.3"><animate attributeName="r" values="22;28;22" dur="2s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="14" fill="url(#sc6g)" opacity="0.6"><animate attributeName="r" values="12;16;12" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="6" fill="#fff" opacity="0.9"/><path d="M50 15 Q70 35 50 50 Q30 65 50 85" fill="none" stroke="#fda4af" stroke-width="1.2" opacity="0.5"><animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="4s" repeatCount="indefinite"/></path><path d="M15 50 Q35 30 50 50 Q65 70 85 50" fill="none" stroke="#fb7185" stroke-width="1" opacity="0.4"><animateTransform attributeName="transform" type="rotate" values="90 50 50;450 50 50" dur="5s" repeatCount="indefinite"/></path></svg>
-        <span class="sc-name">Energie Pure</span>
-        <span class="sc-theme">FORCE</span>
-        <span class="sc-rarity sc-rarity-rare">RARE</span>
-      </div>
-    </div>
-    <!-- Galaxie Spirale - ESPACE -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(251,191,36,0.12);--sc-shine:3.6s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#1c1917,#44403c)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><radialGradient id="sc7g" cx="50%" cy="50%"><stop offset="0%" stop-color="#fef3c7"/><stop offset="30%" stop-color="#f59e0b" stop-opacity="0.5"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><circle cx="50" cy="50" r="4" fill="#fef3c7"/><circle cx="50" cy="50" r="18" fill="url(#sc7g)" opacity="0.5"/><ellipse cx="50" cy="50" rx="40" ry="10" fill="none" stroke="#fbbf24" stroke-width="0.8" opacity="0.5"><animateTransform attributeName="transform" type="rotate" values="0 50 50;360 50 50" dur="20s" repeatCount="indefinite"/></ellipse><ellipse cx="50" cy="50" rx="32" ry="18" fill="none" stroke="#f59e0b" stroke-width="0.6" opacity="0.3"><animateTransform attributeName="transform" type="rotate" values="40 50 50;400 50 50" dur="25s" repeatCount="indefinite"/></ellipse><ellipse cx="50" cy="50" rx="24" ry="24" fill="none" stroke="#d97706" stroke-width="0.4" opacity="0.2"><animateTransform attributeName="transform" type="rotate" values="80 50 50;440 50 50" dur="30s" repeatCount="indefinite"/></ellipse><circle cx="28" cy="22" r="1" fill="#fef3c7" opacity="0.5"/><circle cx="75" cy="30" r="1.2" fill="#fde68a" opacity="0.4"/><circle cx="20" cy="65" r="0.8" fill="#fff" opacity="0.3"/><circle cx="80" cy="72" r="1" fill="#fcd34d" opacity="0.4"/><circle cx="65" cy="18" r="0.5" fill="#fff" opacity="0.3"/><circle cx="38" cy="82" r="0.7" fill="#fef3c7" opacity="0.3"/></svg>
-        <span class="sc-name">Galaxie Spirale</span>
-        <span class="sc-theme">ESPACE</span>
-        <span class="sc-rarity sc-rarity-epique">EPIQUE</span>
-      </div>
-    </div>
-    <!-- Code Binaire - SAVOIR -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(0,230,71,0.12);--sc-shine:4.2s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#052e16,#166534)">
-        <svg class="sc-art" viewBox="0 0 100 100"><g fill="#4ade80" font-family="monospace" font-size="6" opacity="0.7"><text x="10" y="15">01101</text><text x="40" y="25">10010</text><text x="15" y="35">11001</text><text x="45" y="45">01110</text><text x="10" y="55">10101</text><text x="50" y="65">00110</text><text x="20" y="75">11010</text><text x="55" y="85">01001</text></g><circle cx="50" cy="50" r="18" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.5"><animate attributeName="r" values="16;20;16" dur="3s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="3" fill="#4ade80"/><g stroke="#22c55e" stroke-width="0.8" opacity="0.3"><line x1="50" y1="32" x2="50" y2="14"/><line x1="68" y1="50" x2="86" y2="50"/><line x1="50" y1="68" x2="50" y2="86"/><line x1="32" y1="50" x2="14" y2="50"/></g></svg>
-        <span class="sc-name">Code Binaire</span>
-        <span class="sc-theme">SAVOIR</span>
-        <span class="sc-rarity sc-rarity-commune">COMMUNE</span>
-      </div>
-    </div>
-    <!-- Couronne Doree - ORIGINELLES -->
-    <div class="showcase-card reveal" style="--sc-glow:rgba(255,215,0,0.2);--sc-shine:4.8s">
-      <div class="showcase-card-inner" style="background:linear-gradient(160deg,#713f12,#a16207)">
-        <svg class="sc-art" viewBox="0 0 100 100"><defs><linearGradient id="sc9g" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fef08a"/><stop offset="100%" stop-color="#d97706"/></linearGradient></defs><path d="M20,65 L25,35 L38,50 L50,22 L62,50 L75,35 L80,65 Z" fill="url(#sc9g)" stroke="#fbbf24" stroke-width="1.5"/><rect x="18" y="65" width="64" height="10" rx="3" fill="url(#sc9g)" stroke="#b45309" stroke-width="0.5"/><circle cx="38" cy="42" r="3.5" fill="#fef3c7" opacity="0.8"/><circle cx="50" cy="28" r="4" fill="#fef3c7" opacity="0.9"><animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite"/></circle><circle cx="62" cy="42" r="3.5" fill="#fef3c7" opacity="0.8"/><circle cx="50" cy="28" r="10" fill="rgba(254,243,199,0.1)"><animate attributeName="r" values="8;12;8" dur="2.5s" repeatCount="indefinite"/></circle></svg>
-        <span class="sc-name">Couronne Doree</span>
-        <span class="sc-theme">LES ORIGINELLES</span>
-        <span class="sc-rarity sc-rarity-legendaire">LEGENDAIRE</span>
-      </div>
-    </div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Matiere/Matiere-1.png" alt="Matiere 1" loading="lazy"><span class="sc-theme">MATIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Matiere/Matiere-2.png" alt="Matiere 2" loading="lazy"><span class="sc-theme">MATIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Matiere/Matiere-3.png" alt="Matiere 3" loading="lazy"><span class="sc-theme">MATIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Matiere/Matiere-4.png" alt="Matiere 4" loading="lazy"><span class="sc-theme">MATIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Matiere/Matiere-5.png" alt="Matiere 5" loading="lazy"><span class="sc-theme">MATIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Temps/Temp-1.png" alt="Temps 1" loading="lazy"><span class="sc-theme">TEMPS</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Temps/temp-2.png" alt="Temps 2" loading="lazy"><span class="sc-theme">TEMPS</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Temps/Temp-3.png" alt="Temps 3" loading="lazy"><span class="sc-theme">TEMPS</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Temps/temp-4.png" alt="Temps 4" loading="lazy"><span class="sc-theme">TEMPS</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Temps/temp-5.png" alt="Temps 5" loading="lazy"><span class="sc-theme">TEMPS</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Lumiere/lumiere-1.png" alt="Lumiere 1" loading="lazy"><span class="sc-theme">LUMIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Lumiere/lumiere-2.png" alt="Lumiere 2" loading="lazy"><span class="sc-theme">LUMIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Lumiere/lumiere-3.png" alt="Lumiere 3" loading="lazy"><span class="sc-theme">LUMIERE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Force/force-1.png" alt="Force 1" loading="lazy"><span class="sc-theme">FORCE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Force/force-2.png" alt="Force 2" loading="lazy"><span class="sc-theme">FORCE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Force/force-3.png" alt="Force 3" loading="lazy"><span class="sc-theme">FORCE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Espace/espace-1.png" alt="Espace 1" loading="lazy"><span class="sc-theme">ESPACE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Espace/espace-2.png" alt="Espace 2" loading="lazy"><span class="sc-theme">ESPACE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Espace/espace-3.png" alt="Espace 3" loading="lazy"><span class="sc-theme">ESPACE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Savoir/savoir-1.png" alt="Savoir 1" loading="lazy"><span class="sc-theme">SAVOIR</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Savoir/savoir-2.png" alt="Savoir 2" loading="lazy"><span class="sc-theme">SAVOIR</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Savoir/savoir-3.png" alt="Savoir 3" loading="lazy"><span class="sc-theme">SAVOIR</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Ombre/ombre-1.png" alt="Ombre 1" loading="lazy"><span class="sc-theme">OMBRE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Ombre/ombre-2.png" alt="Ombre 2" loading="lazy"><span class="sc-theme">OMBRE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/Ombre/ombre-3.png" alt="Ombre 3" loading="lazy"><span class="sc-theme">OMBRE</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/les-originelles/les-originelles-1.png" alt="Originelles 1" loading="lazy"><span class="sc-theme">LES ORIGINELLES</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/les-originelles/les-originelles-2.png" alt="Originelles 2" loading="lazy"><span class="sc-theme">LES ORIGINELLES</span></div>
+    <div class="showcase-card reveal"><img class="sc-art" src="https://www.playdomo.com/assets/collection/les-originelles/les-originelles-3.png" alt="Originelles 3" loading="lazy"><span class="sc-theme">LES ORIGINELLES</span></div>
   </div>
   <div class="showcase-nav">
     <button id="scPrev" aria-label="Previous">&#8592;</button>
@@ -1644,9 +1646,8 @@ img { max-width: 100%; display: block; }
     <p class="section-subtitle reveal">毎日ログインするだけで、1枚カードが手に入る。</p>
     <div class="booster-content">
       <div class="booster-visual reveal">
-        <div class="booster-pack float-anim">
-          <span class="pack-logo">DOMO</span>
-          <span class="pack-sub">FREE BOOSTER</span>
+        <div class="booster-pack has-img float-anim">
+          <img src="https://www.playdomo.com/assets/booster-vert.png" alt="Free Booster">
           <span class="pack-badge">DAILY</span>
         </div>
       </div>
