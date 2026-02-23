@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — Phase 0 並行調査レポート</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+    .toc { page-break-after: always; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.toc {
+    background: #f0f7ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 30px 0 40px;
+}
+.toc h3 {
+    margin-top: 0;
+    color: #2b6cb0;
+    font-size: 13pt;
+    margin-bottom: 12px;
+}
+.toc ol {
+    margin: 0;
+    padding-left: 20px;
+}
+.toc li {
+    margin: 6px 0;
+    font-size: 10.5pt;
+}
+.toc a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+.sources {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+}
+.sources h4 {
+    margin-top: 0;
+    color: #2d3748;
+    font-size: 10pt;
+    margin-bottom: 8px;
+}
+.sources ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.sources li {
+    margin: 3px 0;
+}
+.sources a {
+    color: #2b6cb0;
+    word-break: break-all;
+}
+.badge-gray {
+    background: #e2e8f0;
+    color: #2d3748;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-blue {
+    background: #bee3f8;
+    color: #1a365d;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-orange {
+    background: #feebc8;
+    color: #7b341e;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-red {
+    background: #fed7d7;
+    color: #742a2a;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-green {
+    background: #c6f6d5;
+    color: #1a4731;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid #2b6cb0;
+    text-align: center;
+    font-size: 9pt;
+    color: #718096;
+    letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">PDF保存 (Cmd+P)</button>
+
+<h1 id="top">DOMO Japan — Phase 0 並行調査レポート</h1>
+<p>
+    <strong>サブタイトル</strong>: リスクが低く、Go/No-Go判断を待たず着手可能な項目の調査結果<br>
+    <strong>作成日</strong>: 2026年2月23日<br>
+    <strong>ステータス</strong>: Phase 0 — 並行調査完了
+</p>
+
+<div class="toc">
+    <h3>目次 (Table of Contents)</h3>
+    <ol>
+        <li><a href="#sec1">日本オリパ市場の法的構成分析</a></li>
+        <li><a href="#sec2">日本Mystery Box事例収集</a></li>
+        <li><a href="#sec3">フランスJONUM規制の詳細</a></li>
+        <li><a href="#sec4">Akatsuki IR情報確認</a></li>
+        <li><a href="#sec5">体験型ガチャ/抽選の海外事例</a></li>
+        <li><a href="#sec6">Nuvei決済の日本市場対応</a></li>
+    </ol>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 1 ============================= -->
+<h2 id="sec1">1. 日本オリパ市場の法的構成分析</h2>
+
+<h3>市場概要</h3>
+<ul>
+    <li>TCG市場全体は約<strong>2,500億円</strong>規模（2025年）。オリパ市場は推定数百億〜1,000億円</li>
+    <li>DOPA!（業界最大、sinsa社）、Iris（crafty社、アクセルマーク子会社化）、clove（トラストハブ社）が主要プレイヤー</li>
+    <li>2026年2月にはDMM系列「Dオリパ」も参入</li>
+</ul>
+
+<h3>主要サービス詳細</h3>
+<table>
+    <thead>
+        <tr>
+            <th>サービス</th>
+            <th>運営会社</th>
+            <th>開始時期</th>
+            <th>特徴</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>DOPA!</strong></td>
+            <td>株式会社sinsa（藤沢市）</td>
+            <td>2023年1月</td>
+            <td>業界最大規模。8タイトル、150種類以上。YouTube登録40万超</td>
+        </tr>
+        <tr>
+            <td><strong>Iris</strong></td>
+            <td>株式会社crafty（千代田区）</td>
+            <td>—</td>
+            <td>売上4.7億円。2024年12月にアクセルマークが子会社化（1億円）</td>
+        </tr>
+        <tr>
+            <td><strong>clove</strong></td>
+            <td>株式会社トラストハブ</td>
+            <td>—</td>
+            <td>秋葉原・難波に実店舗。ポーカーバー運営も</td>
+        </tr>
+        <tr>
+            <td><strong>日本トレカセンター</strong></td>
+            <td>株式会社日本トレカセンター</td>
+            <td>2023年5月</td>
+            <td>ネットオリパ売上No.1。8時間で5,000万円売上実績</td>
+        </tr>
+        <tr>
+            <td><strong>Dオリパ</strong></td>
+            <td>株式会社Dオリパ（DMM系列）</td>
+            <td>2026年2月2日</td>
+            <td>DMM会員5,146万人基盤。最大還元率204%</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>法的構成の核心</h3>
+
+<h4>賭博に該当しないとされる根拠</h4>
+<ul>
+    <li>「<strong>必ず物品（カード）を受け取る売買契約</strong>」であり、財物の得喪を争う関係がない</li>
+    <li>事業者にとっても「偶然の勝敗」がない（全パック売切で売上一定）</li>
+    <li>トレカの「公的価値」は不存在（市場相場は公的価値ではない）</li>
+</ul>
+
+<h4>グレーゾーンとしての弁護士見解</h4>
+<blockquote>
+    ただし弁護士見解では依然として<strong>グレーゾーン</strong>。以下のリスクが存在する。
+</blockquote>
+<ul>
+    <li>ポイント変換→再ガチャのループが実質的な「金銭の得喪」と見なされるリスク</li>
+    <li>高額カードが「一時の娯楽に供する物」例外に当てはまらない可能性</li>
+    <li>2024年10月の景品表示法改正で確率偽装に<strong>刑事罰</strong>が導入</li>
+    <li>業界統一のガイドラインは<strong>未整備</strong>（JOGAのガチャガイドラインが先例として参考）</li>
+</ul>
+
+<h3>適用法律</h3>
+<table>
+    <thead>
+        <tr>
+            <th>法律</th>
+            <th>適用内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>古物営業法</td>
+            <td>中古カード仕入れ時は許可必須</td>
+        </tr>
+        <tr>
+            <td>特定商取引法</td>
+            <td>通信販売規制</td>
+        </tr>
+        <tr>
+            <td>景品表示法</td>
+            <td>確率表示・還元率の虚偽表示は違反。2024年10月改正で刑事罰追加</td>
+        </tr>
+        <tr>
+            <td>賭博罪（刑法185条）</td>
+            <td>形式上は売買契約として回避</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>DOMOへの示唆</h3>
+<ul>
+    <li>「<strong>必ず商品を提供する売買契約</strong>」の構成が最重要</li>
+    <li>デジタルアイテムが「物品」に該当するか追加検討必要</li>
+    <li>コンプガチャ規制（カード合わせ禁止）に抵触しない設計必須</li>
+    <li>資金決済法（前払式支払手段）への該当性チェック必要</li>
+    <li>確率表示の完全開示は事実上の義務</li>
+    <li>ポイント還元の設計で「現金化の容易さ」を高めすぎない</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://legal-leon.jp/column/1102/">弁護士法人LEON — オリパの法的解説</a></li>
+        <li><a href="https://www.ikedasomeya.com/insight/23250">IKEDA &amp; SOMEYA — オリパ法律解説</a></li>
+        <li><a href="https://torecamap.co.jp/column/dopa/">DOPA解説 (torecamap)</a></li>
+        <li><a href="https://www.nihon-ma.co.jp/news/20241223_3624-7/">crafty子会社化 — 日本M&amp;Aセンター</a></li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000001.000175928.html">Dオリパ参入 (PR TIMES)</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 2 ============================= -->
+<h2 id="sec2">2. 日本Mystery Box事例収集</h2>
+
+<h3>調査結果概要</h3>
+<p><strong>HAKOBUNE</strong>: 該当するミステリーボックスサービスは確認できず（名称違いまたはサービス終了の可能性）</p>
+
+<h3>日本のMB市場は3層構造</h3>
+<table>
+    <thead>
+        <tr>
+            <th>層</th>
+            <th>カテゴリ</th>
+            <th>特徴</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><strong>福袋文化</strong>（伝統）</td>
+            <td>「中身不明だが必ずお得」。景品表示法の優良誤認に注意</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>オンラインオリパ</strong>（急成長）</td>
+            <td>トレカ特化。TCG市場2,500億円の一角</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>ソシャゲのガチャ</strong>（巨大市場）</td>
+            <td>日本が世界に先駆けて発展。コンプガチャのみ違法</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>関連サービス</h3>
+<ul>
+    <li><strong>JemLit</strong>: 海外発、日本語対応済。140万ユーザー、320円〜10,000円</li>
+    <li><strong>ランダムボックス</strong>: 日本国内向けアプリ。500円〜</li>
+    <li><strong>ポケモンカード ミステリーボックス</strong>: 公式商品（正規パッケージ）</li>
+</ul>
+
+<h3>ガチャ規制の歴史年表</h3>
+<table>
+    <thead>
+        <tr>
+            <th>時期</th>
+            <th>出来事</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2012年5月</td>
+            <td>コンプガチャショック → 消費者庁が「カード合わせ」違法判断</td>
+        </tr>
+        <tr>
+            <td>2016年</td>
+            <td>グラブル「アンチラ事件」→ 天井システム自主導入</td>
+        </tr>
+        <tr>
+            <td>2017年12月</td>
+            <td>Apple App Store確率表示義務化</td>
+        </tr>
+        <tr>
+            <td>2022年10月</td>
+            <td>NFTランダム販売ガイドライン（5団体策定）</td>
+        </tr>
+        <tr>
+            <td>2024年10月</td>
+            <td>改正景品表示法施行（罰則強化）</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>NFTランダム販売ガイドライン（2022年）からの示唆</h3>
+<ul>
+    <li>販売価格相当の価値のNFTを<strong>必ず提供</strong>すること</li>
+    <li>販売者がNFTの買い戻しを<strong>約束しない</strong>こと</li>
+    <li>二次市場で販売者自身が<strong>個別に異なる価格で売買しない</strong>こと</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%B3%E3%83%97%E3%83%AA%E3%83%BC%E3%83%88%E3%82%AC%E3%83%81%E3%83%A3">コンプリートガチャ (Wikipedia)</a></li>
+        <li><a href="https://corporate.vbest.jp/columns/9165/">ベリーベスト法律事務所 — ガチャ規制解説</a></li>
+        <li><a href="https://bccc.global/pressrelease/20221018/">BCCC NFTランダム販売ガイドライン</a></li>
+        <li><a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/faq/card">消費者庁 — カード合わせQ&amp;A</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 3 ============================= -->
+<h2 id="sec3">3. フランスJONUM規制の詳細</h2>
+
+<h3>法的枠組み</h3>
+<table>
+    <thead>
+        <tr>
+            <th>項目</th>
+            <th>内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>根拠法</td>
+            <td>Loi SREN（n° 2024-449、2024年5月21日）第40条・第41条</td>
+        </tr>
+        <tr>
+            <td>施行令</td>
+            <td>Décret n° 2026-60（2026年2月4日公布、2月7日施行）</td>
+        </tr>
+        <tr>
+            <td>性質</td>
+            <td>3年間の実験的枠組み（2024年5月〜2027年5月）。実質運用は約15ヶ月</td>
+        </tr>
+        <tr>
+            <td>通称</td>
+            <td>「Loi Sorare」（Sorareが主要適用対象として想定）</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>4つの累積要件（すべて満たすとJONUM）</h3>
+<ol>
+    <li>金銭的犠牲（sacrifice financier）</li>
+    <li>偶然性に基づくメカニズム（mécanisme faisant appel au hasard）</li>
+    <li>オンライン公衆通信サービス（service de communication au public en ligne）</li>
+    <li>換金可能なデジタルオブジェクト（ONUM）の取得</li>
+</ol>
+
+<h3>主要規制内容</h3>
+<ul>
+    <li>ANJへの事前届出義務（EU/EEA本社企業のみ）</li>
+    <li>未成年者の参加は<strong>完全禁止</strong>（年齢・身元確認義務）</li>
+    <li>7日間の支出上限・ゲーム時間上限のプレイヤー自己設定義務</li>
+    <li>自己排除デバイス（24時間〜12ヶ月）の実装義務</li>
+    <li>報酬上限: 現物年間<strong>1,000EUR/人/ゲーム</strong>、暗号資産年間<strong>25,000EUR/人</strong>（ステーブルコイン不可）</li>
+    <li>総配布額はゲーム年間収益の<strong>20%以下</strong></li>
+    <li>AML/CFT義務（KYC、TRACFIN報告、ブロックチェーントラッキング）</li>
+    <li>データ保存: アカウントデータ5年、一部資産8年</li>
+    <li>違反時: 最大禁固3年＋罰金90,000EUR、行政罰は売上高の最大<strong>5%</strong></li>
+</ul>
+
+<h3>許可されるゲーム類型 / 禁止されるメカニクス</h3>
+<table>
+    <thead>
+        <tr>
+            <th>区分</th>
+            <th>内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="badge-green">許可</span></td>
+            <td>アクション・戦闘ゲーム、ブリーディングゲーム、ファンタジースポーツ・競馬ゲーム</td>
+        </tr>
+        <tr>
+            <td><span class="badge-red">禁止</span></td>
+            <td>カジノゲーム（ルーレット、スロットマシン等）、伝統的競馬賭博</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>EU各国の比較</h3>
+<table>
+    <thead>
+        <tr>
+            <th>国</th>
+            <th>アプローチ</th>
+            <th>特徴</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>フランス</strong></td>
+            <td>規制された許可</td>
+            <td>新カテゴリー（JONUM）を創設。イノベーション促進＋リスク管理</td>
+        </tr>
+        <tr>
+            <td><strong>ベルギー</strong></td>
+            <td>全面禁止</td>
+            <td>有料ルートボックスを賭博と認定。罰金最大80万EUR</td>
+        </tr>
+        <tr>
+            <td><strong>オランダ</strong></td>
+            <td>既存法で規制</td>
+            <td>ギャンブル法適用を試みたが裁判で困難に直面</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>PlayDOMOへの適用分析</h3>
+<table>
+    <thead>
+        <tr>
+            <th>シナリオ</th>
+            <th>JONUM判定</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>カードがNFT/ブロックチェーンベースで二次市場売買可能</td>
+            <td><span class="badge-orange">対象の可能性高い</span></td>
+        </tr>
+        <tr>
+            <td>ゲーム内アイテムとしてのみ存在し外部売買不可</td>
+            <td><span class="badge-green">対象外</span></td>
+        </tr>
+        <tr>
+            <td>ゲーム内通貨を介した間接的な換金可能性</td>
+            <td><span class="badge-gray">グレーゾーン（ANJの解釈次第）</span></td>
+        </tr>
+        <tr>
+            <td>フランス企業であれば本社所在地要件</td>
+            <td><span class="badge-green">クリア</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://www.twobirds.com/en/insights/2025/france/loi-sren-nouvelle-definition-et-nouveau-regime-pour-les-jeux-a-objets-numeriques-monetisables-jonum">Bird &amp; Bird — Loi SREN / JONUM解説</a></li>
+        <li><a href="https://anj.fr/jeux-objets-numeriques-monetisables-jonum">ANJ公式 — JONUM</a></li>
+        <li><a href="https://connectontech.bakermckenzie.com/a-legal-framework-for-nfts-and-other-tradeable-assets-in-video-games-the-great-french-experiment/">Baker McKenzie — The Great French Experiment</a></li>
+        <li><a href="https://gammalaw.com/frances-jonum-regime-friend-or-faux-pas/">Gamma Law — JONUM Friend or Faux Pas</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 4 ============================= -->
+<h2 id="sec4">4. Akatsuki IR情報確認</h2>
+
+<h3>会社概要</h3>
+<ul>
+    <li>東証プライム上場（<strong>3932</strong>）、時価総額約<strong>378億円</strong></li>
+    <li>ソニー（9.87%）・コーエーテクモ（7.97%）出資</li>
+    <li>グループ全体30社（うち非連結子会社・関連会社21社）</li>
+</ul>
+
+<h3>財務ハイライト</h3>
+<table>
+    <thead>
+        <tr>
+            <th>期間</th>
+            <th>売上高</th>
+            <th>営業利益</th>
+            <th>前年比（営業利益）</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>2025年3月期</td>
+            <td>236億円</td>
+            <td>39億円</td>
+            <td>+46.3%</td>
+        </tr>
+        <tr>
+            <td>2026年3月期Q3累計</td>
+            <td>165億円</td>
+            <td>31億円</td>
+            <td>+115.7%</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>主要事業</h3>
+<ol>
+    <li><strong>ゲーム事業</strong>（主力）— ドッカンバトル（累計収益5,000億円超）、怪獣8号 THE GAME</li>
+    <li><strong>コミック事業</strong> — HykeComic（黒字転換）</li>
+    <li><strong>その他</strong> — Slash Gift、Natee（SNSマーケティング）、AI</li>
+</ol>
+
+<h3>PlayDOMO / マルタ法人との関係</h3>
+<blockquote>
+    マルタの「AKATSUKI LIMITED（C 109512）」がPlayDOMOの開発者。しかしアカツキの公式グループ会社一覧にマルタ法人は<strong>未掲載</strong>。決算短信・プレスリリースにDOMOへの言及<strong>なし</strong>。
+</blockquote>
+<ul>
+    <li>非連結子会社・関連会社が21社あり、個別名は有価証券報告書本文でしか確認できない</li>
+</ul>
+
+<h3>確定に必要な追加調査</h3>
+<ol>
+    <li>有価証券報告書（2025年3月期）の「関係会社の状況」セクション精査</li>
+    <li>マルタのビジネスレジストリ（mbr.mt）でC 109512の株主・役員確認</li>
+    <li>Web3ファンドEmooteの投資先にDOMO関連があるか確認</li>
+</ol>
+
+<h3>Web3関連</h3>
+<ul>
+    <li><strong>Emoote</strong>（シンガポール）: 25億円規模のWeb3ファンド。STEPN、BreederDAO等に投資</li>
+    <li>PlayDOMOとの直接的な関連はIR上<strong>未確認</strong></li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://aktsk.jp/ir/">アカツキ公式IR</a></li>
+        <li><a href="https://aktsk.jp/en/company/group/">アカツキグループ会社一覧</a></li>
+        <li><a href="https://gamebiz.jp/news/421079">gamebiz — アカツキ関連記事</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 5 ============================= -->
+<h2 id="sec5">5. 体験型ガチャ/抽選の海外事例</h2>
+
+<h3>主要事例</h3>
+<table>
+    <thead>
+        <tr>
+            <th>サービス</th>
+            <th>国</th>
+            <th>モデル</th>
+            <th>法的構成</th>
+            <th>結果</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Omaze</strong></td>
+            <td>米→英</td>
+            <td>チャリティ＋セレブ体験sweepstakes</td>
+            <td>米: sweepstakes法</td>
+            <td>CA州「違法宝くじ」調査→米国撤退</td>
+        </tr>
+        <tr>
+            <td><strong>Prizeo / Charitybuzz</strong></td>
+            <td>米</td>
+            <td>セレブ体験sweepstakes/オークション</td>
+            <td>sweepstakes法</td>
+            <td>累計5,000万ドル＋</td>
+        </tr>
+        <tr>
+            <td><strong>DAYMADE</strong></td>
+            <td>英</td>
+            <td>サブスク型抽選（週£1.50、1/3当選）</td>
+            <td>Gambling Act 2005 free draw</td>
+            <td>成功。体験＋物品混合</td>
+        </tr>
+        <tr>
+            <td><strong>Wowcher Mystery Holiday</strong></td>
+            <td>英</td>
+            <td>ミステリー旅行（ハズレなし）</td>
+            <td>商品販売</td>
+            <td>成功。全員に体験</td>
+        </tr>
+        <tr>
+            <td><strong>Pack Up + Go / Jubel</strong></td>
+            <td>米</td>
+            <td>カスタマイズ型サプライズ旅行</td>
+            <td>商品販売</td>
+            <td>成功。抽選要素なし</td>
+        </tr>
+        <tr>
+            <td><strong>Tinggly</strong></td>
+            <td>グローバル</td>
+            <td>体験ギフトボックス（選択式）</td>
+            <td>商品販売</td>
+            <td>100ヶ国＋対応</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>日本国内の関連サービス</h3>
+<ul>
+    <li><strong>一番くじ</strong>（バンダイスピリッツ）: 物品のみ。体験型ではない</li>
+    <li><strong>SOW EXPERIENCE</strong>: 180種＋の体験ギフト。選択式（抽選要素なし）</li>
+    <li><strong>asoview!ギフト</strong>: 1,000社の体験パートナー。選択式</li>
+</ul>
+
+<h3>核心的発見</h3>
+<blockquote>
+    「TCG＋ガチャ＋体験抽選」の三重構造は<strong>世界的にも前例がない</strong>。
+</blockquote>
+<ul>
+    <li>Omazeの教訓: セレブ体験だけではスケールせず物品にピボット→その後米国撤退</li>
+    <li>DAYMADEの成功パターン: 低額＋高当選率＋体験中心</li>
+    <li>「<strong>ハズレなし</strong>」設計が法的リスク・ユーザー満足度の両面で最強</li>
+</ul>
+
+<h3>法的構成の比較（国別）</h3>
+<table>
+    <thead>
+        <tr>
+            <th>国</th>
+            <th>枠組み</th>
+            <th>回避策</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>米国</strong></td>
+            <td>Sweepstakes法（Prize＋Chance＋Consideration＝違法）</td>
+            <td>No Purchase Necessary（無料エントリー）</td>
+        </tr>
+        <tr>
+            <td><strong>英国</strong></td>
+            <td>Gambling Act 2005</td>
+            <td>Free draw（無料エントリー経路提供）</td>
+        </tr>
+        <tr>
+            <td><strong>日本</strong></td>
+            <td>賭博罪（偶然の事象＋財物の得喪）</td>
+            <td>「物品の売買」として構成</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>DOMOが参考にすべき5つのポイント</h3>
+<ol>
+    <li><strong>Omazeの教訓</strong>: セレブ体験だけではスケールしない</li>
+    <li><strong>DAYMADEの成功</strong>: 低額サブスク＋高い当選率＋体験中心</li>
+    <li><strong>Wowcherの教訓</strong>: 「ハズレなし」が最強</li>
+    <li><strong>Omaze米国撤退の教訓</strong>: 法的コンプライアンスは最優先</li>
+    <li><strong>世界的前例なし</strong>: 「体験を賞品とするガチャ/抽選サービス」は世界的にもほぼ前例がない</li>
+</ol>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://en.wikipedia.org/wiki/Omaze">Omaze (Wikipedia)</a></li>
+        <li><a href="https://www.daymade.co.uk/">DAYMADE 公式サイト</a></li>
+        <li><a href="https://www.wowcher.co.uk/guides/mystery-holidays">Wowcher Mystery Holiday</a></li>
+        <li><a href="https://www.gamblingcommission.gov.uk/public-and-players/guide/page/free-draws-and-prize-competitions">UK Gambling Commission — Free Draws and Prize Competitions</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 6 ============================= -->
+<h2 id="sec6">6. Nuvei決済の日本市場対応</h2>
+
+<h3>会社概要</h3>
+<ul>
+    <li>カナダ・モントリオール本社。2003年設立（創業者: Philip Fayer）</li>
+    <li>従業員約2,700名。年間処理額<strong>2,400億ドル超</strong></li>
+    <li>2024年11月にAdvent Internationalが<strong>63億ドル</strong>で非公開化完了</li>
+    <li>株主: Advent 46%、Fayer 24%、Novacap 18%、CDPQ 12%</li>
+</ul>
+
+<h3>日本市場参入</h3>
+<ul>
+    <li>2025年1月: <strong>Paywiser Japan Limited買収完了</strong></li>
+    <li>経済産業省（METI）からアクワイアリングライセンス取得</li>
+    <li>東京にオフィス開設</li>
+</ul>
+
+<h3>日本の決済手段への対応</h3>
+<table>
+    <thead>
+        <tr>
+            <th>決済手段</th>
+            <th>対応状況</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>クレジットカード（Visa, MC, JCB, AMEX等）</td>
+            <td><span class="badge-green">対応</span>（全主要ブランド直接アクワイアリング）</td>
+        </tr>
+        <tr>
+            <td>コンビニ決済</td>
+            <td><span class="badge-green">対応</span></td>
+        </tr>
+        <tr>
+            <td>銀行振込</td>
+            <td><span class="badge-green">対応</span></td>
+        </tr>
+        <tr>
+            <td>PayPay</td>
+            <td><span class="badge-green">対応</span></td>
+        </tr>
+        <tr>
+            <td>LINE Pay</td>
+            <td><span class="badge-green">対応</span></td>
+        </tr>
+        <tr>
+            <td>楽天ペイ</td>
+            <td><span class="badge-green">対応</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>強みと弱み</h3>
+<table>
+    <thead>
+        <tr>
+            <th>区分</th>
+            <th>内容</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="badge-green">強み</span></td>
+            <td>iGaming/オンラインギャンブル決済で業界リーダー（BetMGM, DraftKings等）</td>
+        </tr>
+        <tr>
+            <td><span class="badge-green">強み</span></td>
+            <td>クリプト/デジタルアセット: 450＋パートナー、EU MiCARライセンス取得済</td>
+        </tr>
+        <tr>
+            <td><span class="badge-green">強み</span></td>
+            <td>700＋ APM、200市場、150通貨対応。マーケットプレイス向けスプリットペイメント対応</td>
+        </tr>
+        <tr>
+            <td><span class="badge-orange">弱み</span></td>
+            <td>日本市場での実績が2025年1月〜でまだ浅い</td>
+        </tr>
+        <tr>
+            <td><span class="badge-orange">弱み</span></td>
+            <td>開発者エコシステム・日本語サポートがStripe/GMO-PGに劣る</td>
+        </tr>
+        <tr>
+            <td><span class="badge-orange">弱み</span></td>
+            <td>非公開化で財務透明性が低下</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>競合比較</h3>
+<table>
+    <thead>
+        <tr>
+            <th>項目</th>
+            <th>Nuvei</th>
+            <th>Stripe</th>
+            <th>Adyen</th>
+            <th>GMO-PG</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>APM数</td>
+            <td>700＋</td>
+            <td>100＋</td>
+            <td>250＋</td>
+            <td>32＋</td>
+        </tr>
+        <tr>
+            <td>日本実績</td>
+            <td>2025年〜</td>
+            <td>2016年〜</td>
+            <td>参入済</td>
+            <td>日本最大手</td>
+        </tr>
+        <tr>
+            <td>iGaming</td>
+            <td><span class="badge-green">業界リーダー</span></td>
+            <td><span class="badge-red">非対応</span></td>
+            <td><span class="badge-blue">対応</span></td>
+            <td><span class="badge-red">非対応</span></td>
+        </tr>
+        <tr>
+            <td>クリプト</td>
+            <td><span class="badge-green">業界リーダー</span></td>
+            <td><span class="badge-gray">限定的</span></td>
+            <td><span class="badge-gray">限定的</span></td>
+            <td><span class="badge-red">非対応</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>PlayDOMOへの推奨</h3>
+<ul>
+    <li><strong>短期（日本ローンチ）</strong>: GMO-PGまたはStripeが安全</li>
+    <li><strong>中長期（グローバル＋NFT/クリプト要素）</strong>: Nuveiの強みが活きる</li>
+    <li>ハイブリッド戦略も選択肢</li>
+</ul>
+
+<div class="sources">
+    <h4>Sources</h4>
+    <ul>
+        <li><a href="https://www.nuvei.com/posts/nuvei-launches-in-japan">Nuvei Japan Launch（公式）</a></li>
+        <li><a href="https://www.pymnts.com/acquisitions/2025/nuvei-completes-acquisition-of-paywiser-japan-limited/">PYMNTS — Paywiser Japan買収完了</a></li>
+        <li><a href="https://www.nuvei.com/use-cases/video-gaming">Nuvei Video Gaming</a></li>
+        <li><a href="https://www.nuvei.com/use-cases/crypto-platforms-exchanges">Nuvei Crypto</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<footer>
+    DOMO Japan Localization Project &mdash; Confidential
+</footer>
+
+</body>
+</html>
