@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlayDomo Japan — 引くのは、体験だ。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic Pro', sans-serif;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ===== UTILITIES ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.section-subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 48px;
+}
+.gradient-text {
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 230, 71, 0.3);
+}
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: transparent;
+  color: #f0f0f0;
+  font-weight: 700;
+  font-size: 1rem;
+  border: 2px solid rgba(168, 208, 14, 0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover {
+  border-color: #A8D00E;
+  background: rgba(168, 208, 14, 0.1);
+}
+
+/* ===== AGE MODAL ===== */
+.age-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+.age-modal-overlay.hidden { display: none; }
+.age-modal {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 440px;
+  width: 90%;
+}
+.age-modal .logo-text {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 24px;
+}
+.age-modal p {
+  color: #aaa;
+  margin-bottom: 32px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.age-modal .btn-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.age-modal .btn-yes {
+  padding: 14px 40px;
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.age-modal .btn-no {
+  padding: 14px 40px;
+  background: #333;
+  color: #888;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header .logo {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+.header .logo .jp-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #0a0a0a;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 1px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.store-badges {
+  display: flex;
+  gap: 8px;
+}
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #222;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #ccc;
+  border: 1px solid #333;
+}
+.store-badge svg { width: 16px; height: 16px; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 80px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(168, 208, 14, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(0, 230, 71, 0.1) 0%, transparent 60%);
+}
+.hero .container { position: relative; z-index: 1; text-align: center; }
+.hero-catch {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: #bbb;
+  margin-bottom: 40px;
+}
+.hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.hero-visual {
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  perspective: 800px;
+}
+.hero-card {
+  width: 120px;
+  height: 170px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  transform: rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg));
+  transition: transform 0.4s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.hero-card:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.05); }
+.hero-card:nth-child(1) { background: linear-gradient(135deg, #667eea, #764ba2); --ry: -8deg; --rx: 4deg; }
+.hero-card:nth-child(2) { background: linear-gradient(135deg, #A8D00E, #00E647); color: #0a0a0a; --ry: 0deg; --rx: 0deg; }
+.hero-card:nth-child(3) { background: linear-gradient(135deg, #f093fb, #f5576c); --ry: 8deg; --rx: -4deg; }
+.hero-card:nth-child(4) { background: linear-gradient(135deg, #ffd700, #ff8c00); color: #0a0a0a; --ry: 12deg; --rx: 4deg; }
+
+/* ===== CONCEPT ===== */
+.concept { background: #111; }
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.concept-card {
+  text-align: center;
+  padding: 40px 24px;
+  background: #1a1a1a;
+  border-radius: 16px;
+  border: 1px solid #252525;
+  transition: border-color 0.3s;
+}
+.concept-card:hover { border-color: #A8D00E; }
+.concept-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.concept-card:nth-child(1) .concept-icon { background: rgba(168,208,14,0.15); }
+.concept-card:nth-child(2) .concept-icon { background: rgba(0,230,71,0.15); }
+.concept-card:nth-child(3) .concept-icon { background: rgba(255,215,0,0.15); }
+.concept-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+.concept-card p { color: #999; font-size: 0.9rem; }
+.concept-arrows {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  font-size: 0.9rem;
+  color: #666;
+}
+.concept-arrows .arrow { color: #A8D00E; font-size: 1.2rem; }
+
+/* ===== EXPERIENCES ===== */
+.experiences-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.tab-btn {
+  padding: 10px 20px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 50px;
+  color: #999;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover {
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #0a0a0a;
+  border-color: transparent;
+  font-weight: 700;
+}
+.experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.exp-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #252525;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.exp-card:hover { transform: translateY(-4px); border-color: #A8D00E; }
+.exp-card[data-category] { display: none; }
+.exp-card.visible { display: block; }
+.exp-card-img {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  position: relative;
+}
+.exp-card-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(transparent, #1a1a1a);
+}
+.exp-card-body { padding: 20px; }
+.exp-card-body h3 { font-size: 1rem; margin-bottom: 6px; }
+.exp-card-body p { color: #888; font-size: 0.85rem; line-height: 1.6; }
+.exp-card-tag {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.tag-celebrity { background: rgba(102,126,234,0.2); color: #667eea; }
+.tag-beauty { background: rgba(240,147,251,0.2); color: #f093fb; }
+.tag-gourmet { background: rgba(255,165,0,0.2); color: #ffa500; }
+.tag-entertainment { background: rgba(0,230,71,0.2); color: #00E647; }
+.tag-luxury { background: rgba(255,215,0,0.2); color: #ffd700; }
+
+/* ===== BOOSTER ===== */
+.booster { background: #111; }
+.booster-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.booster-left h3 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.booster-left p { color: #999; margin-bottom: 24px; }
+.countdown {
+  display: flex;
+  gap: 12px;
+}
+.countdown-unit {
+  text-align: center;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 16px 20px;
+  min-width: 72px;
+}
+.countdown-unit .num {
+  font-size: 2rem;
+  font-weight: 900;
+  display: block;
+  line-height: 1;
+}
+.countdown-unit .num.gradient-text {
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.countdown-unit .label {
+  font-size: 0.7rem;
+  color: #666;
+  margin-top: 6px;
+  display: block;
+}
+.rarity-bars { display: flex; flex-direction: column; gap: 14px; }
+.rarity-bar { display: flex; align-items: center; gap: 12px; }
+.rarity-bar .rarity-name {
+  width: 80px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: right;
+}
+.rarity-bar .bar-wrap {
+  flex: 1;
+  height: 28px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.rarity-bar .bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  transition: width 1s ease;
+}
+.rarity-commune .bar-fill { background: #8a8a8a; width: 78%; }
+.rarity-rare .bar-fill { background: #667eea; width: 22%; }
+.rarity-epique .bar-fill { background: #f093fb; width: 10%; color: #333; }
+.rarity-legendaire .bar-fill { background: linear-gradient(90deg, #ffd700, #ff8c00); width: 3%; }
+
+/* ===== PACKS ===== */
+.packs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+.pack-card {
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 32px 16px;
+  text-align: center;
+  border: 1px solid #252525;
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+}
+.pack-card:hover { transform: translateY(-4px); border-color: #A8D00E; }
+.pack-card.featured {
+  border-color: #A8D00E;
+  background: linear-gradient(180deg, rgba(168,208,14,0.08), #1a1a1a);
+}
+.pack-card.featured::before {
+  content: '人気';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #0a0a0a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 12px;
+  border-radius: 50px;
+}
+.pack-icon {
+  width: 64px;
+  height: 80px;
+  margin: 0 auto 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.pack-card:nth-child(1) .pack-icon { background: linear-gradient(135deg, #555, #888); }
+.pack-card:nth-child(2) .pack-icon { background: linear-gradient(135deg, #a8a8a8, #ccc); }
+.pack-card:nth-child(3) .pack-icon { background: linear-gradient(135deg, #ffd700, #ffaa00); }
+.pack-card:nth-child(4) .pack-icon { background: linear-gradient(135deg, #667eea, #a78bfa); }
+.pack-card:nth-child(5) .pack-icon { background: linear-gradient(135deg, #f093fb, #ff6b6b); }
+.pack-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+.pack-price {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin: 8px 0;
+}
+.pack-price .yen { font-size: 0.9rem; }
+.pack-details { list-style: none; font-size: 0.78rem; color: #888; }
+.pack-details li { padding: 4px 0; border-bottom: 1px solid #222; }
+.pack-details li:last-child { border: none; }
+
+/* ===== COLLECTIONS ===== */
+.collections { background: #111; }
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.coll-card {
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #252525;
+  background: #1a1a1a;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.coll-card:hover { transform: translateY(-2px); border-color: #A8D00E; }
+.coll-card .coll-icon {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+.coll-card h3 { font-size: 0.95rem; margin-bottom: 2px; }
+.coll-card .coll-jp { font-size: 0.75rem; color: #888; margin-bottom: 8px; }
+.coll-card p { font-size: 0.78rem; color: #666; }
+
+/* ===== TUTORIAL ===== */
+.tutorial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+}
+.tutorial-grid::before {
+  content: '';
+  position: absolute;
+  top: 72px;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, #A8D00E, #00E647);
+  z-index: 0;
+}
+.step-card {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.step-num {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  color: #0a0a0a;
+  font-size: 1.4rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+.step-visual {
+  width: 100%;
+  height: 160px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 16px;
+  border: 1px solid #252525;
+}
+.step-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+.step-card p { font-size: 0.85rem; color: #888; }
+
+/* ===== DOWNLOAD CTA ===== */
+.cta-section {
+  background: linear-gradient(135deg, rgba(168,208,14,0.12), rgba(0,230,71,0.08));
+  text-align: center;
+}
+.cta-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+.cta-section p {
+  color: #aaa;
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+.cta-badges {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.cta-badge:hover { border-color: #A8D00E; }
+.cta-badge svg { width: 24px; height: 24px; fill: #f0f0f0; }
+.cta-badge-text { text-align: left; }
+.cta-badge-text .small { font-size: 0.65rem; color: #888; display: block; }
+.cta-badge-text .big { font-size: 1rem; font-weight: 700; display: block; }
+
+/* ===== FOOTER ===== */
+.footer {
+  padding: 40px 0;
+  border-top: 1px solid #1a1a1a;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.footer-links a { color: #777; transition: color 0.2s; }
+.footer-links a:hover { color: #A8D00E; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .concept-grid { grid-template-columns: 1fr; }
+  .booster-content { grid-template-columns: 1fr; }
+  .packs-grid { grid-template-columns: repeat(3, 1fr); }
+  .collections-grid { grid-template-columns: repeat(2, 1fr); }
+  .tutorial-grid::before { display: none; }
+  .hero-card { width: 90px; height: 130px; font-size: 0.7rem; }
+}
+@media (max-width: 600px) {
+  .section { padding: 56px 0; }
+  .packs-grid { grid-template-columns: repeat(2, 1fr); }
+  .packs-grid .pack-card:nth-child(5) { grid-column: span 2; }
+  .collections-grid { grid-template-columns: 1fr 1fr; }
+  .tutorial-grid { grid-template-columns: 1fr; gap: 24px; }
+  .hero-visual { flex-wrap: wrap; }
+  .hero-card { width: 80px; height: 115px; font-size: 0.65rem; }
+  .store-badges { display: none; }
+  .countdown-unit { min-width: 56px; padding: 12px 14px; }
+  .countdown-unit .num { font-size: 1.5rem; }
+  .experiences-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.float-anim { animation: float 3s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<!-- ===== AGE VERIFICATION MODAL ===== -->
+<div class="age-modal-overlay" id="ageModal">
+  <div class="age-modal">
+    <div class="logo-text"><span class="gradient-text">DOMO</span></div>
+    <p>このサービスは18歳以上の方を対象としています。<br>あなたは18歳以上ですか？</p>
+    <div class="btn-row">
+      <button class="btn-yes" onclick="document.getElementById('ageModal').classList.add('hidden')">はい（18歳以上）</button>
+      <button class="btn-no" onclick="alert('18歳未満の方はご利用いただけません。')">いいえ</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <span class="gradient-text">DOMO</span>
+      <span class="jp-badge">JP</span>
+    </div>
+    <div class="header-right">
+      <div class="store-badges">
+        <a href="#download" class="store-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="#download" class="store-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+          Google Play
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-catch">引くのは、<span class="gradient-text">体験</span>だ。</h1>
+    <p class="hero-sub">カードの先に、冒険がある。</p>
+    <div class="hero-cta">
+      <a href="#download" class="btn-primary">アプリをダウンロード</a>
+      <a href="#concept" class="btn-outline">詳しく見る</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card float-anim" style="animation-delay:0s">MATIÈRE<br>物質</div>
+      <div class="hero-card float-anim" style="animation-delay:0.3s">LUMIÈRE<br>光</div>
+      <div class="hero-card float-anim" style="animation-delay:0.6s">FORCE<br>力</div>
+      <div class="hero-card float-anim" style="animation-delay:0.9s">ESPACE<br>宇宙</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONCEPT ===== -->
+<section class="concept section" id="concept">
+  <div class="container">
+    <h2 class="section-title">お金では<span class="gradient-text">買えない体験</span>を、引く。</h2>
+    <p class="section-subtitle">DOMOは「モノ」ではなく「体験」をコレクションする、まったく新しいカードゲーム。</p>
+    <div class="concept-grid animate-on-scroll">
+      <div class="concept-card">
+        <div class="concept-icon">🃏</div>
+        <h3>カードを集める</h3>
+        <p>8つのテーマ × 78種のカードをコレクション。レアリティは4段階。毎日の無料ブースターでもカードが手に入る。</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">✨</div>
+        <h3>Cosmosを貯める</h3>
+        <p>カード獲得やコレクション達成でCosmos（ポイント）を獲得。貯めるほど大きなチャンスが近づく。</p>
+      </div>
+      <div class="concept-card">
+        <div class="concept-icon">🎯</div>
+        <h3>唯一無二の体験を引く</h3>
+        <p>Cosmosを使って体験抽選に挑戦。人気YouTuberとのコラボ、ミシュラン三ツ星ディナー、スカイダイビング…想像を超える体験が待っている。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCES ===== -->
+<section class="section" id="experiences">
+  <div class="container">
+    <h2 class="section-title">当たるのは、<span class="gradient-text">一生モノの体験</span></h2>
+    <p class="section-subtitle">お金では手に入らない、あなただけの特別な瞬間</p>
+    <div class="experiences-tabs">
+      <button class="tab-btn active" data-tab="all">すべて</button>
+      <button class="tab-btn" data-tab="celebrity">セレブリティ</button>
+      <button class="tab-btn" data-tab="beauty">美容</button>
+      <button class="tab-btn" data-tab="gourmet">グルメ</button>
+      <button class="tab-btn" data-tab="entertainment">エンタメ</button>
+      <button class="tab-btn" data-tab="luxury">ラグジュアリー</button>
+    </div>
+    <div class="experiences-grid animate-on-scroll">
+      <!-- Celebrity -->
+      <div class="exp-card visible" data-category="celebrity">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#667eea,#764ba2)">🎬</div>
+        <div class="exp-card-body">
+          <h3>人気YouTuberとコラボ動画出演</h3>
+          <p>登録者100万人超のYouTuberの動画にゲスト出演。撮影・編集のプロセスも体験できる。</p>
+          <span class="exp-card-tag tag-celebrity">セレブリティ</span>
+        </div>
+      </div>
+      <div class="exp-card visible" data-category="celebrity">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#a78bfa,#667eea)">🎙️</div>
+        <div class="exp-card-body">
+          <h3>有名声優と1対1アフレコ体験</h3>
+          <p>人気アニメ声優からマンツーマン演技指導＋共演収録。声優ファン垂涎の夢の体験。</p>
+          <span class="exp-card-tag tag-celebrity">セレブリティ</span>
+        </div>
+      </div>
+      <div class="exp-card visible" data-category="celebrity">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#818cf8,#6366f1)">🎮</div>
+        <div class="exp-card-body">
+          <h3>VTuberとプライベートコラボ配信</h3>
+          <p>人気VTuberとの限定コラボ配信に出演。ファンコミュニティで語り継がれる思い出に。</p>
+          <span class="exp-card-tag tag-celebrity">セレブリティ</span>
+        </div>
+      </div>
+      <!-- Beauty -->
+      <div class="exp-card visible" data-category="beauty">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#f093fb,#f5576c)">💆</div>
+        <div class="exp-card-body">
+          <h3>韓国ソウル美容ツアー 3泊4日</h3>
+          <p>渡航費込み。韓国美容クリニック施術＋エステ＋専属ガイド付きの贅沢ビューティ旅。</p>
+          <span class="exp-card-tag tag-beauty">美容</span>
+        </div>
+      </div>
+      <div class="exp-card visible" data-category="beauty">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">💎</div>
+        <div class="exp-card-body">
+          <h3>フルフェイス美容医療プログラム</h3>
+          <p>医師カウンセリング＋完全オーダーメイド施術プラン。理想の自分に近づく特別プログラム。</p>
+          <span class="exp-card-tag tag-beauty">美容</span>
+        </div>
+      </div>
+      <!-- Gourmet -->
+      <div class="exp-card visible" data-category="gourmet">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#ffa500,#ff6b00)">🍣</div>
+        <div class="exp-card-body">
+          <h3>ミシュラン三ツ星シェフのプライベートディナー</h3>
+          <p>予約不可能な名店でシェフが目の前で調理。二名様分の特別コース。</p>
+          <span class="exp-card-tag tag-gourmet">グルメ</span>
+        </div>
+      </div>
+      <div class="exp-card visible" data-category="gourmet">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#f59e0b,#d97706)">🏯</div>
+        <div class="exp-card-body">
+          <h3>京都料亭の舞妓さんお座敷遊び付きディナー</h3>
+          <p>一見さんお断りの老舗料亭で舞妓さんの踊り＋懐石料理を堪能。</p>
+          <span class="exp-card-tag tag-gourmet">グルメ</span>
+        </div>
+      </div>
+      <!-- Entertainment -->
+      <div class="exp-card visible" data-category="entertainment">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#00E647,#059669)">🎨</div>
+        <div class="exp-card-body">
+          <h3>アニメスタジオ見学＋制作現場体験</h3>
+          <p>ufotable/MAPPA等のスタジオで制作現場見学＋彩色体験。アニメファンの聖地巡礼。</p>
+          <span class="exp-card-tag tag-entertainment">エンタメ</span>
+        </div>
+      </div>
+      <div class="exp-card visible" data-category="entertainment">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#10b981,#14b8a6)">🎆</div>
+        <div class="exp-card-body">
+          <h3>花火師と一緒に花火を打ち上げる体験</h3>
+          <p>花火大会の裏側で点火作業に参加＋特等席で鑑賞。夏の忘れられない一夜。</p>
+          <span class="exp-card-tag tag-entertainment">エンタメ</span>
+        </div>
+      </div>
+      <!-- Luxury -->
+      <div class="exp-card visible" data-category="luxury">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#ffd700,#ff8c00)">✈️</div>
+        <div class="exp-card-body">
+          <h3>プライベートジェット遊覧飛行（富士山）</h3>
+          <p>小型ジェットで90分の遊覧飛行。シャンパン片手に富士山を空から独占。</p>
+          <span class="exp-card-tag tag-luxury">ラグジュアリー</span>
+        </div>
+      </div>
+      <div class="exp-card visible" data-category="luxury">
+        <div class="exp-card-img" style="background:linear-gradient(135deg,#eab308,#ca8a04)">🏎️</div>
+        <div class="exp-card-body">
+          <h3>F1日本GP パドッククラブ体験</h3>
+          <p>鈴鹿パドック入場＋ピットウォーク＋VIPラウンジ。モータースポーツの最高峰を間近で。</p>
+          <span class="exp-card-tag tag-luxury">ラグジュアリー</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAILY FREE BOOSTER ===== -->
+<section class="booster section" id="booster">
+  <div class="container">
+    <h2 class="section-title">毎日もらえる<span class="gradient-text">無料ブースター</span></h2>
+    <p class="section-subtitle">毎日ログインするだけで、1枚カードが手に入る。</p>
+    <div class="booster-content animate-on-scroll">
+      <div class="booster-left">
+        <h3>次のブースターまで</h3>
+        <p>毎日0:00にリセット。無料でもレアカードが出現する可能性あり。</p>
+        <div class="countdown" id="countdown">
+          <div class="countdown-unit">
+            <span class="num gradient-text" id="cd-hours">00</span>
+            <span class="label">時間</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="num gradient-text" id="cd-mins">00</span>
+            <span class="label">分</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="num gradient-text" id="cd-secs">00</span>
+            <span class="label">秒</span>
+          </div>
+        </div>
+      </div>
+      <div class="booster-right">
+        <h3 style="font-size:1.1rem;margin-bottom:16px;">レアリティ分布（無料ブースター）</h3>
+        <div class="rarity-bars">
+          <div class="rarity-bar rarity-commune">
+            <span class="rarity-name" style="color:#8a8a8a">Commune</span>
+            <div class="bar-wrap"><div class="bar-fill">78%</div></div>
+          </div>
+          <div class="rarity-bar rarity-rare">
+            <span class="rarity-name" style="color:#667eea">Rare</span>
+            <div class="bar-wrap"><div class="bar-fill">22%</div></div>
+          </div>
+          <div class="rarity-bar rarity-epique">
+            <span class="rarity-name" style="color:#f093fb">Épique</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:10%;padding-left:4px;font-size:0.65rem;">有料のみ</div></div>
+          </div>
+          <div class="rarity-bar rarity-legendaire">
+            <span class="rarity-name" style="color:#ffd700">Légendaire</span>
+            <div class="bar-wrap"><div class="bar-fill" style="width:10%;padding-left:4px;font-size:0.65rem;">有料のみ</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PACKS ===== -->
+<section class="section" id="packs">
+  <div class="container">
+    <h2 class="section-title"><span class="gradient-text">パック</span>一覧</h2>
+    <p class="section-subtitle">5つのグレードから選べるプレミアムブースター</p>
+    <div class="packs-grid animate-on-scroll">
+      <div class="pack-card">
+        <div class="pack-icon">🃏</div>
+        <h3>スタンダード</h3>
+        <div class="pack-price"><span class="yen">¥</span>300</div>
+        <ul class="pack-details">
+          <li>カード 3枚</li>
+          <li>Cosmos 少量</li>
+          <li>全レアリティ対象</li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">🂡</div>
+        <h3>シルバー</h3>
+        <div class="pack-price"><span class="yen">¥</span>500</div>
+        <ul class="pack-details">
+          <li>カード 5枚</li>
+          <li>Cosmos 中量</li>
+          <li>全レアリティ対象</li>
+        </ul>
+      </div>
+      <div class="pack-card featured">
+        <div class="pack-icon">🏆</div>
+        <h3>ゴールド</h3>
+        <div class="pack-price"><span class="yen">¥</span>1,000</div>
+        <ul class="pack-details">
+          <li>カード 5枚</li>
+          <li>Cosmos 多量</li>
+          <li>レア以上確定 ×1</li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">💠</div>
+        <h3>プラチナ</h3>
+        <div class="pack-price"><span class="yen">¥</span>3,000</div>
+        <ul class="pack-details">
+          <li>カード 8枚</li>
+          <li>Cosmos 大量</li>
+          <li>SR以上確定 ×1</li>
+        </ul>
+      </div>
+      <div class="pack-card">
+        <div class="pack-icon">👑</div>
+        <h3>レジェンド</h3>
+        <div class="pack-price"><span class="yen">¥</span>5,000</div>
+        <ul class="pack-details">
+          <li>カード 10枚</li>
+          <li>Cosmos 最大量</li>
+          <li>SSR確定 ×1</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COLLECTIONS ===== -->
+<section class="collections section" id="collections">
+  <div class="container">
+    <h2 class="section-title"><span class="gradient-text">8つ</span>のコレクション</h2>
+    <p class="section-subtitle">78種のカード × 4段階レアリティ。すべて集めてCosmosを最大化しよう。</p>
+    <div class="collections-grid animate-on-scroll">
+      <div class="coll-card">
+        <div class="coll-icon">⚛️</div>
+        <h3>MATIÈRE</h3>
+        <p class="coll-jp">物質</p>
+        <p>炭素原子、ダイヤモンド結晶、DNA分子…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">⏳</div>
+        <h3>TEMPS</h3>
+        <p class="coll-jp">時間</p>
+        <p>アンティーク時計、無限砂時計、時間ポータル…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">💡</div>
+        <h3>LUMIÈRE</h3>
+        <p class="coll-jp">光</p>
+        <p>太陽光線、虹プリズム、北極光…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">⚡</div>
+        <h3>FORCE</h3>
+        <p class="coll-jp">力</p>
+        <p>純粋エネルギー、磁場、重力…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">🌌</div>
+        <h3>ESPACE</h3>
+        <p class="coll-jp">宇宙</p>
+        <p>渦巻銀河、星雲、ブラックホール…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">🧠</div>
+        <h3>SAVOIR</h3>
+        <p class="coll-jp">知識</p>
+        <p>バイナリコード、AI、量子アルゴリズム…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">🌑</div>
+        <h3>OMBRE</h3>
+        <p class="coll-jp">影</p>
+        <p>シルエット、皆既日食、暗いスペクトル…</p>
+      </div>
+      <div class="coll-card">
+        <div class="coll-icon">👑</div>
+        <h3>LES ORIGINELLES</h3>
+        <p class="coll-jp">オリジナルズ</p>
+        <p>金の延べ棒、金の粉、金の王冠…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TUTORIAL ===== -->
+<section class="section" id="howto">
+  <div class="container">
+    <h2 class="section-title">はじめ方は<span class="gradient-text">3ステップ</span></h2>
+    <p class="section-subtitle">シンプルだから、すぐに始められる。</p>
+    <div class="tutorial-grid animate-on-scroll">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-visual">🎁</div>
+        <h3>パックを開封する</h3>
+        <p>毎日の無料ブースターか、プレミアムパックを購入してカードをゲット。</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-visual">📚</div>
+        <h3>コレクション＆Cosmos獲得</h3>
+        <p>カードを集めてコレクションを完成させ、Cosmosポイントを貯めよう。</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-visual">🎯</div>
+        <h3>体験に挑戦する</h3>
+        <p>Cosmosを使って体験抽選に参加。当選すれば一生モノの体験があなたのもの。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DOWNLOAD CTA ===== -->
+<section class="cta-section section" id="download">
+  <div class="container">
+    <h2>さあ、<span class="gradient-text">体験を引こう。</span></h2>
+    <p>PlayDomo Japan — カードの先に、冒険がある。</p>
+    <div class="cta-badges">
+      <a href="#" class="cta-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div class="cta-badge-text">
+          <span class="small">Download on the</span>
+          <span class="big">App Store</span>
+        </div>
+      </a>
+      <a href="#" class="cta-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.61 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
+        <div class="cta-badge-text">
+          <span class="small">GET IT ON</span>
+          <span class="big">Google Play</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-links">
+      <a href="#">利用規約</a>
+      <a href="#">参加規約</a>
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">特定商取引法に基づく表記</a>
+    </div>
+    <p>&copy; 2025 Domo Japan. All rights reserved.</p>
+    <p style="margin-top:4px;font-size:0.7rem;color:#444;">※ これはデモページです。実際のサービスではありません。</p>
+  </div>
+</footer>
+
+<script>
+// ===== Countdown Timer =====
+function updateCountdown() {
+  const now = new Date();
+  const tomorrow = new Date(now);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  tomorrow.setHours(0, 0, 0, 0);
+  const diff = tomorrow - now;
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===== Tab Filtering =====
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.exp-card').forEach(card => {
+      if (tab === 'all' || card.dataset.category === tab) {
+        card.classList.add('visible');
+      } else {
+        card.classList.remove('visible');
+      }
+    });
+  });
+});
+
+// ===== Scroll Animations =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
