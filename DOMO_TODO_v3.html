@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO 日本ローカライズ TODO List v3</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+</style>
+</head>
+<body>
+<button class="print-btn no-print" onclick="window.print()">PDF保存 (Cmd+P)</button>
+<h1 id="domo-todo-list-v3">DOMO 日本ローカライズ — TODO List v3</h1>
+<p><strong>更新日</strong>: 2026年2月23日
+<strong>ステータス</strong>: Phase 0（Go/No-Go判断前）
+<strong>前提</strong>: 現行モデル（ランボルギーニ・ロレックス等の高額物品抽選）での日本展開は刑事罰リスクにより不可。体験型モデルへの転換が前提。</p>
+<hr>
+<h2 id="phase-0-gono-go030-200400">Phase 0: Go/No-Go判断（0〜30日）— 予算: 200〜400万円</h2>
+<blockquote>
+<p><strong>目的</strong>: 体験型モデルの法的実現可能性を確認し、DOMO本社と方針合意する</p>
+</blockquote>
+<h3 id="week-1">Week 1: 情報収集・弁護士選定</h3>
+<ul>
+<li>[ ] <strong>DOMO本社から正式な情報開示を受ける</strong></li>
+<li>現行サービスの詳細仕様書（パック構成・Cosmos・抽選メカニズム）</li>
+<li>現在の賞品一覧と実績（ランボルギーニ Veneno、Rolex Batman、Tissot PRX Auto）</li>
+<li>フェラーリ撤去の経緯（参加者不足による中止の詳細）</li>
+<li>Cosmos通貨のフロー図（取得→保有→消費→当選）</li>
+<li>フランスでのJONUM規制への対応方針</li>
+<li>無料郵送参加（最大10トークン）の実績データ</li>
+<li>現金代替オプション（参加規約記載）の過去の適用実績</li>
+<li>Akatsuki Inc.（東証上場・日本本社）の関与度と意思決定フロー</li>
+<li>[ ] <strong>IT/ゲーム専門弁護士の選定</strong></li>
+<li>候補: TMI総合法律事務所、森・濱田松本、西村あさひ等</li>
+<li>必須条件: ガチャ/オリパ/賭博法に実績あり + 体験型モデルの適法性評価可能</li>
+<li>初回面談で本レポートのPart 2（法規制分析）を共有</li>
+<li>[ ] <strong>DOMOアプリのフランス版を実体験</strong></li>
+<li>VPN経由でフランスApp Storeからダウンロード</li>
+<li>パック購入→カード排出→Cosmos獲得→アクティベーションのフロー確認</li>
+<li>「1 COSMOS = 1 CHANCE」セクションのUI/UX記録</li>
+<li>決済フロー確認（Nuvei経由）</li>
+</ul>
+<h3 id="week-2-3">Week 2-3: リーガルオピニオン取得</h3>
+<ul>
+<li>[ ] <strong>弁護士に以下の法的判断を正式依頼</strong></li>
+<li>賭博罪（刑法185条）: 体験型賞品が「財産上の利益」に該当するか</li>
+<li>富くじ罪（刑法187条）: 体験型賞品での4要件該当性</li>
+<li>景品表示法: 体験の「景品類の価額」算定方法と上限（10万円）該当性</li>
+<li>風営法: 体験型モデルでの該当性</li>
+<li>資金決済法: Cosmos通貨が前払式支払手段に該当するか</li>
+<li>[ ] <strong>体験型賞品の具体例で個別に適法性確認</strong></li>
+<li>美容医療プログラム（50〜200万円相当）</li>
+<li>有名人との体験（YouTuber出演、声優レッスン等）</li>
+<li>ミシュラン三ツ星ディナー</li>
+<li>ラグジュアリー体験（遊覧飛行、スーパーカードライブ）</li>
+<li>成果物が残る体験のリスク（漫画家のオリジナル作品等）</li>
+<li>[ ] <strong>公式サイトの賭博表現に関する法的見解取得</strong></li>
+<li>英語版「Place your bet」/ 仏語版「misez」の日本での訴訟リスク</li>
+<li>日本版で全ギャンブル表現を排除した場合の効果</li>
+</ul>
+<h3 id="week-3-4-gono-go">Week 3-4: Go/No-Go判断</h3>
+<ul>
+<li>[ ] <strong>リーガルオピニオンに基づくGo/No-Go判断</strong></li>
+<li>[ ] <strong>DOMO本社向け提案書を作成・提出</strong></li>
+<li>現行モデルの刑事罰リスク（富くじ罪: 懲役2年 / 賭博罪 / 景品表示法違反）</li>
+<li>「Place your bet」表現の訴訟証拠リスク</li>
+<li>現金代替オプションの「財物の得喪」強化リスク</li>
+<li>体験型モデルへの転換提案</li>
+<li>日本版パック価格設計（上限5,000円）</li>
+<li>体験賞品25案のラインナップ</li>
+<li>Phase 1以降のロードマップ・予算</li>
+<li>[ ] <strong>DOMO本社との方針協議</strong></li>
+<li>体験型モデルへの転換合意</li>
+<li>パック価格変更の承認</li>
+<li>日本展開の投資判断</li>
+<li>Akatsuki Inc. コンプライアンス部門の承認確認</li>
+</ul>
+<h3 id="gono-go">Go/No-Go 判定パターン</h3>
+<table>
+<thead>
+<tr>
+<th>結果</th>
+<th>次のアクション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Go</strong>: 体験型モデルで展開可</td>
+<td>→ Phase 1へ進む</td>
+</tr>
+<tr>
+<td><strong>条件付きGo</strong>: 一部体験のみ可</td>
+<td>→ 適法カテゴリに限定してPhase 1開始</td>
+</tr>
+<tr>
+<td><strong>No-Go</strong>: 体験型でもNG</td>
+<td>→ 純粋デジタルTCG化を検討 or プロジェクト終了</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="phase-1-go-13-30005000">Phase 1: 準備期（Go判断後 1〜3ヶ月）— 予算: 3,000〜5,000万円</h2>
+<h3 id="_1">法人・法務</h3>
+<ul>
+<li>[ ] 日本法人設立（合同会社 or 株式会社）</li>
+<li>[ ] 利用規約の日本法対応（現行のフランス法準拠・マルセイユ地裁管轄を変更）</li>
+<li>[ ] プライバシーポリシーの日本法対応（個人情報保護法）</li>
+<li>[ ] 参加規約の日本語版作成（現金代替オプション削除、体験型に書き換え）</li>
+<li>[ ] Cosmos通貨の法的整備（資金決済法の届出要否確認→必要なら届出）</li>
+<li>[ ] 体験賞品の免責条項・参加規約作成</li>
+<li>[ ] 体験中の事故対応保険加入</li>
+<li>[ ] JOGA/CESAガイドライン準拠確認（確率表示、天井設計、未成年上限）</li>
+</ul>
+<h3 id="_2">体験パートナー開拓</h3>
+<ul>
+<li>[ ] パートナー候補リスト作成（初期30件）</li>
+<li>セレブリティ: 芸能事務所 / YouTuber事務所（UUUM等）/ VTuber事務所</li>
+<li>美容: 大手美容クリニック / エステサロン</li>
+<li>グルメ: ミシュラン掲載店 / 予約困難店 / 料亭</li>
+<li>エンタメ: アニメスタジオ（ufotable/MAPPA）/ レコード会社</li>
+<li>ラグジュアリー: 星野リゾート / プライベートジェット / サーキット</li>
+<li>[ ] 初期10件の契約締結</li>
+<li>[ ] 体験実施のオペレーションフロー構築（当選→日程調整→実施→記録）</li>
+</ul>
+<h3 id="_3">開発・ローカライズ</h3>
+<ul>
+<li>[ ] アプリUI/カードテキストの日本語翻訳</li>
+<li>[ ] 「Place your bet」等の賭博表現を全排除 → 「体験に挑戦」等に変更</li>
+<li>[ ] 日本版パック価格の実装（300〜5,000円）</li>
+<li>[ ] 確率表示の実装（レアリティ別: Commune 65% / Rare 22% / Épique 10% / Légendaire 3%）</li>
+<li>[ ] 天井（ピティ）システム実装（推奨: 100回＝3万円以内）</li>
+<li>[ ] コンプガチャ回避設計（78枚コンプリート特典は設けない）</li>
+<li>[ ] 18歳未満の利用制限・課金上限の実装</li>
+<li>[ ] 体験賞品のアクティベーション画面の新規開発</li>
+<li>[ ] 決済プロバイダの日本対応（Nuveiの日本対応 or 国内決済代行への切替）</li>
+<li>[ ] App Store / Google Play の日本審査対応</li>
+<li>[ ] 特定商取引法に基づく表示ページ作成</li>
+</ul>
+<h3 id="_4">マーケティング準備</h3>
+<ul>
+<li>[ ] カントリーマネージャー採用</li>
+<li>[ ] 日本向けPR会社選定（ゲーム/エンタメ業界に強い会社）</li>
+<li>[ ] インフルエンサー10名の選定・契約（ガチャ配信者、VTuber等）</li>
+<li>[ ] X / Instagram 日本公式アカウント開設（@domo_japan 等）</li>
+<li>[ ] ティザーサイト / LP制作</li>
+<li>[ ] ブランドメッセージ策定: 「引くのは、体験だ。」</li>
+</ul>
+<hr>
+<h2 id="phase-2-46-20003000">Phase 2: ソフトローンチ（4〜6ヶ月目）— 予算: 2,000〜3,000万円</h2>
+<ul>
+<li>[ ] ベータ版リリース（招待制、1,000名限定）</li>
+<li>[ ] インフルエンサーによるベータ体験配信（ガチャ配信→当選→体験の4段階コンテンツ）</li>
+<li>[ ] 初回体験賞品の実施・ドキュメンタリー撮影</li>
+<li>[ ] ユーザーフィードバック収集・改善</li>
+<li>[ ] 消費者庁への事前相談（任意だが推奨）</li>
+<li>[ ] 正式ローンチ</li>
+<li>[ ] ローンチキャンペーン実施</li>
+<li>[ ] メディア向けPR / プレスリリース配信</li>
+<li>[ ] KPI計測開始（MAU / 課金率 / ARPU / LTV / CAC）</li>
+</ul>
+<hr>
+<h2 id="phase-3-712-30005000">Phase 3: グロース（7〜12ヶ月目）— 予算: 3,000〜5,000万円</h2>
+<ul>
+<li>[ ] 体験パートナー拡大（30件以上）</li>
+<li>[ ] IPコラボ第1弾実施（アニメ/ゲーム/音楽）</li>
+<li>[ ] 季節イベント運用開始</li>
+<li>正月: 初日の出ヘリ遊覧</li>
+<li>バレンタイン: 東京タワーディナー</li>
+<li>夏: 花火大会参加体験</li>
+<li>ハロウィン: ホラー映画セットの脱出ゲーム</li>
+<li>クリスマス: 白川郷ライトアップ+合掌造り貸切</li>
+<li>[ ] 当選体験ドキュメンタリーシリーズ配信</li>
+<li>[ ] MAU 10万人突破</li>
+<li>[ ] 月次黒字化達成</li>
+<li>[ ] 体験型モデルの他国展開検討（グローバル戦略への昇華）</li>
+</ul>
+<hr>
+<h2 id="phase-0">Phase 0と並行して進められる調査</h2>
+<blockquote>
+<p>リスクが低く、Go/No-Go判断を待たず着手可能な項目</p>
+</blockquote>
+<ul>
+<li>[ ] 日本オリパ市場の詳細調査（DOPA!、Iris、clove等の法的構成分析）</li>
+<li>[ ] 日本のMystery Box系サービスの事例収集（HAKOBUNEなど）</li>
+<li>[ ] フランスJONUM規制の詳細調査（2026年2月施行、ANJの運用実態）</li>
+<li>[ ] Akatsuki Inc.のIR情報確認（DOMOプロジェクトへの言及有無）</li>
+<li>[ ] 体験型賞品の提供コスト精査（パートナー候補への事前ヒアリング）</li>
+<li>[ ] 類似の「体験型ガチャ/抽選」サービスの海外事例調査</li>
+<li>[ ] Nuvei決済の日本市場対応状況確認</li>
+</ul>
+<hr>
+<h2 id="_5">予算サマリー</h2>
+<table>
+<thead>
+<tr>
+<th>フェーズ</th>
+<th>期間</th>
+<th>予算</th>
+<th>主な支出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 0</td>
+<td>0-1ヶ月</td>
+<td>200〜400万円</td>
+<td>弁護士費用、調査費</td>
+</tr>
+<tr>
+<td>Phase 1</td>
+<td>1-3ヶ月</td>
+<td>3,000〜5,000万円</td>
+<td>法人設立、開発、採用、パートナー契約</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>4-6ヶ月</td>
+<td>2,000〜3,000万円</td>
+<td>ベータ運用、マーケ、体験実施</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>7-12ヶ月</td>
+<td>3,000〜5,000万円</td>
+<td>グロース施策、IP契約、体験拡充</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td><strong>12ヶ月</strong></td>
+<td><strong>8,200万〜1.34億円</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_6">重要な判断ポイント</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>判断者</th>
+<th>期限</th>
+<th>依存関係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOMO本社からのサービス詳細開示</td>
+<td>DOMO本社</td>
+<td>Week 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>弁護士選定・契約</td>
+<td>プロジェクトリード</td>
+<td>Week 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>フランス版アプリの実体験</td>
+<td>プロジェクトリード</td>
+<td>Week 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>体験型モデルのリーガルオピニオン</td>
+<td>弁護士</td>
+<td>Week 3</td>
+<td>弁護士選定完了後</td>
+</tr>
+<tr>
+<td>Go/No-Go判断</td>
+<td>DOMO本社 + プロジェクトリード</td>
+<td>Week 4</td>
+<td>リーガルオピニオン取得後</td>
+</tr>
+<tr>
+<td>体験型モデルへの転換合意</td>
+<td>DOMO本社</td>
+<td>Week 4</td>
+<td>Go判断後</td>
+</tr>
+<tr>
+<td>日本版パック価格の承認</td>
+<td>DOMO本社</td>
+<td>Week 4</td>
+<td>Go判断後</td>
+</tr>
+<tr>
+<td>Akatsuki Inc.コンプラ部門承認</td>
+<td>Akatsuki Inc.</td>
+<td>Week 4</td>
+<td>Go判断後</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_7">リスク監視項目</h2>
+<table>
+<thead>
+<tr>
+<th>リスク</th>
+<th>影響度</th>
+<th>発生確率</th>
+<th>対策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>弁護士が体験型モデルもNGと判断</td>
+<td>致命的</td>
+<td>中</td>
+<td>Phase 0で早期判明。代替スキーム検討</td>
+</tr>
+<tr>
+<td>体験パートナーが集まらない</td>
+<td>高</td>
+<td>中</td>
+<td>自社企画可能な体験から開始</td>
+</tr>
+<tr>
+<td>ユーザーが体験型賞品に魅力を感じない</td>
+<td>高</td>
+<td>中</td>
+<td>ベータ版で検証</td>
+</tr>
+<tr>
+<td>消費者庁がオリパ/ガチャ規制を強化</td>
+<td>高</td>
+<td>高</td>
+<td>規制動向を継続監視、コンプラ徹底</td>
+</tr>
+<tr>
+<td>Akatsuki本社コンプラ部門が反対</td>
+<td>高</td>
+<td>中</td>
+<td>レポートを事前共有し根回し</td>
+</tr>
+<tr>
+<td>フランスJONUM規制がDOMO本体に影響</td>
+<td>高</td>
+<td>中</td>
+<td>日本版は独立法人で運営</td>
+</tr>
+<tr>
+<td>公式サイトの賭博表現が日本で問題化</td>
+<td>高</td>
+<td>高</td>
+<td>日本版では全ギャンブル表現排除</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

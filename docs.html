@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — ドキュメント一覧</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Kaku Gothic Pro", "Noto Sans JP", sans-serif;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  min-height: 100vh;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.gradient-text {
+  background: linear-gradient(135deg, #A8D00E, #00E647);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.subtitle {
+  color: #888;
+  margin-bottom: 48px;
+  font-size: 0.95rem;
+}
+.section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #A8D00E;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  margin-top: 40px;
+}
+.section-label:first-of-type { margin-top: 0; }
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.card {
+  display: block;
+  background: #1a1a1a;
+  border: 1px solid #252525;
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #A8D00E;
+}
+.card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.card p {
+  font-size: 0.85rem;
+  color: #888;
+  line-height: 1.6;
+}
+.card .badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.badge-ja { background: rgba(168,208,14,0.2); color: #A8D00E; }
+.badge-en { background: rgba(102,126,234,0.2); color: #667eea; }
+.badge-todo { background: rgba(255,165,0,0.2); color: #ffa500; }
+.badge-demo { background: rgba(240,147,251,0.2); color: #f093fb; }
+.footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid #1a1a1a;
+  font-size: 0.75rem;
+  color: #444;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1><span class="gradient-text">DOMO</span> Japan Project</h1>
+  <p class="subtitle">日本市場進出プロジェクト ドキュメント一覧</p>
+
+  <div class="section-label">Reports</div>
+  <div class="card-grid">
+    <a href="DOMO_日本市場進出_総合レポート_v3.html" class="card">
+      <h3>総合レポート v3</h3>
+      <p>公式サイト徹底調査 + 体験型モデル提案。法規制分析、GTM戦略、ロードマップ、予算を網羅。</p>
+      <span class="badge badge-ja">日本語</span>
+    </a>
+    <a href="DOMO_Japan_Market_Entry_Report_v3.html" class="card">
+      <h3>Comprehensive Report v3</h3>
+      <p>Full English translation. Regulatory analysis, experience-based model proposal, GTM strategy, roadmap & budget.</p>
+      <span class="badge badge-en">English</span>
+    </a>
+  </div>
+
+  <div class="section-label">Action Items</div>
+  <div class="card-grid">
+    <a href="DOMO_TODO_v3.html" class="card">
+      <h3>TODO List v3</h3>
+      <p>Phase 0〜3のアクションアイテム。Go/No-Go判断、法人設立、パートナー開拓、開発ローカライズ等。</p>
+      <span class="badge badge-todo">TODO</span>
+    </a>
+  </div>
+
+  <div class="section-label">Demo</div>
+  <div class="card-grid">
+    <a href="index.html" class="card">
+      <h3>PlayDomo Japan デモLP</h3>
+      <p>体験型モデルの日本版ランディングページデモ。「引くのは、体験だ。」</p>
+      <span class="badge badge-demo">DEMO</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <p>DOMO Japan Localization Project &mdash; Confidential</p>
+    <p style="margin-top:4px;">Last updated: February 23, 2026</p>
+  </div>
+</div>
+</body>
+</html>
