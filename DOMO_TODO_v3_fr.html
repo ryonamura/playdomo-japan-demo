@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Liste TODO Localisation Japon v3</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">Enregistrer PDF (Cmd+P)</button>
+<h1 id="domo-todo-list-v3">DOMO Localisation Japon — Liste TODO v3</h1>
+<p><strong>Date de mise à jour</strong> : 23 février 2026
+<strong>Statut</strong> : Phase 0 (avant décision Go/No-Go)
+<strong>Prémisse</strong> : Le déploiement au Japon avec le modèle actuel (tirages au sort d'articles de luxe tels que Lamborghini, Rolex, etc.) est impossible en raison du risque de sanctions pénales. La transition vers un modèle basé sur des expériences est une condition préalable.</p>
+<hr>
+<h2 id="phase-0-gono-go030-200400">Phase 0 : Décision Go/No-Go (0 à 30 jours) — Budget : 2 à 4 millions de yens</h2>
+<blockquote>
+<p><strong>Objectif</strong> : Confirmer la faisabilité juridique du modèle basé sur des expériences et parvenir à un accord de principe avec le siège de DOMO</p>
+</blockquote>
+<h3 id="week-1">Semaine 1 : Collecte d'informations et sélection des avocats</h3>
+<ul>
+<li>[ ] <strong>Obtenir la communication officielle d'informations de la part du siège de DOMO</strong></li>
+<li>Cahier des charges détaillé du service actuel (composition des packs, Cosmos, mécanisme de tirage)</li>
+<li>Liste actuelle des lots et historique (Lamborghini Veneno, Rolex Batman, Tissot PRX Auto)</li>
+<li>Circonstances du retrait de Ferrari (détails de l'annulation pour manque de participants)</li>
+<li>Schéma du flux de la monnaie Cosmos (acquisition → détention → consommation → gain)</li>
+<li>Position sur la conformité à la réglementation JONUM en France</li>
+<li>Données réelles sur la participation par courrier gratuit (jusqu'à 10 tokens)</li>
+<li>Historique d'application de l'option d'équivalent en espèces (mentionnée dans le règlement de participation)</li>
+<li>Degré d'implication d'Akatsuki Inc. (coté à la Bourse de Tokyo, siège au Japon) et flux de décision</li>
+<li>[ ] <strong>Sélection d'avocats spécialisés en informatique/jeux vidéo</strong></li>
+<li>Candidats : Cabinet TMI Sogo Horitsu Jimusho, Mori Hamada Matsumoto, Nishimura Asahi, etc.</li>
+<li>Conditions requises : expérience en matière de gacha/oripa/loi sur les jeux d'argent + capacité à évaluer la légalité du modèle basé sur des expériences</li>
+<li>Partager la Partie 2 du présent rapport (analyse réglementaire) lors du premier entretien</li>
+<li>[ ] <strong>Expérimenter personnellement l'application DOMO en version française</strong></li>
+<li>Télécharger depuis l'App Store français via VPN</li>
+<li>Vérifier le flux : achat de pack → tirage de carte → obtention de Cosmos → activation</li>
+<li>Documenter l'interface utilisateur de la section « 1 COSMOS = 1 CHANCE »</li>
+<li>Vérifier le flux de paiement (via Nuvei)</li>
+</ul>
+<h3 id="week-2-3">Semaines 2-3 : Obtention d'un avis juridique</h3>
+<ul>
+<li>[ ] <strong>Mandater officiellement un avocat pour les décisions juridiques suivantes</strong></li>
+<li>Délit de jeu d'argent (Code pénal art. 185) : les lots de type expérience constituent-ils un « avantage patrimonial » ?</li>
+<li>Délit de loterie (Code pénal art. 187) : applicabilité des 4 critères aux lots de type expérience</li>
+<li>Loi sur les indications des primes et des représentations : méthode de calcul de la « valeur des primes » pour les expériences et applicabilité du plafond (100 000 yens)</li>
+<li>Loi sur les établissements à caractère spécial (Fuzoku-eigyo-ho) : applicabilité au modèle basé sur des expériences</li>
+<li>Loi sur les services de paiement : la monnaie Cosmos relève-t-elle des instruments de paiement prépayés ?</li>
+<li>[ ] <strong>Confirmer la légalité au cas par cas avec des exemples concrets de lots de type expérience</strong></li>
+<li>Programme de médecine esthétique (équivalent à 500 000 – 2 000 000 yens)</li>
+<li>Expérience avec une célébrité (apparition de YouTuber, cours de doublage, etc.)</li>
+<li>Dîner dans un restaurant trois étoiles au Guide Michelin</li>
+<li>Expérience de luxe (vol panoramique, conduite de supercar)</li>
+<li>Risque lié aux expériences laissant un résultat tangible (ex. œuvre originale d'un mangaka)</li>
+<li>[ ] <strong>Obtenir un avis juridique sur les expressions liées au jeu d'argent sur le site officiel</strong></li>
+<li>Risque contentieux au Japon lié à l'expression anglaise « Place your bet » / française « misez »</li>
+<li>Effet de la suppression totale de toute expression liée au jeu d'argent dans la version japonaise</li>
+</ul>
+<h3 id="week-3-4-gono-go">Semaines 3-4 : Décision Go/No-Go</h3>
+<ul>
+<li>[ ] <strong>Décision Go/No-Go fondée sur l'avis juridique</strong></li>
+<li>[ ] <strong>Rédiger et soumettre une proposition au siège de DOMO</strong></li>
+<li>Risque de sanctions pénales du modèle actuel (délit de loterie (Code pénal art. 187) : 2 ans d'emprisonnement / délit de jeu d'argent / infraction à la loi sur les indications)</li>
+<li>Risque que l'expression « Place your bet » serve de preuve à charge</li>
+<li>Risque de renforcement du critère de « prise et perte de biens » lié à l'option d'équivalent en espèces</li>
+<li>Proposition de transition vers un modèle basé sur des expériences</li>
+<li>Conception des prix des packs japonais (plafond : 5 000 yens)</li>
+<li>Catalogue de 25 lots de type expérience</li>
+<li>Feuille de route et budget à partir de la Phase 1</li>
+<li>[ ] <strong>Négociation de la politique avec le siège de DOMO</strong></li>
+<li>Accord sur la transition vers un modèle basé sur des expériences</li>
+<li>Approbation de la modification du prix des packs</li>
+<li>Décision d'investissement pour le déploiement au Japon</li>
+<li>Confirmation de l'approbation du service de conformité d'Akatsuki Inc.</li>
+</ul>
+<h3 id="gono-go">Schémas de décision Go/No-Go</h3>
+<table>
+<thead>
+<tr>
+<th>Résultat</th>
+<th>Action suivante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Go</strong> : déploiement possible avec le modèle basé sur des expériences</td>
+<td>→ Passer à la Phase 1</td>
+</tr>
+<tr>
+<td><strong>Go conditionnel</strong> : seules certaines expériences sont autorisées</td>
+<td>→ Lancer la Phase 1 en se limitant aux catégories légales</td>
+</tr>
+<tr>
+<td><strong>No-Go</strong> : même le modèle basé sur des expériences est refusé</td>
+<td>→ Envisager une conversion en TCG purement numérique ou mettre fin au projet</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="phase-1-go-13-30005000">Phase 1 : Préparation (1 à 3 mois après décision Go) — Budget : 30 à 50 millions de yens</h2>
+<h3 id="_1">Entité juridique et affaires légales</h3>
+<ul>
+<li>[ ] Création d'une entité juridique japonaise (Godo-gaisha ou Kabushiki-gaisha)</li>
+<li>[ ] Adaptation des conditions générales d'utilisation au droit japonais (modification du droit français applicable et de la compétence du tribunal de Marseille)</li>
+<li>[ ] Adaptation de la politique de confidentialité au droit japonais (loi sur la protection des informations personnelles)</li>
+<li>[ ] Rédaction d'une version japonaise du règlement de participation (suppression de l'option d'équivalent en espèces, réécriture pour un modèle basé sur des expériences)</li>
+<li>[ ] Régularisation juridique de la monnaie Cosmos (vérification de la nécessité d'une déclaration au titre de la loi sur les services de paiement → déclaration si nécessaire)</li>
+<li>[ ] Rédaction des clauses de non-responsabilité et du règlement de participation pour les lots de type expérience</li>
+<li>[ ] Souscription d'une assurance accidents pour les expériences</li>
+<li>[ ] Vérification de la conformité aux directives JOGA/CESA (affichage des probabilités, conception du « pity system », plafond pour les mineurs)</li>
+</ul>
+<h3 id="_2">Développement de partenaires expérientiels</h3>
+<ul>
+<li>[ ] Établissement d'une liste de partenaires candidats (30 au départ)</li>
+<li>Célébrités : agences de talents / agences de YouTubeurs (UUUM, etc.) / agences de VTubeurs</li>
+<li>Beauté : grandes cliniques esthétiques / instituts de soins</li>
+<li>Gastronomie : restaurants référencés au Guide Michelin / restaurants difficiles à réserver / ryokan gastronomiques</li>
+<li>Divertissement : studios d'animation (ufotable/MAPPA) / maisons de disques</li>
+<li>Luxe : Hoshino Resorts / jets privés / circuits automobiles</li>
+<li>[ ] Signature de contrats avec les 10 premiers partenaires</li>
+<li>[ ] Mise en place du flux opérationnel pour la réalisation des expériences (gagnant → coordination des dates → réalisation → documentation)</li>
+</ul>
+<h3 id="_3">Développement et localisation</h3>
+<ul>
+<li>[ ] Traduction en japonais de l'interface de l'application et des textes des cartes</li>
+<li>[ ] Suppression totale des expressions liées au jeu d'argent (« Place your bet », etc.) → Remplacement par des formules telles que « Tentez l'expérience »</li>
+<li>[ ] Implémentation des prix des packs japonais (300 à 5 000 yens)</li>
+<li>[ ] Implémentation de l'affichage des probabilités (par rareté : Commune 65 % / Rare 22 % / Épique 10 % / Légendaire 3 %)</li>
+<li>[ ] Implémentation du « pity system » (plafond recommandé : 100 tirages = moins de 30 000 yens)</li>
+<li>[ ] Conception évitant le gacha complet (ne pas prévoir de bonus pour la collection des 78 cartes)</li>
+<li>[ ] Implémentation des restrictions d'utilisation et des plafonds de dépenses pour les moins de 18 ans</li>
+<li>[ ] Développement d'un nouvel écran d'activation pour les lots de type expérience</li>
+<li>[ ] Adaptation du prestataire de paiement au marché japonais (compatibilité de Nuvei avec le Japon ou passage à un prestataire de paiement local)</li>
+<li>[ ] Adaptation aux processus de validation de l'App Store et du Google Play au Japon</li>
+<li>[ ] Création d'une page de mentions légales conformément à la loi sur les transactions commerciales spécifiques (Tokusho-ho)</li>
+</ul>
+<h3 id="_4">Préparation marketing</h3>
+<ul>
+<li>[ ] Recrutement d'un Country Manager</li>
+<li>[ ] Sélection d'une agence de relations publiques pour le Japon (spécialisée dans le secteur des jeux vidéo et du divertissement)</li>
+<li>[ ] Sélection et contractualisation de 10 influenceurs (streameurs de gacha, VTubeurs, etc.)</li>
+<li>[ ] Création des comptes officiels japonais sur X / Instagram (@domo_japan, etc.)</li>
+<li>[ ] Création d'un site teaser / d'une landing page</li>
+<li>[ ] Définition du message de marque : « Ce que vous tirez, c'est une expérience. »</li>
+</ul>
+<hr>
+<h2 id="phase-2-46-20003000">Phase 2 : Lancement progressif (mois 4 à 6) — Budget : 20 à 30 millions de yens</h2>
+<ul>
+<li>[ ] Sortie de la version bêta (sur invitation, limitée à 1 000 personnes)</li>
+<li>[ ] Diffusion de la bêta par les influenceurs (contenu en 4 étapes : tirage de gacha → gain → expérience)</li>
+<li>[ ] Réalisation des premières expériences et tournage documentaire</li>
+<li>[ ] Collecte des retours utilisateurs et améliorations</li>
+<li>[ ] Consultation préalable auprès de l'Agence pour les Affaires des Consommateurs (facultatif mais recommandé)</li>
+<li>[ ] Lancement officiel</li>
+<li>[ ] Mise en œuvre de la campagne de lancement</li>
+<li>[ ] Relations presse / diffusion du communiqué de presse</li>
+<li>[ ] Début du suivi des KPI (MAU / taux de monétisation / ARPU / LTV / CAC)</li>
+</ul>
+<hr>
+<h2 id="phase-3-712-30005000">Phase 3 : Croissance (mois 7 à 12) — Budget : 30 à 50 millions de yens</h2>
+<ul>
+<li>[ ] Élargissement des partenaires expérientiels (30 partenaires ou plus)</li>
+<li>[ ] Première collaboration avec une franchise (anime / jeux vidéo / musique)</li>
+<li>[ ] Lancement d'événements saisonniers</li>
+<li>Nouvel An : vol panoramique au lever du soleil du 1er janvier (Hatsuhinode)</li>
+<li>Saint-Valentin : dîner à la Tour de Tokyo</li>
+<li>Été : expérience de feux d'artifice (Hanabi)</li>
+<li>Halloween : jeu d'évasion sur le plateau d'un film d'horreur</li>
+<li>Noël : illumination de Shirakawa-go + location exclusive d'une maison gasshō-zukuri</li>
+<li>[ ] Diffusion d'une série documentaire sur les expériences des gagnants</li>
+<li>[ ] Franchir le cap des 100 000 utilisateurs actifs mensuels (MAU)</li>
+<li>[ ] Atteindre l'équilibre mensuel</li>
+<li>[ ] Étudier le déploiement du modèle basé sur des expériences dans d'autres pays (évolution vers une stratégie globale)</li>
+</ul>
+<hr>
+<h2 id="phase-0">Recherches pouvant être menées en parallèle avec la Phase 0</h2>
+<blockquote>
+<p>Points à faible risque pouvant être initiés sans attendre la décision Go/No-Go</p>
+</blockquote>
+<ul>
+<li>[ ] Étude approfondie du marché japonais de l'oripa (analyse de la structure juridique de DOPA!, Iris, clove, etc.)</li>
+<li>[ ] Collecte de cas de services japonais de type Mystery Box (HAKOBUNE, etc.)</li>
+<li>[ ] Étude détaillée de la réglementation française JONUM (entrée en vigueur en février 2026, pratiques opérationnelles de l'ANJ)</li>
+<li>[ ] Vérification des informations aux investisseurs d'Akatsuki Inc. (présence ou absence de mentions du projet DOMO)</li>
+<li>[ ] Examen du coût de fourniture des lots de type expérience (entretiens préalables avec les partenaires candidats)</li>
+<li>[ ] Étude de cas étrangers de services similaires de « gacha/tirage au sort basé sur des expériences »</li>
+<li>[ ] Vérification de la compatibilité de Nuvei avec le marché japonais</li>
+</ul>
+<hr>
+<h2 id="_5">Récapitulatif budgétaire</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Durée</th>
+<th>Budget</th>
+<th>Principales dépenses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 0</td>
+<td>0-1 mois</td>
+<td>2 à 4 millions de yens</td>
+<td>Honoraires d'avocat, frais d'étude</td>
+</tr>
+<tr>
+<td>Phase 1</td>
+<td>1-3 mois</td>
+<td>30 à 50 millions de yens</td>
+<td>Création d'entité, développement, recrutement, contrats partenaires</td>
+</tr>
+<tr>
+<td>Phase 2</td>
+<td>4-6 mois</td>
+<td>20 à 30 millions de yens</td>
+<td>Exploitation bêta, marketing, réalisation des expériences</td>
+</tr>
+<tr>
+<td>Phase 3</td>
+<td>7-12 mois</td>
+<td>30 à 50 millions de yens</td>
+<td>Actions de croissance, contrats de franchise, élargissement des expériences</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>12 mois</strong></td>
+<td><strong>82 millions à 1,34 milliard de yens</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_6">Points de décision clés</h2>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Décideur</th>
+<th>Échéance</th>
+<th>Dépendances</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Communication des détails du service par le siège de DOMO</td>
+<td>Siège de DOMO</td>
+<td>Semaine 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Sélection et contractualisation d'un avocat</td>
+<td>Chef de projet</td>
+<td>Semaine 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Test personnel de l'application française</td>
+<td>Chef de projet</td>
+<td>Semaine 1</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Avis juridique sur le modèle basé sur des expériences</td>
+<td>Avocat</td>
+<td>Semaine 3</td>
+<td>Après sélection de l'avocat</td>
+</tr>
+<tr>
+<td>Décision Go/No-Go</td>
+<td>Siège de DOMO + Chef de projet</td>
+<td>Semaine 4</td>
+<td>Après obtention de l'avis juridique</td>
+</tr>
+<tr>
+<td>Accord sur la transition vers un modèle basé sur des expériences</td>
+<td>Siège de DOMO</td>
+<td>Semaine 4</td>
+<td>Après décision Go</td>
+</tr>
+<tr>
+<td>Approbation des prix des packs japonais</td>
+<td>Siège de DOMO</td>
+<td>Semaine 4</td>
+<td>Après décision Go</td>
+</tr>
+<tr>
+<td>Approbation du service de conformité d'Akatsuki Inc.</td>
+<td>Akatsuki Inc.</td>
+<td>Semaine 4</td>
+<td>Après décision Go</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="_7">Éléments de surveillance des risques</h2>
+<table>
+<thead>
+<tr>
+<th>Risque</th>
+<th>Impact</th>
+<th>Probabilité</th>
+<th>Mesure d'atténuation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L'avocat juge le modèle basé sur des expériences également illégal</td>
+<td>Fatal</td>
+<td>Moyenne</td>
+<td>Identification précoce en Phase 0. Étude d'un schéma alternatif</td>
+</tr>
+<tr>
+<td>Impossibilité de réunir des partenaires expérientiels</td>
+<td>Élevé</td>
+<td>Moyenne</td>
+<td>Démarrer avec des expériences organisables en interne</td>
+</tr>
+<tr>
+<td>Les utilisateurs ne trouvent pas les lots de type expérience attractifs</td>
+<td>Élevé</td>
+<td>Moyenne</td>
+<td>Valider lors de la version bêta</td>
+</tr>
+<tr>
+<td>Renforcement de la réglementation sur l'oripa/gacha par l'Agence pour les Affaires des Consommateurs</td>
+<td>Élevé</td>
+<td>Élevée</td>
+<td>Surveillance continue des évolutions réglementaires, conformité stricte</td>
+</tr>
+<tr>
+<td>Opposition du service de conformité du siège d'Akatsuki</td>
+<td>Élevé</td>
+<td>Moyenne</td>
+<td>Partager le rapport en amont pour préparer le terrain</td>
+</tr>
+<tr>
+<td>Impact de la réglementation française JONUM sur l'entité principale de DOMO</td>
+<td>Élevé</td>
+<td>Moyenne</td>
+<td>Exploiter la version japonaise via une entité juridique indépendante</td>
+</tr>
+<tr>
+<td>Les expressions liées au jeu d'argent sur le site officiel posent problème au Japon</td>
+<td>Élevé</td>
+<td>Élevée</td>
+<td>Supprimer totalement toute expression liée au jeu d'argent dans la version japonaise</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

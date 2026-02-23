@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — Détail du budget</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+tr.total-row td {
+    background-color: #ebf4ff !important;
+    font-weight: bold;
+    border-top: 2px solid #2b6cb0;
+    color: #1a365d;
+}
+tr.grand-total-row td {
+    background-color: #1a365d !important;
+    color: white !important;
+    font-weight: bold;
+    font-size: 11pt;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+blockquote.info {
+    border-left-color: #2b6cb0;
+    background-color: #ebf8ff;
+}
+blockquote.warning {
+    border-left-color: #e53e3e;
+    background-color: #fff5f5;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.phase-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 9pt;
+    font-weight: bold;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.amount-low { color: #276749; }
+.amount-high { color: #c53030; }
+.footnote {
+    font-size: 9pt;
+    color: #718096;
+    margin-top: 5px;
+    padding-left: 10px;
+    border-left: 2px solid #e2e8f0;
+}
+footer {
+    text-align: center;
+    color: #718096;
+    font-size: 9pt;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">Enregistrer PDF (Cmd+P)</button>
+
+<h1>DOMO Japan — Détail du budget</h1>
+<p>
+    <strong>Sous-titre</strong> : Détail des dépenses par phase 0 à 3 (plan sur 12 mois)<br>
+    <strong>Date de création</strong> : 24 février 2026<br>
+    <strong>Statut</strong> : Estimation préliminaire (les coûts réels peuvent varier selon les négociations partenaires et l'échelle de développement)
+</p>
+
+<blockquote class="info">
+    <strong>Hypothèse de base</strong> : Le modèle actuel de loterie de biens (Lamborghini, Rolex, etc.) ne peut pas être déployé au Japon en raison du risque de sanctions pénales. Ce document est basé sur l'hypothèse d'une <strong>conversion vers un modèle axé sur les expériences</strong>.
+</blockquote>
+
+<h2>Résumé du budget existant</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Période</th>
+            <th>Budget</th>
+            <th>Principales dépenses</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Phase 0</td>
+            <td>0〜1 mois</td>
+            <td>200〜400万円</td>
+            <td>Honoraires juridiques, frais d'étude</td>
+        </tr>
+        <tr>
+            <td>Phase 1</td>
+            <td>1〜3 mois</td>
+            <td>3 000〜5 000万円</td>
+            <td>Constitution de société, développement, recrutement, contrats partenaires</td>
+        </tr>
+        <tr>
+            <td>Phase 2</td>
+            <td>4〜6 mois</td>
+            <td>2 000〜3 000万円</td>
+            <td>Exploitation bêta, marketing, organisation d'expériences</td>
+        </tr>
+        <tr>
+            <td>Phase 3</td>
+            <td>7〜12 mois</td>
+            <td>3 000〜5 000万円</td>
+            <td>Actions de croissance, contrats IP, expansion des expériences</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td>Total</td>
+            <td>12 mois</td>
+            <td>8 200万〜1,34億円</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 0 -->
+<h2><span class="phase-badge">Phase 0</span>Décision Go/No-Go (0〜30 jours) — 200〜400万円</h2>
+<blockquote>
+    <strong>Objectif</strong> : Confirmer la faisabilité juridique du modèle axé sur les expériences et rassembler les éléments nécessaires à la décision Go/No-Go. Les dépenses à cette étape doivent rester inférieures à 3% du total.
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Poste</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Remarques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Juridique</td>
+            <td>Retainer avocat spécialisé IT/jeux</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>Consultation initiale + rédaction d'opinion juridique. Candidats : TMI, Mori Hamada Matsumoto, Nishimura &amp; Asahi (domaine IT/divertissement). Consultation initiale 5-10万円, opinion écrite 50-100万円</td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>Avocat en droit français (vérification réglementation JONUM)</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">50万</td>
+            <td>Bird &amp; Bird Paris, etc. Consultation à distance + document écrit. EUR 2 000-3 000 en équivalent EUR</td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>Avis d'expert sur la loi sur les services de paiement</td>
+            <td class="amount-low">20万</td>
+            <td class="amount-high">50万</td>
+            <td>Détermination de l'applicabilité des tokens Cosmos comme instrument de paiement prépayé</td>
+        </tr>
+        <tr>
+            <td>Étude</td>
+            <td>Expérience et analyse de la version française de PlayDOMO</td>
+            <td class="amount-low">5万</td>
+            <td class="amount-high">10万</td>
+            <td>VPN + obtention d'un Apple ID français, tests d'achat</td>
+        </tr>
+        <tr>
+            <td>Étude</td>
+            <td>Analyse des rapports annuels Akatuki et enquête sur la société maltaise</td>
+            <td class="amount-low">5万</td>
+            <td class="amount-high">10万</td>
+            <td>Analyse du PDF EDINET, vérification de l'enregistrement MBR Malte</td>
+        </tr>
+        <tr>
+            <td>Étude</td>
+            <td>Entretiens préliminaires avec les partenaires d'expériences</td>
+            <td class="amount-low">10万</td>
+            <td class="amount-high">20万</td>
+            <td>Approche de SOW/Asobyu etc., signature de NDA</td>
+        </tr>
+        <tr>
+            <td>Frais de déplacement / divers</td>
+            <td>Réunions avec avocats et visites de partenaires</td>
+            <td class="amount-low">10万</td>
+            <td class="amount-high">20万</td>
+            <td>Déplacements dans Tokyo, frais de réunion, etc.</td>
+        </tr>
+        <tr>
+            <td>Contingence</td>
+            <td>Réserve (10%)</td>
+            <td class="amount-low">20万</td>
+            <td class="amount-high">40万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>Total</strong></td>
+            <td><strong>200万</strong></td>
+            <td><strong>400万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 1 -->
+<h2><span class="phase-badge">Phase 1</span>Phase de préparation (1〜3 mois après décision Go) — 3 000〜5 000万円</h2>
+<blockquote>
+    <strong>Objectif</strong> : Constitution de la société japonaise, localisation de l'application, développement du réseau de partenaires d'expériences, mise en place de toute l'infrastructure pour le lancement soft. La période de concentration d'investissement la plus élevée.
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Poste</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Remarques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Constitution de société</td>
+            <td>Création d'une LLC (taxe d'enregistrement + statuts, etc.)</td>
+            <td class="amount-low">15万</td>
+            <td class="amount-high">30万</td>
+            <td>LLC recommandée (société par actions : +10万円)</td>
+        </tr>
+        <tr>
+            <td>Constitution de société</td>
+            <td>Contrat de conseil comptable et fiscal</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">60万</td>
+            <td>10-20万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Constitution de société</td>
+            <td>Bureau (virtuel ou coworking)</td>
+            <td class="amount-low">15万</td>
+            <td class="amount-high">45万</td>
+            <td>5-15万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Masse salariale</td>
+            <td>Chef de projet (1 personne)</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">450万</td>
+            <td>100-150万円/mois × 3 mois (prestataire indépendant)</td>
+        </tr>
+        <tr>
+            <td>Masse salariale</td>
+            <td>Directeur de localisation (1 personne)</td>
+            <td class="amount-low">180万</td>
+            <td class="amount-high">270万</td>
+            <td>60-90万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Masse salariale</td>
+            <td>Designer UI (1 personne, temps partiel)</td>
+            <td class="amount-low">90万</td>
+            <td class="amount-high">150万</td>
+            <td>30-50万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>Localisation de l'application (traduction + ajustements UI)</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">500万</td>
+            <td>Support des polices japonaises, ajustements de mise en page, tests</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>Développement du système de récompenses par expériences (back-end)</td>
+            <td class="amount-low">500万</td>
+            <td class="amount-high">800万</td>
+            <td>Gestion des récompenses, logique de tirage, intégration API partenaires</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>Intégration du système de paiement (Stripe ou GMO-PG)</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">300万</td>
+            <td>Support des moyens de paiement japonais, tests</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>Conformité à la loi sur les services de paiement (déclaration instrument prépayé)</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>Conformité Cosmos, dépôt légal</td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>Conditions d'utilisation et politique de confidentialité en japonais</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>Incluant la révision juridique</td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>Conformité à la loi sur les primes et représentations (affichage des probabilités, conception du plafond)</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">50万</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Partenaires</td>
+            <td>Contrat entreprise SOW EXPERIENCE / Asobyu</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>Frais de contrat initial, NDA, mise en place intégration API</td>
+        </tr>
+        <tr>
+            <td>Partenaires</td>
+            <td>Acquisition initiale de contenus d'expériences (pour tests)</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>10-20 expériences × 5-10万円/expérience</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Branding et création de landing page</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>Landing page version japonaise, production de contenus créatifs</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Ouverture de comptes réseaux sociaux et contenu initial</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>X / Instagram / TikTok</td>
+        </tr>
+        <tr>
+            <td>Infrastructure</td>
+            <td>Serveurs et cloud</td>
+            <td class="amount-low">30万</td>
+            <td class="amount-high">60万</td>
+            <td>AWS/GCP, 3 mois</td>
+        </tr>
+        <tr>
+            <td>Assurance / garantie</td>
+            <td>Cautionnement pour l'émission d'instruments de paiement prépayés</td>
+            <td class="amount-low">500万</td>
+            <td class="amount-high">1 000万</td>
+            <td>Équivalent à 50% du solde non utilisé (dépend de l'échelle)</td>
+        </tr>
+        <tr>
+            <td>Contingence</td>
+            <td>Réserve (10%)</td>
+            <td class="amount-low">260万</td>
+            <td class="amount-high">435万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>Total</strong></td>
+            <td><strong>2 900万</strong></td>
+            <td><strong>5 050万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 2 -->
+<h2><span class="phase-badge">Phase 2</span>Lancement soft (mois 4〜6) — 2 000〜3 000万円</h2>
+<blockquote>
+    <strong>Objectif</strong> : Validation par un bêta sur invitation, acquisition d'une notoriété initiale via des influenceurs, améliorations basées sur les retours. Début des premières recettes.
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Poste</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Remarques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Masse salariale</td>
+            <td>Maintien de l'équipe (Chef de projet + Localisation + Designer)</td>
+            <td class="amount-low">570万</td>
+            <td class="amount-high">870万</td>
+            <td>3 personnes × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Masse salariale</td>
+            <td>Responsable service client (1 personne supplémentaire)</td>
+            <td class="amount-low">90万</td>
+            <td class="amount-high">135万</td>
+            <td>30-45万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Exploitation</td>
+            <td>Acquisition de récompenses expériences (phase bêta)</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>100-200 expériences distribuées/mois × 3 mois. Calculé avec un coût d'achat de 65%</td>
+        </tr>
+        <tr>
+            <td>Exploitation</td>
+            <td>Frais de transaction (estimés à 3,5% du CA)</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">150万</td>
+            <td>CA mensuel estimé 450万円 × 3 mois × 3,5%</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Marketing d'influence</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>5-10 YouTubeurs/TikTokeurs. 20-50万円 par personne</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Publicité réseaux sociaux (X, Instagram, TikTok)</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>70-130万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Relations presse et couverture médiatique</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>Distribution de communiqués de presse, relations médias</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Campagne testeurs bêta</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td>Coût des avantages pour le bêta sur invitation</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>Correction de bugs, améliorations, tests A/B</td>
+            <td class="amount-low">150万</td>
+            <td class="amount-high">300万</td>
+            <td>Développement continu</td>
+        </tr>
+        <tr>
+            <td>Infrastructure</td>
+            <td>Serveurs et cloud (montée en charge)</td>
+            <td class="amount-low">50万</td>
+            <td class="amount-high">100万</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>Conseil juridique (continu)</td>
+            <td class="amount-low">60万</td>
+            <td class="amount-high">90万</td>
+            <td>20-30万円/mois × 3 mois</td>
+        </tr>
+        <tr>
+            <td>Contingence</td>
+            <td>Réserve (10%)</td>
+            <td class="amount-low">167万</td>
+            <td class="amount-high">305万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>Total</strong></td>
+            <td><strong>1 837万</strong></td>
+            <td><strong>3 350万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Phase 3 -->
+<h2><span class="phase-badge">Phase 3</span>Croissance (mois 7〜12) — 3 000〜5 000万円</h2>
+<blockquote>
+    <strong>Objectif</strong> : Augmentation de la base d'utilisateurs, réalisation de collaborations IP, expansion du réseau de partenaires d'expériences, atteinte de la rentabilité mensuelle.
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Poste</th>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Remarques</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Masse salariale</td>
+            <td>Expansion de l'équipe (Chef de projet + Localisation + Designer + CS + Marketing)</td>
+            <td class="amount-low">1 200万</td>
+            <td class="amount-high">1 800万</td>
+            <td>5 personnes × 6 mois</td>
+        </tr>
+        <tr>
+            <td>Exploitation</td>
+            <td>Acquisition de récompenses expériences (exploitation à pleine capacité)</td>
+            <td class="amount-low">600万</td>
+            <td class="amount-high">1 200万</td>
+            <td>500-1 000 expériences distribuées/mois × 6 mois</td>
+        </tr>
+        <tr>
+            <td>Exploitation</td>
+            <td>Frais de transaction</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>CA mensuel estimé 1億円 × 6 mois × 3,5% → variable selon le nombre d'utilisateurs</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Publicité réseaux sociaux (montée en charge)</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">600万</td>
+            <td>50-100万円/mois × 6 mois</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Collaboration IP</td>
+            <td class="amount-low">200万</td>
+            <td class="amount-high">400万</td>
+            <td>Négociation de licences IP anime/manga, frais initiaux</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>Événements et sessions d'expériences</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>2-3 événements pop-up</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>Développement de nouvelles fonctionnalités (système de plafond, fonctionnalité de collection, etc.)</td>
+            <td class="amount-low">300万</td>
+            <td class="amount-high">500万</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Partenaires</td>
+            <td>Expansion du réseau de partenaires d'expériences</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>Coût de prospection de nouveaux partenaires</td>
+        </tr>
+        <tr>
+            <td>Infrastructure</td>
+            <td>Serveurs et cloud</td>
+            <td class="amount-low">100万</td>
+            <td class="amount-high">200万</td>
+            <td>6 mois</td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>Conseil juridique + veille conformité</td>
+            <td class="amount-low">120万</td>
+            <td class="amount-high">180万</td>
+            <td>20-30万円/mois × 6 mois</td>
+        </tr>
+        <tr>
+            <td>Contingence</td>
+            <td>Réserve (10%)</td>
+            <td class="amount-low">322万</td>
+            <td class="amount-high">568万</td>
+            <td></td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>Total</strong></td>
+            <td><strong>3 542万</strong></td>
+            <td><strong>6 248万</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Récapitulatif général -->
+<h2>Récapitulatif général</h2>
+
+<h3>Total par phase</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Phase</th>
+            <th>Période</th>
+            <th>Min (万円)</th>
+            <th>Max (万円)</th>
+            <th>Valeur médiane (万円)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Phase 0</td>
+            <td>1 mois</td>
+            <td>200</td>
+            <td>400</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td>Phase 1</td>
+            <td>3 mois</td>
+            <td>2 900</td>
+            <td>5 050</td>
+            <td>3 975</td>
+        </tr>
+        <tr>
+            <td>Phase 2</td>
+            <td>3 mois</td>
+            <td>1 837</td>
+            <td>3 350</td>
+            <td>2 594</td>
+        </tr>
+        <tr>
+            <td>Phase 3</td>
+            <td>6 mois</td>
+            <td>3 542</td>
+            <td>6 248</td>
+            <td>4 895</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td><strong>Total</strong></td>
+            <td><strong>13 mois</strong></td>
+            <td><strong>8 479</strong></td>
+            <td><strong>15 048</strong></td>
+            <td><strong>11 764</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Total par catégorie (toutes phases)</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Catégorie</th>
+            <th>Min (万円)</th>
+            <th>Max (万円)</th>
+            <th>Part du total (base médiane)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Masse salariale</td>
+            <td>2 430</td>
+            <td>3 675</td>
+            <td>~26%</td>
+        </tr>
+        <tr>
+            <td>Développement</td>
+            <td>1 450</td>
+            <td>2 600</td>
+            <td>~20%</td>
+        </tr>
+        <tr>
+            <td>Exploitation (achat d'expériences + paiements)</td>
+            <td>1 050</td>
+            <td>2 150</td>
+            <td>~16%</td>
+        </tr>
+        <tr>
+            <td>Marketing</td>
+            <td>1 150</td>
+            <td>2 500</td>
+            <td>~19%</td>
+        </tr>
+        <tr>
+            <td>Juridique</td>
+            <td>360</td>
+            <td>670</td>
+            <td>~5%</td>
+        </tr>
+        <tr>
+            <td>Assurance / cautionnement</td>
+            <td>500</td>
+            <td>1 000</td>
+            <td>~8%</td>
+        </tr>
+        <tr>
+            <td>Infrastructure</td>
+            <td>180</td>
+            <td>360</td>
+            <td>~3%</td>
+        </tr>
+        <tr>
+            <td>Constitution de société / autres</td>
+            <td>60</td>
+            <td>135</td>
+            <td>~1%</td>
+        </tr>
+        <tr>
+            <td>Contingence</td>
+            <td>769</td>
+            <td>1 348</td>
+            <td>~11%</td>
+        </tr>
+        <tr class="grand-total-row">
+            <td><strong>Total</strong></td>
+            <td><strong>7 949</strong></td>
+            <td><strong>14 438</strong></td>
+            <td><strong>100%</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Prévision de trésorerie mensuelle -->
+<h2>Prévision de trésorerie mensuelle</h2>
+<blockquote>
+    Les recettes commencent à partir de la Phase 2 (mois 4). Les dépenses sont réparties uniformément sur la durée de chaque phase. Les chiffres sont des estimations basées sur les valeurs médianes.
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>Mois</th>
+            <th>Phase</th>
+            <th>Recettes mensuelles (万円)</th>
+            <th>Dépenses mensuelles (万円)</th>
+            <th>Solde mensuel (万円)</th>
+            <th>Solde cumulé (万円)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Mois 1</td>
+            <td>Phase 0</td>
+            <td>0</td>
+            <td>300</td>
+            <td>▲300</td>
+            <td>▲300</td>
+        </tr>
+        <tr>
+            <td>Mois 2</td>
+            <td>Phase 1</td>
+            <td>0</td>
+            <td>1 325</td>
+            <td>▲1 325</td>
+            <td>▲1 625</td>
+        </tr>
+        <tr>
+            <td>Mois 3</td>
+            <td>Phase 1</td>
+            <td>0</td>
+            <td>1 325</td>
+            <td>▲1 325</td>
+            <td>▲2 950</td>
+        </tr>
+        <tr>
+            <td>Mois 4</td>
+            <td>Phase 1→2</td>
+            <td>0</td>
+            <td>1 325</td>
+            <td>▲1 325</td>
+            <td>▲4 275</td>
+        </tr>
+        <tr>
+            <td>Mois 5</td>
+            <td>Phase 2</td>
+            <td>450</td>
+            <td>865</td>
+            <td>▲415</td>
+            <td>▲4 690</td>
+        </tr>
+        <tr>
+            <td>Mois 6</td>
+            <td>Phase 2</td>
+            <td>1 200</td>
+            <td>865</td>
+            <td>+335</td>
+            <td>▲4 355</td>
+        </tr>
+        <tr>
+            <td>Mois 7</td>
+            <td>Phase 2→3</td>
+            <td>2 000</td>
+            <td>865</td>
+            <td>+1 135</td>
+            <td>▲3 220</td>
+        </tr>
+        <tr>
+            <td>Mois 8</td>
+            <td>Phase 3</td>
+            <td>3 200</td>
+            <td>816</td>
+            <td>+2 384</td>
+            <td>▲836</td>
+        </tr>
+        <tr>
+            <td>Mois 9</td>
+            <td>Phase 3</td>
+            <td>5 000</td>
+            <td>816</td>
+            <td>+4 184</td>
+            <td>+3 348</td>
+        </tr>
+        <tr>
+            <td>Mois 10</td>
+            <td>Phase 3</td>
+            <td>7 000</td>
+            <td>816</td>
+            <td>+6 184</td>
+            <td>+9 532</td>
+        </tr>
+        <tr>
+            <td>Mois 11</td>
+            <td>Phase 3</td>
+            <td>8 000</td>
+            <td>816</td>
+            <td>+7 184</td>
+            <td>+16 716</td>
+        </tr>
+        <tr>
+            <td>Mois 12</td>
+            <td>Phase 3</td>
+            <td>10 000</td>
+            <td>816</td>
+            <td>+9 184</td>
+            <td>+25 900</td>
+        </tr>
+        <tr class="total-row">
+            <td colspan="2"><strong>Cumul 12 mois</strong></td>
+            <td><strong>36 850</strong></td>
+            <td><strong>10 934</strong></td>
+            <td><strong>+25 916</strong></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+<p class="footnote">Pic du déficit cumulé : environ ▲4 700万円 au mois 5. Retour à l'équilibre mensuel : mois 6. Retour à l'équilibre cumulé : prévu entre les mois 8 et 9. Les recettes représentent le chiffre d'affaires brut des ventes de packs (avant déduction du coût d'achat).</p>
+
+<hr>
+
+<!-- Analyse du seuil de rentabilité -->
+<h2>Analyse du seuil de rentabilité (BEP)</h2>
+
+<h3>Estimation des charges fixes mensuelles</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Poste</th>
+            <th>Phase 2 (万円/mois)</th>
+            <th>Phase 3 (万円/mois)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Masse salariale (prestataires indépendants)</td>
+            <td>220</td>
+            <td>300</td>
+        </tr>
+        <tr>
+            <td>Honoraires conseil juridique</td>
+            <td>25</td>
+            <td>25</td>
+        </tr>
+        <tr>
+            <td>Infrastructure (serveurs, etc.)</td>
+            <td>25</td>
+            <td>33</td>
+        </tr>
+        <tr>
+            <td>Bureau et frais divers</td>
+            <td>15</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td>Publicité réseaux sociaux (niveau minimum)</td>
+            <td>100</td>
+            <td>75</td>
+        </tr>
+        <tr class="total-row">
+            <td><strong>Total charges fixes</strong></td>
+            <td><strong>385</strong></td>
+            <td><strong>448</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Nombre de ventes nécessaires par prix de pack (BEP Phase 2)</h3>
+<blockquote class="info">
+    Charges fixes 385万円/mois. Coût d'achat des expériences 65% calculé comme charge variable. Marge brute 35%.
+</blockquote>
+<table>
+    <thead>
+        <tr>
+            <th>Prix du pack</th>
+            <th>Marge brute / pack</th>
+            <th>Volume BEP (mensuel)</th>
+            <th>CA mensuel au BEP</th>
+            <th>Difficulté d'atteinte</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>300円</td>
+            <td>105円</td>
+            <td>36 667 unités</td>
+            <td>1 100万円</td>
+            <td>Élevée</td>
+        </tr>
+        <tr>
+            <td>500円</td>
+            <td>175円</td>
+            <td>22 000 unités</td>
+            <td>1 100万円</td>
+            <td>Élevée</td>
+        </tr>
+        <tr>
+            <td>1 000円</td>
+            <td>350円</td>
+            <td>11 000 unités</td>
+            <td>1 100万円</td>
+            <td>Modérée</td>
+        </tr>
+        <tr>
+            <td>3 000円</td>
+            <td>1 050円</td>
+            <td>3 667 unités</td>
+            <td>1 100万円</td>
+            <td>Faible</td>
+        </tr>
+        <tr>
+            <td>5 000円</td>
+            <td>1 750円</td>
+            <td>2 200 unités</td>
+            <td>1 100万円</td>
+            <td>Faible</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Scénarios d'atteinte du BEP</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Scénario</th>
+            <th>Prix principal du pack</th>
+            <th>Utilisateurs actifs mensuels</th>
+            <th>Taux de conversion payante</th>
+            <th>ARPU (mensuel)</th>
+            <th>Atteinte du BEP mensuel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Optimiste</td>
+            <td>3 000〜5 000円</td>
+            <td>10 000 personnes</td>
+            <td>15%</td>
+            <td>7 000円</td>
+            <td>Mois 5〜6</td>
+        </tr>
+        <tr>
+            <td>Médian</td>
+            <td>1 000〜3 000円</td>
+            <td>20 000 personnes</td>
+            <td>10%</td>
+            <td>5 000円</td>
+            <td>Mois 6〜7</td>
+        </tr>
+        <tr>
+            <td>Conservateur</td>
+            <td>500〜1 000円</td>
+            <td>50 000 personnes</td>
+            <td>5%</td>
+            <td>2 000円</td>
+            <td>Mois 8〜9</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- Hypothèses et avertissements -->
+<h2>Hypothèses et avertissements</h2>
+<blockquote class="warning">
+    <strong>Important</strong> : Cette estimation est basée sur les informations disponibles en février 2026 et constitue une approximation. Les coûts réels peuvent varier considérablement en fonction des négociations, de l'environnement réglementaire et de la réaction du marché.
+</blockquote>
+<ul>
+    <li><strong>Hypothèse de taux de change</strong> : EUR/JPY = 160円 (utilisé pour le calcul des honoraires des avocats français)</li>
+    <li><strong>Masse salariale</strong> : Entièrement basée sur des prestataires indépendants. En cas d'embauche en CDI, prévoir une majoration de +15 à 20% pour les charges sociales</li>
+    <li><strong>Taux de coût d'achat des expériences</strong> : 65% supposé. En réalité, la fourchette est de 50 à 75% selon les négociations avec les partenaires</li>
+    <li><strong>Cautionnement pour l'émission d'instruments de paiement prépayés</strong> : Le montant légal à déposer correspond à 50% du solde non utilisé. Très dépendant de l'échelle des utilisateurs et du solde Cosmos ; cette estimation suppose une échelle minimale</li>
+    <li><strong>Frais de licence IP</strong> : Les coûts de collaboration IP en Phase 3 peuvent varier considérablement selon les négociations (de quelques millions à plusieurs centaines de millions de yens). Cette estimation suppose une petite collaboration initiale</li>
+    <li><strong>Liquidité du cautionnement</strong> : Le cautionnement pour l'émission d'instruments de paiement prépayés est restitué en cas de cessation d'activité, mais constitue un capital immobilisé pendant l'exploitation. Attention à la planification de trésorerie</li>
+    <li><strong>TVA</strong> : Les frais de développement, honoraires d'avocats, etc. sont affichés hors taxes. En pratique, il convient d'ajouter 10% de taxe à la consommation</li>
+    <li><strong>Coût de retrait en cas de Go/No-Go</strong> : Si la décision est No-Go en Phase 0, aucun coût de retrait supplémentaire n'est nécessaire. Une décision No-Go après la Phase 1 peut entraîner des coûts additionnels</li>
+</ul>
+
+<hr>
+
+<footer>
+    DOMO Japan Localization Project — Confidentiel<br>
+    La reproduction ou le partage non autorisé de ce document est interdit.
+</footer>
+
+</body>
+</html>
