@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DOMO Japan — ドキュメント一覧</title>
+<title>DOMO Japan — Index des documents</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -33,6 +33,23 @@ h1 {
   margin-bottom: 48px;
   font-size: 0.95rem;
 }
+.lang-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.lang-switcher a {
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid #333;
+  color: #888;
+  transition: all 0.2s;
+}
+.lang-switcher a:hover { border-color: #A8D00E; color: #f0f0f0; }
+.lang-switcher a.active { background: rgba(168,208,14,0.2); color: #A8D00E; border-color: #A8D00E; }
 .section-label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -110,33 +127,33 @@ h1 {
 <script src="auth.js"></script>
 <div class="container">
   <h1><span class="gradient-text">DOMO</span> Japan Project</h1>
-  <p class="subtitle">日本市場進出プロジェクト ドキュメント一覧</p>
+  <p class="subtitle">Projet d'entrée sur le marché japonais — Index des documents</p>
 
-  <div style="display:flex;gap:8px;margin-bottom:32px;">
-    <a href="docs.html" style="padding:4px 14px;border-radius:50px;font-size:0.75rem;font-weight:700;text-decoration:none;border:1px solid #A8D00E;background:rgba(168,208,14,0.2);color:#A8D00E;">日本語</a>
-    <a href="docs_en.html" style="padding:4px 14px;border-radius:50px;font-size:0.75rem;font-weight:700;text-decoration:none;border:1px solid #333;color:#888;">English</a>
-    <a href="docs_fr.html" style="padding:4px 14px;border-radius:50px;font-size:0.75rem;font-weight:700;text-decoration:none;border:1px solid #333;color:#888;">Français</a>
+  <div class="lang-switcher">
+    <a href="docs.html">日本語</a>
+    <a href="docs_en.html">English</a>
+    <a href="docs_fr.html" class="active">Français</a>
   </div>
 
-  <div class="section-label">Reports</div>
+  <div class="section-label">Rapports</div>
   <div class="card-grid">
     <a href="DOMO_日本市場進出_総合レポート_v3.html" class="card">
-      <h3>総合レポート v3</h3>
-      <p>公式サイト徹底調査 + 体験型モデル提案。法規制分析、GTM戦略、ロードマップ、予算を網羅。</p>
+      <h3>Rapport complet v3 (JA)</h3>
+      <p>Enquête approfondie sur le site officiel + proposition de modèle expérientiel. Analyse réglementaire, stratégie GTM, feuille de route et budget.</p>
       <span class="badge badge-ja">日本語</span>
     </a>
     <a href="DOMO_Japan_Market_Entry_Report_v3.html" class="card">
-      <h3>Comprehensive Report v3</h3>
-      <p>Full English translation. Regulatory analysis, experience-based model proposal, GTM strategy, roadmap & budget.</p>
+      <h3>Rapport complet v3 (EN)</h3>
+      <p>Traduction anglaise intégrale. Analyse réglementaire, modèle expérientiel, stratégie GTM, feuille de route et budget.</p>
       <span class="badge badge-en">English</span>
     </a>
   </div>
 
-  <div class="section-label">Research</div>
+  <div class="section-label">Recherche</div>
   <div class="card-grid">
     <div class="card" style="cursor:default;">
-      <h3>Phase 0 並行調査レポート</h3>
-      <p>オリパ市場法的分析、Mystery Box事例、JONUM規制、Akatsuki IR、体験型ガチャ海外事例、Nuvei決済調査。</p>
+      <h3>Rapport de recherche parallèle Phase 0</h3>
+      <p>Analyse juridique du marché oripa, cas Mystery Box, réglementation JONUM, IR Akatsuki, cas de gacha expérientiel à l'étranger, étude de paiement Nuvei.</p>
       <div class="lang-links">
         <a href="phase0_research.html" class="badge badge-ja" style="text-decoration:none;">日本語</a>
         <a href="phase0_research_en.html" class="badge badge-en" style="text-decoration:none;">English</a>
@@ -144,8 +161,8 @@ h1 {
       </div>
     </div>
     <div class="card" style="cursor:default;">
-      <h3>Phase 0 次のアクション調査結果</h3>
-      <p>DOMOカードの法的性質分析（最重要）、アカツキ有報精査、体験型賞品パートナー候補。</p>
+      <h3>Résultats des prochaines actions Phase 0</h3>
+      <p>Analyse de la nature juridique des cartes DOMO (critique), examen du rapport annuel Akatsuki, candidats partenaires pour les prix expérientiels.</p>
       <div class="lang-links">
         <a href="phase0_next_actions.html" class="badge badge-todo" style="text-decoration:none;">日本語</a>
         <a href="phase0_next_actions_en.html" class="badge badge-en" style="text-decoration:none;">English</a>
@@ -157,33 +174,33 @@ h1 {
   <div class="section-label">Budget</div>
   <div class="card-grid">
     <a href="budget_breakdown.html" class="card">
-      <h3>予算詳細内訳</h3>
-      <p>Phase 0〜3の費用明細、月次キャッシュフロー予測、損益分岐点分析。初年度合計8,200万〜1.34億円。</p>
-      <span class="badge badge-budget">予算</span>
+      <h3>Ventilation détaillée du budget</h3>
+      <p>Détails des coûts Phase 0–3, prévisions de trésorerie mensuelle, analyse du seuil de rentabilité. Total année 1 : 82M–134M ¥.</p>
+      <span class="badge badge-budget">Budget</span>
     </a>
   </div>
 
-  <div class="section-label">Action Items</div>
+  <div class="section-label">Plan d'action</div>
   <div class="card-grid">
     <a href="DOMO_TODO_v3.html" class="card">
-      <h3>TODO List v3</h3>
-      <p>Phase 0〜3のアクションアイテム。Go/No-Go判断、法人設立、パートナー開拓、開発ローカライズ等。</p>
+      <h3>Liste TODO v3</h3>
+      <p>Actions Phase 0–3. Décisions Go/No-Go, création de société, développement de partenariats, localisation du développement, etc.</p>
       <span class="badge badge-todo">TODO</span>
     </a>
   </div>
 
-  <div class="section-label">Demo</div>
+  <div class="section-label">Démo</div>
   <div class="card-grid">
     <a href="index.html" class="card">
-      <h3>PlayDomo Japan デモLP</h3>
-      <p>体験型モデルの日本版ランディングページデモ。「引くのは、体験だ。」</p>
-      <span class="badge badge-demo">DEMO</span>
+      <h3>PlayDomo Japan — Démo LP</h3>
+      <p>Démonstration de la page d'atterrissage japonaise pour le modèle expérientiel. « Ce que tu tires, c'est une expérience. »</p>
+      <span class="badge badge-demo">DÉMO</span>
     </a>
   </div>
 
   <div class="footer">
-    <p>DOMO Japan Localization Project &mdash; Confidential</p>
-    <p style="margin-top:4px;">Last updated: February 24, 2026</p>
+    <p>DOMO Japan Localization Project &mdash; Confidentiel</p>
+    <p style="margin-top:4px;">Dernière mise à jour : 24 février 2026</p>
   </div>
 </div>
 </body>
