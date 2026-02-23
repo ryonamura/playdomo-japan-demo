@@ -1067,7 +1067,180 @@ footer {
         </tr>
     </tbody>
 </table>
-<p class="footnote">収入 = MAU × 課金率 × ARPU（Part 6収益モデル保守的シナリオベース）。人件費はPM・ローカライズディレクター各150-200万/月を含む中央値。体験賞品仕入れ原価率65%として計算。累積赤字のピーク: 5ヶ月目の約▲5,750万円。月次黒字転換: 6ヶ月目。累積黒字転換: 8〜9ヶ月目の見込み。</p>
+<p class="footnote">収入 = MAU（月間アクティブユーザー） × 課金転換率 × ARPU（課金ユーザー月間平均単価）（Part 6収益モデル保守的シナリオベース）。人件費はPM・ローカライズディレクター各150-200万/月を含む中央値。体験賞品仕入れ原価率65%として計算。累積赤字のピーク: 5ヶ月目の約▲5,750万円。月次黒字転換: 6ヶ月目。累積黒字転換: 8〜9ヶ月目の見込み。</p>
+
+<h2>収益モデルの前提・根拠</h2>
+
+<h3>計算式</h3>
+<p>月間収入 = MAU（月間アクティブユーザー） × 課金転換率 × ARPU（課金ユーザー月間平均単価）</p>
+
+<h3>課金転換率（5〜10%）の根拠</h3>
+<table>
+    <thead>
+        <tr>
+            <th>指標</th>
+            <th>数値</th>
+            <th>出典</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>日本モバイルゲーム全体の課金転換率</td>
+            <td>10〜15%</td>
+            <td>AppSamurai調査（グローバル平均3〜6%の2〜3倍）</td>
+        </tr>
+        <tr>
+            <td>ガチャ・課金型ゲームの課金参加率（2024年）</td>
+            <td>15.8%</td>
+            <td>Statista</td>
+        </tr>
+        <tr>
+            <td>ガチャ・課金型ゲームの課金参加率（2025年）</td>
+            <td>21.6%（前年比+36%）</td>
+            <td>AUTOMATON WEST調査</td>
+        </tr>
+        <tr>
+            <td>本モデルで採用した値（保守的）</td>
+            <td>5〜10%</td>
+            <td>上記実績値の下限〜中央値</td>
+        </tr>
+    </tbody>
+</table>
+<blockquote class="info">
+    日本は世界で最も課金転換率が高い市場の一つ。保守的シナリオとして実績値の下限（5%）から開始し、ブランド認知向上とともに10%を目標とする設定。
+</blockquote>
+
+<h3>ARPU（月額3,000〜5,000円）の根拠</h3>
+<table>
+    <thead>
+        <tr>
+            <th>指標</th>
+            <th>数値</th>
+            <th>出典</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>日本モバイルゲーム全ユーザーARPU</td>
+            <td>約¥5,035/月（$480/年）</td>
+            <td>Statista 2024年予測</td>
+        </tr>
+        <tr>
+            <td>日本の課金ユーザーARPPU</td>
+            <td>¥4,247〜¥10,204/月</td>
+            <td>ASO Index調査</td>
+        </tr>
+        <tr>
+            <td>日本のARPUはグローバル平均の</td>
+            <td>約4倍</td>
+            <td>JetSynthesys Japan調査</td>
+        </tr>
+        <tr>
+            <td>RPGセグメントARPMAU</td>
+            <td>$5.09（全ジャンル平均$0.99の5倍）</td>
+            <td>Sensor Tower 2024</td>
+        </tr>
+        <tr>
+            <td>本モデルで採用した値（保守的）</td>
+            <td>¥3,000〜¥5,000/月</td>
+            <td>上記ARPU実績値の下限〜中央値</td>
+        </tr>
+    </tbody>
+</table>
+<blockquote class="info">
+    日本はグローバル最高水準のARPUを誇る。ガチャ・コレクション系アプリの課金ユーザーはARPPU¥4,000〜¥10,000が相場。本モデルでは下限値（¥3,000）から開始する保守的設定。
+</blockquote>
+
+<h3>MAU成長軌跡の根拠</h3>
+<table>
+    <thead>
+        <tr>
+            <th>指標</th>
+            <th>数値</th>
+            <th>出典</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>ポケモンTCGポケット（参考最大値）</td>
+            <td>リリース9日で3,000万DL、30日で$2.32億収益、最終MAU 3,300万</td>
+            <td>PocketGamer.biz / Fortune</td>
+        </tr>
+        <tr>
+            <td>カードゲームアプリジャンル成長率（2024年）</td>
+            <td>前年比+40%（全ジャンル最大）</td>
+            <td>Sensor Tower / Adjust Japan App Trends 2024</td>
+        </tr>
+        <tr>
+            <td>日本TCG市場規模（2023年度）</td>
+            <td>2,774億円（前年比+45.6%）</td>
+            <td>日本玩具協会</td>
+        </tr>
+        <tr>
+            <td>本モデルで採用した成長軌跡</td>
+            <td>Month 1: MAU 3万 → Month 6: 10万 → Month 12: 20万</td>
+            <td>インフルエンサーマーケ施策前提の保守的想定</td>
+        </tr>
+    </tbody>
+</table>
+<blockquote>
+    ポケモンTCGポケットは異次元の成長事例。PlayDOMOはニッチな体験型モデルへの転換を伴うため、MAU目標は同社の1%程度（最終20万人）を現実的な上限として設定。
+</blockquote>
+
+<h3>基盤市場サイズとの整合性</h3>
+<p>日本のネットオリパ市場では年間売上2億円規模の事業者が「業界トップ5」入りレベル（BATONZ M&amp;A事例）。PlayDOMOは体験型モデルという差別化要素を持つが、まず既存オリパユーザー（DOPA!のXフォロワー11万人規模）の一部取り込みを初期戦略とする。Month 12目標MAU 20万人 × 課金率10% = 課金ユーザー2万人 × ARPU¥5,000 = 月間収入1億円は、日本ガチャ市場の実績値と整合的なターゲット。</p>
+
+<h3>出典一覧</h3>
+<table>
+    <thead>
+        <tr>
+            <th>出典</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>AppSamurai「Why Japan Leads in Mobile Game Monetization」</td>
+            <td><a href="https://appsamurai.com/blog/why-japan-leads-in-mobile-game-monetization/" target="_blank">https://appsamurai.com/blog/why-japan-leads-in-mobile-game-monetization/</a></td>
+        </tr>
+        <tr>
+            <td>Statista「Japan attitude on in-game billing 2024」</td>
+            <td><a href="https://www.statista.com/statistics/1191965/" target="_blank">https://www.statista.com/statistics/1191965/</a></td>
+        </tr>
+        <tr>
+            <td>AUTOMATON WEST「Gacha spending per user study」</td>
+            <td><a href="https://automaton-media.com/en/" target="_blank">https://automaton-media.com/en/</a></td>
+        </tr>
+        <tr>
+            <td>Statista「ARPU Mobile Games Japan 2017-2027」</td>
+            <td><a href="https://www.statista.com/forecasts/1435749/" target="_blank">https://www.statista.com/forecasts/1435749/</a></td>
+        </tr>
+        <tr>
+            <td>ASO Index「Why ARPU in Japan Surpasses Other Countries」</td>
+            <td><a href="https://www.asoindex.io/mobile-growth/" target="_blank">https://www.asoindex.io/mobile-growth/</a></td>
+        </tr>
+        <tr>
+            <td>JetSynthesys JP「Why ARPU in Japan is 4x higher」</td>
+            <td><a href="https://www.jetsynthesysjp.com/post/" target="_blank">https://www.jetsynthesysjp.com/post/</a></td>
+        </tr>
+        <tr>
+            <td>Sensor Tower「2024 Japan Mobile Gaming Market Insights」</td>
+            <td><a href="https://sensortower.com/blog/2024-japan-mobile-gaming-market-insights" target="_blank">https://sensortower.com/blog/2024-japan-mobile-gaming-market-insights</a></td>
+        </tr>
+        <tr>
+            <td>PocketGamer.biz「Pokemon TCG Pocket $1bn milestone」</td>
+            <td><a href="https://www.pocketgamer.biz/pokmon-tcg-pocket-surpasses-1bn-in-just-over-200-days/" target="_blank">https://www.pocketgamer.biz/pokmon-tcg-pocket-surpasses-1bn-in-just-over-200-days/</a></td>
+        </tr>
+        <tr>
+            <td>日本玩具協会「TCG市場規模2023年度」</td>
+            <td><a href="https://recore-pos.com/column_post/tcg-market-size/" target="_blank">https://recore-pos.com/column_post/tcg-market-size/</a></td>
+        </tr>
+        <tr>
+            <td>BATONZ「ネットオリパ事業M&amp;A事例」</td>
+            <td><a href="https://batonz.jp/sell_cases/57464" target="_blank">https://batonz.jp/sell_cases/57464</a></td>
+        </tr>
+    </tbody>
+</table>
 
 <hr>
 
