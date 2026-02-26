@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — Oripa Product Research Report</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+    .toc { page-break-after: always; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.toc {
+    background: #f0f7ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 30px 0 40px;
+}
+.toc h3 {
+    margin-top: 0;
+    color: #2b6cb0;
+    font-size: 13pt;
+    margin-bottom: 12px;
+}
+.toc ol {
+    margin: 0;
+    padding-left: 20px;
+}
+.toc li {
+    margin: 6px 0;
+    font-size: 10.5pt;
+}
+.toc a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+.sources {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+}
+.sources h4 {
+    margin-top: 0;
+    color: #2d3748;
+    font-size: 10pt;
+    margin-bottom: 8px;
+}
+.sources ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.sources li {
+    margin: 3px 0;
+}
+.sources a {
+    color: #2b6cb0;
+    word-break: break-all;
+}
+.badge-gray {
+    background: #e2e8f0;
+    color: #2d3748;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-blue {
+    background: #bee3f8;
+    color: #1a365d;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-orange {
+    background: #feebc8;
+    color: #7b341e;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-red {
+    background: #fed7d7;
+    color: #742a2a;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-green {
+    background: #c6f6d5;
+    color: #1a4731;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid #2b6cb0;
+    text-align: center;
+    font-size: 9pt;
+    color: #718096;
+    letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">Save as PDF (Cmd+P)</button>
+
+<h1 id="top">DOMO Japan — Oripa Product Research Report</h1>
+<p>
+    <strong>Purpose</strong>: Identify optimal products for DOMO's Japan oripa business<br>
+    <strong>Date</strong>: February 26, 2026<br>
+    <strong>Conclusion</strong>: Recommend non-TCG &times; DOMO original card hybrid model
+</p>
+
+<div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+        <li><a href="#sec1">Executive Summary</a></li>
+        <li><a href="#sec2">Japan Oripa Market Overview</a></li>
+        <li><a href="#sec3">Major Oripa Platforms</a></li>
+        <li><a href="#sec4">TCG Genre Popularity</a></li>
+        <li><a href="#sec5">Non-TCG Oripa/Gacha Success Stories</a></li>
+        <li><a href="#sec6">Oripa Business Model</a></li>
+        <li><a href="#sec7">SNS Buzz Analysis</a></li>
+        <li><a href="#sec8">Product Recommendations for DOMO</a></li>
+        <li><a href="#sec9">DOMO's 5 Differentiators</a></li>
+        <li><a href="#sec10">Legal Considerations</a></li>
+        <li><a href="#sec11">Procurement Feasibility</a></li>
+        <li><a href="#sec12">Sources</a></li>
+    </ol>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 1 ============================= -->
+<h2 id="sec1">1. Executive Summary</h2>
+
+<p>This report identifies the optimal product lineup for DOMO's entry into Japan's oripa (online random pack) market. The research covers the current competitive landscape, popular genres, business model economics, and legal considerations.</p>
+
+<h3>Key Findings</h3>
+<ul>
+    <li><strong>Market opportunity</strong>: Japan's TCG market reached &yen;302.4B in FY2024, with online oripa estimated in the hundreds of billions of yen</li>
+    <li><strong>Competitive landscape</strong>: 50+ services exist, with 95%+ focused exclusively on TCGs</li>
+    <li><strong>Recommendation</strong>: DOMO should adopt a <strong>non-TCG &times; DOMO original card hybrid model</strong> to differentiate from existing players</li>
+    <li><strong>Top product picks</strong>: Apple products, limited-edition sneakers, game consoles, figures, and DOMO original physical cards</li>
+    <li><strong>Legal advantage</strong>: New products require no secondhand dealer license, reducing regulatory burden</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 2 ============================= -->
+<h2 id="sec2">2. Japan Oripa Market Overview</h2>
+
+<h3>Market Scale</h3>
+<ul>
+    <li><strong>TCG market</strong>: &yen;302.4 billion in FY2024 (approximately 3&times; growth over 5 years)</li>
+    <li><strong>Online oripa segment</strong>: Estimated in the hundreds of billions of yen, with 50+ active services</li>
+</ul>
+
+<h3>User Demographics</h3>
+<ul>
+    <li><strong>Core age group</strong>: Centered on users in their 30s</li>
+    <li><strong>Gender split</strong>: Roughly equal male and female participation</li>
+    <li><strong>Spending behavior</strong>: Approximately 90% of users spend under &yen;10,000 per month</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 3 ============================= -->
+<h2 id="sec3">3. Major Oripa Platforms</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Operator</th>
+            <th>Scale</th>
+            <th>Genres</th>
+            <th>Price Range</th>
+            <th>Features</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>DOPA!</strong></td>
+            <td>sinsa Inc.</td>
+            <td>Downloads #1, YouTube 575K subscribers</td>
+            <td>Pokemon, One Piece, Yu-Gi-Oh</td>
+            <td>100pt ~ tens of thousands pt</td>
+            <td>98-99% return rate, 25 gacha effects</td>
+        </tr>
+        <tr>
+            <td><strong>Japan Trading Card Center</strong></td>
+            <td>Japan Trading Card Center Inc.</td>
+            <td>Revenue #1, net profit &yen;220M</td>
+            <td>Pokemon, One Piece, Yu-Gi-Oh, MTG</td>
+            <td>&yen;1 ~ tens of thousands</td>
+            <td>250+ oripa types</td>
+        </tr>
+        <tr>
+            <td><strong>clove</strong></td>
+            <td>TrustHub Inc. (listed)</td>
+            <td>400K+ users</td>
+            <td>Pokemon, One Piece, MTG, Weiss Schwarz</td>
+            <td>&yen;hundreds ~ &yen;35,000</td>
+            <td>PSA10 guaranteed, 280+ figures</td>
+        </tr>
+        <tr>
+            <td><strong>Iris</strong></td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+            <td>Pokemon, One Piece</td>
+            <td>&yen;100 ~ &yen;25,000</td>
+            <td>Pity system (spending cap guarantee)</td>
+        </tr>
+        <tr>
+            <td><strong>Spark Oripa</strong></td>
+            <td>Up Field Inc.</td>
+            <td>X (Twitter) 35K followers</td>
+            <td>Pokemon, One Piece, Weiss Schwarz</td>
+            <td>&yen;22 ~ &yen;200,000</td>
+            <td>Low price range focus</td>
+        </tr>
+        <tr>
+            <td><strong>D Oripa</strong></td>
+            <td>DMM.com</td>
+            <td>Entered February 2026</td>
+            <td>Pokemon etc.</td>
+            <td>&mdash;</td>
+            <td>Backed by DMM's brand reliability</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 4 ============================= -->
+<h2 id="sec4">4. TCG Genre Popularity</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Genre</th>
+            <th>Popularity</th>
+            <th>Example High-Value Card</th>
+            <th>Max Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>1</strong></td>
+            <td>Pokemon Cards</td>
+            <td>Dominant #1 (approx. 40% market share)</td>
+            <td>Eevee Heroes PSA10</td>
+            <td>~&yen;4,000,000</td>
+        </tr>
+        <tr>
+            <td><strong>2</strong></td>
+            <td>One Piece Cards</td>
+            <td>Rapid growth (160% YoY)</td>
+            <td>Nika Luffy Promo</td>
+            <td>&yen;300M class (special)</td>
+        </tr>
+        <tr>
+            <td><strong>3</strong></td>
+            <td>Yu-Gi-Oh</td>
+            <td>Stable long-term</td>
+            <td>Early rare cards</td>
+            <td>&yen;hundreds of thousands~</td>
+        </tr>
+        <tr>
+            <td><strong>4</strong></td>
+            <td>Dragon Ball</td>
+            <td>Mid-tier (boosted by 40th anniversary)</td>
+            <td>&mdash;</td>
+            <td>&mdash;</td>
+        </tr>
+        <tr>
+            <td><strong>5</strong></td>
+            <td>Weiss Schwarz</td>
+            <td>Niche / dedicated fanbase</td>
+            <td>PSA10 signed cards</td>
+            <td>&yen;tens of thousands~</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 5 ============================= -->
+<h2 id="sec5">5. Non-TCG Oripa/Gacha Success Stories</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Service</th>
+            <th>Price</th>
+            <th>Scale</th>
+            <th>Features</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Travel</strong></td>
+            <td>HafH Sky Gacha</td>
+            <td>&yen;2,980 ~ &yen;16,200/month</td>
+            <td>120K members, 800K total stays</td>
+            <td>Flight ticket gacha</td>
+        </tr>
+        <tr>
+            <td><strong>Travel</strong></td>
+            <td>Peach Travel Lottery</td>
+            <td>&yen;5,000/draw</td>
+            <td>10,000+ tickets sold</td>
+            <td>Random destination assignment</td>
+        </tr>
+        <tr>
+            <td><strong>Travel</strong></td>
+            <td>JR East Capsule Travel</td>
+            <td>&yen;2,000/draw</td>
+            <td>9 station locations</td>
+            <td>Weekday travel only</td>
+        </tr>
+        <tr>
+            <td><strong>Food/Drink</strong></td>
+            <td>KURAND Sake Gacha</td>
+            <td>&yen;5,500 ~ &yen;12,000</td>
+            <td>350K draws, 5&times; YoY revenue</td>
+            <td>500+ sake varieties</td>
+        </tr>
+        <tr>
+            <td><strong>Figures</strong></td>
+            <td>Ichiban Kuji Online</td>
+            <td>&yen;680 ~ &yen;980</td>
+            <td>Bandai, Japan's largest prize lottery</td>
+            <td>No blanks (every draw wins)</td>
+        </tr>
+        <tr>
+            <td><strong>Figures</strong></td>
+            <td>Kujibikido</td>
+            <td>&yen;500 ~ &yen;1,000</td>
+            <td>Major anime/game titles</td>
+            <td>No blanks (every draw wins)</td>
+        </tr>
+        <tr>
+            <td><strong>Luxury</strong></td>
+            <td>KOMEHYO &yen;260K Gacha</td>
+            <td>&yen;260,000/draw</td>
+            <td>Japan's largest resale chain</td>
+            <td>Top prize valued at &yen;1.3M+</td>
+        </tr>
+        <tr>
+            <td><strong>Sneakers</strong></td>
+            <td>SNKRDUNK</td>
+            <td>Campaign only</td>
+            <td>6M monthly active users</td>
+            <td>Sneaker specialist platform</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 6 ============================= -->
+<h2 id="sec6">6. Oripa Business Model</h2>
+
+<h3>Revenue Structure</h3>
+<ul>
+    <li><strong>Stated return rate</strong>: 90-99% (calculated on market price basis)</li>
+    <li><strong>Actual procurement cost</strong>: 60-70% of market price</li>
+    <li><strong>Operator gross margin</strong>: Estimated 30-40%</li>
+</ul>
+
+<h3>Procurement Methods</h3>
+<ul>
+    <li><strong>Card shop wholesale</strong>: Procurement at 50-70% of market price</li>
+    <li><strong>Bulk BOX purchase</strong>: Buy sealed boxes and open for singles</li>
+    <li><strong>Self-buyback</strong>: Repurchase from users at 60-80% of market price for reuse</li>
+</ul>
+
+<h3>Industry SaaS</h3>
+<blockquote>
+    <strong>JoyBase</strong>: A zero-upfront-cost oripa site builder SaaS launched in 2026. Enables anyone to start an oripa business without development costs, further lowering barriers to entry.
+</blockquote>
+
+<hr>
+
+<!-- ============================= SECTION 7 ============================= -->
+<h2 id="sec7">7. SNS Buzz Analysis</h2>
+
+<h3>YouTube</h3>
+<ul>
+    <li><strong>HIKAKIN</strong> (12M subscribers), <strong>Hajime Shacho</strong> (10M), <strong>Hikaru</strong> (5M) all regularly produce Pokemon card opening videos</li>
+    <li>Card opening content is one of the most popular genres on Japanese YouTube</li>
+</ul>
+
+<h3>X (Twitter)</h3>
+<ul>
+    <li><strong>DOPA</strong>: 131K followers (#1 among oripa services)</li>
+    <li><strong>Japan Trading Card Center</strong>: 66K followers</li>
+    <li><strong>clove</strong>: 32K followers</li>
+</ul>
+
+<h3>TikTok</h3>
+<ul>
+    <li>Opening effects and animations are a perfect fit for short-form video</li>
+    <li>Gen Z audience trends: Pokemon > One Piece in preference</li>
+</ul>
+
+<h3>Instagram</h3>
+<ul>
+    <li>Collection photography is the primary content type</li>
+    <li>Serves as a sub-channel supplementing other SNS platforms</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 8 ============================= -->
+<h2 id="sec8">8. Product Recommendations for DOMO</h2>
+
+<h3>Conclusion: Non-TCG &times; DOMO Original Cards Hybrid</h3>
+<blockquote>
+    95%+ of existing competitors focus exclusively on TCGs. DOMO should carve out a unique position by centering on <strong>non-TCG products</strong> combined with DOMO original collectible cards.
+</blockquote>
+
+<h3>Product Ranking TOP 5</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Product</th>
+            <th>Market (5)</th>
+            <th>Margin (5)</th>
+            <th>DOMO Fit (5)</th>
+            <th>Legal Safety (5)</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>1</strong></td>
+            <td>Apple Products (AirPods, Watch, etc.)</td>
+            <td>5</td>
+            <td>4</td>
+            <td>5</td>
+            <td>5</td>
+            <td><strong>19</strong></td>
+        </tr>
+        <tr>
+            <td><strong>2</strong></td>
+            <td>Limited Edition Sneakers</td>
+            <td>5</td>
+            <td>4</td>
+            <td>5</td>
+            <td>4</td>
+            <td><strong>18</strong></td>
+        </tr>
+        <tr>
+            <td><strong>3</strong></td>
+            <td>Game Consoles (PS5 Pro, Switch 2, etc.)</td>
+            <td>5</td>
+            <td>3</td>
+            <td>5</td>
+            <td>5</td>
+            <td><strong>18</strong></td>
+        </tr>
+        <tr>
+            <td><strong>4</strong></td>
+            <td>Figures (Nendoroid, etc.)</td>
+            <td>4</td>
+            <td>5</td>
+            <td>4</td>
+            <td>4</td>
+            <td><strong>17</strong></td>
+        </tr>
+        <tr>
+            <td><strong>5</strong></td>
+            <td>DOMO Original Physical Cards</td>
+            <td>3</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td><strong>18</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Launch Pack Structure</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Pack Price</th>
+            <th>Guaranteed Contents</th>
+            <th>Prize Example</th>
+            <th>Cosmos</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>&yen;300</strong></td>
+            <td>1 DOMO Card</td>
+            <td>AirPods (0.1%)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><strong>&yen;500</strong></td>
+            <td>2 DOMO Cards</td>
+            <td>Nendoroid (1%)</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><strong>&yen;1,000</strong></td>
+            <td>3 DOMO Cards (Rare guaranteed)</td>
+            <td>Apple Watch (0.05%)</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td><strong>&yen;3,000</strong></td>
+            <td>5 DOMO Cards (SR guaranteed)</td>
+            <td>Switch 2 (0.05%)</td>
+            <td>15</td>
+        </tr>
+        <tr>
+            <td><strong>&yen;5,000</strong></td>
+            <td>8 DOMO Cards (SSR guaranteed)</td>
+            <td>PS5 Pro (0.05%)</td>
+            <td>30</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 9 ============================= -->
+<h2 id="sec9">9. DOMO's 5 Differentiators</h2>
+
+<ol>
+    <li><strong>Digital + Physical Hybrid</strong>: Every pack guarantees both a digital collectible card and a chance at physical prizes, creating dual value</li>
+    <li><strong>French Brand Story</strong>: Unlike domestic competitors, DOMO leverages its French origins for premium brand positioning</li>
+    <li><strong>Non-TCG &times; Tech Positioning (Blue Ocean)</strong>: While 95%+ of competitors sell TCGs, DOMO targets tech products and lifestyle goods &mdash; an uncontested market space</li>
+    <li><strong>Cosmos Economy (Ongoing Engagement)</strong>: DOMO's in-app currency "Cosmos" creates a retention loop, encouraging continued participation beyond single purchases</li>
+    <li><strong>App-Native Experience</strong>: Purpose-built mobile app with premium gacha animations and seamless UX, unlike browser-based competitors</li>
+</ol>
+
+<hr>
+
+<!-- ============================= SECTION 10 ============================= -->
+<h2 id="sec10">10. Legal Considerations</h2>
+
+<h3>Key Points</h3>
+<ul>
+    <li><strong>New products</strong>: No secondhand dealer license (kobutsu-eigyo kyoka) is required when selling new items</li>
+    <li><strong>Iranoan patent (No. 7472179)</strong>: Broadly covers online oripa mechanisms &mdash; attorney review is essential before launch</li>
+    <li><strong>Premiums Act (Keihin Hyoji Ho)</strong>: All items in a pack must have economic value; "blank" prizes (worthless items) are not permitted</li>
+    <li><strong>Probability disclosure</strong>: Follow JOGA (Japan Online Game Association) and CESA (Computer Entertainment Supplier's Association) guidelines for full transparency</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 11 ============================= -->
+<h2 id="sec11">11. Procurement Feasibility</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Procurement Difficulty</th>
+            <th>License Needed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Apple products (new)</td>
+            <td><span class="badge-green">Low</span></td>
+            <td>Not required</td>
+        </tr>
+        <tr>
+            <td>Game consoles (new)</td>
+            <td><span class="badge-green">Low</span></td>
+            <td>Not required</td>
+        </tr>
+        <tr>
+            <td>DOMO original cards</td>
+            <td><span class="badge-green">Lowest</span></td>
+            <td>Not required</td>
+        </tr>
+        <tr>
+            <td>Figures (new)</td>
+            <td><span class="badge-green">Low</span></td>
+            <td>Not required</td>
+        </tr>
+        <tr>
+            <td>Sneakers (new)</td>
+            <td><span class="badge-orange">Medium</span></td>
+            <td>Not required</td>
+        </tr>
+        <tr>
+            <td>Sneakers (used)</td>
+            <td><span class="badge-red">High</span></td>
+            <td>Required</td>
+        </tr>
+        <tr>
+            <td>TCG singles (used)</td>
+            <td><span class="badge-red">High</span></td>
+            <td>Required</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 12 ============================= -->
+<h2 id="sec12">12. Sources</h2>
+
+<div class="sources">
+    <h4>Market Data &amp; Industry Reports</h4>
+    <ul>
+        <li><a href="https://www.yano.co.jp/">Yano Research Institute — TCG Market Reports</a></li>
+        <li><a href="https://torecamap.co.jp/column/dopa/">DOPA overview (torecamap)</a></li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000001.000175928.html">D-Oripa market entry (PR TIMES)</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Legal &amp; Regulatory</h4>
+    <ul>
+        <li><a href="https://legal-leon.jp/column/1102/">Law Firm LEON — Legal analysis of oripa</a></li>
+        <li><a href="https://www.ikedasomeya.com/insight/23250">IKEDA &amp; SOMEYA — Oripa legal analysis</a></li>
+        <li><a href="https://corporate.vbest.jp/columns/9165/">Verybestlaw — Gacha regulation overview</a></li>
+        <li><a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/">Consumer Affairs Agency — Act against Unjustifiable Premiums</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Non-TCG Gacha Services</h4>
+    <ul>
+        <li><a href="https://www.hafh.com/">HafH — Travel subscription service</a></li>
+        <li><a href="https://www.flypeach.com/">Peach Aviation — Travel lottery</a></li>
+        <li><a href="https://kurand.jp/">KURAND — Sake gacha service</a></li>
+        <li><a href="https://bpnavi.jp/t/ichiban">Ichiban Kuji Online — Bandai Spirits</a></li>
+        <li><a href="https://www.komehyo.co.jp/">KOMEHYO — Luxury resale gacha</a></li>
+        <li><a href="https://snkrdunk.com/">SNKRDUNK — Sneaker marketplace</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Patent &amp; IP</h4>
+    <ul>
+        <li><a href="https://www.j-platpat.inpit.go.jp/">J-PlatPat — Japanese Patent No. 7472179 (Iranoan)</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Industry Guidelines</h4>
+    <ul>
+        <li><a href="https://www.joga.or.jp/">JOGA — Japan Online Game Association Guidelines</a></li>
+        <li><a href="https://www.cesa.or.jp/">CESA — Computer Entertainment Supplier's Association Guidelines</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<footer>
+    DOMO Japan Localization Project &mdash; Confidential
+</footer>
+
+</body>
+</html>

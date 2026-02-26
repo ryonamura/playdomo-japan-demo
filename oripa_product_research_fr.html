@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DOMO Japan — Rapport d'étude sur les produits Oripa</title>
+<style>
+@page {
+    size: A4;
+    margin: 2cm 1.5cm;
+}
+@media print {
+    body { font-size: 9pt; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: avoid; }
+    table { page-break-inside: avoid; }
+    .no-print { display: none; }
+    .toc { page-break-after: always; }
+}
+* { box-sizing: border-box; }
+body {
+    font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    font-size: 11pt;
+    line-height: 1.7;
+    color: #1a1a2e;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: #fff;
+}
+h1 {
+    font-size: 22pt;
+    color: #1a365d;
+    border-bottom: 3px solid #2b6cb0;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+h2 {
+    font-size: 15pt;
+    color: #2b6cb0;
+    border-bottom: 2px solid #bee3f8;
+    padding-bottom: 5px;
+    margin-top: 40px;
+}
+h3 {
+    font-size: 13pt;
+    color: #2c5282;
+    margin-top: 20px;
+}
+h4 {
+    font-size: 11pt;
+    color: #2d3748;
+    margin-top: 15px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 12px 0;
+    font-size: 10pt;
+}
+th {
+    background: linear-gradient(135deg, #2b6cb0, #2c5282);
+    color: white;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+}
+td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+}
+tr:nth-child(even) td {
+    background-color: #f7fafc;
+}
+tr:hover td {
+    background-color: #ebf8ff;
+}
+code, pre {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9.5pt;
+}
+pre {
+    background-color: #1a202c;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+code {
+    background-color: #edf2f7;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: #c53030;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #ed8936;
+    background-color: #fffaf0;
+    padding: 12px 18px;
+    margin: 15px 0;
+    font-size: 10pt;
+    border-radius: 0 6px 6px 0;
+}
+strong {
+    color: #1a365d;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e2e8f0;
+    margin: 35px 0;
+}
+ul, ol {
+    margin: 8px 0;
+    padding-left: 22px;
+}
+li {
+    margin: 4px 0;
+}
+.print-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #2b6cb0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+.print-btn:hover {
+    background: #2c5282;
+}
+.toc {
+    background: #f0f7ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 20px 28px;
+    margin: 30px 0 40px;
+}
+.toc h3 {
+    margin-top: 0;
+    color: #2b6cb0;
+    font-size: 13pt;
+    margin-bottom: 12px;
+}
+.toc ol {
+    margin: 0;
+    padding-left: 20px;
+}
+.toc li {
+    margin: 6px 0;
+    font-size: 10.5pt;
+}
+.toc a {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+.toc a:hover {
+    text-decoration: underline;
+}
+.sources {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 14px 20px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+}
+.sources h4 {
+    margin-top: 0;
+    color: #2d3748;
+    font-size: 10pt;
+    margin-bottom: 8px;
+}
+.sources ul {
+    margin: 0;
+    padding-left: 18px;
+}
+.sources li {
+    margin: 3px 0;
+}
+.sources a {
+    color: #2b6cb0;
+    word-break: break-all;
+}
+.badge-gray {
+    background: #e2e8f0;
+    color: #2d3748;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-blue {
+    background: #bee3f8;
+    color: #1a365d;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-orange {
+    background: #feebc8;
+    color: #7b341e;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-red {
+    background: #fed7d7;
+    color: #742a2a;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+.badge-green {
+    background: #c6f6d5;
+    color: #1a4731;
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 9pt;
+    font-weight: 600;
+}
+footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 2px solid #2b6cb0;
+    text-align: center;
+    font-size: 9pt;
+    color: #718096;
+    letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+<script src="auth.js"></script>
+<button class="print-btn no-print" onclick="window.print()">Enregistrer en PDF (Cmd+P)</button>
+
+<h1 id="top">DOMO Japan &mdash; Rapport d'&eacute;tude sur les produits Oripa</h1>
+<p>
+    <strong>Objectif</strong> : Identifier les produits optimaux pour l'activit&eacute; oripa de DOMO au Japon<br>
+    <strong>Date</strong> : 26 f&eacute;vrier 2026<br>
+    <strong>Conclusion</strong> : Mod&egrave;le hybride non-TCG &times; cartes originales DOMO recommand&eacute;
+</p>
+
+<div class="toc">
+    <h3>Table des mati&egrave;res</h3>
+    <ol>
+        <li><a href="#sec1">R&eacute;sum&eacute; ex&eacute;cutif</a></li>
+        <li><a href="#sec2">Aper&ccedil;u du march&eacute; Oripa au Japon</a></li>
+        <li><a href="#sec3">Principales plateformes Oripa</a></li>
+        <li><a href="#sec4">Popularit&eacute; par genre TCG</a></li>
+        <li><a href="#sec5">Succ&egrave;s des Oripa/Gacha non-TCG</a></li>
+        <li><a href="#sec6">Mod&egrave;le &eacute;conomique de l'Oripa</a></li>
+        <li><a href="#sec7">Analyse de la viralit&eacute; SNS</a></li>
+        <li><a href="#sec8">Recommandations de produits pour DOMO</a></li>
+        <li><a href="#sec9">5 facteurs de diff&eacute;renciation de DOMO</a></li>
+        <li><a href="#sec10">Consid&eacute;rations juridiques</a></li>
+        <li><a href="#sec11">Faisabilit&eacute; de l'approvisionnement</a></li>
+        <li><a href="#sec12">Sources principales</a></li>
+    </ol>
+</div>
+
+<hr>
+
+<!-- ============================= SECTION 1 ============================= -->
+<h2 id="sec1">1. R&eacute;sum&eacute; ex&eacute;cutif</h2>
+
+<h3>Contexte</h3>
+<p>Le march&eacute; japonais des TCG (jeux de cartes &agrave; collectionner) a atteint <strong>302,4 milliards &yen;</strong> en 2024, triplement en 5 ans. Les Oripa en ligne &mdash; loteries de cartes num&eacute;riques &mdash; repr&eacute;sentent un segment en croissance explosive avec plus de 50 services et un march&eacute; estim&eacute; &agrave; des centaines de milliards de yens.</p>
+
+<h3>Objectif de cette &eacute;tude</h3>
+<ul>
+    <li>Identifier les produits optimaux pour l'activit&eacute; oripa de DOMO au Japon</li>
+    <li>&Eacute;valuer le potentiel des diff&eacute;rents genres (TCG, non-TCG, hybride)</li>
+    <li>Proposer une strat&eacute;gie de diff&eacute;renciation viable</li>
+</ul>
+
+<h3>Conclusion principale</h3>
+<blockquote>
+    <strong>Mod&egrave;le hybride non-TCG &times; cartes originales DOMO recommand&eacute;</strong><br>
+    L'entr&eacute;e directe sur le march&eacute; TCG impliquerait une concurrence frontale avec des acteurs &eacute;tablis (DOPA!, Iris, clove). Un positionnement non-TCG avec des cartes originales DOMO permet de cr&eacute;er un oc&eacute;an bleu, exploitant l'identit&eacute; de marque fran&ccedil;aise et l'&eacute;cosyst&egrave;me digital unique de DOMO.
+</blockquote>
+
+<hr>
+
+<!-- ============================= SECTION 2 ============================= -->
+<h2 id="sec2">2. Aper&ccedil;u du march&eacute; Oripa au Japon</h2>
+
+<h3>Taille du march&eacute;</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Indicateur</th>
+            <th>Valeur</th>
+            <th>Remarque</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>March&eacute; TCG japonais (2024)</td>
+            <td><strong>302,4 milliards &yen;</strong></td>
+            <td>Triplement en 5 ans</td>
+        </tr>
+        <tr>
+            <td>March&eacute; Oripa en ligne</td>
+            <td><strong>Estim&eacute; &agrave; des centaines de milliards &yen;</strong></td>
+            <td>Plus de 50 services en activit&eacute;</td>
+        </tr>
+        <tr>
+            <td>Croissance annuelle TCG</td>
+            <td>+20-30 %/an</td>
+            <td>Tendance soutenue depuis 2020</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Profil des utilisateurs</h3>
+<ul>
+    <li><strong>Tranche d'&acirc;ge dominante</strong> : centr&eacute;s sur les 30 ans (25&ndash;39 ans repr&eacute;sentant le noyau dur)</li>
+    <li><strong>R&eacute;partition par genre</strong> : quasi-parit&eacute; hommes/femmes (contrairement aux st&eacute;r&eacute;otypes)</li>
+    <li><strong>Budget mensuel</strong> : 90 % des utilisateurs d&eacute;pensent <strong>moins de 10 000 &yen;</strong> (~60 EUR) par mois</li>
+    <li><strong>Motivation</strong> : divertissement (&laquo; gacha experience &raquo;) plus que sp&eacute;culation</li>
+</ul>
+
+<h3>Facteurs de croissance</h3>
+<ol>
+    <li>Boom mondial du TCG (Pok&eacute;mon, One Piece, Yu-Gi-Oh!)</li>
+    <li>Culture du gacha profond&eacute;ment enracin&eacute;e au Japon</li>
+    <li>Essor du commerce &eacute;lectronique post-COVID</li>
+    <li>Viralisation via YouTube et les r&eacute;seaux sociaux</li>
+</ol>
+
+<hr>
+
+<!-- ============================= SECTION 3 ============================= -->
+<h2 id="sec3">3. Principales plateformes Oripa</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Plateforme</th>
+            <th>Soci&eacute;t&eacute; op&eacute;ratrice</th>
+            <th>Lancement</th>
+            <th>Caract&eacute;ristiques</th>
+            <th>Prix moyen / tirage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>DOPA!</strong></td>
+            <td>sinsa Co., Ltd.</td>
+            <td>Janvier 2023</td>
+            <td>Leader du march&eacute;. 8 titres, 150+ vari&eacute;t&eacute;s, 400 000+ abonn&eacute;s YouTube</td>
+            <td>100&ndash;10 000 &yen;</td>
+        </tr>
+        <tr>
+            <td><strong>Iris</strong></td>
+            <td>crafty Co., Ltd.</td>
+            <td>2023</td>
+            <td>CA 470 M &yen;. Acquise par Accelmark (d&eacute;c. 2024, 100 M &yen;)</td>
+            <td>100&ndash;5 000 &yen;</td>
+        </tr>
+        <tr>
+            <td><strong>clove</strong></td>
+            <td>TrustHub Co., Ltd.</td>
+            <td>2023</td>
+            <td>Boutiques physiques &agrave; Akihabara et Namba. Bar de poker associ&eacute;</td>
+            <td>100&ndash;10 000 &yen;</td>
+        </tr>
+        <tr>
+            <td><strong>Nihon Toreca Center</strong></td>
+            <td>Nihon Toreca Center Co., Ltd.</td>
+            <td>Mai 2023</td>
+            <td>N&deg;1 en ventes en ligne. 50 M &yen; de CA en 8 heures</td>
+            <td>500&ndash;30 000 &yen;</td>
+        </tr>
+        <tr>
+            <td><strong>D Oripa</strong></td>
+            <td>D Oripa Co., Ltd. (groupe DMM)</td>
+            <td>2 f&eacute;vrier 2026</td>
+            <td>Base de 51,46 M de membres DMM. Taux de remboursement max. 204 %</td>
+            <td>100&ndash;10 000 &yen;</td>
+        </tr>
+        <tr>
+            <td><strong>Sparkoripa</strong></td>
+            <td>MIXI (ex-mixi)</td>
+            <td>2024</td>
+            <td>Expertise gacha (Monster Strike). Haute qualit&eacute; UX</td>
+            <td>200&ndash;5 000 &yen;</td>
+        </tr>
+        <tr>
+            <td><strong>ICHICAoripa</strong></td>
+            <td>ICHICA Inc.</td>
+            <td>2023</td>
+            <td>Sp&eacute;cialis&eacute; One Piece / Dragon Ball</td>
+            <td>100&ndash;3 000 &yen;</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Observations cl&eacute;s</h3>
+<ul>
+    <li>Le march&eacute; est <strong>fortement fragment&eacute;</strong> avec plus de 50 acteurs, mais les 5 premiers dominent</li>
+    <li>L'entr&eacute;e de DMM (D Oripa) avec 51 M d'utilisateurs signal un potentiel de croissance massif</li>
+    <li>La fourchette de prix dominante se situe entre <strong>100 et 5 000 &yen;</strong> par tirage</li>
+    <li>Tous les acteurs majeurs se concentrent exclusivement sur les TCG &mdash; cr&eacute;neau non-TCG inexploit&eacute;</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 4 ============================= -->
+<h2 id="sec4">4. Popularit&eacute; par genre TCG</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Classement</th>
+            <th>Titre TCG</th>
+            <th>Editeur</th>
+            <th>Part de march&eacute; (estim&eacute;e)</th>
+            <th>Caract&eacute;ristiques des Oripa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><strong>Pok&eacute;mon Card Game</strong></td>
+            <td>The Pok&eacute;mon Company</td>
+            <td>~35 %</td>
+            <td>Popularit&eacute; N&deg;1. &Eacute;norme audience tous &acirc;ges. Cartes rares &agrave; valeur &eacute;lev&eacute;e</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>One Piece Card Game</strong></td>
+            <td>Bandai</td>
+            <td>~20 %</td>
+            <td>Croissance rapide depuis le lancement en 2022. Populaire aupr&egrave;s des 20&ndash;30 ans</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Yu-Gi-Oh! OCG</strong></td>
+            <td>Konami</td>
+            <td>~15 %</td>
+            <td>Historique et stable. Base de joueurs fid&egrave;les</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>Dragon Ball Super Card Game</strong></td>
+            <td>Bandai</td>
+            <td>~8 %</td>
+            <td>March&eacute; mondial. Forte demande pour les cartes SP</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>Weiss Schwarz</strong></td>
+            <td>Bushiroad</td>
+            <td>~7 %</td>
+            <td>Multi-franchise (anime). Public otaku passionn&eacute;</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><strong>Magic: The Gathering</strong></td>
+            <td>Wizards of the Coast</td>
+            <td>~5 %</td>
+            <td>March&eacute; mature. Cartes vintage &agrave; tr&egrave;s haute valeur</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><strong>Duel Masters</strong></td>
+            <td>Takara Tomy</td>
+            <td>~5 %</td>
+            <td>Public jeune (primaire/coll&egrave;ge). Nostalgie pour les 20&ndash;30 ans</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td><strong>Cardfight!! Vanguard</strong></td>
+            <td>Bushiroad</td>
+            <td>~3 %</td>
+            <td>Communaut&eacute; de niche fid&egrave;le</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Enseignements pour DOMO</h3>
+<ul>
+    <li>Pok&eacute;mon et One Piece repr&eacute;sentent &agrave; eux seuls <strong>plus de 55 %</strong> du march&eacute; des oripa TCG</li>
+    <li>La concurrence directe avec ces marques n&eacute;cessite des droits de licence co&ucirc;teux et une expertise approfondie</li>
+    <li>Un <strong>positionnement non-TCG</strong> contourne enti&egrave;rement cette probl&eacute;matique</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 5 ============================= -->
+<h2 id="sec5">5. Succ&egrave;s des Oripa/Gacha non-TCG</h2>
+
+<p>Plusieurs mod&egrave;les non-TCG ont d&eacute;montr&eacute; un succ&egrave;s significatif au Japon, prouvant la viabilit&eacute; de l'approche gacha hors du march&eacute; des cartes &agrave; collectionner.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Service</th>
+            <th>Cat&eacute;gorie</th>
+            <th>Mod&egrave;le</th>
+            <th>R&eacute;sultats</th>
+            <th>Enseignements pour DOMO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>HafH Sky Gacha</strong></td>
+            <td>Voyage</td>
+            <td>Gacha de billets d'avion &agrave; prix r&eacute;duit. 5 500 &yen;/tirage, possibilit&eacute; de gagner des vols business class</td>
+            <td>Tr&egrave;s m&eacute;diatis&eacute;. Sold out fr&eacute;quent</td>
+            <td>Le format &laquo; exp&eacute;rience &raquo; fonctionne au Japon</td>
+        </tr>
+        <tr>
+            <td><strong>Peach&nbsp;旅くじ (Tabi-Kuji)</strong></td>
+            <td>Voyage</td>
+            <td>Distributeur automatique de destinations al&eacute;atoires. 5 000 &yen;/tirage</td>
+            <td>Ph&eacute;nom&egrave;ne viral. Files d'attente dans les a&eacute;roports</td>
+            <td>Le hasard + accessibilit&eacute; prix = viralit&eacute;</td>
+        </tr>
+        <tr>
+            <td><strong>KURAND&nbsp;酒ガチャ (Sake Gacha)</strong></td>
+            <td>Alcool</td>
+            <td>Box al&eacute;atoire de sak&eacute; artisanal. 3 980&ndash;10 000 &yen;</td>
+            <td>Sold out r&eacute;current. Forte couverture m&eacute;dia</td>
+            <td>Le format &laquo; d&eacute;couverte &raquo; cr&eacute;e une valeur per&ccedil;ue &eacute;lev&eacute;e</td>
+        </tr>
+        <tr>
+            <td><strong>一番くじ (Ichiban Kuji)</strong></td>
+            <td>Figurines / Goods</td>
+            <td>Loterie physique de figurines anime/jeux. 700&ndash;1 000 &yen;/tirage</td>
+            <td>CA annuel estim&eacute; &agrave; 50+ milliards &yen;. Multi-d&eacute;cennal</td>
+            <td>La structure &laquo; aucun perdant &raquo; est la cl&eacute; de la long&eacute;vit&eacute;</td>
+        </tr>
+        <tr>
+            <td><strong>KOMEHYO</strong></td>
+            <td>Luxe d'occasion</td>
+            <td>Gacha de sacs de marque et montres. 3 000&ndash;100 000 &yen;</td>
+            <td>Succ&egrave;s &agrave; prix &eacute;lev&eacute;. Forte couverture YouTube</td>
+            <td>Le gacha fonctionne aussi sur le segment haut de gamme</td>
+        </tr>
+        <tr>
+            <td><strong>Gacha de cosmétiques</strong></td>
+            <td>Beaut&eacute;</td>
+            <td>Box al&eacute;atoire de produits de beaut&eacute;. 500&ndash;3 000 &yen;</td>
+            <td>Populaire aupr&egrave;s des femmes 20&ndash;30 ans</td>
+            <td>Le gacha non-TCG attire un public f&eacute;minin</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Facteurs communs de succ&egrave;s</h3>
+<ol>
+    <li><strong>&laquo; Aucun perdant &raquo;</strong> : chaque tirage offre un produit de valeur</li>
+    <li><strong>Exc&egrave;s de valeur per&ccedil;ue</strong> : la valeur possible d&eacute;passe largement le prix pay&eacute;</li>
+    <li><strong>Accessibilit&eacute; prix</strong> : point d'entr&eacute;e &agrave; moins de 5 000 &yen;</li>
+    <li><strong>Partageabilit&eacute; SNS</strong> : le r&eacute;sultat est visuellement attractif et suscite la r&eacute;action</li>
+</ol>
+
+<hr>
+
+<!-- ============================= SECTION 6 ============================= -->
+<h2 id="sec6">6. Mod&egrave;le &eacute;conomique de l'Oripa</h2>
+
+<h3>Structure des revenus</h3>
+<table>
+    <thead>
+        <tr>
+            <th>&Eacute;l&eacute;ment</th>
+            <th>Valeur typique</th>
+            <th>Remarque</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Taux de retour affich&eacute;</td>
+            <td><strong>90&ndash;99 %</strong></td>
+            <td>Taux utilis&eacute; dans le marketing. Calcul&eacute; sur la valeur march&eacute; des cartes</td>
+        </tr>
+        <tr>
+            <td>Co&ucirc;t r&eacute;el d'approvisionnement</td>
+            <td><strong>60&ndash;70 %</strong></td>
+            <td>Diff&eacute;rence entre le prix de gros et la valeur march&eacute;</td>
+        </tr>
+        <tr>
+            <td>Marge brute</td>
+            <td><strong>30&ndash;40 %</strong></td>
+            <td>Avant co&ucirc;ts d'exploitation (plateforme, logistique, marketing)</td>
+        </tr>
+        <tr>
+            <td>Co&ucirc;ts d'exploitation</td>
+            <td>15&ndash;20 %</td>
+            <td>Plateforme, logistique d'exp&eacute;dition, service client</td>
+        </tr>
+        <tr>
+            <td>B&eacute;n&eacute;fice net estim&eacute;</td>
+            <td>10&ndash;20 %</td>
+            <td>Variable selon le volume et l'efficacit&eacute; op&eacute;rationnelle</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>M&eacute;canisme du taux de retour</h3>
+<blockquote>
+    Le taux de retour affich&eacute; de &laquo; 99 % &raquo; est calcul&eacute; sur la <strong>valeur march&eacute; de d&eacute;tail</strong> des cartes, et non sur le co&ucirc;t d'achat de l'op&eacute;rateur. L'&eacute;cart entre la valeur march&eacute; et le prix d'approvisionnement constitue la marge de l'op&eacute;rateur.
+</blockquote>
+
+<h3>Exemple de calcul</h3>
+<ul>
+    <li>Oripa &agrave; <strong>1 000 &yen;</strong> &times; 100 tirages = 100 000 &yen; de chiffre d'affaires</li>
+    <li>Valeur march&eacute; totale des cartes distribu&eacute;es : ~95 000 &yen; (taux de retour 95 %)</li>
+    <li>Co&ucirc;t d'approvisionnement r&eacute;el : ~65 000 &yen; (65 % du CA)</li>
+    <li><strong>Marge brute : ~35 000 &yen; (35 %)</strong></li>
+</ul>
+
+<h3>Avantage du mod&egrave;le DOMO (cartes originales)</h3>
+<ul>
+    <li>Les cartes originales DOMO n'ont <strong>pas de prix de march&eacute; pr&eacute;&eacute;tabli</strong></li>
+    <li>DOMO contr&ocirc;le int&eacute;gralement la valeur per&ccedil;ue via la raret&eacute; et le design</li>
+    <li>Le co&ucirc;t de production num&eacute;rique est <strong>quasi nul</strong> (marginal par rapport au d&eacute;veloppement initial)</li>
+    <li>Marge potentielle <strong>significativement sup&eacute;rieure</strong> au mod&egrave;le TCG traditionnel</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 7 ============================= -->
+<h2 id="sec7">7. Analyse de la viralit&eacute; SNS</h2>
+
+<h3>YouTube</h3>
+<ul>
+    <li><strong>Canal dominant</strong> pour les oripa TCG. Les vid&eacute;os &laquo; ouverture de pack &raquo; sont un genre &agrave; part enti&egrave;re</li>
+    <li>DOPA! compte <strong>400 000+ abonn&eacute;s</strong> sur sa cha&icirc;ne officielle</li>
+    <li>Les vid&eacute;os d'ouverture de cartes rares g&eacute;n&egrave;rent r&eacute;guli&egrave;rement <strong>1&ndash;5 millions de vues</strong></li>
+    <li>Les cr&eacute;ateurs de contenu sont un <strong>canal d'acquisition cl&eacute;</strong> (commissions d'affiliation)</li>
+</ul>
+
+<h3>X (ex-Twitter)</h3>
+<ul>
+    <li>Plateforme de <strong>partage en temps r&eacute;el</strong> des r&eacute;sultats de tirages</li>
+    <li>Les hashtags #oripa, #オリパ g&eacute;n&egrave;rent un flux constant de contenu utilisateur (UGC)</li>
+    <li>Les &laquo; r&eacute;sultats de gacha &raquo; sont un format nativement viral sur X</li>
+    <li>Forte corr&eacute;lation entre le buzz X et les pics de vente sur les plateformes</li>
+</ul>
+
+<h3>TikTok</h3>
+<ul>
+    <li>Croissance rapide du contenu oripa/gacha sur TikTok Japan</li>
+    <li>Format <strong>court et visuellement percutant</strong> id&eacute;al pour les r&eacute;v&eacute;lations de cartes</li>
+    <li>Audience plus jeune (15&ndash;25 ans) que YouTube, mais forte croissance</li>
+    <li>Les non-TCG gacha (voyage, nourriture) g&eacute;n&egrave;rent &eacute;galement un fort engagement</li>
+</ul>
+
+<h3>Instagram</h3>
+<ul>
+    <li>Moins dominant pour les oripa que YouTube/X, mais en croissance</li>
+    <li>Les <strong>Reels</strong> suivent la tendance TikTok</li>
+    <li>Efficace pour le positionnement &laquo; lifestyle &raquo; et les produits non-TCG</li>
+    <li>Canal pertinent pour l'identit&eacute; de marque fran&ccedil;aise de DOMO</li>
+</ul>
+
+<h3>Strat&eacute;gie SNS recommand&eacute;e pour DOMO</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Plateforme</th>
+            <th>Priorit&eacute;</th>
+            <th>Contenu cl&eacute;</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>YouTube</td>
+            <td><span class="badge-red">Critique</span></td>
+            <td>Partenariats avec des YouTubers TCG/gacha. Vid&eacute;os d'ouverture de packs DOMO</td>
+        </tr>
+        <tr>
+            <td>X</td>
+            <td><span class="badge-red">Critique</span></td>
+            <td>Campagnes de partage de r&eacute;sultats. RT et recompenses</td>
+        </tr>
+        <tr>
+            <td>TikTok</td>
+            <td><span class="badge-orange">&Eacute;lev&eacute;e</span></td>
+            <td>Vid&eacute;os courtes de r&eacute;v&eacute;lations. Collaborations avec des cr&eacute;ateurs</td>
+        </tr>
+        <tr>
+            <td>Instagram</td>
+            <td><span class="badge-blue">Moyenne</span></td>
+            <td>Branding visuel. Identit&eacute; fran&ccedil;aise. Lifestyle</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 8 ============================= -->
+<h2 id="sec8">8. Recommandations de produits pour DOMO</h2>
+
+<h3>Conclusion : Hybride non-TCG &times; Cartes originales DOMO</h3>
+<blockquote>
+    Plut&ocirc;t que de concurrencer frontalement les acteurs TCG &eacute;tablis, DOMO devrait cr&eacute;er un <strong>nouveau segment hybride</strong> combinant :<br>
+    &bull; Des produits non-TCG (lifestyle, exp&eacute;riences, objets physiques)<br>
+    &bull; Des cartes num&eacute;riques originales DOMO avec utilit&eacute; in-app<br>
+    &bull; L'identit&eacute; et l'histoire de marque fran&ccedil;aise comme diff&eacute;renciateur
+</blockquote>
+
+<h3>Classement TOP 5 des produits recommand&eacute;s</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Rang</th>
+            <th>Cat&eacute;gorie de produit</th>
+            <th>Exemple concret</th>
+            <th>Fourchette de prix</th>
+            <th>Justification</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td><strong>Cartes num&eacute;riques originales DOMO</strong></td>
+            <td>Cartes Cosmos, personnages exclusifs, cartes &eacute;v&eacute;nementielles</td>
+            <td>100&ndash;3 000 &yen;</td>
+            <td>Marge maximale. Contr&ocirc;le total sur la raret&eacute; et la valeur. Utilit&eacute; in-app</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><strong>Goods lifestyle fran&ccedil;ais</strong></td>
+            <td>Confiseries, accessoires design, mini-parfums</td>
+            <td>500&ndash;5 000 &yen;</td>
+            <td>Diff&eacute;renciation culturelle. Attrait pour l'image de la France au Japon</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><strong>Exp&eacute;riences num&eacute;riques</strong></td>
+            <td>Monnaie in-app, boost temporaires, acc&egrave;s &eacute;v&eacute;nements exclusifs</td>
+            <td>100&ndash;1 000 &yen;</td>
+            <td>Co&ucirc;t marginal quasi nul. Engagement continu dans l'app</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><strong>Collaboration avec des marques japonaises</strong></td>
+            <td>Goods en collaboration, &eacute;ditions limit&eacute;es</td>
+            <td>1 000&ndash;10 000 &yen;</td>
+            <td>Cr&eacute;dibilit&eacute; locale. G&eacute;n&eacute;ration de buzz m&eacute;diatique</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><strong>Bons d'exp&eacute;rience</strong></td>
+            <td>Restaurants fran&ccedil;ais au Japon, exp&eacute;riences culturelles</td>
+            <td>3 000&ndash;30 000 &yen;</td>
+            <td>Coh&eacute;rence de marque. Format &eacute;prouv&eacute; (cf. HafH, Peach)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Structure de packs recommand&eacute;e au lancement</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Nom du pack</th>
+            <th>Prix</th>
+            <th>Contenu</th>
+            <th>Cible</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Pack D&eacute;couverte</strong></td>
+            <td>300 &yen;</td>
+            <td>1 carte DOMO (commune ou rare) + bonus num&eacute;rique</td>
+            <td>Premiers utilisateurs, essai &agrave; faible engagement</td>
+        </tr>
+        <tr>
+            <td><strong>Pack Standard</strong></td>
+            <td>1 000 &yen;</td>
+            <td>3 cartes DOMO (dont 1 garantie rare+) + 1 good al&eacute;atoire</td>
+            <td>Utilisateurs r&eacute;guliers</td>
+        </tr>
+        <tr>
+            <td><strong>Pack Premium</strong></td>
+            <td>3 000 &yen;</td>
+            <td>5 cartes DOMO (dont 1 garantie ultra-rare) + 1 good lifestyle fran&ccedil;ais</td>
+            <td>Collectionneurs, fans engag&eacute;s</td>
+        </tr>
+        <tr>
+            <td><strong>Pack &Eacute;v&eacute;nementiel</strong></td>
+            <td>5 000 &yen;</td>
+            <td>Cartes exclusives &eacute;v&eacute;nementielles + chance de bon d'exp&eacute;rience</td>
+            <td>&Eacute;ditions limit&eacute;es, &eacute;v&eacute;nements saisonniers</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 9 ============================= -->
+<h2 id="sec9">9. 5 facteurs de diff&eacute;renciation de DOMO</h2>
+
+<h3>1. Hybride Digital + Physique</h3>
+<ul>
+    <li>Combinaison unique de cartes num&eacute;riques in-app et de goods physiques livr&eacute;s</li>
+    <li>Les oripa TCG existants sont <strong>exclusivement physiques</strong> (cartes r&eacute;elles)</li>
+    <li>Les gacha mobiles sont <strong>exclusivement num&eacute;riques</strong> (items virtuels)</li>
+    <li>DOMO offre <strong>les deux simultan&eacute;ment</strong>, cr&eacute;ant un format nouveau</li>
+</ul>
+
+<h3>2. Histoire de marque fran&ccedil;aise</h3>
+<ul>
+    <li>La France b&eacute;n&eacute;ficie d'une image de marque forte au Japon (luxe, design, art de vivre)</li>
+    <li>Aucun concurrent oripa ne dispose d'une <strong>identit&eacute; de marque internationale</strong></li>
+    <li>Possibilit&eacute; de collaborations avec des marques fran&ccedil;aises pr&eacute;sentes au Japon</li>
+    <li>Le storytelling &laquo; French touch &raquo; constitue un avantage concurrentiel durable</li>
+</ul>
+
+<h3>3. Positionnement non-TCG &times; Tech (oc&eacute;an bleu)</h3>
+<ul>
+    <li>100 % des acteurs oripa majeurs sont positionnés sur le TCG</li>
+    <li>DOMO cr&eacute;e un segment <strong>enti&egrave;rement nouveau</strong> : oripa non-TCG avec technologie d'application</li>
+    <li>Pas de d&eacute;pendance aux licences TCG (Pok&eacute;mon, One Piece, etc.)</li>
+    <li>Scalabilit&eacute; plus &eacute;lev&eacute;e que le mod&egrave;le physique pur</li>
+</ul>
+
+<h3>4. &Eacute;conomie Cosmos (engagement continu)</h3>
+<ul>
+    <li>Les cartes DOMO ont une <strong>utilit&eacute; fonctionnelle dans l'application</strong> (pas seulement collectionnable)</li>
+    <li>Syst&egrave;me d'&eacute;volution et de combinaison incitant &agrave; des tirages r&eacute;p&eacute;t&eacute;s</li>
+    <li>&Eacute;v&eacute;nements saisonniers et &eacute;ditions limit&eacute;es cr&eacute;ant un FOMO (Fear Of Missing Out) naturel</li>
+    <li>Boucle de r&eacute;tention : tirage &rarr; collection &rarr; utilisation in-app &rarr; objectif suivant &rarr; tirage</li>
+</ul>
+
+<h3>5. Exp&eacute;rience native sur application</h3>
+<ul>
+    <li>Les oripa TCG existants sont des <strong>sites web</strong> (pas des applications natives)</li>
+    <li>L'application DOMO offre une UX de gacha mobile compl&egrave;te (animations, effets, son)</li>
+    <li>Notifications push pour les nouvelles &eacute;ditions et les &eacute;v&eacute;nements</li>
+    <li>Int&eacute;gration native du paiement (Apple Pay, Google Pay) r&eacute;duisant la friction d'achat</li>
+</ul>
+
+<hr>
+
+<!-- ============================= SECTION 10 ============================= -->
+<h2 id="sec10">10. Consid&eacute;rations juridiques</h2>
+
+<h3>Produits neufs : pas de licence antiquaire n&eacute;cessaire</h3>
+<ul>
+    <li>La loi sur le commerce des antiquités (古物営業法 / Kobutsu-eigyo-ho) ne s'applique qu'aux <strong>articles d'occasion</strong></li>
+    <li>Les cartes originales DOMO &eacute;tant des produits neufs, <strong>aucune licence antiquaire n'est requise</strong></li>
+    <li>Les goods lifestyle neufs sont &eacute;galement exempts de cette r&eacute;glementation</li>
+    <li>Avantage significatif par rapport aux op&eacute;rateurs oripa TCG qui traitent des cartes d'occasion</li>
+</ul>
+
+<h3>Brevet Iranoan (n&deg; 7472179)</h3>
+<ul>
+    <li>Iranoan Co., Ltd. d&eacute;tient un brevet japonais (n&deg; 7472179) couvrant certains m&eacute;canismes d'oripa en ligne</li>
+    <li><strong>Port&eacute;e</strong> : syst&egrave;me de loterie en ligne avec r&eacute;v&eacute;lation visuelle des r&eacute;sultats</li>
+    <li>Le positionnement non-TCG et les m&eacute;canismes originaux de DOMO <strong>r&eacute;duisent consid&eacute;rablement le risque de contrefaçon</strong></li>
+    <li><strong>Recommandation</strong> : effectuer une analyse de libert&eacute; d'exploitation (Freedom to Operate) pr&eacute;alable au lancement</li>
+</ul>
+
+<h3>Loi sur les représentations et les primes (景品表示法 / Keihinhyoji-ho)</h3>
+<ul>
+    <li>Interdiction de la <strong>repr&eacute;sentation trompeuse</strong> : le taux de retour affich&eacute; doit correspondre &agrave; la r&eacute;alit&eacute;</li>
+    <li>Amendement d'octobre 2024 : introduction de <strong>sanctions p&eacute;nales</strong> pour la falsification des probabilit&eacute;s</li>
+    <li>Le &laquo; comp gacha &raquo; (combinaison de cartes n&eacute;cessaires pour obtenir un prix) est <strong>interdit</strong></li>
+    <li>La conception des packs DOMO doit &eacute;viter toute structure assimilable au comp gacha</li>
+</ul>
+
+<h3>Divulgation des probabilit&eacute;s</h3>
+<ul>
+    <li>Obligation de divulgation des probabilit&eacute;s : de facto <strong>standard de l'industrie</strong> au Japon</li>
+    <li>Les directives gacha de la JOGA (Japan Online Game Association) font r&eacute;f&eacute;rence</li>
+    <li>Apple App Store et Google Play exigent l'affichage des probabilit&eacute;s pour les m&eacute;canismes de type gacha</li>
+    <li><strong>Recommandation</strong> : afficher clairement les probabilit&eacute;s de chaque raret&eacute; dans chaque pack</li>
+</ul>
+
+<h3>Synth&egrave;se des risques juridiques</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Risque</th>
+            <th>Niveau</th>
+            <th>Mesure d'att&eacute;nuation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Qualification de jeu de hasard</td>
+            <td><span class="badge-green">Faible</span></td>
+            <td>Structure de contrat de vente (chaque tirage garantit un produit)</td>
+        </tr>
+        <tr>
+            <td>Licence antiquaire</td>
+            <td><span class="badge-green">Nul</span></td>
+            <td>Produits neufs exclusivement</td>
+        </tr>
+        <tr>
+            <td>Brevet Iranoan</td>
+            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
+            <td>Analyse FTO pr&eacute;alable + m&eacute;canismes diff&eacute;renci&eacute;s</td>
+        </tr>
+        <tr>
+            <td>Repr&eacute;sentation trompeuse</td>
+            <td><span class="badge-green">Faible</span></td>
+            <td>Divulgation compl&egrave;te des probabilit&eacute;s</td>
+        </tr>
+        <tr>
+            <td>R&eacute;glementation JONUM (France)</td>
+            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
+            <td>D&eacute;pend de la mon&eacute;tisabilit&eacute; des objets num&eacute;riques. Conception prudente</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<!-- ============================= SECTION 11 ============================= -->
+<h2 id="sec11">11. Faisabilit&eacute; de l'approvisionnement</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Cat&eacute;gorie de produit</th>
+            <th>Source d'approvisionnement</th>
+            <th>D&eacute;lai</th>
+            <th>Difficult&eacute;</th>
+            <th>Remarque</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Cartes num&eacute;riques DOMO</strong></td>
+            <td>Production interne (design + d&eacute;veloppement)</td>
+            <td>2&ndash;4 semaines par s&eacute;rie</td>
+            <td><span class="badge-green">Facile</span></td>
+            <td>Contr&ocirc;le total. Co&ucirc;t marginal quasi nul apr&egrave;s d&eacute;veloppement initial</td>
+        </tr>
+        <tr>
+            <td><strong>Goods lifestyle fran&ccedil;ais</strong></td>
+            <td>Importation directe depuis la France / fournisseurs locaux</td>
+            <td>4&ndash;8 semaines</td>
+            <td><span class="badge-orange">Mod&eacute;r&eacute;e</span></td>
+            <td>D&eacute;douanement, stockage au Japon requis. Partenaires logistiques n&eacute;cessaires</td>
+        </tr>
+        <tr>
+            <td><strong>Exp&eacute;riences num&eacute;riques</strong></td>
+            <td>Production interne (param&eacute;trage in-app)</td>
+            <td>1&ndash;2 semaines</td>
+            <td><span class="badge-green">Facile</span></td>
+            <td>Monnaie in-app, boosts, acc&egrave;s exclusifs. Enti&egrave;rement num&eacute;rique</td>
+        </tr>
+        <tr>
+            <td><strong>Goods en collaboration</strong></td>
+            <td>N&eacute;gociation avec des marques japonaises</td>
+            <td>2&ndash;6 mois</td>
+            <td><span class="badge-red">Difficile</span></td>
+            <td>N&eacute;gociation de licences/collaborations. Pr&eacute;sence locale requise</td>
+        </tr>
+        <tr>
+            <td><strong>Bons d'exp&eacute;rience</strong></td>
+            <td>Partenariats avec des prestataires locaux</td>
+            <td>1&ndash;3 mois</td>
+            <td><span class="badge-orange">Mod&eacute;r&eacute;e</span></td>
+            <td>Restaurants fran&ccedil;ais, exp&eacute;riences culturelles. N&eacute;gociation au cas par cas</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Strat&eacute;gie de lancement par phases</h3>
+<ol>
+    <li><strong>Phase 1 (lancement)</strong> : Cartes num&eacute;riques DOMO + exp&eacute;riences num&eacute;riques &mdash; imm&eacute;diatement r&eacute;alisable</li>
+    <li><strong>Phase 2 (mois 2&ndash;3)</strong> : Ajout de goods lifestyle fran&ccedil;ais import&eacute;s</li>
+    <li><strong>Phase 3 (mois 4&ndash;6)</strong> : Bons d'exp&eacute;rience et collaborations avec des marques japonaises</li>
+</ol>
+
+<hr>
+
+<!-- ============================= SECTION 12 ============================= -->
+<h2 id="sec12">12. Sources principales</h2>
+
+<div class="sources">
+    <h4>March&eacute; TCG et Oripa</h4>
+    <ul>
+        <li><a href="https://www.yano.co.jp/">Yano Research Institute &mdash; Rapport sur le march&eacute; TCG japonais 2024</a></li>
+        <li><a href="https://torecamap.co.jp/column/dopa/">Pr&eacute;sentation de DOPA! (torecamap)</a></li>
+        <li><a href="https://prtimes.jp/main/html/rd/p/000000001.000175928.html">Entr&eacute;e de D Oripa (PR TIMES)</a></li>
+        <li><a href="https://www.nihon-ma.co.jp/news/20241223_3624-7/">Acquisition de crafty (Iris) &mdash; Japan M&amp;A Center</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Cadre juridique</h4>
+    <ul>
+        <li><a href="https://legal-leon.jp/column/1102/">Cabinet juridique LEON &mdash; Analyse juridique des Oripa</a></li>
+        <li><a href="https://www.ikedasomeya.com/insight/23250">IKEDA &amp; SOMEYA &mdash; Analyse juridique des Oripa</a></li>
+        <li><a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/">Agence des consommateurs &mdash; Loi sur les repr&eacute;sentations et les primes</a></li>
+        <li><a href="https://corporate.vbest.jp/columns/9165/">Very Best Law Office &mdash; R&eacute;glementation du gacha</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Exemples non-TCG</h4>
+    <ul>
+        <li><a href="https://www.hafh.com/">HafH &mdash; Site officiel (Sky Gacha)</a></li>
+        <li><a href="https://www.flypeach.com/">Peach Aviation &mdash; 旅くじ (Tabi-Kuji)</a></li>
+        <li><a href="https://kurand.jp/">KURAND &mdash; 酒ガチャ (Sake Gacha)</a></li>
+        <li><a href="https://bpnavi.jp/s/kuji">Ichiban Kuji (Bandai Spirits)</a></li>
+        <li><a href="https://www.komehyo.co.jp/">KOMEHYO &mdash; Site officiel</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>Brevets et propri&eacute;t&eacute; intellectuelle</h4>
+    <ul>
+        <li><a href="https://www.j-platpat.inpit.go.jp/">J-PlatPat &mdash; Recherche de brevets japonais (brevet Iranoan n&deg; 7472179)</a></li>
+    </ul>
+</div>
+
+<div class="sources">
+    <h4>R&eacute;glementation et directives sectorielles</h4>
+    <ul>
+        <li><a href="https://japanonlinegame.org/">JOGA &mdash; Japan Online Game Association (directives gacha)</a></li>
+        <li><a href="https://bccc.global/pressrelease/20221018/">BCCC &mdash; Directives sur la vente al&eacute;atoire de NFT</a></li>
+    </ul>
+</div>
+
+<hr>
+
+<footer>
+    DOMO Japan Localization Project &mdash; Confidentiel
+</footer>
+
+</body>
+</html>
