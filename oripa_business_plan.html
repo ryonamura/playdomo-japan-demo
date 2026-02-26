@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DOMO Japan — 高還元率オリパ事業計画</title>
+<title>DOMO Japan — オリパ事業計画</title>
 <style>
 @page {
     size: A4;
@@ -264,10 +264,10 @@ footer {
 <script src="auth.js"></script>
 <button class="print-btn no-print" onclick="window.print()">PDF保存 (Cmd+P)</button>
 
-<h1 id="top">DOMO Japan — 高還元率オリパ事業計画</h1>
+<h1 id="top">DOMO Japan — オリパ事業計画</h1>
 <p>
     <strong>調査日</strong>: 2026年2月26日<br>
-    <strong>ステータス</strong>: 事業計画 v1.0
+    <strong>ステータス</strong>: 事業計画 v2.0
 </p>
 
 <div class="toc">
@@ -275,7 +275,7 @@ footer {
     <ol>
         <li><a href="#sec1">エグゼクティブサマリー</a></li>
         <li><a href="#sec2">還元率の業界実態とDOMOの戦略</a></li>
-        <li><a href="#sec3">DOMOオリジナルカードの価値設計</a></li>
+        <li><a href="#sec3">DOMOカード — Cosmos獲得媒体としての設計</a></li>
         <li><a href="#sec4">ガチャ演出 — UI/UX設計</a></li>
         <li><a href="#sec5">ローンチ時パック構成案</a></li>
         <li><a href="#sec6">段階的展開ロードマップ</a></li>
@@ -293,9 +293,11 @@ footer {
 <h2 id="sec1">1. エグゼクティブサマリー</h2>
 
 <ul>
-    <li>DOMOオリジナルカード（原価30〜80円）に<strong>「コレクション価値」</strong>を付与することで、表面還元率100〜200%を実現しつつ<strong>粗利20〜40%</strong>を確保</li>
-    <li>既存競合の95%以上がトレカ特化 → DOMOは<strong>非トレカ×自社カード</strong>で独自ポジション</li>
-    <li>12ヶ月予算: <strong>6,800万〜1.1億円</strong>、損益分岐: 課金ユーザー約<strong>1,200人</strong></li>
+    <li>日本のオリパ市場に<strong>非トレカ × リアル商品</strong>で参入。還元率は<strong>70〜80%台</strong>を誠実に設定</li>
+    <li>DOMOカードは<strong>「おまけ」</strong>として全口に封入。還元率計算には含めず、<strong>Cosmos獲得の媒体</strong>として機能</li>
+    <li>Cosmos蓄積 → <strong>懸賞Draw</strong>参加 → 高額体験型賞品（旅行・イベント等）への導線で差別化</li>
+    <li>競合との差別化ポイント: カード水増しではなく「オリパ × Cosmos × Draw」の<strong>3層エコシステム</strong></li>
+    <li>12ヶ月予算: <strong>6,800万〜1.1億円</strong>、損益分岐: 課金ユーザー約<strong>1,500人</strong></li>
 </ul>
 
 <hr>
@@ -305,42 +307,52 @@ footer {
 
 <h3>2-1. 「還元率99%」のカラクリ</h3>
 <ul>
-    <li>計算式: <code>封入カード合計価値 / (1口価格 × 総口数) × 100</code></li>
-    <li>「カード価値」は<strong>販売価格基準</strong>（買取価格の1.5〜2倍）で計算される</li>
+    <li>計算式: <code>封入商品合計市場価値 / (1口価格 × 総口数) × 100</code></li>
+    <li>「市場価値」は<strong>販売価格基準</strong>（買取価格の1.5〜2倍）で計算される</li>
     <li>実質還元率はDOPA!で87%、ポケクロで91%程度</li>
     <li>仕入れ原価は市場価格の60〜70% → 「99%還元」でも<strong>粗利30〜40%</strong></li>
 </ul>
 
-<h3>2-2. DOMOの「チート武器」: オリジナルカード</h3>
+<h3>2-2. DOMOの戦略: 誠実な還元率 × Cosmos経済圏</h3>
+
+<p>多くの競合が「表面還元率」をカード価値の水増しで嵩上げしている中、DOMOは<strong>リアル商品の市場価格に基づく誠実な還元率</strong>で差別化する。</p>
 
 <table>
     <thead>
         <tr>
             <th></th>
-            <th>既存オリパ</th>
+            <th>既存オリパ（悪質系）</th>
+            <th>既存オリパ（優良系）</th>
             <th>DOMO</th>
         </tr>
     </thead>
     <tbody>
         <tr>
+            <td><strong>還元率表示</strong></td>
+            <td>200〜500%（水増し）</td>
+            <td>85〜99%（市場価格基準）</td>
+            <td>70〜85%（誠実表示）</td>
+        </tr>
+        <tr>
             <td><strong>ハズレ枠</strong></td>
-            <td>市場価値の低いトレカ（原価≒表面価値）</td>
-            <td>DOMOオリジナルカード（原価30〜80円、表面価値300〜5,000円）</td>
+            <td>価値不明のカードで水増し</td>
+            <td>低価値トレカ</td>
+            <td>DOMOグッズ + ボーナスカード（Cosmos付与）</td>
         </tr>
         <tr>
-            <td><strong>還元率を上げるには</strong></td>
-            <td>利益を削るしかない</td>
-            <td>カードの「コレクション価値」で底上げ</td>
-        </tr>
-        <tr>
-            <td><strong>還元率の上限</strong></td>
-            <td>95〜99%が限界</td>
-            <td>100〜200%も設計可能</td>
+            <td><strong>差別化要素</strong></td>
+            <td>なし（信用毀損）</td>
+            <td>品揃え・配送速度</td>
+            <td>Cosmos経済圏・懸賞Draw・体験型賞品</td>
         </tr>
     </tbody>
 </table>
 
-<h3>2-3. 具体的な収益構造（500円オリパ / 200口の例）</h3>
+<blockquote>
+    <strong>DOMOの勝ち筋</strong>: 還元率の数字競争ではなく「オリパを引くたびにCosmosが貯まり、Draw（懸賞）で体験型賞品が当たるかもしれない」というエコシステムの魅力で集客する。
+</blockquote>
+
+<h3>2-3. 具体的な収益構造（500円オリパ / 100口の例）</h3>
 
 <table>
     <thead>
@@ -348,7 +360,7 @@ footer {
             <th>枠</th>
             <th>口数</th>
             <th>封入商品</th>
-            <th>表面価値</th>
+            <th>市場価値</th>
             <th>仕入原価</th>
         </tr>
     </thead>
@@ -356,43 +368,74 @@ footer {
         <tr>
             <td><strong>S賞</strong></td>
             <td>1口</td>
-            <td>AirPods Pro</td>
-            <td>4万円</td>
-            <td>3.2万円</td>
+            <td>AirPods（第4世代）</td>
+            <td>22,800円</td>
+            <td>16,000円</td>
         </tr>
         <tr>
             <td><strong>A賞</strong></td>
-            <td>4口</td>
-            <td>限定スニーカー</td>
-            <td>各1.5万円</td>
-            <td>各1万円</td>
+            <td>3口</td>
+            <td>Amazon Gift Card ¥1,500</td>
+            <td>各1,500円</td>
+            <td>各1,500円</td>
         </tr>
         <tr>
             <td><strong>B賞</strong></td>
-            <td>15口</td>
-            <td>DOMOカード Legendaire（ホロ箔押し）</td>
-            <td>各1,500円</td>
-            <td>各80円</td>
+            <td>10口</td>
+            <td>DOMOオリジナルグッズ（Tシャツ/キャップ）</td>
+            <td>各800円</td>
+            <td>各300円</td>
         </tr>
         <tr>
             <td><strong>C賞</strong></td>
-            <td>40口</td>
-            <td>DOMOカード Epique</td>
-            <td>各600円</td>
-            <td>各50円</td>
+            <td>86口</td>
+            <td>DOMOステッカーセット</td>
+            <td>各100円</td>
+            <td>各30円</td>
         </tr>
         <tr>
-            <td><strong>D賞</strong></td>
-            <td>140口</td>
-            <td>DOMOカード Rare/Commune</td>
-            <td>各250円</td>
-            <td>各30円</td>
+            <td colspan="5" style="background:#f0f7ff; text-align:center;"><strong>＋ 全100口にDOMOボーナスカード1枚（Cosmos 1〜10個付与）</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>指標</th>
+            <th>金額</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>総売上</td>
+            <td>50,000円</td>
+        </tr>
+        <tr>
+            <td>商品市場価値合計</td>
+            <td>39,900円</td>
+        </tr>
+        <tr>
+            <td><strong>還元率（市場価値ベース）</strong></td>
+            <td><strong>79.8%</strong></td>
+        </tr>
+        <tr>
+            <td>商品仕入原価合計</td>
+            <td>24,080円</td>
+        </tr>
+        <tr>
+            <td>DOMOカード製造原価（100枚）</td>
+            <td>3,000円</td>
+        </tr>
+        <tr>
+            <td><strong>粗利</strong></td>
+            <td><strong>22,920円（45.8%）</strong></td>
         </tr>
     </tbody>
 </table>
 
 <blockquote>
-    表面還元率<strong>181%</strong>、実際原価<strong>7.9万円</strong>、粗利<strong>2万円</strong>（粗利率20%）
+    DOMOカードは還元率計算に含めない「おまけ」。ユーザーにとっての付加価値はCosmos獲得 → Draw参加権。
 </blockquote>
 
 <h3>2-4. 還元率設定の方針</h3>
@@ -401,29 +444,29 @@ footer {
     <thead>
         <tr>
             <th>フェーズ</th>
-            <th>表面還元率</th>
+            <th>還元率</th>
             <th>目的</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>ローンチ初月</td>
-            <td><strong>200%超</strong></td>
-            <td>話題作り</td>
+            <td><strong>85〜90%</strong></td>
+            <td>話題作り（赤字覚悟の初回限定パック併用）</td>
         </tr>
         <tr>
             <td>初回限定オリパ</td>
-            <td><strong>300〜500%</strong></td>
-            <td>赤字覚悟の集客</td>
+            <td><strong>100%超</strong></td>
+            <td>赤字覚悟の集客（限定100口等）</td>
         </tr>
         <tr>
             <td>通常運用</td>
-            <td><strong>100〜150%</strong></td>
+            <td><strong>70〜80%</strong></td>
             <td>持続可能な水準</td>
         </tr>
         <tr>
             <td>限定イベント</td>
-            <td><strong>150〜200%</strong></td>
+            <td><strong>80〜90%</strong></td>
             <td>リテンション向上</td>
         </tr>
     </tbody>
@@ -432,18 +475,23 @@ footer {
 <hr>
 
 <!-- ============================= SECTION 3 ============================= -->
-<h2 id="sec3">3. DOMOオリジナルカードの価値設計</h2>
+<h2 id="sec3">3. DOMOカード — Cosmos獲得媒体としての設計</h2>
 
-<h3>3-1. レアリティ体系</h3>
+<p>DOMOカードは<strong>オリパ景品としての市場価値を主張しない</strong>。あくまで「おまけ」として封入し、その機能は<strong>Cosmos（ポイント）の獲得媒体</strong>である。</p>
+
+<blockquote>
+    <strong>重要な設計原則</strong>: DOMOカードに架空の市場価値を設定して還元率を水増しすることは、景品表示法上のリスクがあり、ユーザーの信頼を損なう。カードの価値は「Cosmos付与」という機能的価値に限定する。
+</blockquote>
+
+<h3>3-1. カードのレアリティとCosmos付与</h3>
 
 <table>
     <thead>
         <tr>
             <th>レアリティ</th>
             <th>出現率</th>
-            <th>種類数</th>
+            <th>Cosmos付与</th>
             <th>製造仕様</th>
-            <th>設定市場価値</th>
             <th>製造原価</th>
         </tr>
     </thead>
@@ -451,130 +499,78 @@ footer {
         <tr>
             <td><strong>Commune</strong></td>
             <td>65%</td>
-            <td>約40種</td>
+            <td>1個</td>
             <td>標準印刷・マット加工</td>
-            <td>100〜300円</td>
             <td>15〜25円</td>
         </tr>
         <tr>
             <td><strong>Rare</strong></td>
             <td>22%</td>
-            <td>約20種</td>
+            <td>3個</td>
             <td>UV加工・厚紙</td>
-            <td>300〜800円</td>
             <td>25〜40円</td>
         </tr>
         <tr>
             <td><strong>Epique</strong></td>
             <td>10%</td>
-            <td>約12種</td>
+            <td>5個</td>
             <td>ホログラム加工</td>
-            <td>800〜2,000円</td>
             <td>40〜80円</td>
         </tr>
         <tr>
             <td><strong>Legendaire</strong></td>
             <td>3%</td>
-            <td>約6種</td>
+            <td>10個</td>
             <td>フルホログラム+箔押し</td>
-            <td>2,000〜5,000円</td>
             <td>60〜120円</td>
         </tr>
     </tbody>
 </table>
 
-<h3>3-2. 特別版</h3>
+<p>期待値: 1回のオリパで平均<strong>約2 Cosmos</strong>獲得。</p>
+
+<h3>3-2. カードの役割まとめ</h3>
 
 <table>
     <thead>
         <tr>
-            <th>種別</th>
-            <th>出現率</th>
-            <th>仕様</th>
-            <th>設定市場価値</th>
-            <th>製造原価</th>
+            <th>役割</th>
+            <th>内容</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Gold版</strong></td>
-            <td>0.5%</td>
-            <td>金箔押し・ナンバリング入り</td>
-            <td>5,000〜10,000円</td>
-            <td>100〜200円</td>
+            <td><strong>Cosmos獲得</strong></td>
+            <td>レアリティに応じたCosmos付与 → Draw参加権</td>
         </tr>
         <tr>
-            <td><strong>Artist Edition</strong></td>
-            <td>0.1%</td>
-            <td>著名アーティスト別アート</td>
-            <td>10,000〜30,000円</td>
-            <td>150〜300円</td>
+            <td><strong>コレクション要素</strong></td>
+            <td>アプリ内コレクションルームに登録。コンプリートでボーナスCosmos</td>
         </tr>
         <tr>
-            <td><strong>Genesis Edition</strong></td>
-            <td>0.05%</td>
-            <td>ローンチ記念・シリアル001〜100</td>
-            <td>30,000〜50,000円</td>
-            <td>200〜500円</td>
+            <td><strong>エンゲージメント</strong></td>
+            <td>「次は何が出るか」の楽しみ。ガチャ演出の対象</td>
+        </tr>
+        <tr>
+            <td><strong>SNS拡散</strong></td>
+            <td>レアカード入手時のシェア導線</td>
         </tr>
     </tbody>
 </table>
 
-<h3>3-3. コレクション価値を構築する7つの仕掛け</h3>
+<blockquote>
+    将来的にカードの二次市場が自然発生した場合はそれを活用できるが、<strong>事業計画の前提としてカードの市場価値は見込まない</strong>。
+</blockquote>
+
+<h3>3-3. コレクション促進の仕掛け</h3>
 
 <ol>
-    <li><strong>コンプリート報酬</strong>（テーマ別・全78種フルコンプ）</li>
-    <li><strong>シリアルナンバー入り限定版</strong></li>
-    <li><strong>ホログラム/箔押し加工</strong></li>
-    <li><strong>アーティストコラボ</strong>（四半期ごと）</li>
-    <li><strong>季節限定カード</strong>（年5回、再販なし）</li>
-    <li><strong>ストーリーカード</strong>（QRで追加ストーリー解放）</li>
-    <li><strong>カードの「育成」要素</strong>（同じカード複数枚で「覚醒」）</li>
+    <li><strong>コンプリート報酬</strong> — テーマ別コンプリートでボーナスCosmos（50〜200個）</li>
+    <li><strong>季節限定カード</strong> — 年5回、再販なし（コレクション欲の刺激）</li>
+    <li><strong>アーティストコラボ</strong> — 四半期ごとに異なるアーティストのイラスト</li>
+    <li><strong>ストーリーカード</strong> — QRコードでDOMOの世界観ストーリー解放</li>
+    <li><strong>ホログラム/箔押し加工</strong> — 上位レアリティは物理的な質感で差別化</li>
 </ol>
-
-<h3>3-4. 二次市場での想定価格帯</h3>
-
-<table>
-    <thead>
-        <tr>
-            <th>レアリティ</th>
-            <th>初期（Month 1-3）</th>
-            <th>成長期（Month 4-12）</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Commune</td>
-            <td>50〜100円</td>
-            <td>100〜300円</td>
-        </tr>
-        <tr>
-            <td>Rare</td>
-            <td>100〜300円</td>
-            <td>300〜1,000円</td>
-        </tr>
-        <tr>
-            <td>Epique</td>
-            <td>300〜1,000円</td>
-            <td>1,000〜3,000円</td>
-        </tr>
-        <tr>
-            <td>Legendaire</td>
-            <td>1,000〜3,000円</td>
-            <td>3,000〜10,000円</td>
-        </tr>
-        <tr>
-            <td>Gold版</td>
-            <td>3,000〜10,000円</td>
-            <td>10,000〜50,000円</td>
-        </tr>
-        <tr>
-            <td>Genesis Edition</td>
-            <td>10,000〜30,000円</td>
-            <td>30,000〜100,000円</td>
-        </tr>
-    </tbody>
-</table>
 
 <hr>
 
@@ -666,68 +662,74 @@ footer {
 <!-- ============================= SECTION 5 ============================= -->
 <h2 id="sec5">5. ローンチ時パック構成案</h2>
 
+<p>全パックに<strong>DOMOボーナスカード</strong>が付属（Cosmos付与）。還元率はカードを除いたリアル商品ベースで算出。</p>
+
 <table>
     <thead>
         <tr>
             <th>パック名</th>
             <th>価格</th>
-            <th>確定封入</th>
-            <th>当たり例</th>
+            <th>当たり例（リアル商品）</th>
+            <th>ハズレ枠</th>
+            <th>還元率</th>
             <th>Cosmos</th>
-            <th>目的</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td><strong>はじめてのDOMO</strong></td>
             <td>100円（1人1回）</td>
-            <td>DOMOカード3枚</td>
             <td>Apple Gift Card 500円（10%）</td>
-            <td>5個</td>
-            <td>CPI代替、初回体験</td>
+            <td>DOMOステッカー</td>
+            <td>90%</td>
+            <td>3個</td>
         </tr>
         <tr>
             <td><strong>DOMOウェルカム</strong></td>
-            <td>500円（1人3回）</td>
-            <td>DOMOカード5枚</td>
-            <td>AirTag（1/5確率）</td>
-            <td>10個</td>
-            <td>口コミ形成</td>
+            <td>300円（1人3回）</td>
+            <td>AirTag（1/20確率）</td>
+            <td>DOMOキーホルダー</td>
+            <td>85%</td>
+            <td>5個</td>
         </tr>
         <tr>
             <td><strong>スタンダード</strong></td>
             <td>500円</td>
-            <td>DOMOカード2枚</td>
-            <td>AirPods Pro（0.1%）</td>
-            <td>3個</td>
-            <td>主力</td>
+            <td>AirPods（0.5%）、Gift Card</td>
+            <td>DOMOステッカーセット</td>
+            <td>75%</td>
+            <td>2個</td>
         </tr>
         <tr>
             <td><strong>プレミアム</strong></td>
             <td>1,000円</td>
-            <td>DOMOカード3枚（レア確定）</td>
-            <td>Apple Watch（0.05%）</td>
+            <td>Apple Watch（0.1%）、スニーカー</td>
+            <td>DOMOグッズ（Tシャツ等）</td>
+            <td>75%</td>
             <td>5個</td>
-            <td>中課金層</td>
         </tr>
         <tr>
             <td><strong>ハイローラー</strong></td>
             <td>3,000円</td>
-            <td>DOMOカード5枚（SR確定）</td>
-            <td>Switch 2（0.05%）</td>
+            <td>Switch 2（0.1%）、高額Gift Card</td>
+            <td>DOMOプレミアムグッズ</td>
+            <td>78%</td>
             <td>15個</td>
-            <td>重課金層</td>
         </tr>
         <tr>
             <td><strong>レジェンド</strong></td>
             <td>5,000円</td>
-            <td>DOMOカード8枚（SSR確定）</td>
-            <td>PS5 Pro（0.05%）</td>
+            <td>PS5 Pro（0.05%）、ブランド品</td>
+            <td>DOMOコレクターズBOX</td>
+            <td>80%</td>
             <td>30個</td>
-            <td>最上位</td>
         </tr>
     </tbody>
 </table>
+
+<blockquote>
+    ハズレ枠にも<strong>実用性のある物理グッズ</strong>を封入。「ゴミを掴まされた」感を最小化する。
+</blockquote>
 
 <hr>
 
@@ -745,7 +747,8 @@ footer {
 
 <h4>Month 1</h4>
 <ul>
-    <li>法人設立、カード初期ロット5万枚発注、仕入れルート構築、アプリローカライズ</li>
+    <li>法人設立、グッズ初期ロット発注、商品仕入れルート構築、アプリローカライズ</li>
+    <li>DOMOカード初期ロット5万枚発注（4レアリティ×複数デザイン）</li>
 </ul>
 
 <h4>Month 2</h4>
@@ -755,7 +758,7 @@ footer {
 
 <h4>Month 3</h4>
 <ul>
-    <li>正式リリース、Genesis Editionカード封入、インフルエンサー一斉配信、初回懸賞Draw</li>
+    <li>正式リリース、初回限定パック（還元率100%超）、インフルエンサー一斉配信、初回懸賞Draw</li>
 </ul>
 
 <h4>KPI</h4>
@@ -788,8 +791,9 @@ footer {
 
 <h3>Phase 2（Month 4-6）— 1,500〜2,500万円</h3>
 <ul>
-    <li>アーティストコラボ第1弾、価格帯拡充、コンプリート報酬実装</li>
-    <li>季節限定オリパ、リファラルプログラム、カード交換機能</li>
+    <li>アーティストコラボ第1弾（限定カードデザイン）、価格帯拡充</li>
+    <li>季節限定オリパ、リファラルプログラム、コレクション機能強化</li>
+    <li>商品カテゴリ拡大（コスメ、フィギュア等）</li>
 </ul>
 
 <h4>KPI</h4>
@@ -822,8 +826,9 @@ footer {
 
 <h3>Phase 3（Month 7-12）— 3,000〜5,000万円</h3>
 <ul>
-    <li>IPコラボ、公式カード売買機能（手数料10%）、DOMOフェス（リアルイベント）</li>
-    <li>古物商許可取得、商材カテゴリ拡大</li>
+    <li>IPコラボ（アニメ・ゲームIPとのコラボオリパ）</li>
+    <li>DOMOフェス（リアルイベント）、古物商許可取得</li>
+    <li>公式グッズストア併設（オリパ以外の直販チャネル）</li>
 </ul>
 
 <h4>KPI</h4>
@@ -877,13 +882,18 @@ footer {
         </tr>
         <tr>
             <td>商品原価（当たり枠期待値按分）</td>
-            <td>160円</td>
-            <td>32%</td>
+            <td>200円</td>
+            <td>40%</td>
         </tr>
         <tr>
-            <td>DOMOカード製造原価</td>
-            <td>35円</td>
-            <td>7%</td>
+            <td>DOMOグッズ/ステッカー原価（ハズレ枠）</td>
+            <td>25円</td>
+            <td>5%</td>
+        </tr>
+        <tr>
+            <td>DOMOカード製造原価（おまけ）</td>
+            <td>30円</td>
+            <td>6%</td>
         </tr>
         <tr>
             <td>配送料按分</td>
@@ -902,8 +912,8 @@ footer {
         </tr>
         <tr>
             <td><strong>粗利</strong></td>
-            <td><strong>237.5円</strong></td>
-            <td><strong>47.5%</strong></td>
+            <td><strong>177.5円</strong></td>
+            <td><strong>35.5%</strong></td>
         </tr>
     </tbody>
 </table>
@@ -937,16 +947,22 @@ footer {
             <td>20%</td>
         </tr>
         <tr>
+            <td>ARPU（課金者）</td>
+            <td>5,600円</td>
+            <td>5,600円</td>
+            <td>5,600円</td>
+        </tr>
+        <tr>
             <td>月間売上</td>
             <td>560万円</td>
             <td>2,800万円</td>
             <td>5,600万円</td>
         </tr>
         <tr>
-            <td>粗利</td>
-            <td>266万円</td>
-            <td>1,382万円</td>
-            <td>2,794万円</td>
+            <td>粗利（35.5%）</td>
+            <td>199万円</td>
+            <td>994万円</td>
+            <td>1,988万円</td>
         </tr>
         <tr>
             <td>固定費+マーケ費</td>
@@ -955,16 +971,22 @@ footer {
             <td>900万円</td>
         </tr>
         <tr>
+            <td>Draw賞品費</td>
+            <td>20万円</td>
+            <td>40万円</td>
+            <td>80万円</td>
+        </tr>
+        <tr>
             <td><strong>営業利益</strong></td>
-            <td><span class="badge-red">▲34万円</span></td>
-            <td><span class="badge-green">782万円</span></td>
-            <td><span class="badge-green">1,894万円</span></td>
+            <td><span class="badge-red">▲121万円</span></td>
+            <td><span class="badge-green">354万円</span></td>
+            <td><span class="badge-green">1,008万円</span></td>
         </tr>
     </tbody>
 </table>
 
 <blockquote>
-    損益分岐: 課金ユーザー約<strong>1,200人</strong>
+    損益分岐: 課金ユーザー約<strong>1,500人</strong>（MAU約7,500人、課金率20%）
 </blockquote>
 
 <hr>
@@ -972,17 +994,55 @@ footer {
 <!-- ============================= SECTION 8 ============================= -->
 <h2 id="sec8">8. Cosmos経済圏（第2層）</h2>
 
+<h3>Cosmos獲得方法</h3>
+<table>
+    <thead>
+        <tr>
+            <th>方法</th>
+            <th>Cosmos量</th>
+            <th>備考</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>オリパ購入（ボーナスカード経由）</td>
+            <td>1〜30個/回</td>
+            <td>パック価格・カードレアリティに応じて</td>
+        </tr>
+        <tr>
+            <td>ログインボーナス</td>
+            <td>1個/日</td>
+            <td>無課金でも獲得可（オープン懸賞要件）</td>
+        </tr>
+        <tr>
+            <td>カードコンプリート</td>
+            <td>50〜200個</td>
+            <td>テーマ別コンプリート報酬</td>
+        </tr>
+        <tr>
+            <td>SNSシェア</td>
+            <td>1個/回</td>
+            <td>1日1回まで</td>
+        </tr>
+        <tr>
+            <td>郵便はがき応募</td>
+            <td>5個</td>
+            <td>オープン懸賞成立のための無料参加枠</td>
+        </tr>
+    </tbody>
+</table>
+
 <h3>Cosmos用途</h3>
 <ul>
-    <li>限定DOMOカード交換</li>
-    <li>DOMOグッズ交換</li>
-    <li>懸賞Draw参加</li>
+    <li><strong>懸賞Draw参加</strong>（メイン用途）</li>
+    <li>限定DOMOグッズ交換</li>
     <li>コレクションルーム装飾</li>
+    <li>アプリ内アバター/称号</li>
 </ul>
 
 <h3>懸賞Draw設計</h3>
 <blockquote>
-    <strong>オープン懸賞</strong>として設計 — 購入不要でもログインボーナスでCosmos獲得可→参加可能
+    <strong>オープン懸賞</strong>として設計 — 購入不要でもログインボーナス・はがき応募でCosmos獲得可→参加可能。景品表示法上の賞品上限なし。
 </blockquote>
 
 <h3>月間Draw賞品予算</h3>
@@ -1045,27 +1105,27 @@ footer {
         <tr>
             <td><strong>DOPA!</strong></td>
             <td>高還元率・演出60種</td>
-            <td>ネイティブアプリ、非トレカ、DOMOカード独自性</td>
+            <td>非トレカ商材、Cosmos/Draw体験、ネイティブアプリ</td>
         </tr>
         <tr>
             <td><strong>日本トレカセンター</strong></td>
             <td>売上No.1・24h配送</td>
-            <td>圧倒的表面還元率、上場企業子会社の信用</td>
+            <td>リアル商品の魅力、体験型賞品へのアクセス</td>
         </tr>
         <tr>
             <td><strong>clove</strong></td>
             <td>デザイン性・UI</td>
-            <td>カードコレクション体験の深さ</td>
+            <td>Cosmos経済圏、3層エコシステム</td>
         </tr>
     </tbody>
 </table>
 
-<h3>DOMOカード価値未定着リスク（最大リスク）</h3>
+<h3>景品表示法リスク</h3>
 <ul>
-    <li>初期は実物商品比率を高めに設定</li>
-    <li>Discord/Xでコレクターコミュニティ育成</li>
-    <li>3ヶ月ごとに絶版→既存カード価値維持</li>
-    <li>将来的にカードで遊べるゲーム要素追加</li>
+    <li>DOMOカードに架空の市場価値を設定しないため、<strong>不当表示リスクは低い</strong></li>
+    <li>還元率はリアル商品の市場価格ベースで誠実に算出</li>
+    <li>懸賞Drawはオープン懸賞設計のため賞品上限なし</li>
+    <li><strong>対策</strong>: 確率表示・天井設定の自主規制を先行実施、消費者庁ガイドラインに準拠</li>
 </ul>
 
 <h3>その他リスク</h3>
@@ -1083,8 +1143,8 @@ footer {
             <td>S賞は受注後発注、在庫回転2週間以内</td>
         </tr>
         <tr>
-            <td>景品表示法の還元率表示妥当性</td>
-            <td>DOMOカード価値は二次市場実勢に基づき設定</td>
+            <td>グッズの魅力不足（ハズレ枠の不満）</td>
+            <td>デザイン品質に投資、季節ごとにリフレッシュ、ユーザーフィードバック反映</td>
         </tr>
         <tr>
             <td>消費者庁規制強化</td>
@@ -1093,6 +1153,10 @@ footer {
         <tr>
             <td>未成年保護</td>
             <td>18歳未満利用制限、月間課金上限1万円</td>
+        </tr>
+        <tr>
+            <td>Cosmos経済のインフレ</td>
+            <td>定期的なDraw賞品更新、Cosmos消費イベント、付与レート調整</td>
         </tr>
     </tbody>
 </table>
@@ -1122,7 +1186,7 @@ footer {
             <td><strong>Phase 1</strong></td>
             <td>Month 1-3</td>
             <td>2,000〜3,000万円</td>
-            <td>法人設立、カード製造、仕入れ、開発、マーケ</td>
+            <td>法人設立、グッズ製造、商品仕入れ、開発、マーケ</td>
         </tr>
         <tr>
             <td><strong>Phase 2</strong></td>
@@ -1146,7 +1210,7 @@ footer {
 </table>
 
 <blockquote>
-    投資回収: <strong>Month 8〜10</strong>（標準シナリオ）
+    投資回収: <strong>Month 10〜12</strong>（標準シナリオ）
 </blockquote>
 
 <hr>

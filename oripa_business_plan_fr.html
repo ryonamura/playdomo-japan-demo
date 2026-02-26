@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DOMO Japan — Plan d'affaires Oripa à haut taux de retour</title>
+<title>DOMO Japan — Plan d'affaires Oripa</title>
 <style>
 @page {
     size: A4;
@@ -21,7 +21,7 @@
 }
 * { box-sizing: border-box; }
 body {
-    font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    font-family: "Hiragino Kaku Gothic Pro", "Yu Gothic", "Meiryo", "Noto Sans JP", sans-serif;
     font-size: 11pt;
     line-height: 1.7;
     color: #1a1a2e;
@@ -244,32 +244,45 @@ footer {
     color: #718096;
     letter-spacing: 0.05em;
 }
+.flow-box {
+    background: #f0f7ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 15px 0;
+    font-size: 10pt;
+    line-height: 2;
+    text-align: center;
+}
+.flow-arrow {
+    color: #2b6cb0;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
 <script src="auth.js"></script>
-<button class="print-btn no-print" onclick="window.print()">Enregistrer en PDF (Cmd+P)</button>
+<button class="print-btn no-print" onclick="window.print()">Sauvegarder en PDF (Cmd+P)</button>
 
-<h1 id="top">DOMO Japan &mdash; Plan d'affaires Oripa &agrave; haut taux de retour</h1>
+<h1 id="top">DOMO Japan &mdash; Plan d'affaires Oripa</h1>
 <p>
-    <strong>Sous-titre</strong> : Strat&eacute;gie d'oripa &agrave; haut taux de retour exploitant les cartes originales DOMO comme &laquo; arme secr&egrave;te &raquo;<br>
-    <strong>Date</strong> : 26 f&eacute;vrier 2026<br>
-    <strong>Budget sur 12 mois</strong> : 68M&ndash;110M &yen; &mdash; Seuil de rentabilit&eacute; : ~1 200 utilisateurs payants
+    <strong>Date de l'analyse</strong> : 26 f&eacute;vrier 2026<br>
+    <strong>Statut</strong> : Plan d'affaires v2.0
 </p>
 
 <div class="toc">
     <h3>Table des mati&egrave;res</h3>
     <ol>
         <li><a href="#sec1">R&eacute;sum&eacute; ex&eacute;cutif</a></li>
-        <li><a href="#sec2">R&eacute;alit&eacute; du taux de retour &amp; Strat&eacute;gie DOMO</a></li>
-        <li><a href="#sec3">Conception de la valeur des cartes originales DOMO</a></li>
-        <li><a href="#sec4">Effets Gacha &mdash; Conception UI/UX</a></li>
-        <li><a href="#sec5">Gamme de packs au lancement</a></li>
-        <li><a href="#sec6">Feuille de route par phases</a></li>
-        <li><a href="#sec7">Simulation des revenus</a></li>
-        <li><a href="#sec8">&Eacute;conomie Cosmos (Niveau 2)</a></li>
-        <li><a href="#sec9">Risques et att&eacute;nuation</a></li>
-        <li><a href="#sec10">R&eacute;sum&eacute; du budget</a></li>
+        <li><a href="#sec2">R&eacute;alit&eacute; du taux de retour dans l'industrie et strat&eacute;gie de DOMO</a></li>
+        <li><a href="#sec3">Carte DOMO &mdash; Conception en tant que support d'acquisition de Cosmos</a></li>
+        <li><a href="#sec4">Animations gacha &mdash; Conception UI/UX</a></li>
+        <li><a href="#sec5">Composition des packs au lancement</a></li>
+        <li><a href="#sec6">Feuille de route de d&eacute;ploiement progressif</a></li>
+        <li><a href="#sec7">Simulation de revenus</a></li>
+        <li><a href="#sec8">&Eacute;cosyst&egrave;me Cosmos (2e niveau)</a></li>
+        <li><a href="#sec9">Risques et mesures d'att&eacute;nuation</a></li>
+        <li><a href="#sec10">R&eacute;sum&eacute; budg&eacute;taire</a></li>
         <li><a href="#sec11">Sources principales</a></li>
     </ol>
 </div>
@@ -279,160 +292,182 @@ footer {
 <!-- ============================= SECTION 1 ============================= -->
 <h2 id="sec1">1. R&eacute;sum&eacute; ex&eacute;cutif</h2>
 
-<h3>La proposition centrale</h3>
-<blockquote>
-    Les cartes originales DOMO (co&ucirc;t de production 30&ndash;80 &yen;) dot&eacute;es d'une <strong>&laquo; valeur de collection &raquo;</strong> permettent d'afficher un taux de retour apparent de 100&ndash;200 % tout en maintenant une marge brute r&eacute;elle de 20&ndash;40 %. C'est l'arme secr&egrave;te qui distingue DOMO de tous les concurrents.
-</blockquote>
-
-<h3>Positionnement unique</h3>
 <ul>
-    <li>Plus de <strong>95 % des concurrents</strong> sont sp&eacute;cialis&eacute;s TCG (Pok&eacute;mon, One Piece, Yu-Gi-Oh!) &mdash; DOMO se positionne de mani&egrave;re unique avec <strong>non-TCG &times; cartes propri&eacute;taires</strong></li>
-    <li>Aucun concurrent ne poss&egrave;de un &eacute;cosyst&egrave;me digital in-app int&eacute;gr&eacute; avec des cartes de valeur contr&ocirc;l&eacute;e</li>
-    <li>L'identit&eacute; de marque fran&ccedil;aise constitue un diff&eacute;renciateur inattaquable sur le march&eacute; japonais</li>
+    <li>Entr&eacute;e sur le march&eacute; japonais de l'oripa avec un positionnement <strong>non-TCG &times; produits r&eacute;els</strong>. Taux de retour fix&eacute; honn&ecirc;tement entre <strong>70 et 80 %</strong></li>
+    <li>La carte DOMO est incluse dans chaque tirage en tant que <strong>&laquo; bonus &raquo;</strong>. Non comptabilis&eacute;e dans le taux de retour, elle fonctionne comme <strong>support d'acquisition de Cosmos</strong></li>
+    <li>Accumulation de Cosmos &rarr; participation au <strong>concours Draw</strong> &rarr; diff&eacute;renciation par des lots exp&eacute;rientiels de grande valeur (voyages, &eacute;v&eacute;nements, etc.)</li>
+    <li>Avantage concurrentiel : au lieu de gonfler artificiellement avec des cartes, un <strong>&eacute;cosyst&egrave;me &agrave; 3 niveaux &laquo; Oripa &times; Cosmos &times; Draw &raquo;</strong></li>
+    <li>Budget sur 12 mois : <strong>68 &agrave; 110 millions &yen;</strong>, seuil de rentabilit&eacute; : environ <strong>1 500 utilisateurs payants</strong></li>
 </ul>
-
-<h3>Chiffres cl&eacute;s</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Indicateur</th>
-            <th>Valeur</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Budget total sur 12 mois</td>
-            <td><strong>68M&ndash;110M &yen;</strong> (~400K&ndash;660K EUR)</td>
-        </tr>
-        <tr>
-            <td>Seuil de rentabilit&eacute;</td>
-            <td><strong>~1 200 utilisateurs payants</strong></td>
-        </tr>
-        <tr>
-            <td>Taux de retour apparent cible</td>
-            <td>100&ndash;200 %</td>
-        </tr>
-        <tr>
-            <td>Marge brute r&eacute;elle</td>
-            <td>20&ndash;40 %</td>
-        </tr>
-        <tr>
-            <td>Co&ucirc;t de production par carte</td>
-            <td>30&ndash;80 &yen;</td>
-        </tr>
-        <tr>
-            <td>March&eacute; TCG japonais (2024)</td>
-            <td>302,4 milliards &yen; (triplement en 5 ans)</td>
-        </tr>
-    </tbody>
-</table>
 
 <hr>
 
 <!-- ============================= SECTION 2 ============================= -->
-<h2 id="sec2">2. R&eacute;alit&eacute; du taux de retour &amp; Strat&eacute;gie DOMO</h2>
+<h2 id="sec2">2. R&eacute;alit&eacute; du taux de retour dans l'industrie et strat&eacute;gie de DOMO</h2>
 
-<h3>Le truc du &laquo; taux de retour 99 % &raquo;</h3>
-<p>Dans le secteur des oripa, le taux de retour affich&eacute; est calcul&eacute; sur le <strong>prix de vente au d&eacute;tail</strong> (valeur march&eacute;) des cartes, et non sur le co&ucirc;t d'achat de l'op&eacute;rateur. Typiquement, le prix de vente est <strong>1,5&ndash;2&times; le prix de rachat</strong>.</p>
+<h3>2-1. L'astuce derri&egrave;re le &laquo; taux de retour de 99 % &raquo;</h3>
+<ul>
+    <li>Formule : <code>Valeur marchande totale des produits inclus / (Prix unitaire &times; Nombre total de tirages) &times; 100</code></li>
+    <li>La &laquo; valeur marchande &raquo; est calcul&eacute;e sur la base du <strong>prix de vente</strong> (1,5 &agrave; 2 fois le prix de rachat)</li>
+    <li>Le taux de retour r&eacute;el est d'environ 87 % pour DOPA! et 91 % pour Pokekuro</li>
+    <li>Le co&ucirc;t d'approvisionnement repr&eacute;sente 60 &agrave; 70 % du prix du march&eacute; &rarr; m&ecirc;me avec un &laquo; retour de 99 % &raquo;, la <strong>marge brute est de 30 &agrave; 40 %</strong></li>
+</ul>
+
+<h3>2-2. Strat&eacute;gie de DOMO : taux de retour honn&ecirc;te &times; &eacute;cosyst&egrave;me Cosmos</h3>
+
+<p>Alors que de nombreux concurrents gonflent leur &laquo; taux de retour affich&eacute; &raquo; en sur&eacute;valuant la valeur des cartes, DOMO se diff&eacute;rencie par un <strong>taux de retour honn&ecirc;te bas&eacute; sur les prix du march&eacute; des produits r&eacute;els</strong>.</p>
 
 <table>
     <thead>
         <tr>
-            <th>&Eacute;l&eacute;ment</th>
-            <th>Taux de retour affich&eacute;</th>
-            <th>Co&ucirc;t r&eacute;el pour l'op&eacute;rateur</th>
-            <th>Marge r&eacute;elle</th>
+            <th></th>
+            <th>Oripa existants (malhonn&ecirc;tes)</th>
+            <th>Oripa existants (honn&ecirc;tes)</th>
+            <th>DOMO</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Oripa TCG classique</td>
-            <td>90&ndash;99 %</td>
-            <td>60&ndash;70 %</td>
-            <td>30&ndash;40 %</td>
+            <td><strong>Taux de retour affich&eacute;</strong></td>
+            <td>200 &agrave; 500 % (gonfl&eacute;)</td>
+            <td>85 &agrave; 99 % (base prix march&eacute;)</td>
+            <td>70 &agrave; 85 % (affichage honn&ecirc;te)</td>
         </tr>
         <tr>
-            <td>D Oripa (DMM)</td>
-            <td>Max. 204 %</td>
-            <td>Non divulgu&eacute;</td>
-            <td>Estim&eacute; 15&ndash;25 %</td>
+            <td><strong>Lots perdants</strong></td>
+            <td>Gonfl&eacute;s avec des cartes de valeur douteuse</td>
+            <td>Cartes &agrave; collectionner de faible valeur</td>
+            <td>Goodies DOMO + carte bonus (attribution de Cosmos)</td>
         </tr>
         <tr>
-            <td><strong>DOMO (cartes originales)</strong></td>
-            <td><strong>100&ndash;200 %+</strong></td>
-            <td><strong>30&ndash;80 &yen;/carte</strong></td>
-            <td><strong>20&ndash;40 %</strong></td>
+            <td><strong>&Eacute;l&eacute;ment diff&eacute;renciant</strong></td>
+            <td>Aucun (perte de cr&eacute;dibilit&eacute;)</td>
+            <td>Catalogue, rapidit&eacute; de livraison</td>
+            <td>&Eacute;cosyst&egrave;me Cosmos, concours Draw, lots exp&eacute;rientiels</td>
         </tr>
     </tbody>
 </table>
 
-<h3>L'&laquo; arme secr&egrave;te &raquo; de DOMO : les cartes originales</h3>
 <blockquote>
-    Les cartes originales DOMO co&ucirc;tent 30&ndash;80 &yen; &agrave; produire mais peuvent afficher une <strong>valeur apparente de 300&ndash;5 000 &yen;</strong> gr&acirc;ce &agrave; la raret&eacute; contr&ocirc;l&eacute;e, la valeur de collection, et l'utilit&eacute; dans l'&eacute;cosyst&egrave;me DOMO. Cela renverse compl&egrave;tement l'&eacute;quation &eacute;conomique par rapport aux oripa TCG.
+    <strong>L'avantage de DOMO</strong> : plut&ocirc;t que de rivaliser sur les chiffres du taux de retour, attirer les utilisateurs gr&acirc;ce &agrave; un &eacute;cosyst&egrave;me o&ugrave; &laquo; chaque oripa tir&eacute; accumule des Cosmos, et le Draw (concours) offre une chance de gagner des lots exp&eacute;rientiels &raquo;.
 </blockquote>
-<ul>
-    <li><strong>Oripa TCG</strong> : l'op&eacute;rateur ach&egrave;te des cartes au prix de gros (60&ndash;70 % de la valeur march&eacute;) &rarr; marge limit&eacute;e</li>
-    <li><strong>DOMO</strong> : DOMO <em>cr&eacute;e</em> ses propres cartes (co&ucirc;t 30&ndash;80 &yen;) &rarr; la valeur est d&eacute;finie par la raret&eacute; et la demande &rarr; marge contr&ocirc;l&eacute;e</li>
-</ul>
 
-<h3>Exemple concret : Oripa 500 &yen; / 200 tirages</h3>
+<h3>2-3. Structure de revenus d&eacute;taill&eacute;e (exemple : oripa &agrave; &yen;500 / 100 tirages)</h3>
+
 <table>
     <thead>
         <tr>
-            <th>&Eacute;l&eacute;ment</th>
-            <th>Valeur</th>
+            <th>Cat&eacute;gorie</th>
+            <th>Nb tirages</th>
+            <th>Produit inclus</th>
+            <th>Valeur marchande</th>
+            <th>Co&ucirc;t d'achat</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Prix S</strong></td>
+            <td>1 tirage</td>
+            <td>AirPods (4e g&eacute;n&eacute;ration)</td>
+            <td>&yen;22 800</td>
+            <td>&yen;16 000</td>
+        </tr>
+        <tr>
+            <td><strong>Prix A</strong></td>
+            <td>3 tirages</td>
+            <td>Amazon Gift Card &yen;1 500</td>
+            <td>&yen;1 500 chacun</td>
+            <td>&yen;1 500 chacun</td>
+        </tr>
+        <tr>
+            <td><strong>Prix B</strong></td>
+            <td>10 tirages</td>
+            <td>Goodies originaux DOMO (t-shirt/casquette)</td>
+            <td>&yen;800 chacun</td>
+            <td>&yen;300 chacun</td>
+        </tr>
+        <tr>
+            <td><strong>Prix C</strong></td>
+            <td>86 tirages</td>
+            <td>Set d'autocollants DOMO</td>
+            <td>&yen;100 chacun</td>
+            <td>&yen;30 chacun</td>
+        </tr>
+        <tr>
+            <td colspan="5" style="background:#f0f7ff; text-align:center;"><strong>+ 1 carte bonus DOMO incluse dans chacun des 100 tirages (attribution de 1 &agrave; 10 Cosmos)</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th>Indicateur</th>
+            <th>Montant</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Chiffre d'affaires total</td>
-            <td>500 &yen; &times; 200 = <strong>100 000 &yen;</strong></td>
+            <td>&yen;50 000</td>
         </tr>
         <tr>
-            <td>Valeur totale distribu&eacute;e (apparente)</td>
-            <td><strong>181 000 &yen;</strong> (taux de retour 181 %)</td>
+            <td>Valeur marchande totale des produits</td>
+            <td>&yen;39 900</td>
         </tr>
         <tr>
-            <td>Co&ucirc;t r&eacute;el de production</td>
-            <td>Env. 80 000 &yen; (cartes + goods physiques)</td>
+            <td><strong>Taux de retour (base valeur marchande)</strong></td>
+            <td><strong>79,8 %</strong></td>
         </tr>
         <tr>
-            <td>Marge brute r&eacute;elle</td>
-            <td><strong>~20 000 &yen; (20 %)</strong></td>
+            <td>Co&ucirc;t d'achat total des produits</td>
+            <td>&yen;24 080</td>
+        </tr>
+        <tr>
+            <td>Co&ucirc;t de fabrication des cartes DOMO (100 cartes)</td>
+            <td>&yen;3 000</td>
+        </tr>
+        <tr>
+            <td><strong>Marge brute</strong></td>
+            <td><strong>&yen;22 920 (45,8 %)</strong></td>
         </tr>
     </tbody>
 </table>
-<p>Avec un taux de retour apparent de <strong>181 %</strong>, l'utilisateur per&ccedil;oit qu'il re&ccedil;oit bien plus que ce qu'il a pay&eacute;, tandis que DOMO maintient une marge de 20 %.</p>
 
-<h3>Objectifs de taux de retour par type d'oripa</h3>
+<blockquote>
+    La carte DOMO est un &laquo; bonus &raquo; non comptabilis&eacute; dans le calcul du taux de retour. Sa valeur ajout&eacute;e pour l'utilisateur r&eacute;side dans l'acquisition de Cosmos &rarr; droit de participation au Draw.
+</blockquote>
+
+<h3>2-4. Politique de fixation du taux de retour</h3>
+
 <table>
     <thead>
         <tr>
-            <th>Type d'oripa</th>
-            <th>Taux de retour apparent cible</th>
-            <th>Objectif strat&eacute;gique</th>
+            <th>Phase</th>
+            <th>Taux de retour</th>
+            <th>Objectif</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Lancement</strong></td>
-            <td><span class="badge-red">200 %+</span></td>
-            <td>Acquisition massive. Cr&eacute;er le buzz et la confiance</td>
+            <td>Premier mois de lancement</td>
+            <td><strong>85 &agrave; 90 %</strong></td>
+            <td>Cr&eacute;er le buzz (packs en &eacute;dition limit&eacute;e, quitte &agrave; perdre de l'argent)</td>
         </tr>
         <tr>
-            <td><strong>Premi&egrave;re fois</strong></td>
-            <td><span class="badge-red">300&ndash;500 %</span></td>
-            <td>Conversion imm&eacute;diate des nouveaux utilisateurs</td>
+            <td>Oripa en &eacute;dition limit&eacute;e</td>
+            <td><strong>Plus de 100 %</strong></td>
+            <td>Acquisition &agrave; perte (ex. limit&eacute; &agrave; 100 tirages)</td>
         </tr>
         <tr>
-            <td><strong>Normal (quotidien)</strong></td>
-            <td><span class="badge-blue">100&ndash;150 %</span></td>
-            <td>Rentabilit&eacute; r&eacute;guli&egrave;re avec satisfaction utilisateur</td>
+            <td>Exploitation courante</td>
+            <td><strong>70 &agrave; 80 %</strong></td>
+            <td>Niveau durable</td>
         </tr>
         <tr>
-            <td><strong>&Eacute;v&eacute;nements sp&eacute;ciaux</strong></td>
-            <td><span class="badge-orange">150&ndash;200 %</span></td>
-            <td>R&eacute;activation, engagement saisonnier, viralit&eacute;</td>
+            <td>&Eacute;v&eacute;nements limit&eacute;s</td>
+            <td><strong>80 &agrave; 90 %</strong></td>
+            <td>Am&eacute;lioration de la r&eacute;tention</td>
         </tr>
     </tbody>
 </table>
@@ -440,480 +475,386 @@ footer {
 <hr>
 
 <!-- ============================= SECTION 3 ============================= -->
-<h2 id="sec3">3. Conception de la valeur des cartes originales DOMO</h2>
+<h2 id="sec3">3. Carte DOMO &mdash; Conception en tant que support d'acquisition de Cosmos</h2>
 
-<h3>Niveaux de raret&eacute;</h3>
+<p>La carte DOMO <strong>ne revendique aucune valeur marchande en tant que lot d'oripa</strong>. Elle est incluse uniquement en tant que &laquo; bonus &raquo;, et sa fonction est d'&ecirc;tre un <strong>support d'acquisition de Cosmos (points)</strong>.</p>
+
+<blockquote>
+    <strong>Principe de conception essentiel</strong> : attribuer une valeur marchande fictive aux cartes DOMO pour gonfler le taux de retour pr&eacute;sente des risques au regard de la loi sur la repr&eacute;sentation des prix et compromet la confiance des utilisateurs. La valeur de la carte est limit&eacute;e &agrave; sa valeur fonctionnelle : &laquo; l'attribution de Cosmos &raquo;.
+</blockquote>
+
+<h3>3-1. Raret&eacute; des cartes et attribution de Cosmos</h3>
+
 <table>
     <thead>
         <tr>
             <th>Raret&eacute;</th>
-            <th>Probabilit&eacute;</th>
-            <th>Co&ucirc;t de production</th>
-            <th>Valeur apparente</th>
-            <th>Caract&eacute;ristiques</th>
+            <th>Taux d'apparition</th>
+            <th>Cosmos attribu&eacute;s</th>
+            <th>Sp&eacute;cifications de fabrication</th>
+            <th>Co&ucirc;t de fabrication</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><span class="badge-gray">Commune (C)</span></td>
+            <td><strong>Commune</strong></td>
             <td>65 %</td>
-            <td>30 &yen;</td>
-            <td>100&ndash;300 &yen;</td>
-            <td>Design de base. Collection compl&egrave;te incitatrice</td>
+            <td>1</td>
+            <td>Impression standard, finition mate</td>
+            <td>&yen;15 &agrave; &yen;25</td>
         </tr>
         <tr>
-            <td><span class="badge-blue">Rare (R)</span></td>
+            <td><strong>Rare</strong></td>
             <td>22 %</td>
-            <td>40 &yen;</td>
-            <td>500&ndash;1 500 &yen;</td>
-            <td>Art alternatif, effets visuels. Utilit&eacute; in-app renforc&eacute;e</td>
+            <td>3</td>
+            <td>Finition UV, carton &eacute;pais</td>
+            <td>&yen;25 &agrave; &yen;40</td>
         </tr>
         <tr>
-            <td><span class="badge-orange">&Eacute;pique (EP)</span></td>
+            <td><strong>&Eacute;pique</strong></td>
             <td>10 %</td>
-            <td>60 &yen;</td>
-            <td>2 000&ndash;5 000 &yen;</td>
-            <td>Illustration exclusive. Animation sp&eacute;ciale. Bonus &eacute;cosyst&egrave;me</td>
+            <td>5</td>
+            <td>Finition holographique</td>
+            <td>&yen;40 &agrave; &yen;80</td>
         </tr>
         <tr>
-            <td><span class="badge-red">L&eacute;gendaire (LG)</span></td>
+            <td><strong>L&eacute;gendaire</strong></td>
             <td>3 %</td>
-            <td>80 &yen;</td>
-            <td>5 000&ndash;30 000 &yen;</td>
-            <td>Art complet. Effet holographique. Privil&egrave;ges exclusifs</td>
+            <td>10</td>
+            <td>Holographique int&eacute;gral + dorure &agrave; chaud</td>
+            <td>&yen;60 &agrave; &yen;120</td>
         </tr>
     </tbody>
 </table>
 
-<h3>&Eacute;ditions sp&eacute;ciales (ultra-rares)</h3>
+<p>Esp&eacute;rance : en moyenne environ <strong>2 Cosmos</strong> obtenus par tirage d'oripa.</p>
+
+<h3>3-2. R&eacute;capitulatif du r&ocirc;le des cartes</h3>
+
 <table>
     <thead>
         <tr>
-            <th>&Eacute;dition</th>
-            <th>Probabilit&eacute;</th>
-            <th>Valeur apparente</th>
-            <th>Caract&eacute;ristiques</th>
+            <th>R&ocirc;le</th>
+            <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Gold Edition</strong></td>
-            <td>0,5 %</td>
-            <td>10 000&ndash;50 000 &yen;</td>
-            <td>Cadre dor&eacute; exclusif. Num&eacute;rotation limit&eacute;e (ex : /100)</td>
+            <td><strong>Acquisition de Cosmos</strong></td>
+            <td>Attribution de Cosmos selon la raret&eacute; &rarr; droit de participation au Draw</td>
         </tr>
         <tr>
-            <td><strong>Artist Edition</strong></td>
-            <td>0,1 %</td>
-            <td>30 000&ndash;100 000 &yen;</td>
-            <td>Illustrations d'artistes invit&eacute;s. Sign&eacute;e num&eacute;riquement</td>
+            <td><strong>Collection</strong></td>
+            <td>Enregistrement dans la salle de collection de l'application. Bonus Cosmos pour collection compl&egrave;te</td>
         </tr>
         <tr>
-            <td><strong>Genesis Edition</strong></td>
-            <td>0,05 %</td>
-            <td>50 000&ndash;500 000 &yen;</td>
-            <td>Premi&egrave;re &eacute;mission uniquement. Pi&egrave;ces uniques. Statut de fondateur</td>
+            <td><strong>Engagement</strong></td>
+            <td>Le plaisir de &laquo; que vais-je obtenir cette fois ? &raquo;. Cible des animations gacha</td>
+        </tr>
+        <tr>
+            <td><strong>Diffusion sur les r&eacute;seaux sociaux</strong></td>
+            <td>Parcours de partage lors de l'obtention d'une carte rare</td>
         </tr>
     </tbody>
 </table>
 
-<h3>7 m&eacute;canismes de cr&eacute;ation de valeur</h3>
+<blockquote>
+    Si un march&eacute; secondaire des cartes se d&eacute;veloppe naturellement &agrave; l'avenir, il pourra &ecirc;tre exploit&eacute;, mais <strong>le plan d'affaires ne pr&eacute;voit aucune valeur marchande pour les cartes</strong>.
+</blockquote>
+
+<h3>3-3. M&eacute;canismes d'incitation &agrave; la collection</h3>
+
 <ol>
-    <li><strong>R&eacute;compenses de compl&eacute;tion</strong> : Compl&eacute;ter un set de cartes d&eacute;bloque un bonus exclusif (carte secr&egrave;te, &eacute;v&eacute;nement, cosmetic). Incite aux tirages r&eacute;p&eacute;t&eacute;s pour compl&eacute;ter une collection</li>
-    <li><strong>Num&eacute;ros de s&eacute;rie</strong> : Chaque carte l&eacute;gendaire et &eacute;dition sp&eacute;ciale porte un num&eacute;ro de s&eacute;rie unique (ex : #007/100). Les num&eacute;ros bas ou significatifs acqui&egrave;rent une valeur premium</li>
-    <li><strong>Effet hologramme</strong> : Les cartes &eacute;piques et sup&eacute;rieures disposent d'effets visuels holographiques anim&eacute;s dans l'app. Distinction visuelle imm&eacute;diate sur les partages SNS</li>
-    <li><strong>Collaborations artistiques</strong> : Partenariats avec des illustrateurs et artistes fran&ccedil;ais/japonais. &Eacute;ditions limit&eacute;es non reproductibles cr&eacute;ant une raret&eacute; authentique</li>
-    <li><strong>&Eacute;ditions saisonni&egrave;res</strong> : Cartes exclusives par saison (Sakura, Halloween, No&euml;l, etc.). Disponibilit&eacute; limit&eacute;e dans le temps &rarr; FOMO naturel</li>
-    <li><strong>Cartes histoire</strong> : Cartes qui d&eacute;voilent progressivement l'univers narratif de DOMO. Les pi&egrave;ces manquantes incitent &agrave; la compl&eacute;tion</li>
-    <li><strong>&laquo; &Eacute;veil &raquo; de cartes</strong> : Certaines cartes peuvent &ecirc;tre &laquo; &eacute;veill&eacute;es &raquo; (version avanc&eacute;e) en combinant des mat&eacute;riaux obtenus par tirage. Cela cr&eacute;e un cycle vertueux : tirage &rarr; &eacute;veil &rarr; valeur accrue &rarr; tirage</li>
+    <li><strong>R&eacute;compense de collection compl&egrave;te</strong> &mdash; Bonus Cosmos (50 &agrave; 200) pour la compl&eacute;tion d'un th&egrave;me</li>
+    <li><strong>Cartes saisonni&egrave;res en &eacute;dition limit&eacute;e</strong> &mdash; 5 fois par an, sans r&eacute;&eacute;dition (stimuler le d&eacute;sir de collection)</li>
+    <li><strong>Collaborations artistiques</strong> &mdash; Illustrations d'un artiste diff&eacute;rent chaque trimestre</li>
+    <li><strong>Cartes &agrave; histoire</strong> &mdash; QR code d&eacute;bloquant l'univers narratif de DOMO</li>
+    <li><strong>Finitions holographiques / dorure &agrave; chaud</strong> &mdash; Les raret&eacute;s sup&eacute;rieures se distinguent par leur qualit&eacute; physique</li>
 </ol>
-
-<h3>Projections de prix sur le march&eacute; secondaire</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Raret&eacute;</th>
-            <th>Prix estim&eacute; au lancement</th>
-            <th>Prix estim&eacute; &agrave; 6 mois</th>
-            <th>Prix estim&eacute; &agrave; 12 mois</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Commune</td>
-            <td>50&ndash;100 &yen;</td>
-            <td>30&ndash;80 &yen;</td>
-            <td>20&ndash;50 &yen;</td>
-        </tr>
-        <tr>
-            <td>Rare</td>
-            <td>300&ndash;800 &yen;</td>
-            <td>500&ndash;1 200 &yen;</td>
-            <td>400&ndash;1 000 &yen;</td>
-        </tr>
-        <tr>
-            <td>&Eacute;pique</td>
-            <td>1 500&ndash;3 000 &yen;</td>
-            <td>2 000&ndash;5 000 &yen;</td>
-            <td>3 000&ndash;8 000 &yen;</td>
-        </tr>
-        <tr>
-            <td>L&eacute;gendaire</td>
-            <td>5 000&ndash;15 000 &yen;</td>
-            <td>10 000&ndash;30 000 &yen;</td>
-            <td>15 000&ndash;50 000+ &yen;</td>
-        </tr>
-        <tr>
-            <td>Genesis Edition</td>
-            <td>50 000+ &yen;</td>
-            <td>100 000+ &yen;</td>
-            <td>Impr&eacute;visible (valeur de collection)</td>
-        </tr>
-    </tbody>
-</table>
-<p><em>Note : ces projections d&eacute;pendent du succ&egrave;s de l'&eacute;cosyst&egrave;me et de la traction de la communaut&eacute;. Les prix du march&eacute; secondaire ne sont pas contr&ocirc;l&eacute;s par DOMO.</em></p>
 
 <hr>
 
 <!-- ============================= SECTION 4 ============================= -->
-<h2 id="sec4">4. Effets Gacha &mdash; Conception UI/UX</h2>
+<h2 id="sec4">4. Animations gacha &mdash; Conception UI/UX</h2>
 
-<h3>Leaders de r&eacute;f&eacute;rence</h3>
+<h3>4-1. Exemples de r&eacute;ussite dans l'industrie</h3>
+
+<ul>
+    <li><strong>DOPA!</strong> : plus de 60 types d'animations, num&eacute;ro 1 de l'industrie en popularit&eacute;</li>
+    <li><strong>Japan Trading Card Center</strong> : animation chinchiro (exploitation de la culture pachinko/pachislot)</li>
+    <li><strong>Hi&eacute;rarchie de couleurs</strong> : blanc &rarr; bleu &rarr; vert &rarr; rouge &rarr; or &rarr; arc-en-ciel (arc-en-ciel = prix S garanti)</li>
+    <li><strong>Animation de promotion/renversement (puchun)</strong> : semble perdant puis se transforme en gagnant</li>
+</ul>
+
+<h3>4-2. Top 10 des animations &agrave; impl&eacute;menter pour DOMO</h3>
+
 <table>
     <thead>
         <tr>
-            <th>Service</th>
-            <th>Sp&eacute;cialit&eacute;</th>
-            <th>Ce que DOMO doit retenir</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><strong>DOPA!</strong></td>
-            <td>60+ effets de r&eacute;v&eacute;lation diff&eacute;rents. Animations spectaculaires, effets sonores immersifs</td>
-            <td>La vari&eacute;t&eacute; des effets maintient l'excitation m&ecirc;me apr&egrave;s des centaines de tirages</td>
-        </tr>
-        <tr>
-            <td><strong>Japan TCC</strong></td>
-            <td>Syst&egrave;me &laquo; Chinchiro &raquo; (d&eacute;s) comme m&eacute;canique de r&eacute;v&eacute;lation</td>
-            <td>L'interactivit&eacute; de l'utilisateur pendant la r&eacute;v&eacute;lation augmente l'engagement &eacute;motionnel</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>Hi&eacute;rarchie de couleurs de raret&eacute;</h3>
-<p>Le standard de l'industrie suit une progression de couleurs que l'utilisateur associe instinctivement au niveau de raret&eacute;.</p>
-<table>
-    <thead>
-        <tr>
-            <th>Couleur</th>
-            <th>Raret&eacute;</th>
-            <th>R&eacute;action &eacute;motionnelle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><span class="badge-gray">Blanc</span></td>
-            <td>Commune</td>
-            <td>Neutre. &laquo; La prochaine sera mieux &raquo;</td>
-        </tr>
-        <tr>
-            <td><span class="badge-blue">Bleu</span></td>
-            <td>Rare</td>
-            <td>L&eacute;g&egrave;re excitation. &laquo; Pas mal ! &raquo;</td>
-        </tr>
-        <tr>
-            <td><span style="background:#c6f6d5;color:#1a4731;border-radius:4px;padding:1px 7px;font-size:9pt;font-weight:600">Vert</span></td>
-            <td>Super Rare</td>
-            <td>Surprise. &laquo; Oh, c'est bien ! &raquo;</td>
-        </tr>
-        <tr>
-            <td><span class="badge-red">Rouge</span></td>
-            <td>&Eacute;pique</td>
-            <td>Excitation forte. Partage SNS probable</td>
-        </tr>
-        <tr>
-            <td><span style="background:#fefcbf;color:#744210;border-radius:4px;padding:1px 7px;font-size:9pt;font-weight:600">Or</span></td>
-            <td>L&eacute;gendaire</td>
-            <td>Exaltation. Capture d'&eacute;cran et partage imm&eacute;diat</td>
-        </tr>
-        <tr>
-            <td><span style="background:linear-gradient(135deg,#fed7d7,#feebc8,#c6f6d5,#bee3f8,#e9d8fd);color:#1a365d;border-radius:4px;padding:1px 7px;font-size:9pt;font-weight:600">Arc-en-ciel</span></td>
-            <td>Genesis / Artist</td>
-            <td>Choc &eacute;motionnel total. Viralisation garantie</td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>TOP 10 &eacute;l&eacute;ments UI/UX essentiels</h3>
-<table>
-    <thead>
-        <tr>
-            <th>#</th>
+            <th>Rang</th>
             <th>&Eacute;l&eacute;ment</th>
-            <th>Description</th>
-            <th>Impact</th>
+            <th>Effet</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>1</td>
-            <td><strong>Animation de r&eacute;v&eacute;lation</strong></td>
-            <td>Suspense visuel de 3&ndash;5 secondes avec escalade d'intensit&eacute;</td>
-            <td><span class="badge-red">Critique</span></td>
+            <td><strong>1</strong></td>
+            <td>Animations gacha vari&eacute;es (minimum 10 types)</td>
+            <td>&Eacute;viter la lassitude, exp&eacute;rience diff&eacute;rente &agrave; chaque fois</td>
         </tr>
         <tr>
-            <td>2</td>
-            <td><strong>Effets sonores</strong></td>
-            <td>Son distinctif par raret&eacute;. Montée en intensit&eacute; = anticipation</td>
-            <td><span class="badge-red">Critique</span></td>
+            <td><strong>2</strong></td>
+            <td>Hi&eacute;rarchie de couleurs (6 niveaux, de blanc &agrave; arc-en-ciel)</td>
+            <td>Niveau d'attente identifiable d'un coup d'&oelig;il</td>
         </tr>
         <tr>
-            <td>3</td>
-            <td><strong>Indicateur de couleur</strong></td>
-            <td>Flash de couleur pr&eacute;c&eacute;dant la r&eacute;v&eacute;lation (hi&eacute;rarchie ci-dessus)</td>
-            <td><span class="badge-red">Critique</span></td>
+            <td><strong>3</strong></td>
+            <td>Animation de promotion / renversement</td>
+            <td>Maximisation du pic de dopamine</td>
         </tr>
         <tr>
-            <td>4</td>
-            <td><strong>Haptic feedback</strong></td>
-            <td>Vibration du t&eacute;l&eacute;phone proportionnelle &agrave; la raret&eacute;</td>
-            <td><span class="badge-orange">&Eacute;lev&eacute;</span></td>
+            <td><strong>4</strong></td>
+            <td>Bonus de connexion quotidien (type ad garanti)</td>
+            <td>Raison de se connecter chaque jour</td>
         </tr>
         <tr>
-            <td>5</td>
-            <td><strong>Bouton de partage SNS</strong></td>
-            <td>Capture d'&eacute;cran automatis&eacute;e + templates pour X/Instagram</td>
-            <td><span class="badge-orange">&Eacute;lev&eacute;</span></td>
+            <td><strong>5</strong></td>
+            <td>Syst&egrave;me de rang membre (5 &agrave; 7 niveaux)</td>
+            <td>Motivation pour continuer &agrave; payer</td>
         </tr>
         <tr>
-            <td>6</td>
-            <td><strong>Compteur de tirages restants</strong></td>
-            <td>Affiche les tirages restants du pack, cr&eacute;ant un sentiment de raret&eacute;</td>
-            <td><span class="badge-orange">&Eacute;lev&eacute;</span></td>
+            <td><strong>6</strong></td>
+            <td>Plafond / prix du dernier tirage</td>
+            <td>R&eacute;duire la barri&egrave;re aux d&eacute;penses &eacute;lev&eacute;es</td>
         </tr>
         <tr>
-            <td>7</td>
-            <td><strong>Historique des gros lots</strong></td>
-            <td>Affichage en temps r&eacute;el des derni&egrave;res cartes rares tir&eacute;es par d'autres utilisateurs</td>
-            <td><span class="badge-blue">Moyen</span></td>
+            <td><strong>7</strong></td>
+            <td>Parcours progressif du gratuit vers le payant</td>
+            <td>Essai &rarr; habitude &rarr; achat</td>
         </tr>
         <tr>
-            <td>8</td>
-            <td><strong>Pity system</strong></td>
-            <td>Garantie d'une carte rare apr&egrave;s N tirages sans succ&egrave;s (ex : 50 tirages)</td>
-            <td><span class="badge-blue">Moyen</span></td>
+            <td><strong>8</strong></td>
+            <td>Fonction de replay des animations</td>
+            <td>Parcours vers le partage sur les r&eacute;seaux sociaux</td>
         </tr>
         <tr>
-            <td>9</td>
-            <td><strong>Mode &laquo; multi-tirage &raquo;</strong></td>
-            <td>Tirage de 10 cartes simultan&eacute;es avec animation de r&eacute;v&eacute;lation s&eacute;quentielle</td>
-            <td><span class="badge-blue">Moyen</span></td>
+            <td><strong>9</strong></td>
+            <td>Partage sur les r&eacute;seaux sociaux + attribution de points</td>
+            <td>Marketing gratuit</td>
         </tr>
         <tr>
-            <td>10</td>
-            <td><strong>&laquo; Lucky Cut-in &raquo;</strong></td>
-            <td>Animation al&eacute;atoire qui interrompt le tirage normal, signalant un r&eacute;sultat exceptionnel</td>
-            <td><span class="badge-blue">Moyen</span></td>
+            <td><strong>10</strong></td>
+            <td>Animations SF exploitant l'univers de DOMO</td>
+            <td>Unicit&eacute; par rapport aux concurrents</td>
         </tr>
     </tbody>
 </table>
 
-<h3>Entonnoir de mon&eacute;tisation</h3>
-<ol>
-    <li><strong>D&eacute;couverte</strong> : Pack gratuit/1 &yen; (premi&egrave;re exp&eacute;rience gacha) &rarr; taux de conversion cible : 40 %</li>
-    <li><strong>Premier achat</strong> : Pack 100 &yen; (faible friction, taux de retour 300&ndash;500 %) &rarr; taux de conversion cible : 25 %</li>
-    <li><strong>Habitude</strong> : Packs 300&ndash;500 &yen; (tirages r&eacute;guliers, collection) &rarr; r&eacute;tention cible : 60 % &agrave; J7</li>
-    <li><strong>Engagement</strong> : Packs 1 000&ndash;3 000 &yen; (compl&eacute;tion de sets, &eacute;veil) &rarr; ARPU cible : 3 000 &yen;/mois</li>
-    <li><strong>Passion</strong> : Packs 5 000 &yen;+ (&eacute;v&eacute;nements, &eacute;ditions limit&eacute;es) &rarr; ARPU baleines : 20 000+ &yen;/mois</li>
-</ol>
+<h3>4-3. Flux du parcours de mon&eacute;tisation</h3>
+
+<div class="flow-box">
+    Inscription <span class="flow-arrow">&rarr;</span> Points gratuits <span class="flow-arrow">&rarr;</span> V&eacute;rification SMS <span class="flow-arrow">&rarr;</span> Points suppl&eacute;mentaires <span class="flow-arrow">&rarr;</span> Liaison LINE <span class="flow-arrow">&rarr;</span> Bonus <span class="flow-arrow">&rarr;</span> Essai gacha gratuit<br>
+    <span class="flow-arrow">&rarr;</span> Habitude via bonus quotidien <span class="flow-arrow">&rarr;</span> Petit achat <span class="flow-arrow">&rarr;</span> Mont&eacute;e de rang <span class="flow-arrow">&rarr;</span> Achat moyen <span class="flow-arrow">&rarr;</span> Viser le plafond <span class="flow-arrow">&rarr;</span> Achat &eacute;lev&eacute;
+</div>
 
 <hr>
 
 <!-- ============================= SECTION 5 ============================= -->
-<h2 id="sec5">5. Gamme de packs au lancement</h2>
+<h2 id="sec5">5. Composition des packs au lancement</h2>
+
+<p>Tous les packs incluent une <strong>carte bonus DOMO</strong> (attribution de Cosmos). Le taux de retour est calcul&eacute; sur la base des produits r&eacute;els, hors cartes.</p>
 
 <table>
     <thead>
         <tr>
             <th>Nom du pack</th>
             <th>Prix</th>
-            <th>Nb de tirages</th>
-            <th>Contenu</th>
-            <th>Taux de retour apparent</th>
-            <th>Cible</th>
+            <th>Exemple de lot gagnant (produit r&eacute;el)</th>
+            <th>Lot perdant</th>
+            <th>Taux de retour</th>
+            <th>Cosmos</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Pack D&eacute;couverte</strong></td>
-            <td>100 &yen;</td>
-            <td>500</td>
-            <td>1 carte DOMO (C/R garanti). Bonus 50 Cosmos</td>
-            <td>200&ndash;300 %</td>
-            <td>Nouveaux utilisateurs. Conversion &agrave; ultra-faible friction</td>
+            <td><strong>Premi&egrave;re fois avec DOMO</strong></td>
+            <td>&yen;100 (1 fois par personne)</td>
+            <td>Apple Gift Card &yen;500 (10 %)</td>
+            <td>Autocollant DOMO</td>
+            <td>90 %</td>
+            <td>3</td>
         </tr>
         <tr>
-            <td><strong>Pack Quotidien</strong></td>
-            <td>300 &yen;</td>
-            <td>300</td>
-            <td>3 cartes DOMO (1 R+ garanti). Bonus 100 Cosmos</td>
-            <td>150&ndash;200 %</td>
-            <td>Utilisateurs r&eacute;guliers. Tirage quotidien</td>
+            <td><strong>Bienvenue DOMO</strong></td>
+            <td>&yen;300 (3 fois par personne)</td>
+            <td>AirTag (probabilit&eacute; 1/20)</td>
+            <td>Porte-cl&eacute;s DOMO</td>
+            <td>85 %</td>
+            <td>5</td>
         </tr>
         <tr>
-            <td><strong>Pack Standard</strong></td>
-            <td>500 &yen;</td>
-            <td>200</td>
-            <td>5 cartes DOMO (1 EP+ garanti). 200 Cosmos + 1 ticket &eacute;change</td>
-            <td>150&ndash;180 %</td>
-            <td>Coeur de cible. Pack principal</td>
+            <td><strong>Standard</strong></td>
+            <td>&yen;500</td>
+            <td>AirPods (0,5 %), Gift Card</td>
+            <td>Set d'autocollants DOMO</td>
+            <td>75 %</td>
+            <td>2</td>
         </tr>
         <tr>
-            <td><strong>Pack Premium</strong></td>
-            <td>1 000 &yen;</td>
-            <td>150</td>
-            <td>5 cartes (1 EP+ garanti, 1 LG possible). Good lifestyle fran&ccedil;ais</td>
-            <td>130&ndash;160 %</td>
-            <td>Collectionneurs engag&eacute;s</td>
+            <td><strong>Premium</strong></td>
+            <td>&yen;1 000</td>
+            <td>Apple Watch (0,1 %), sneakers</td>
+            <td>Goodies DOMO (t-shirt, etc.)</td>
+            <td>75 %</td>
+            <td>5</td>
         </tr>
         <tr>
-            <td><strong>Pack &Eacute;v&eacute;nement</strong></td>
-            <td>3 000 &yen;</td>
-            <td>100</td>
-            <td>10 cartes (1 LG garanti). Cartes &eacute;v&eacute;nementielles exclusives. Chance exp&eacute;rience</td>
-            <td>120&ndash;150 %</td>
-            <td>&Eacute;ditions limit&eacute;es, FOMO</td>
+            <td><strong>High Roller</strong></td>
+            <td>&yen;3 000</td>
+            <td>Switch 2 (0,1 %), Gift Card haute valeur</td>
+            <td>Goodies DOMO premium</td>
+            <td>78 %</td>
+            <td>15</td>
         </tr>
         <tr>
-            <td><strong>Pack Prestige</strong></td>
-            <td>5 000 &yen;</td>
-            <td>50</td>
-            <td>10 cartes (2 LG+ garanti). Good premium + chance Gold Edition</td>
-            <td>100&ndash;130 %</td>
-            <td>Baleines. Prestige et exclusivit&eacute;</td>
+            <td><strong>L&eacute;gende</strong></td>
+            <td>&yen;5 000</td>
+            <td>PS5 Pro (0,05 %), articles de marque</td>
+            <td>BOX collector DOMO</td>
+            <td>80 %</td>
+            <td>30</td>
         </tr>
     </tbody>
 </table>
+
+<blockquote>
+    M&ecirc;me les lots perdants contiennent des <strong>goodies physiques utiles</strong>. Minimiser le sentiment d'&laquo; avoir re&ccedil;u un objet sans valeur &raquo;.
+</blockquote>
 
 <hr>
 
 <!-- ============================= SECTION 6 ============================= -->
-<h2 id="sec6">6. Feuille de route par phases</h2>
+<h2 id="sec6">6. Feuille de route de d&eacute;ploiement progressif</h2>
 
-<h3>Phase 0 : Pr&eacute;paration juridique et brevet (3&ndash;5M &yen;)</h3>
+<h3>Phase 0 (Mois 0) &mdash; &yen;3 &agrave; 5 millions</h3>
+<ul>
+    <li>S&eacute;lection d'avocats / conseils en propri&eacute;t&eacute; intellectuelle, obtention d'un avis juridique</li>
+    <li>&Eacute;tude de conflit avec le brevet Iranoan</li>
+    <li>Accord de principe avec le si&egrave;ge de DOMO</li>
+</ul>
+
+<h3>Phase 1 (Mois 1-3) &mdash; &yen;20 &agrave; 30 millions</h3>
+
+<h4>Mois 1</h4>
+<ul>
+    <li>Cr&eacute;ation de la soci&eacute;t&eacute;, commande du premier lot de goodies, mise en place des canaux d'approvisionnement, localisation de l'application</li>
+    <li>Commande du premier lot de 50 000 cartes DOMO (4 raret&eacute;s &times; plusieurs designs)</li>
+</ul>
+
+<h4>Mois 2</h4>
+<ul>
+    <li>B&ecirc;ta-test avec 500 personnes, recrutement de 10 influenceurs, campagne teaser</li>
+</ul>
+
+<h4>Mois 3</h4>
+<ul>
+    <li>Lancement officiel, pack en &eacute;dition limit&eacute;e (taux de retour sup&eacute;rieur &agrave; 100 %), diffusion simultan&eacute;e par les influenceurs, premier concours Draw</li>
+</ul>
+
+<h4>KPI</h4>
 <table>
     <thead>
         <tr>
-            <th>Poste</th>
-            <th>Budget</th>
-            <th>D&eacute;tail</th>
+            <th>Indicateur</th>
+            <th>Objectif</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Analyse de libert&eacute; d'exploitation (FTO)</td>
-            <td>1&ndash;2M &yen;</td>
-            <td>Analyse du brevet Iranoan (n&deg; 7472179) et conception de contournement</td>
+            <td>T&eacute;l&eacute;chargements</td>
+            <td>30 000</td>
         </tr>
         <tr>
-            <td>Constitution de soci&eacute;t&eacute; au Japon (KK)</td>
-            <td>0,5&ndash;1M &yen;</td>
-            <td>Capital social, enregistrement, sceau soci&eacute;taire</td>
+            <td>MAU</td>
+            <td>15 000</td>
         </tr>
         <tr>
-            <td>Avis juridique sp&eacute;cialis&eacute;</td>
-            <td>1&ndash;2M &yen;</td>
-            <td>Qualification jeu de hasard, r&eacute;glementation gacha, repr&eacute;sentation des probabilit&eacute;s</td>
+            <td>Taux de conversion</td>
+            <td>15 %</td>
+        </tr>
+        <tr>
+            <td>CA mensuel</td>
+            <td>&yen;5 millions</td>
         </tr>
     </tbody>
 </table>
 
-<h3>Phase 1 : Lancement (20&ndash;30M &yen;)</h3>
+<h3>Phase 2 (Mois 4-6) &mdash; &yen;15 &agrave; 25 millions</h3>
+<ul>
+    <li>1re collaboration artistique (designs de cartes en &eacute;dition limit&eacute;e), &eacute;largissement de la gamme de prix</li>
+    <li>Oripa saisonniers en &eacute;dition limit&eacute;e, programme de parrainage, renforcement de la fonction collection</li>
+    <li>&Eacute;largissement des cat&eacute;gories de produits (cosm&eacute;tiques, figurines, etc.)</li>
+</ul>
+
+<h4>KPI</h4>
 <table>
     <thead>
         <tr>
-            <th>Poste</th>
-            <th>Budget</th>
-            <th>D&eacute;tail</th>
+            <th>Indicateur</th>
+            <th>Objectif</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>D&eacute;veloppement de l'application (oripa + &eacute;cosyst&egrave;me)</td>
-            <td>10&ndash;15M &yen;</td>
-            <td>Moteur gacha, animations, syst&egrave;me de collection, paiement, back-office</td>
+            <td>MAU</td>
+            <td>50 000</td>
         </tr>
         <tr>
-            <td>Cr&eacute;ation des cartes (s&eacute;ries inaugurales)</td>
-            <td>3&ndash;5M &yen;</td>
-            <td>Direction artistique, illustration, animation holographique, QA</td>
+            <td>Taux de conversion</td>
+            <td>18 %</td>
         </tr>
         <tr>
-            <td>Marketing de lancement</td>
-            <td>5&ndash;7M &yen;</td>
-            <td>YouTubers/influenceurs, campagnes SNS, RP, &eacute;v&eacute;nement de lancement</td>
+            <td>Utilisateurs payants</td>
+            <td>9 000</td>
         </tr>
         <tr>
-            <td>Op&eacute;rations et recrutement</td>
-            <td>2&ndash;3M &yen;</td>
-            <td>&Eacute;quipe locale (community manager, CS, op&eacute;rations)</td>
+            <td>CA mensuel</td>
+            <td>&yen;50 millions</td>
         </tr>
     </tbody>
 </table>
 
-<h3>Phase 2 : Croissance (15&ndash;25M &yen;)</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Poste</th>
-            <th>Budget</th>
-            <th>D&eacute;tail</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Marketing de croissance</td>
-            <td>8&ndash;12M &yen;</td>
-            <td>Acquisition payante, partenariats marques, collaborations artistiques</td>
-        </tr>
-        <tr>
-            <td>D&eacute;veloppement de fonctionnalit&eacute;s</td>
-            <td>5&ndash;8M &yen;</td>
-            <td>&Eacute;change entre joueurs, march&eacute; secondaire in-app, &eacute;veil de cartes</td>
-        </tr>
-        <tr>
-            <td>Approvisionnement goods physiques</td>
-            <td>2&ndash;5M &yen;</td>
-            <td>Importation de goods fran&ccedil;ais, logistique, stockage</td>
-        </tr>
-    </tbody>
-</table>
+<h3>Phase 3 (Mois 7-12) &mdash; &yen;30 &agrave; 50 millions</h3>
+<ul>
+    <li>Collaborations IP (oripa en collaboration avec des IP d'anime/jeux vid&eacute;o)</li>
+    <li>DOMO Fest (&eacute;v&eacute;nement en pr&eacute;sentiel), obtention de la licence de brocanteur</li>
+    <li>Boutique officielle de goodies associ&eacute;e (canal de vente directe hors oripa)</li>
+</ul>
 
-<h3>Phase 3 : Mise &agrave; l'&eacute;chelle (30&ndash;50M &yen;)</h3>
+<h4>KPI</h4>
 <table>
     <thead>
         <tr>
-            <th>Poste</th>
-            <th>Budget</th>
-            <th>D&eacute;tail</th>
+            <th>Indicateur</th>
+            <th>Objectif</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Marketing de masse</td>
-            <td>15&ndash;25M &yen;</td>
-            <td>TV/m&eacute;dias de masse, &eacute;v&eacute;nements physiques, ambassadeurs</td>
+            <td>MAU</td>
+            <td>100 000</td>
         </tr>
         <tr>
-            <td>&Eacute;conomie Cosmos compl&egrave;te</td>
-            <td>8&ndash;12M &yen;</td>
-            <td>Loterie ouverte, d&eacute;coration, fonctionnalit&eacute;s sociales, comp&eacute;titions</td>
+            <td>Taux de conversion</td>
+            <td>20 %</td>
         </tr>
         <tr>
-            <td>Expansion internationale</td>
-            <td>7&ndash;13M &yen;</td>
-            <td>Adaptation pour l'Asie du Sud-Est, Europe. Localisation, conformit&eacute;</td>
+            <td>Utilisateurs payants</td>
+            <td>20 000</td>
+        </tr>
+        <tr>
+            <td>CA mensuel</td>
+            <td>&yen;110 millions</td>
         </tr>
     </tbody>
 </table>
@@ -921,290 +862,301 @@ footer {
 <hr>
 
 <!-- ============================= SECTION 7 ============================= -->
-<h2 id="sec7">7. Simulation des revenus</h2>
+<h2 id="sec7">7. Simulation de revenus</h2>
 
-<h3>&Eacute;conomie unitaire par oripa (Pack Standard 500 &yen;)</h3>
+<h3>D&eacute;tail des revenus par oripa (cas &agrave; &yen;500)</h3>
+
 <table>
     <thead>
         <tr>
             <th>Poste</th>
             <th>Montant</th>
-            <th>% du prix de vente</th>
+            <th>Ratio</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>Prix de vente</td>
-            <td>500 &yen;</td>
+            <td>&yen;500</td>
             <td>100 %</td>
         </tr>
         <tr>
-            <td>Co&ucirc;t de production des cartes</td>
-            <td>~50 &yen;</td>
-            <td>10 %</td>
+            <td>Co&ucirc;t produit (r&eacute;partition esp&eacute;rance lots gagnants)</td>
+            <td>&yen;200</td>
+            <td>40 %</td>
         </tr>
         <tr>
-            <td>Goods physiques (quand inclus)</td>
-            <td>~100 &yen;</td>
-            <td>20 %</td>
+            <td>Co&ucirc;t goodies DOMO / autocollants (lots perdants)</td>
+            <td>&yen;25</td>
+            <td>5 %</td>
         </tr>
         <tr>
-            <td>Commission plateforme de paiement</td>
-            <td>~20 &yen;</td>
-            <td>4 %</td>
+            <td>Co&ucirc;t de fabrication carte DOMO (bonus)</td>
+            <td>&yen;30</td>
+            <td>6 %</td>
         </tr>
         <tr>
-            <td>Logistique (exp&eacute;dition)</td>
-            <td>~50 &yen;</td>
-            <td>10 %</td>
+            <td>Frais de livraison (r&eacute;partis)</td>
+            <td>&yen;35</td>
+            <td>7 %</td>
         </tr>
         <tr>
-            <td>Co&ucirc;ts serveur / infrastructure</td>
-            <td>~15 &yen;</td>
+            <td>Frais de paiement (3,5 %)</td>
+            <td>&yen;17,5</td>
+            <td>3,5 %</td>
+        </tr>
+        <tr>
+            <td>Frais d'exploitation syst&egrave;me (r&eacute;partis)</td>
+            <td>&yen;15</td>
             <td>3 %</td>
         </tr>
         <tr>
             <td><strong>Marge brute</strong></td>
-            <td><strong>~265 &yen;</strong></td>
-            <td><strong>53 %</strong></td>
-        </tr>
-        <tr>
-            <td>Marketing (allou&eacute;)</td>
-            <td>~100 &yen;</td>
-            <td>20 %</td>
-        </tr>
-        <tr>
-            <td>Op&eacute;rations / personnel</td>
-            <td>~65 &yen;</td>
-            <td>13 %</td>
-        </tr>
-        <tr>
-            <td><strong>B&eacute;n&eacute;fice net</strong></td>
-            <td><strong>~100 &yen;</strong></td>
-            <td><strong>20 %</strong></td>
+            <td><strong>&yen;177,5</strong></td>
+            <td><strong>35,5 %</strong></td>
         </tr>
     </tbody>
 </table>
 
-<h3>3 sc&eacute;narios de revenus (12 premiers mois)</h3>
+<blockquote>
+    Contournement de la commission App Store : la <strong>loi sur la promotion de la concurrence des logiciels pour smartphones</strong> entr&eacute;e en vigueur en d&eacute;cembre 2025 + possibilit&eacute; d'exemption des achats int&eacute;gr&eacute;s car il s'agit de vente de produits physiques
+</blockquote>
+
+<h3>Revenus mensuels par sc&eacute;nario</h3>
+
 <table>
     <thead>
         <tr>
             <th>Indicateur</th>
-            <th>Conservateur</th>
-            <th>Standard</th>
-            <th>Optimiste</th>
+            <th>Conservateur (1 000 pers.)</th>
+            <th>Standard (5 000 pers.)</th>
+            <th>Optimiste (10 000 pers.)</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Utilisateurs enregistr&eacute;s</td>
-            <td>30 000</td>
-            <td>80 000</td>
-            <td>200 000</td>
+            <td>MAU</td>
+            <td>5 000</td>
+            <td>25 000</td>
+            <td>50 000</td>
         </tr>
         <tr>
-            <td>Taux de conversion payant</td>
-            <td>5 %</td>
-            <td>8 %</td>
-            <td>12 %</td>
+            <td>Taux de conversion</td>
+            <td>20 %</td>
+            <td>20 %</td>
+            <td>20 %</td>
         </tr>
         <tr>
-            <td>Utilisateurs payants</td>
-            <td>1 500</td>
-            <td>6 400</td>
-            <td>24 000</td>
+            <td>ARPU (payants)</td>
+            <td>&yen;5 600</td>
+            <td>&yen;5 600</td>
+            <td>&yen;5 600</td>
         </tr>
         <tr>
-            <td>ARPU mensuel</td>
-            <td>2 000 &yen;</td>
-            <td>3 000 &yen;</td>
-            <td>4 000 &yen;</td>
+            <td>CA mensuel</td>
+            <td>&yen;5,6 millions</td>
+            <td>&yen;28 millions</td>
+            <td>&yen;56 millions</td>
         </tr>
         <tr>
-            <td>CA mensuel (mois 12)</td>
-            <td>3M &yen;</td>
-            <td>19,2M &yen;</td>
-            <td>96M &yen;</td>
+            <td>Marge brute (35,5 %)</td>
+            <td>&yen;1,99 million</td>
+            <td>&yen;9,94 millions</td>
+            <td>&yen;19,88 millions</td>
         </tr>
         <tr>
-            <td>CA annuel cumul&eacute;</td>
-            <td>18M &yen;</td>
-            <td>115M &yen;</td>
-            <td>576M &yen;</td>
+            <td>Co&ucirc;ts fixes + marketing</td>
+            <td>&yen;3 millions</td>
+            <td>&yen;6 millions</td>
+            <td>&yen;9 millions</td>
         </tr>
         <tr>
-            <td>B&eacute;n&eacute;fice net annuel estim&eacute;</td>
-            <td>-50M &yen; (perte)</td>
-            <td>+5M &yen;</td>
-            <td>+115M &yen;</td>
+            <td>Budget lots Draw</td>
+            <td>&yen;200 000</td>
+            <td>&yen;400 000</td>
+            <td>&yen;800 000</td>
+        </tr>
+        <tr>
+            <td><strong>R&eacute;sultat d'exploitation</strong></td>
+            <td><span class="badge-red">&#9660;&yen;1,21 million</span></td>
+            <td><span class="badge-green">&yen;3,54 millions</span></td>
+            <td><span class="badge-green">&yen;10,08 millions</span></td>
         </tr>
     </tbody>
 </table>
 
-<h3>Seuil de rentabilit&eacute;</h3>
 <blockquote>
-    Avec un ARPU mensuel de 3 000 &yen; et des co&ucirc;ts fixes mensuels de ~3,6M &yen;, le seuil de rentabilit&eacute; se situe &agrave; environ <strong>~1 200 utilisateurs payants</strong>.<br>
-    Formule : 3 600 000 &yen; / (3 000 &yen; &times; 100 &yen; b&eacute;n&eacute;fice / 500 &yen; prix) = ~1 200 utilisateurs payants actifs mensuels.
+    Seuil de rentabilit&eacute; : environ <strong>1 500 utilisateurs payants</strong> (MAU d'environ 7 500, taux de conversion 20 %)
 </blockquote>
 
 <hr>
 
 <!-- ============================= SECTION 8 ============================= -->
-<h2 id="sec8">8. &Eacute;conomie Cosmos (Niveau 2)</h2>
+<h2 id="sec8">8. &Eacute;cosyst&egrave;me Cosmos (2e niveau)</h2>
 
-<p>Les Cosmos constituent la monnaie interne de l'&eacute;cosyst&egrave;me DOMO, con&ccedil;ue pour &eacute;tendre l'engagement au-del&agrave; du simple tirage d'oripa.</p>
-
-<h3>5 usages principaux des Cosmos</h3>
+<h3>Moyens d'acquisition de Cosmos</h3>
 <table>
     <thead>
         <tr>
-            <th>Usage</th>
-            <th>Description</th>
-            <th>Impact</th>
+            <th>M&eacute;thode</th>
+            <th>Quantit&eacute; de Cosmos</th>
+            <th>Remarque</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>&Eacute;change de cartes limit&eacute;es</strong></td>
-            <td>Les cartes rares peuvent &ecirc;tre &eacute;chang&eacute;es entre joueurs moyennant des Cosmos (frais de transaction)</td>
-            <td>Cr&eacute;ation d'un march&eacute; secondaire interne. Valeur accrue des cartes</td>
+            <td>Achat d'oripa (via carte bonus)</td>
+            <td>1 &agrave; 30 par tirage</td>
+            <td>Selon le prix du pack et la raret&eacute; de la carte</td>
         </tr>
         <tr>
-            <td><strong>Produits exclusifs</strong></td>
-            <td>Boutique in-app o&ugrave; les Cosmos permettent d'acheter des goods physiques fran&ccedil;ais, accessoires num&eacute;riques</td>
-            <td>Motivation suppl&eacute;mentaire pour accumuler des Cosmos via tirages</td>
+            <td>Bonus de connexion quotidien</td>
+            <td>1 par jour</td>
+            <td>Accessible sans payer (requis pour le concours ouvert)</td>
         </tr>
         <tr>
-            <td><strong>Tirage au sort</strong></td>
-            <td>Loteries sp&eacute;ciales &agrave; Cosmos offrant des exp&eacute;riences et des goods premium</td>
-            <td>Cycle vertueux : tirage &rarr; Cosmos &rarr; loterie &rarr; envie de plus de Cosmos &rarr; tirage</td>
+            <td>Collection compl&egrave;te de cartes</td>
+            <td>50 &agrave; 200</td>
+            <td>R&eacute;compense de compl&eacute;tion par th&egrave;me</td>
         </tr>
         <tr>
-            <td><strong>D&eacute;coration</strong></td>
-            <td>Personnalisation du profil, cadres, arri&egrave;re-plans, effets visuels achetables en Cosmos</td>
-            <td>Expression personnelle. Engagement social entre joueurs</td>
+            <td>Partage sur les r&eacute;seaux sociaux</td>
+            <td>1 par partage</td>
+            <td>Limit&eacute; &agrave; 1 fois par jour</td>
         </tr>
         <tr>
-            <td><strong>&Eacute;veil de cartes</strong></td>
-            <td>Utilisation de Cosmos + mat&eacute;riaux pour &laquo; &eacute;veiller &raquo; une carte vers sa version avanc&eacute;e</td>
-            <td>Augmentation de la valeur per&ccedil;ue et r&eacute;elle des cartes existantes</td>
+            <td>Participation par carte postale</td>
+            <td>5</td>
+            <td>Voie de participation gratuite pour satisfaire les conditions de concours ouvert</td>
         </tr>
     </tbody>
 </table>
 
-<h3>Conception en loterie ouverte</h3>
+<h3>Utilisations des Cosmos</h3>
 <ul>
-    <li>Loteries mensuelles th&eacute;matiques avec des lots physiques et exp&eacute;rientiels</li>
-    <li>Participation en Cosmos (pas en argent r&eacute;el) &rarr; contourne la probl&eacute;matique des jeux de hasard</li>
-    <li>Tous les participants re&ccedil;oivent un lot de consolation (structure &laquo; aucun perdant &raquo;)</li>
-    <li>Transparence totale : probabilit&eacute;s et contenus affich&eacute;s publiquement</li>
+    <li><strong>Participation au concours Draw</strong> (utilisation principale)</li>
+    <li>&Eacute;change contre des goodies DOMO en &eacute;dition limit&eacute;e</li>
+    <li>D&eacute;coration de la salle de collection</li>
+    <li>Avatars / titres dans l'application</li>
 </ul>
 
-<h3>Budget mensuel des prix de loterie</h3>
+<h3>Conception du concours Draw</h3>
+<blockquote>
+    <strong>Con&ccedil;u comme un concours ouvert</strong> &mdash; possibilit&eacute; de participer m&ecirc;me sans achat gr&acirc;ce au bonus de connexion quotidien et &agrave; la participation par carte postale pour obtenir des Cosmos. Pas de plafond sur les lots en vertu de la loi sur la repr&eacute;sentation des prix.
+</blockquote>
+
+<h3>Budget mensuel des lots Draw</h3>
 <table>
     <thead>
         <tr>
-            <th>Cat&eacute;gorie de lot</th>
-            <th>Quantit&eacute;</th>
-            <th>Valeur unitaire</th>
-            <th>Budget mensuel</th>
+            <th>Lot</th>
+            <th>Co&ucirc;t mensuel</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Grand prix (exp&eacute;rience premium)</td>
-            <td>1</td>
-            <td>100 000 &yen;</td>
-            <td>100 000 &yen;</td>
+            <td>iPhone &times; 1</td>
+            <td>&yen;150 000</td>
         </tr>
         <tr>
-            <td>Lot A (goods fran&ccedil;ais premium)</td>
-            <td>5</td>
-            <td>20 000 &yen;</td>
-            <td>100 000 &yen;</td>
+            <td>Switch &times; 2</td>
+            <td>&yen;100 000</td>
         </tr>
         <tr>
-            <td>Lot B (goods lifestyle)</td>
-            <td>20</td>
-            <td>5 000 &yen;</td>
-            <td>100 000 &yen;</td>
+            <td>Sneakers &times; 3 paires</td>
+            <td>&yen;90 000</td>
         </tr>
         <tr>
-            <td>Lot C (cartes &eacute;ditions sp&eacute;ciales)</td>
-            <td>50</td>
-            <td>1 000 &yen;</td>
-            <td>50 000 &yen;</td>
+            <td>Goodies &times; 10</td>
+            <td>&yen;50 000</td>
         </tr>
         <tr>
-            <td>Lots de consolation (Cosmos bonus)</td>
-            <td>Illimit&eacute;</td>
-            <td>~80 &yen;</td>
-            <td>~40 000 &yen;</td>
-        </tr>
-        <tr>
-            <td colspan="3"><strong>Total mensuel</strong></td>
-            <td><strong>~390 000 &yen;</strong></td>
+            <td><strong>Total</strong></td>
+            <td><strong>Environ &yen;390 000/mois</strong></td>
         </tr>
     </tbody>
 </table>
+
+<p>Pas une source directe de revenus, mais contribue &agrave; la <strong>motivation d'achat d'oripa, &agrave; la r&eacute;tention, &agrave; la diffusion sur les r&eacute;seaux sociaux et &agrave; l'augmentation du DAU</strong></p>
 
 <hr>
 
 <!-- ============================= SECTION 9 ============================= -->
-<h2 id="sec9">9. Risques et att&eacute;nuation</h2>
+<h2 id="sec9">9. Risques et mesures d'att&eacute;nuation</h2>
+
+<h3>Brevet Iranoan (n&deg; 7472179)</h3>
+<ul>
+    <li><strong>Objet</strong> : syst&egrave;me de vente par tirage au sort de cartes &agrave; collectionner en ligne</li>
+    <li><strong>Impact sur DOMO</strong> : <span class="badge-orange">Moyen &agrave; faible</span> (DOMO utilise principalement des produits non-TCG, structure diff&eacute;rente : &laquo; vente de produits + attribution de cartes &raquo;)</li>
+    <li><strong>Mesures</strong> : demande d'&eacute;tude de brevet &agrave; un conseil en PI en Phase 0, contournement d&egrave;s la conception, adh&eacute;sion au programme de licence en cas de besoin</li>
+</ul>
+
+<h3>Diff&eacute;renciation par rapport aux concurrents</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Concurrent</th>
+            <th>Point fort</th>
+            <th>Diff&eacute;renciation de DOMO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>DOPA!</strong></td>
+            <td>Taux de retour &eacute;lev&eacute;, 60 types d'animations</td>
+            <td>Produits non-TCG, exp&eacute;rience Cosmos/Draw, application native</td>
+        </tr>
+        <tr>
+            <td><strong>Japan Trading Card Center</strong></td>
+            <td>N&deg;1 du CA, livraison 24h</td>
+            <td>Attrait des produits r&eacute;els, acc&egrave;s &agrave; des lots exp&eacute;rientiels</td>
+        </tr>
+        <tr>
+            <td><strong>clove</strong></td>
+            <td>Design, UI</td>
+            <td>&Eacute;cosyst&egrave;me Cosmos, &eacute;cosyst&egrave;me &agrave; 3 niveaux</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Risques li&eacute;s &agrave; la loi sur la repr&eacute;sentation des prix</h3>
+<ul>
+    <li>Aucune valeur marchande fictive n'est attribu&eacute;e aux cartes DOMO, donc le <strong>risque de repr&eacute;sentation trompeuse est faible</strong></li>
+    <li>Le taux de retour est calcul&eacute; honn&ecirc;tement sur la base des prix du march&eacute; des produits r&eacute;els</li>
+    <li>Le concours Draw est con&ccedil;u comme un concours ouvert, sans plafond sur les lots</li>
+    <li><strong>Mesures</strong> : mise en place proactive d'une autor&eacute;gulation sur l'affichage des probabilit&eacute;s et le syst&egrave;me de garantie (plafond), conformit&eacute; aux directives de l'Agence de la consommation</li>
+</ul>
+
+<h3>Autres risques</h3>
 
 <table>
     <thead>
         <tr>
             <th>Risque</th>
-            <th>Probabilit&eacute;</th>
-            <th>Impact</th>
-            <th>Mesure d'att&eacute;nuation</th>
+            <th>Mesure</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Brevet Iranoan (n&deg; 7472179)</strong></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td><span class="badge-red">&Eacute;lev&eacute;</span></td>
-            <td>Analyse FTO en Phase 0. Conception de m&eacute;canismes originaux diff&eacute;renci&eacute;s (interactivit&eacute; utilisateur, syst&egrave;me de Chinchiro-like). D&eacute;p&ocirc;t de brevet propre si possible</td>
+            <td>Risque de stock (d&eacute;pr&eacute;ciation des anciens mod&egrave;les Apple lors de nouvelles sorties)</td>
+            <td>Commande des prix S apr&egrave;s vente, rotation des stocks sous 2 semaines</td>
         </tr>
         <tr>
-            <td><strong>Concurrence accrue</strong></td>
-            <td><span class="badge-red">&Eacute;lev&eacute;</span></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td>Le positionnement non-TCG &times; cartes propri&eacute;taires limite la concurrence directe. L'entr&eacute;e de DMM valide le march&eacute; mais ne chevauche pas le cr&eacute;neau DOMO</td>
+            <td>Manque d'attrait des goodies (m&eacute;contentement sur les lots perdants)</td>
+            <td>Investir dans la qualit&eacute; du design, renouveler chaque saison, int&eacute;grer les retours utilisateurs</td>
         </tr>
         <tr>
-            <td><strong>Risque de valeur des cartes</strong></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td>Contr&ocirc;le de l'offre (raret&eacute; programm&eacute;e). Utilit&eacute; in-app cr&eacute;ant une demande ind&eacute;pendante du march&eacute; secondaire. &Eacute;ditions limit&eacute;es num&eacute;rot&eacute;es</td>
+            <td>Renforcement de la r&eacute;glementation par l'Agence de la consommation</td>
+            <td>Mise en place proactive d'une autor&eacute;gulation sur l'affichage des probabilit&eacute;s et le syst&egrave;me de garantie (plafond)</td>
         </tr>
         <tr>
-            <td><strong>Gestion de l'inventaire physique</strong></td>
-            <td><span class="badge-blue">Faible</span></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td>Lancement principalement num&eacute;rique (Phase 1). Introduction progressive des goods physiques (Phase 2). Partenariats logistiques locaux</td>
+            <td>Protection des mineurs</td>
+            <td>Restriction d'acc&egrave;s aux moins de 18 ans, plafond mensuel de &yen;10 000</td>
         </tr>
         <tr>
-            <td><strong>R&eacute;glementation (Japon)</strong></td>
-            <td><span class="badge-blue">Faible</span></td>
-            <td><span class="badge-red">&Eacute;lev&eacute;</span></td>
-            <td>Structure de contrat de vente (chaque tirage = produit). Divulgation compl&egrave;te des probabilit&eacute;s. Avis juridique sp&eacute;cialis&eacute; en Phase 0. Pas de comp gacha. Pas de conversion facile en esp&egrave;ces</td>
-        </tr>
-        <tr>
-            <td><strong>R&eacute;glementation JONUM (France)</strong></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td>Conception des cartes comme objets in-game sans &eacute;change externe obligatoire. Suivi attentif de l'&eacute;volution du d&eacute;cret JONUM (exp&eacute;rimental jusqu'en mai 2027)</td>
-        </tr>
-        <tr>
-            <td><strong>Adoption utilisateur insuffisante</strong></td>
-            <td><span class="badge-orange">Mod&eacute;r&eacute;</span></td>
-            <td><span class="badge-red">&Eacute;lev&eacute;</span></td>
-            <td>Taux de retour &eacute;lev&eacute; au lancement (200&ndash;500 %) pour l'acquisition. Strat&eacute;gie influenceurs. Packs &laquo; premi&egrave;re fois &raquo; &agrave; valeur exceptionnelle</td>
+            <td>Inflation de l'&eacute;conomie Cosmos</td>
+            <td>Renouvellement r&eacute;gulier des lots Draw, &eacute;v&eacute;nements de consommation de Cosmos, ajustement du taux d'attribution</td>
         </tr>
     </tbody>
 </table>
@@ -1212,7 +1164,7 @@ footer {
 <hr>
 
 <!-- ============================= SECTION 10 ============================= -->
-<h2 id="sec10">10. R&eacute;sum&eacute; du budget</h2>
+<h2 id="sec10">10. R&eacute;sum&eacute; budg&eacute;taire</h2>
 
 <table>
     <thead>
@@ -1220,44 +1172,45 @@ footer {
             <th>Phase</th>
             <th>P&eacute;riode</th>
             <th>Budget</th>
-            <th>Objectif principal</th>
+            <th>Principales d&eacute;penses</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><strong>Phase 0</strong> : Pr&eacute;paration</td>
-            <td>Mois 1&ndash;2</td>
-            <td>3&ndash;5M &yen;</td>
-            <td>Juridique, brevets, constitution de soci&eacute;t&eacute;</td>
+            <td><strong>Phase 0</strong></td>
+            <td>Mois 0</td>
+            <td>&yen;3 &agrave; 5 millions</td>
+            <td>Avocats / conseils en PI, &eacute;tude de brevet</td>
         </tr>
         <tr>
-            <td><strong>Phase 1</strong> : Lancement</td>
-            <td>Mois 2&ndash;5</td>
-            <td>20&ndash;30M &yen;</td>
-            <td>D&eacute;veloppement app, cr&eacute;ation cartes, marketing de lancement</td>
+            <td><strong>Phase 1</strong></td>
+            <td>Mois 1-3</td>
+            <td>&yen;20 &agrave; 30 millions</td>
+            <td>Cr&eacute;ation de soci&eacute;t&eacute;, fabrication de goodies, approvisionnement, d&eacute;veloppement, marketing</td>
         </tr>
         <tr>
-            <td><strong>Phase 2</strong> : Croissance</td>
-            <td>Mois 5&ndash;9</td>
-            <td>15&ndash;25M &yen;</td>
-            <td>Acquisition utilisateurs, march&eacute; secondaire, goods physiques</td>
+            <td><strong>Phase 2</strong></td>
+            <td>Mois 4-6</td>
+            <td>&yen;15 &agrave; 25 millions</td>
+            <td>Collaborations, ajout de fonctionnalit&eacute;s, expansion marketing</td>
         </tr>
         <tr>
-            <td><strong>Phase 3</strong> : Mise &agrave; l'&eacute;chelle</td>
-            <td>Mois 9&ndash;12</td>
-            <td>30&ndash;50M &yen;</td>
-            <td>Marketing de masse, &eacute;conomie Cosmos, expansion internationale</td>
+            <td><strong>Phase 3</strong></td>
+            <td>Mois 7-12</td>
+            <td>&yen;30 &agrave; 50 millions</td>
+            <td>Collaborations IP, &eacute;v&eacute;nements en pr&eacute;sentiel, &eacute;largissement des cat&eacute;gories</td>
         </tr>
         <tr>
-            <td colspan="2"><strong>Total 12 mois</strong></td>
-            <td><strong>68&ndash;110M &yen;</strong></td>
-            <td>~400K&ndash;660K EUR</td>
+            <td><strong>Total</strong></td>
+            <td>12 mois</td>
+            <td><strong>&yen;68 &agrave; 110 millions</strong></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
 
 <blockquote>
-    Le seuil de rentabilit&eacute; de <strong>~1 200 utilisateurs payants</strong> (ARPU 3 000 &yen;/mois) est atteignable d&egrave;s la Phase 1 dans le sc&eacute;nario standard. Le sc&eacute;nario conservateur pr&eacute;voit une atteinte en Phase 2.
+    Retour sur investissement : <strong>Mois 10 &agrave; 12</strong> (sc&eacute;nario standard)
 </blockquote>
 
 <hr>
@@ -1266,56 +1219,28 @@ footer {
 <h2 id="sec11">11. Sources principales</h2>
 
 <div class="sources">
-    <h4>March&eacute; TCG et Oripa</h4>
+    <h4>Sources</h4>
     <ul>
-        <li><a href="https://www.yano.co.jp/">Yano Research Institute &mdash; Rapport sur le march&eacute; TCG japonais 2024</a></li>
-        <li><a href="https://torecamap.co.jp/column/dopa/">Pr&eacute;sentation de DOPA! (torecamap)</a></li>
-        <li><a href="https://prtimes.jp/main/html/rd/p/000000001.000175928.html">Entr&eacute;e de D Oripa (PR TIMES)</a></li>
-        <li><a href="https://www.nihon-ma.co.jp/news/20241223_3624-7/">Acquisition de crafty (Iris) &mdash; Japan M&amp;A Center</a></li>
+        <li><a href="https://oripa-online8.com/oripa-return-rate">La v&eacute;rit&eacute; sur le taux de retour des oripa</a></li>
+        <li><a href="https://pockecolle.com/articles/oripa-kangennritu">M&eacute;thode de calcul du taux de retour</a></li>
+        <li><a href="https://growdeco.co.jp/toreka-oripa/oripa-kangenritsu/">Explication du m&eacute;canisme du taux de retour</a></li>
+        <li><a href="https://onlineoripa.jp/torecacenter-rank">Rangs membres du Japan Trading Card Center</a></li>
+        <li><a href="https://conseo-symp2023.com/dopa-login-bonus/">Bonus de connexion DOPA</a></li>
+        <li><a href="https://onlineoripa.jp/dopa-rank">Syst&egrave;me de rang DOPA</a></li>
+        <li><a href="https://onlineoripa.jp/dopa-animation">Animations DOPA</a></li>
+        <li><a href="https://onlineoripa.jp/torecacenter-animation">Animations du Japan Trading Card Center</a></li>
+        <li><a href="https://pokeca-oripa.com/ensyutusikumi/">R&eacute;capitulatif des animations de confirmation oripa</a></li>
+        <li><a href="https://www.kobe-np.co.jp/rentoku/feature/202108/0014554529.shtml">Expert : &laquo; Le plus amusant dans le gacha, c'est juste avant de tirer &raquo;</a></li>
+        <li><a href="https://legal-leon.jp/column/1102/">Cabinet d'avocats LEON &mdash; L&eacute;galit&eacute; des oripa</a></li>
+        <li><a href="https://iranoan.site/posts/TfqDWk59">Informations sur le brevet Iranoan</a></li>
+        <li><a href="https://torekaland.com/archives/11">Les dessous de la rentabilit&eacute; des oripa</a></li>
+        <li><a href="https://sg.wantedly.com/companies/anchor-ltd/post_articles/992412">Les coulisses du n&deg;1 des ventes du Japan Trading Card Center</a></li>
+        <li><a href="https://pentagon.tokyo/app/1726/">Contournement de la commission App Store</a></li>
     </ul>
 </div>
-
-<div class="sources">
-    <h4>Cadre juridique</h4>
-    <ul>
-        <li><a href="https://legal-leon.jp/column/1102/">Cabinet juridique LEON &mdash; Analyse juridique des Oripa</a></li>
-        <li><a href="https://www.ikedasomeya.com/insight/23250">IKEDA &amp; SOMEYA &mdash; Analyse juridique des Oripa</a></li>
-        <li><a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/">Agence des consommateurs &mdash; Loi sur les repr&eacute;sentations et les primes</a></li>
-        <li><a href="https://corporate.vbest.jp/columns/9165/">Very Best Law Office &mdash; R&eacute;glementation du gacha</a></li>
-        <li><a href="https://www.twobirds.com/en/insights/2025/france/loi-sren-nouvelle-definition-et-nouveau-regime-pour-les-jeux-a-objets-numeriques-monetisables-jonum">Bird &amp; Bird &mdash; Loi SREN / JONUM</a></li>
-        <li><a href="https://anj.fr/jeux-objets-numeriques-monetisables-jonum">ANJ (officiel) &mdash; JONUM</a></li>
-    </ul>
-</div>
-
-<div class="sources">
-    <h4>Exemples non-TCG et gacha</h4>
-    <ul>
-        <li><a href="https://www.hafh.com/">HafH &mdash; Site officiel (Sky Gacha)</a></li>
-        <li><a href="https://www.flypeach.com/">Peach Aviation &mdash; Tabi-Kuji</a></li>
-        <li><a href="https://kurand.jp/">KURAND &mdash; Sake Gacha</a></li>
-        <li><a href="https://bpnavi.jp/s/kuji">Ichiban Kuji (Bandai Spirits)</a></li>
-    </ul>
-</div>
-
-<div class="sources">
-    <h4>Brevets et propri&eacute;t&eacute; intellectuelle</h4>
-    <ul>
-        <li><a href="https://www.j-platpat.inpit.go.jp/">J-PlatPat &mdash; Recherche de brevets japonais (brevet Iranoan n&deg; 7472179)</a></li>
-    </ul>
-</div>
-
-<div class="sources">
-    <h4>R&eacute;glementation et directives sectorielles</h4>
-    <ul>
-        <li><a href="https://japanonlinegame.org/">JOGA &mdash; Japan Online Game Association (directives gacha)</a></li>
-        <li><a href="https://bccc.global/pressrelease/20221018/">BCCC &mdash; Directives sur la vente al&eacute;atoire de NFT</a></li>
-    </ul>
-</div>
-
-<hr>
 
 <footer>
-    DOMO Japan Localization Project &mdash; Confidentiel
+    DOMO Japan Localization Project &mdash; Confidential
 </footer>
 
 </body>
